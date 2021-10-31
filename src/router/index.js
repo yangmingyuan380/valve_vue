@@ -44,16 +44,16 @@ export const constantRouterMap = [
     meta: { title: '专项审核', icon: 'example' },
     children: [
       {
-        path: 'getValveStatus',
-        name: 'ValveStatus',
-        component: () => import('@/views/service/valveinfo/list'),
-        meta: { title: '审核情况', icon: 'table' }
-      },
-      {
         path: 'getRegister',
         name: 'Register',
         component: () => import('@/views/service/valveinfo/register'),
-        meta: { title: '审核材料', icon: 'table' }
+        meta: { title: '完整性登记表', icon: 'table' }
+      },
+      {
+        path: 'getValveStatus',
+        name: 'ValveStatus',
+        component: () => import('@/views/service/valveinfo/list'),
+        meta: { title: '审核情况登记表', icon: 'table' }
       },
     ]
   },
