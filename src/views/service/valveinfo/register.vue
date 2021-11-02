@@ -26,8 +26,8 @@
           :header-cell-style="headFirst"
           border
           align="center"
-          height="1000px"
-          style="width: 1000px;" :row-style="{height: '0px'}">
+          height="500px"
+          style="width: 1000px;" :cell-style="{padding: '5px'}">
           <el-table-column label="审核项目及材料名称" align="center" width="180px">
             <el-table-column prop="name" align="center" width="50px">
             </el-table-column>
@@ -43,7 +43,7 @@
             align="center"
             label="选择" width="130px">
             <template slot-scope="scope">
-              <el-select v-model="scope.row.chose">
+              <el-select v-model="scope.row.chose" size="mini">
                 <el-option label="有" value="1"></el-option>
                 <el-option label="无" value="0"></el-option>
                 <el-option label="不存在" value="2"></el-option>
@@ -53,7 +53,7 @@
           <el-table-column
             prop="problem"
             label="备注/存在问题">
-            <template slot-scope="scope">
+            <template slot-scope="scope" size="mini">
               <el-input type="textarea" :rows="1" v-model="scope.row.problem"/>
             </template>
           </el-table-column>
