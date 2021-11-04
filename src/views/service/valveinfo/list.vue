@@ -140,8 +140,8 @@
         </div>
       </div>
     </el-form>
-    <el-form :model="审核情况" :rules="审核情况rules" ref="审核情况" label-position="center" label-width="120px" size="mini">
-      <div class="app-main" v-show="isShow">
+    <div class="app-main" v-show="isShow">
+      <el-form :model="审核情况" :rules="审核情况rules" ref="审核情况" label-position="center" label-width="120px" size="mini">
         <div class="cell">
           <div class="container">
             <h4 style="text-align:center">审核情况</h4>
@@ -152,28 +152,28 @@
             </div>
             <el-row>
               <el-col :span="4">
-                <el-form-item label="初审人职工号" prop="auditerID">
+                <el-form-item label="初审人职工号" prop="初审人职工号">
                   <el-input v-model="审核情况.初审人职工号" controls-position="right" :min="0"/>
                 </el-form-item>
               </el-col>
               <el-col :span="4">
-                <el-form-item label="初审人" prop="auditer">
+                <el-form-item label="初审人" prop="初审人">
                   <el-input v-model="审核情况.初审人" controls-position="right" :min="0"/>
                 </el-form-item>
               </el-col>
               <el-col :span="4">
-                <el-form-item label="初审人单位" prop="auditer">
+                <el-form-item label="初审人单位" prop="初审人单位">
                   <el-input v-model="审核情况.初审人单位" controls-position="right" :min="0"/>
                 </el-form-item>
               </el-col>
               <el-col :span="5">
-                <el-form-item label="初审时间" prop="auditDatetime">
+                <el-form-item label="初审时间" prop="初审时间">
                   <el-date-picker type="datetime" placeholder="选择日期" v-model="审核情况.初审时间"
                                   style="width: 180px;"></el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="4">
-                <el-form-item label="初审状态" prop="auditStatus">
+                <el-form-item label="初审状态" prop="初审状态">
                   <el-select v-model="审核情况.初审状态" style="width: 100px">
                     <el-option label="未初审" value="未初审"></el-option>
                     <el-option label="初审中" value="初审中"></el-option>
@@ -184,32 +184,32 @@
             </el-row>
             <el-row>
               <el-col :span="4">
-                <el-form-item label="复审人职工号" prop="auditerID2">
+                <el-form-item label="复审人职工号" prop="复审人职工号">
                   <el-input v-model="审核情况.复审人职工号" controls-position="right" :min="0"/>
                 </el-form-item>
               </el-col>
               <el-col :span="4">
-                <el-form-item label="复审人" prop="auditer2">
+                <el-form-item label="复审人" prop="复审人">
                   <el-input v-model="审核情况.复审人" controls-position="right" :min="0"/>
                 </el-form-item>
               </el-col>
               <el-col :span="4">
-                <el-form-item label="复审人单位" prop="auditerOrganize2">
+                <el-form-item label="复审人单位" prop="复审人单位">
                   <el-input v-model="审核情况.复审人单位" controls-position="right" :min="0"/>
                 </el-form-item>
               </el-col>
               <el-col :span="5">
-                <el-form-item label="复审时间" prop="auditDatetime2">
+                <el-form-item label="复审时间" prop="复审时间">
                   <el-date-picker type="datetime" placeholder="选择日期" v-model="审核情况.复审时间"
                                   style="width: 180px;"></el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="4">
-                <el-form-item label="复审状态" prop="auditStatus2">
+                <el-form-item label="复审状态" prop="复审状态">
                   <el-select v-model="审核情况.复审状态" style="width: 100px">
-                    <el-option label="未初审" value="0"></el-option>
-                    <el-option label="初审中" value="1"></el-option>
-                    <el-option label="完成初审" value="2"></el-option>
+                    <el-option label="未初审" value="未初审"></el-option>
+                    <el-option label="初审中" value="初审中"></el-option>
+                    <el-option label="完成初审" value="完成初审"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
@@ -220,6 +220,8 @@
             </el-form-item>
           </div>
         </div>
+      </el-form>
+      <el-form :model="出生时间" :rules="出生时间rules" ref="出生时间" label-position="center" label-width="120px" size="mini">
         <div class="cell">
           <div class="container">
             <h4 style="text-align:center">出生时间</h4>
@@ -235,37 +237,37 @@
             <el-row>
               <el-col :span="5">
                 <el-form-item label="初审认定出生时间" prop="birthDate" label-width="140px">
-                  <el-date-picker type="date" placeholder="选择日期" v-model="user.初审认定出生时间"
+                  <el-date-picker type="date" placeholder="选择日期" v-model="出生时间.初审认定出生时间"
                                   style="width: 130px;"></el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="5">
                 <el-form-item label="复审认定出生时间" label-width="140px">
-                  <el-date-picker type="date" placeholder="选择日期" v-model="user.复审认定出生时间"
+                  <el-date-picker type="date" placeholder="选择日期" v-model="出生时间.复审认定出生时间"
                                   style="width: 130px;"></el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="5">
                 <el-form-item label="记载情况是否一致" prop="birthIsTrue1" label-width="150px">
-                  <el-select v-model="user.出生日期记载情况是否一致" style="width: 100px">
-                    <el-option label="是" value="1"></el-option>
-                    <el-option label="否" value="0"></el-option>
+                  <el-select v-model="出生时间.出生时间记载是否一致" style="width: 100px">
+                    <el-option label="是" value="是"></el-option>
+                    <el-option label="否" value="否"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="4">
                 <el-form-item label="真实性存疑" prop="birthIsTrue2" label-width="100px">
-                  <el-select v-model="user.出生时间真实性存疑" style="width: 100px">
-                    <el-option label="是" value="1"></el-option>
-                    <el-option label="否" value="0"></el-option>
+                  <el-select v-model="出生时间.出生时间真实性存疑" style="width: 100px">
+                    <el-option label="是" value="是"></el-option>
+                    <el-option label="否" value="否"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="5">
                 <el-form-item label="组织是否进行过认定" prop="birthIsTrue3" label-width="150px">
-                  <el-select v-model="user.出生时间组织是否进行过认定" style="width: 100px">
-                    <el-option label="是" value="1"></el-option>
-                    <el-option label="否" value="0"></el-option>
+                  <el-select v-model="出生时间.出生时间组织是否进行过认定" style="width: 100px">
+                    <el-option label="是" value="是"></el-option>
+                    <el-option label="否" value="否"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
@@ -273,25 +275,31 @@
             <el-row>
               <el-col :span="5">
                 <el-form-item label="身份证号码时间" prop="IDcardDate" label-width="140px">
-                  <el-date-picker type="date" placeholder="选择日期" v-model="user.身份证号码时间"
+                  <el-date-picker type="date" placeholder="选择日期" v-model="出生时间.身份证号码时间"
                                   style="width: 130px;"></el-date-picker>
                 </el-form-item>
               </el-col>
             </el-row>
             <el-form-item label="最早形成材料记载" label-width="150px">
-              <el-input type="textarea" :rows="2" v-model="user.最早形成材料记载" style="width: 500px"/>
+              <el-input type="textarea" :rows="2" v-model="出生时间.最早形成材料记载" style="width: 500px"/>
             </el-form-item>
             <el-form-item label="最新任免材料记载" label-width="150px">
-              <el-input type="textarea" :rows="2" v-model="user.最新任免材料记载" style="width: 500px"/>
+              <el-input type="textarea" :rows="2" v-model="出生时间.最新任免材料记载" style="width: 500px"/>
             </el-form-item>
             <el-form-item label="其他形成材料记载" label-width="150px">
-              <el-input type="textarea" :rows="2" v-model="user.其他形成材料记载" style="width: 500px"/>
+              <el-input type="textarea" :rows="2" v-model="出生时间.其他形成材料记载" style="width: 500px"/>
             </el-form-item>
             <el-form-item label="出生时间存在问题" prop="birthProblem" label-width="150px">
-              <el-input type="textarea" :rows="2" v-model="user.出生时间存在问题" style="width: 500px"/>
+              <el-input type="textarea" :rows="2" v-model="出生时间.出生时间存在问题" style="width: 500px"/>
+            </el-form-item>
+            <el-form-item style="text-align:center">
+              <el-button type="primary" @click="save3">保存</el-button>
+              <el-button type="primary" @click="update3">更新</el-button>
             </el-form-item>
           </div>
         </div>
+      </el-form>
+      <el-form :model="参加工作时间" :rules="参加工作时间rules" ref="参加工作时间" label-position="center" label-width="120px" size="mini">
         <div class="cell">
           <div class="container">
             <h4 style="text-align:center">参加工作时间</h4>
@@ -317,52 +325,58 @@
             <el-row>
               <el-col :span="6">
                 <el-form-item label="初审认定参加工作时间" prop="workDate" label-width="170px">
-                  <el-date-picker type="date" placeholder="选择日期" v-model="user.初审认定参加工作时间"
+                  <el-date-picker type="date" placeholder="选择日期" v-model="参加工作时间.初审认定参加工作时间"
                                   style="width: 130px;"></el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="6">
                 <el-form-item label="复审认定参加工作时间" label-width="160px">
-                  <el-date-picker type="date" placeholder="选择日期" v-model="user.复审认定参加工作时间"
+                  <el-date-picker type="date" placeholder="选择日期" v-model="参加工作时间.复审认定参加工作时间"
                                   style="width: 130px;"></el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="6">
                 <el-form-item label="记载情况是否一致" prop="workIsTrue1" label-width="150px">
-                  <el-select v-model="user.参加工作时间记载情况是否一致" style="width: 100px">
-                    <el-option label="是" value="1"></el-option>
-                    <el-option label="否" value="0"></el-option>
+                  <el-select v-model="参加工作时间.参加工作时间记载情况是否一致" style="width: 100px">
+                    <el-option label="是" value="是"></el-option>
+                    <el-option label="否" value="否"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="4">
                 <el-form-item label="真实性存疑" prop="workIsTrue2">
-                  <el-select v-model="user.参加工作时间真实性存疑" style="width: 100px">
-                    <el-option label="是" value="1"></el-option>
-                    <el-option label="否" value="0"></el-option>
+                  <el-select v-model="参加工作时间.参加工作时间真实性存疑" style="width: 100px">
+                    <el-option label="是" value="是"></el-option>
+                    <el-option label="否" value="否"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="6">
                 <el-form-item label="组织是否进行过认定" prop="workIsTrue3" label-width="170px">
-                  <el-select v-model="user.参加工作时间组织是否进行过认定" style="width: 100px">
-                    <el-option label="是" value="1"></el-option>
-                    <el-option label="否" value="0"></el-option>
+                  <el-select v-model="参加工作时间.参加工作时间组织是否进行过认定" style="width: 100px">
+                    <el-option label="是" value="是"></el-option>
+                    <el-option label="否" value="否"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
             </el-row>
             <el-form-item label="国内最早参加工作材料记载" label-width="200px">
-              <el-input type="textarea" :rows="2" v-model="user. 国内最早参加工作材料记载" style="width: 500px"/>
+              <el-input type="textarea" :rows="2" v-model="参加工作时间.国内最早参加工作材料记载" style="width: 500px"/>
             </el-form-item>
             <el-form-item label="组织人事部门形成的相关材料" label-width="200px">
-              <el-input type="textarea" :rows="2" v-model="user. 参加工作时间组织人事相关材料" style="width: 500px"/>
+              <el-input type="textarea" :rows="2" v-model="参加工作时间.参加工作时间组织人事相关材料" style="width: 500px"/>
             </el-form-item>
             <el-form-item label="参加工作时间存在问题" label-width="200px">
-              <el-input type="textarea" :rows="2" v-model="user.参加工作时间存在问题" style="width: 500px"/>
+              <el-input type="textarea" :rows="2" v-model="参加工作时间.参加工作时间存在问题" style="width: 500px"/>
+            </el-form-item>
+            <el-form-item style="text-align:center">
+              <el-button type="primary" @click="save4">保存</el-button>
+              <el-button type="primary" @click="update4">更新</el-button>
             </el-form-item>
           </div>
         </div>
+      </el-form>
+      <el-form :model="入党时间" :rules="入党时间rules" ref="入党时间" label-position="center" label-width="120px" size="mini">
         <div class="cell">
           <div class="container">
             <h4 style="text-align:center">入党时间</h4>
@@ -381,7 +395,7 @@
             <el-row>
               <el-col :span="4">
                 <el-form-item label="政治面貌" prop="politicStatus" label-width="80px">
-                  <el-select v-model="user.政治面貌" placeholder="请选择" @change="isPartyer">
+                  <el-select v-model="入党时间.政治面貌" placeholder="请选择" @change="isPartyer">
                     <el-option
                       v-for="item in 政治面貌字典"
                       :key="item"
@@ -393,21 +407,21 @@
               </el-col>
               <el-col :span="6">
                 <el-form-item label="初审认定入党时间" prop="partyDate" v-show="showPartyDate" label-width="150px">
-                  <el-date-picker type="date" placeholder="选择日期" v-model="user.初审认定入党时间"
+                  <el-date-picker type="date" placeholder="选择日期" v-model="入党时间.初审认定入党时间"
                                   style="width: 130px;"></el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="6">
                 <el-form-item label="复审认定入党时间" v-show="showPartyDate" label-width="150px">
-                  <el-date-picker type="date" placeholder="选择日期" v-model="user.复审认定入党时间"
+                  <el-date-picker type="date" placeholder="选择日期" v-model="入党时间.复审认定入党时间"
                                   style="width: 130px;"></el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="中共党员入党时间记载情况是否一致" v-show="showPartyDate" prop="partyIsTrue1" label-width="250px">
-                  <el-select v-model="user.入党时间记载情况是否一致" style="width: 100px">
-                    <el-option label="是" value="1"></el-option>
-                    <el-option label="否" value="0"></el-option>
+                  <el-select v-model="入党时间.入党时间记载情况是否一致" style="width: 100px">
+                    <el-option label="是" value="是"></el-option>
+                    <el-option label="否" value="否"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
@@ -415,29 +429,29 @@
             <el-row>
               <el-col :span="6">
                 <el-form-item label="《入党志愿书》记载入党时间" v-show="showPartyDate" prop="《入党志愿书》记载入党时间" label-width="200px">
-                  <el-date-picker type="date" placeholder="选择日期" v-model="user.入党志愿书记载入党时间"
+                  <el-date-picker type="date" placeholder="选择日期" v-model="入党时间.入党志愿书记载入党时间"
                                   style="width: 130px;"></el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="加入民主党派或无党派人士的时间" prop="加入民主党派或无党派人士的时间" label-width="235px">
-                  <el-date-picker type="date" placeholder="选择日期" v-model="user.加入民主党派或无党派人士的时间"
+                  <el-date-picker type="date" placeholder="选择日期" v-model="入党时间.加入民主党派或无党派人士的时间"
                                   style="width: 130px;"></el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="4">
                 <el-form-item label="真实性存疑" prop="partyIsTrue2" label-width="100px">
-                  <el-select v-model="user.入党时间真实性存疑" style="width: 100px">
-                    <el-option label="是" value="1"></el-option>
-                    <el-option label="否" value="0"></el-option>
+                  <el-select v-model="入党时间.入党时间真实性存疑" style="width: 100px">
+                    <el-option label="是" value="是"></el-option>
+                    <el-option label="否" value="否"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="6">
                 <el-form-item label="组织是否进行过认定" prop="partyIsTrue3" label-width="150px">
-                  <el-select v-model="user.入党时间组织是否进行过认定" style="width: 100px">
-                    <el-option label="是" value="1"></el-option>
-                    <el-option label="否" value="0"></el-option>
+                  <el-select v-model="入党时间.入党时间组织是否进行过认定" style="width: 100px">
+                    <el-option label="是" value="是"></el-option>
+                    <el-option label="否" value="否"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
@@ -445,7 +459,7 @@
             <el-row>
               <el-col :span="4">
                 <el-form-item label="第二党派" prop="politicStatus" label-width="80px">
-                  <el-select v-model="user.第二党派" placeholder="请选择">
+                  <el-select v-model="入党时间.第二党派" placeholder="请选择">
                     <el-option
                       v-for="item in 政治面貌字典"
                       :key="item"
@@ -457,19 +471,25 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item label="参加第二党派时间" prop="参加第二党派时间" label-width="150px">
-                  <el-date-picker type="date" placeholder="选择日期" v-model="user.参加第二党派时间"
+                  <el-date-picker type="date" placeholder="选择日期" v-model="入党时间.参加第二党派时间"
                                   style="width: 130px;"></el-date-picker>
                 </el-form-item>
               </el-col>
             </el-row>
             <el-form-item label="组织人事部门形成的相关材料" prop="组织人事部门形成的相关材料" label-width="200px">
-              <el-input type="textarea" :rows="2" v-model="user.入党时间组织人事相关材料" style="width: 500px"/>
+              <el-input type="textarea" :rows="2" v-model="入党时间.入党时间组织人事相关材料" style="width: 500px"/>
             </el-form-item>
             <el-form-item label="入党时间存在问题" prop="入党时间存在问题" label-width="200px">
-              <el-input type="textarea" :rows="2" v-model="user.入党时间存在问题" style="width: 500px"/>
+              <el-input type="textarea" :rows="2" v-model="入党时间.入党时间存在问题" style="width: 500px"/>
+            </el-form-item>
+            <el-form-item style="text-align:center">
+              <el-button type="primary" @click="save5">保存</el-button>
+              <el-button type="primary" @click="update5">更新</el-button>
             </el-form-item>
           </div>
         </div>
+      </el-form>
+      <el-form :model="学历学位材料" :rules="学历学位材料rules" ref="学历学位材料" label-position="center" label-width="120px" size="mini">
         <div class="cell">
           <div class="container">
             <h4 style="text-align:center">学历学位材料</h4>
@@ -478,7 +498,7 @@
               <p>【学历学位】：</p>
               <ol>
                 <li>如实填写，获得学历但没有获得学位的学习经历，学位填“无”；获得学位但没有学历的学习经历，学历填“无”。</li>
-                <li>【全日制学历学位】的填写：学习期间以全脱产形式，无考核材料、工资材料；</br>
+                <li>【全日制学历学位】的填写：学习期间以全脱产形式，无考核材料、工资材料；
                   【在职学历学位】的填写：学习期间非全脱产形式，有考核材料和工资材料。
                 </li>
                 <li>【请注意】：若组织人事形成的相关材料中，有把“把培训经历填为学历”、“把低学历填为高学历”、“把在职填为全日制”、“把无学位填为有学位”的情况，须在“存在问题”中填写情况，并注明档案类号及材料名称。
@@ -488,7 +508,7 @@
             <el-row>
               <el-col :span="6">
                 <el-form-item label="全日制最高学历" prop="全日制最高学历" label-width="120px">
-                  <el-select v-model="user.全日制最高学历" placeholder="请选择">
+                  <el-select v-model="学历学位材料.全日制最高学历" placeholder="请选择">
                     <el-option
                       v-for="item in 学历字典"
                       :key="item"
@@ -500,7 +520,7 @@
               </el-col>
               <el-col :span="6">
                 <el-form-item label="全日制最高学位" prop="全日制最高学位" label-width="120px">
-                  <el-select v-model="user.全日制最高学位" placeholder="请选择">
+                  <el-select v-model="学历学位材料.全日制最高学位" placeholder="请选择">
                     <el-option
                       v-for="item in 学位字典"
                       :key="item"
@@ -512,7 +532,7 @@
               </el-col>
               <el-col :span="6">
                 <el-form-item label="在职最高学历" prop="在职最高学历" label-width="100px">
-                  <el-select v-model="user.在职最高学历" placeholder="请选择">
+                  <el-select v-model="学历学位材料.在职最高学历" placeholder="请选择">
                     <el-option
                       v-for="item in 学历字典"
                       :key="item"
@@ -524,7 +544,7 @@
               </el-col>
               <el-col :span="6">
                 <el-form-item label="在职最高学位" prop="在职最高学位" label-width="100px">
-                  <el-select v-model="user.在职最高学位" placeholder="请选择">
+                  <el-select v-model="学历学位材料.在职最高学位" placeholder="请选择">
                     <el-option
                       v-for="item in 学位字典"
                       :key="item"
@@ -538,54 +558,54 @@
             <el-row>
               <el-col :span="6">
                 <el-form-item label="全日制最高学历毕业院校、系及专业" prop="全日制最高学历毕业院校系及专业" label-width="150px">
-                  <el-input type="textarea" :rows="1" v-model="user.全日制最高学历毕业院校系及专业" style="width: 150px"/>
+                  <el-input type="textarea" :rows="1" v-model="学历学位材料.全日制最高学历毕业院校系及专业" style="width: 150px"/>
                 </el-form-item>
               </el-col>
               <el-col :span="6">
                 <el-form-item label="全日制最高学位毕业院校、系及专业" prop="全日制最高学位毕业院校系及专业" label-width="150px">
-                  <el-input type="textarea" :rows="1" v-model="user.全日制最高学位毕业院校系及专业" style="width: 150px"/>
+                  <el-input type="textarea" :rows="1" v-model="学历学位材料.全日制最高学位毕业院校系及专业" style="width: 150px"/>
                 </el-form-item>
               </el-col>
               <el-col :span="6">
                 <el-form-item label="在职最高学历毕业院校、系及专业" prop="在职最高学历毕业院校系及专业" label-width="130px">
-                  <el-input type="textarea" :rows="1" v-model="user.在职最高学历毕业院校系及专业" style="width: 150px"/>
+                  <el-input type="textarea" :rows="1" v-model="学历学位材料.在职最高学历毕业院校系及专业" style="width: 150px"/>
                 </el-form-item>
               </el-col>
               <el-col :span="6">
                 <el-form-item label="在职最高学位毕业院校、系及专业" prop="在职最高学位毕业院校系及专业" label-width="130px">
-                  <el-input type="textarea" :rows="1" v-model="user.在职最高学位毕业院校系及专业" style="width: 150px"/>
+                  <el-input type="textarea" :rows="1" v-model="学历学位材料.在职最高学位毕业院校系及专业" style="width: 150px"/>
                 </el-form-item>
               </el-col>
             </el-row>
             <el-row>
               <el-col :span="8">
                 <el-form-item label="记载情况是否一致" prop="eduIsTrue1" label-width="150px">
-                  <el-select v-model="user.学历学位记载情况是否一致" style="width: 100px">
-                    <el-option label="是" value="1"></el-option>
-                    <el-option label="否" value="0"></el-option>
+                  <el-select v-model="学历学位材料.学历学位记载情况是否一致" style="width: 100px">
+                    <el-option label="是" value="是"></el-option>
+                    <el-option label="否" value="否"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="真实性存疑" prop="eduIsTrue2">
-                  <el-select v-model="user.学历学位真实性存疑" style="width: 100px">
-                    <el-option label="是" value="1"></el-option>
-                    <el-option label="否" value="0"></el-option>
+                  <el-select v-model="学历学位材料.学历学位真实性存疑" style="width: 100px">
+                    <el-option label="是" value="是"></el-option>
+                    <el-option label="否" value="否"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="组织是否进行过认定" prop="eduIsTrue3" label-width="150px">
-                  <el-select v-model="user.学历学位组织是否进行过认定" style="width: 100px">
-                    <el-option label="是" value="1"></el-option>
-                    <el-option label="否" value="0"></el-option>
+                  <el-select v-model="学历学位材料.学历学位组织是否进行过认定" style="width: 100px">
+                    <el-option label="是" value="是"></el-option>
+                    <el-option label="否" value="否"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
             </el-row>
             <el-form-item label="学习经历">
               <el-button icon="el-icon-plus" type="success" size="mini" @click="addedu">添加</el-button>
-              <el-table :data="user.学习经历列表" align="center" border style="width: 99%;margin-top: 10px" height="250">
+              <el-table :data="学历学位材料.学习经历列表" align="center" border style="width: 99%;margin-top: 10px" height="250">
                 <el-table-column label="入学时间">
                   <template slot-scope="scope">
                     <el-form-item :prop="`学习经历列表.${scope.$index}.入学时间`" :rules="rules.入学时间">
@@ -604,7 +624,7 @@
                 </el-table-column>
                 <el-table-column label="学历">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`eduList.${scope.$index}.学历`">
+                    <el-form-item :prop="`学习经历列表.${scope.$index}.学历`">
                       <el-select v-model="scope.row.学历" placeholder="请选择">
                         <el-option
                           v-for="item in 学历字典"
@@ -618,7 +638,7 @@
                 </el-table-column>
                 <el-table-column label="学位">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`eduList.${scope.$index}.学位`">
+                    <el-form-item :prop="`学习经历列表.${scope.$index}.学位`">
                       <el-select v-model="scope.row.学位" placeholder="请选择">
                         <el-option
                           v-for="item in 学位字典"
@@ -632,35 +652,35 @@
                 </el-table-column>
                 <el-table-column label="获得学历的院校或机构">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`eduList.${scope.$index}.获得学历的院校或机构`">
+                    <el-form-item :prop="`学习经历列表.${scope.$index}.获得学历的院校或机构`">
                       <el-input v-model="scope.row.获得学历的院校或机构"/>
                     </el-form-item>
                   </template>
                 </el-table-column>
                 <el-table-column label="获得学位的院校或机构">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`eduList.${scope.$index}.获得学位的院校或机构`">
+                    <el-form-item :prop="`学习经历列表.${scope.$index}.获得学位的院校或机构`">
                       <el-input v-model="scope.row.获得学位的院校或机构"/>
                     </el-form-item>
                   </template>
                 </el-table-column>
                 <el-table-column label="获得学历的国家（地区）">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`eduList.${scope.$index}.获得学历的国家地区`">
+                    <el-form-item :prop="`学习经历列表.${scope.$index}.获得学历的国家地区`">
                       <el-input v-model="scope.row.获得学历的国家地区"/>
                     </el-form-item>
                   </template>
                 </el-table-column>
                 <el-table-column label="获得学位的国家（地区）">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`eduList.${scope.$index}.获得学位的国家地区`">
+                    <el-form-item :prop="`学习经历列表.${scope.$index}.获得学位的国家地区`">
                       <el-input v-model="scope.row.获得学位的国家地区"/>
                     </el-form-item>
                   </template>
                 </el-table-column>
                 <el-table-column label="所学专业">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`eduList.${scope.$index}.所学专业`">
+                    <el-form-item :prop="`学习经历列表.${scope.$index}.所学专业`">
                       <el-input v-model="scope.row.所学专业"/>
                     </el-form-item>
                   </template>
@@ -675,7 +695,11 @@
               </el-table>
             </el-form-item>
             <el-form-item label="学历学位材料存在问题" label-width="160px">
-              <el-input type="textarea" :rows="2" v-model="user.学历学位存在问题" style="width: 500px"/>
+              <el-input type="textarea" :rows="2" v-model="学历学位材料.学历学位存在问题" style="width: 500px"/>
+            </el-form-item>
+            <el-form-item style="text-align:center">
+              <el-button type="primary" @click="save6">保存</el-button>
+              <el-button type="primary" @click="update6">更新</el-button>
             </el-form-item>
           </div>
         </div>
@@ -690,24 +714,24 @@
               <el-col :span="8">
                 <el-form-item label="记载情况是否一致" prop="experienceIsTrue1" label-width="150px">
                   <el-select v-model="user.工作经历记载情况是否一致" style="width: 100px">
-                    <el-option label="是" value="1"></el-option>
-                    <el-option label="否" value="0"></el-option>
+                    <el-option label="是" value="是"></el-option>
+                    <el-option label="否" value="否"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="真实性存疑" prop="experienceIsTrue2">
                   <el-select v-model="user.工作经历真实性存疑" style="width: 100px">
-                    <el-option label="是" value="1"></el-option>
-                    <el-option label="否" value="0"></el-option>
+                    <el-option label="是" value="是"></el-option>
+                    <el-option label="否" value="否"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="组织是否进行过认定" prop="experienceIsTrue3" label-width="150px">
                   <el-select v-model="user.工作经历组织是否进行过认定" style="width: 100px">
-                    <el-option label="是" value="1"></el-option>
-                    <el-option label="否" value="0"></el-option>
+                    <el-option label="是" value="是"></el-option>
+                    <el-option label="否" value="否"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
@@ -798,8 +822,8 @@
               <el-col :span="6">
                 <el-form-item label="填写是否真实准确" prop="awardIsTrue1" label-width="150px">
                   <el-select v-model="user.awardIsTrue1" style="width: 100px">
-                    <el-option label="是" value="1"></el-option>
-                    <el-option label="否" value="0"></el-option>
+                    <el-option label="是" value="是"></el-option>
+                    <el-option label="否" value="否"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
@@ -914,8 +938,8 @@
               <el-col :span="8">
                 <el-form-item label="应添人员是否填写齐全" prop="familyIsTrue1" label-width="200px">
                   <el-select v-model="user.应添人员是否填写齐全" style="width: 100px">
-                    <el-option label="是" value="1"></el-option>
-                    <el-option label="否" value="0"></el-option>
+                    <el-option label="是" value="是"></el-option>
+                    <el-option label="否" value="否"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
@@ -993,14 +1017,18 @@
             <el-button type="primary" @click="goback">取消</el-button>
           </el-form-item>
         </div>
-      </div>
-    </el-form>
+      </el-form>
+    </div>
   </div>
 </template>
 
 <script>
 import 基本信息 from '@/api/service/基本信息'
 import 审核情况 from '@/api/service/审核情况'
+import 出生时间 from '@/api/service/出生时间'
+import 参加工作时间 from '@/api/service/参加工作时间'
+import 入党时间 from '@/api/service/入党时间'
+import 学历学位材料 from '@/api/service/学历学位材料'
 export default {
   data() {
     var checknumber = (rule, value, callback) => {
@@ -1020,9 +1048,9 @@ export default {
       管理岗位等级字典: ['管理岗位一级'],
       专业技术岗位等级字典: ['专业技术岗位一级'],
       查询条件: '0',
-      政治面貌字典: ['党员'],
+      政治面貌字典: ['中共党员'],
       单位字典: ['建筑学院'],
-      学历字典: ['硕士研究生'],
+      学历字典: ['博士研究生','硕士研究生'],
       学位字典: ['工学硕士学位'],
       考核结果字典: ['优秀'],
       isShow: false,
@@ -1051,15 +1079,45 @@ export default {
           {required: true, message: '请填写民族', trigger: 'blur'},
         ],
       },
-      审核情况:{
+      审核情况: {
         初审时间: new Date(),
         初审状态: '未审核',
       },
       审核情况rules: {
+        初审人职工号: [
+          {required: true, message: '请输入职工号', trigger: 'blur'},
+          {validator: checknumber, trigger: 'blur'}
+        ],
+        复审人职工号: [
+          {required: true, message: '请输入职工号', trigger: 'blur'},
+          {validator: checknumber, trigger: 'blur'}
+        ],
+      },
+      出生时间:{
+
+      },
+      出生时间rules: {
+
+      },
+      参加工作时间:{
+
+      },
+      参加工作时间rules: {
+
+      },
+      入党时间:{
+
+      },
+      入党时间rules: {
+
+      },
+      学历学位材料:{
+        学习经历列表: [{}],
+      },
+      学历学位材料rules: {
 
       },
       user: {
-        学习经历列表: [{}],
         工作经历列表: [{}],
         奖励情况列表: [{}],
         处分情况列表: [{}],
@@ -1127,7 +1185,7 @@ export default {
       if (this.查询条件 === '0') { // 根据职工号、单位和姓名查询
         if (this.基本信息.职工号 === '' || this.基本信息.单位 === '' || this.基本信息.姓名 === '') {
           alert('请填写职工号、单位和姓名');
-        }else{
+        } else {
         }
       } else if (this.查询条件 === '1') { // 只根据职工号查询
         if (this.基本信息.职工号 === '') {
@@ -1144,23 +1202,55 @@ export default {
       this.isShow = true; // 显示后面模块
       this.isDisabled = true; // 禁用查询和新增按钮
     },
-    save1(){
+    save1() {
       基本信息.save(this.基本信息)
     },
-    update1(){
+    update1() {
       基本信息.update(this.基本信息)
     },
-    save2(){
+    save2() {
       this.审核情况.职工号 = this.基本信息.职工号
       审核情况.save(this.审核情况)
     },
-    update2(){
+    update2() {
       this.审核情况.职工号 = this.基本信息.职工号
       审核情况.update(this.审核情况)
     },
+    save3() {
+      this.出生时间.职工号 = this.基本信息.职工号
+      出生时间.save(this.出生时间)
+    },
+    update3() {
+      this.出生时间.职工号 = this.基本信息.职工号
+      出生时间.update(this.出生时间)
+    },
+    save4() {
+      this.参加工作时间.职工号 = this.基本信息.职工号
+      参加工作时间.save(this.参加工作时间)
+    },
+    update4() {
+      this.参加工作时间.职工号 = this.基本信息.职工号
+      参加工作时间.update(this.参加工作时间)
+    },
+    save5() {
+      this.入党时间.职工号 = this.基本信息.职工号
+      入党时间.save(this.入党时间)
+    },
+    update5() {
+      this.入党时间.职工号 = this.基本信息.职工号
+      入党时间.update(this.入党时间)
+    },
+    save6() {
+      this.学历学位材料.职工号 = this.基本信息.职工号
+      学历学位材料.save(this.学历学位材料)
+    },
+    update6() {
+      this.学历学位材料.职工号 = this.基本信息.职工号
+      学历学位材料.update(this.学历学位材料)
+    },
     // 如果政治面貌是党员，显示入党时间
     isPartyer(value) {
-      if (value === "党员") {
+      if (value === "中共党员") {
         this.showPartyDate = true;
       } else {
         this.user.partyDate = new Date();
@@ -1173,10 +1263,7 @@ export default {
     },
     //添加一行
     addedu() {
-      this.user.eduList.push({
-        date: '',
-        data: '',
-        witness: '',
+      this.学历学位材料.学习经历列表.push({
       })
     },
     addexperience() {
@@ -1209,9 +1296,9 @@ export default {
       })
     },
     removeEdu(item) {
-      var index = this.user.eduList.indexOf(item)
+      var index = this.学历学位材料.学习经历列表.indexOf(item)
       if (index !== -1) {
-        this.user.eduList.splice(index, 1)
+        this.学历学位材料.学习经历列表.splice(index, 1)
       }
     },
     removeExperience(item) {
