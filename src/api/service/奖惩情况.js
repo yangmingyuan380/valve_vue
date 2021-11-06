@@ -1,7 +1,7 @@
 import request from '@/utils/request'
 // request中封装好了axios请求
 // 后端接口路径
-const api_url = 'service/审核情况'
+const api_url = 'service/奖惩情况'
 export default {
   saveOrUpdate(user) {
     return request({
@@ -10,5 +10,4 @@ export default {
       data:user
     })
   },
-
 }
