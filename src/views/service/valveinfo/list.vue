@@ -1055,15 +1055,17 @@ export default {
       学历字典: [],
       学历字典属性:{
         label: "value",
+        emitPath:false
       },
       学位字典: [],
       学位字典属性:{
         label: "value",
+        emitPath:false
       },
       考核结果字典: ['优秀'],
       isShow: false,
       isDisabled: false,
-      showPartyDate: false,
+      showPartyDate: true,
       基本信息: {
         职工号: '',
         单位: '',
