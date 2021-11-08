@@ -55,6 +55,24 @@ export const constantRouterMap = [
         component: () => import('@/views/service/valveinfo/list'),
         meta: { title: '审核情况登记表', icon: 'table' }
       },
+      {
+        path: 'getReviewValveStatus',
+        name: 'ReviewValveStatus',
+        component: () => import('@/views/service/valveinfo/list2'),
+        meta: {title: '干部职工基本信息审核表', icon: 'table'}
+      },
+      {
+        path: 'getSpecialReview',
+        name: 'SpecialReview',
+        component: () => import('@/views/service/valveinfo/list3'),
+        meta: {title: '干部人事档案专项审核认定表', icon: 'table'}
+      },
+      {
+        path: 'overview',
+        name: 'reviewstatusOverview',
+        component: () => import('@/views/service/valveinfo/list4'),
+        meta: {title: '审核情况一览表', icon: 'table'}
+      }
     ]
   },
 

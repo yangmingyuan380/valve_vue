@@ -15,11 +15,11 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import {mapGetters} from 'vuex'
 import SidebarItem from './SidebarItem'
 
 export default {
-  components: { SidebarItem },
+  components: {SidebarItem},
   computed: {
     ...mapGetters([
       'sidebar'
@@ -33,3 +33,15 @@ export default {
   }
 }
 </script>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+::v-deep.el-menu {
+  .el-menu-item {
+    padding-left: 10px !important;
+    padding-right: 10px;
+    line-height: 15px;
+    word-break: break-all;
+    white-space: break-spaces;
+  }
+}
+</style>
