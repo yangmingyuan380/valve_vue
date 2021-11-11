@@ -58,7 +58,7 @@ export const constantRouterMap = [
       {
         path: 'getReviewValveStatus',
         name: 'ReviewValveStatus',
-        component: () => import('@/views/service/valveinfo/list2'),
+        component: () => import('@/views/service/valveinfo/干部职工基本信息审核表'),
         meta: {title: '干部职工基本信息审核表', icon: 'table'}
       },
       {
