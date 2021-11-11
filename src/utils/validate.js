@@ -3,8 +3,9 @@
  */
 
 export function isvalidUsername(str) {
-  let numReg = /^[0-9]{9}$/;
-  return numReg.test(str)
+  // let numReg = /^[0-9]{9}$/;
+  // return numReg.test(str)
+  return str==='admin';
 }
 
 /* 合法uri*/
