@@ -41,7 +41,7 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="4" align="middle">
+        <el-col :span="10" align="middle">
           <el-button
             type="primary"
             :disabled="searchdisabled"
@@ -67,7 +67,7 @@
       </el-row>
 
       <div class="mytable" v-show="divshow">
-        <el-container>
+        <el-container style="height: 850px">
           <el-main width="main" class="main">
             <el-table
               :data="tableData"
@@ -161,13 +161,11 @@
               :header-cell-style="headFirst"
               border
               align="center"
-              height="820px"
               style="width: 310px"
             >
               <el-table-column
                 prop="problems"
                 label="完整性问题汇总"
-                align="center"
                 width="295px"
               >
               </el-table-column>
@@ -1802,11 +1800,18 @@ export default {
     box-shadow: 0 0 5px #cac6c6;
     float: left;
     width: 1300px;
-    margin: 20px 200px 20px;
+    margin: 20px 10px 20px;
   }
 
-  .el-table .cell {
+  /deep/.el-table .cell {
     white-space: pre-line; /*保留换行符*/
   }
+  /deep/.el-table{
+    .el-table {
+      height:500px;
+    }
+  }
+
+
 }
 </style>

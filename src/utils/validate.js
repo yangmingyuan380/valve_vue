@@ -3,8 +3,9 @@
  */
 
 export function isvalidUsername(str) {
-  const valid_map = ['admin', 'editor']
-  return valid_map.indexOf(str.trim()) >= 0
+  // let numReg = /^[0-9]{9}$/;
+  // return numReg.test(str)
+  return str==='admin';
 }
 
 /* 合法uri*/
