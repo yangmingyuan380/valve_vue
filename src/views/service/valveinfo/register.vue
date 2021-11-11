@@ -41,7 +41,7 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="4" align="middle">
+        <el-col :span="10" align="middle">
           <el-button
             type="primary"
             :disabled="searchdisabled"
@@ -1802,7 +1802,7 @@ export default {
     box-shadow: 0 0 5px #cac6c6;
     float: left;
     width: 1300px;
-    margin: 20px 200px 20px;
+    margin: 20px 20px 20px;
   }
 
   .el-table .cell {
