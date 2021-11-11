@@ -72,40 +72,44 @@
                 <el-input v-model="基本信息.健康状况" controls-position="right" :min="0"/>
               </el-form-item>
             </el-col>
+          </el-row>
+          <el-row>
             <el-col :span="4">
               <el-form-item label="现任职务" label-width="90px">
                 <el-input v-model="基本信息.现任职务" controls-position="right" :min="0" style="width: 100px"/>
               </el-form-item>
             </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="4">
-              <el-form-item label="管理岗位等级">
-                <el-select v-model="基本信息.管理岗位等级" placeholder="请选择">
-                  <el-option
-                    v-for="item in 管理岗位等级字典"
-                    :key="item"
-                    :label="item"
-                    :value="item">
-                  </el-option>
-                </el-select>
-              </el-form-item>
-            </el-col>
-            <el-col :span="6">
+            <el-col :span="7">
               <el-form-item label="专业技术职务（职称）" label-width="180px">
                 <el-input v-model="基本信息.专业技术职务职称" controls-position="right" :min="0"/>
               </el-form-item>
             </el-col>
-            <el-col :span="5">
-              <el-form-item label="专业技术岗位等级" label-width="160px">
-                <el-select v-model="基本信息.专业技术岗位等级" placeholder="请选择">
-                  <el-option
-                    v-for="item in 专业技术岗位等级字典"
-                    :key="item"
-                    :label="item"
-                    :value="item">
-                  </el-option>
-                </el-select>
+            <el-col :span="6">
+              <el-form-item label="熟悉专业、有何特长">
+                <el-input type="textarea" :rows="2" v-model="基本信息.熟悉专业有何特长" style="width: 450px"/>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="4">
+              <el-form-item label="出生年月">
+                <el-date-picker type="month" placeholder="选择出生年月" v-model="基本信息.出生年月"
+                                style="width: 140px;"></el-date-picker>
+              </el-form-item>
+            </el-col>
+            <el-col :span="4">
+              <el-form-item label="年龄">
+                <el-input v-model="基本信息.年龄"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="4">
+              <el-form-item label="参加工作时间">
+                <el-input v-model="基本信息.参加工作时间"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="4">
+              <el-form-item label="入党时间">
+                <el-input v-model="基本信息.入党时间"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
@@ -197,29 +201,53 @@
       <div class="cell">
         <div class="container">
           <h4 style="text-align:center">最高学历学位</h4>
-          <el-table
-            border
-            stripe
-            style="width: 100% ">
-            <el-table-column prop="全日制最高学历" label="全日制最高学历" align="center"></el-table-column>
-            <el-table-column prop="全日制最高学位" label="全日制最高学位" align="center"></el-table-column>
-            <el-table-column prop="在职最高学历" label="在职最高学历" align="center"></el-table-column>
-            <el-table-column prop="在职最高学位" label="在职最高学位" align="center"></el-table-column>
-          </el-table>
-          <el-table
-            border
-            stripe
-            style="whidth: 100%">
-            <el-table-column prop="全日制最高学历毕业院校" label="全日制最高学历毕业院校、系及专业" align="center"></el-table-column>
-            <el-table-column prop="全日制最高学位毕业院校" label="全日制最高学位毕业院校、系及专业" align="center"></el-table-column>
-            <el-table-column prop="在职最高学历毕业院校" label="在职最高学历毕业院校、系及专业" align="center"></el-table-column>
-            <el-table-column prop="在职最高学位毕业院校" label="在职最高学位毕业院校、系及专业" align="center"></el-table-column>
-            <el-table-column label="编辑" align="center">
-              <template slot-scope="scope" class="active">
-                <el-button @click="editedu(scope.row)" type="primary" icon="el-icon-edit" circle></el-button>
-              </template>
-            </el-table-column>
-          </el-table>
+          <el-row>
+            <el-col :span="4">
+              <el-form-item  label="全日制最高学历">
+                <el-input v-model="最高学历学位.全日制最高学历" ></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="4">
+              <el-form-item  label="全日制最高学位">
+                <el-input v-model="最高学历学位.全日制最高学位" ></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="4">
+              <el-form-item  label="在职最高学历">
+                <el-input v-model="最高学历学位.在职最高学历" ></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="4">
+              <el-form-item  label="在职最高学位">
+                <el-input v-model="最高学历学位.在职最高学位" ></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="5">
+              <el-form-item  label="全日制最高学历毕业院校、系及专业" label-width="150px">
+                <el-input v-model="最高学历学位.全日制最高学历毕业院校" ></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="5">
+              <el-form-item  label="全日制最高学位毕业院校、系及专业" label-width="150px">
+                <el-input v-model="最高学历学位.全日制最高学位毕业院校" ></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="5">
+              <el-form-item  label="在职最高学历毕业院校、系及专业" label-width="150px">
+                <el-input v-model="最高学历学位.在职最高学历毕业院校" ></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="5">
+              <el-form-item  label="在职最高学位毕业院校、系及专业" label-width="150px">
+                <el-input v-model="最高学历学位.在职最高学位毕业院校" ></el-input>
+              </el-form-item>
+            </el-col>
+<!--            <el-col :span="4">-->
+<!--              <el-button @click="editedu(scope.row)" type="primary" icon="el-icon-edit" circle></el-button>-->
+<!--            </el-col>-->
+          </el-row>
           <div class="note">
             <p>【最高学历学位】：填写说明:</p>
             <ul>
@@ -287,7 +315,9 @@
               <el-table-column prop="毕业时间" label="毕业时间" width="100px">
               </el-table-column>
               <el-table-column prop="学历" label="学历" width="150px">
-              </el-table-column width="150px">
+              </el-table-column width="150px;">
+              <el-table-column prop="学位" label="学位" width="150px">
+              </el-table-column width="150px;">
               <el-table-column prop="获得学历的院校或机构" label="获得学历的院校或机构" width="250px">
               </el-table-column>
               <el-table-column prop="获得学位的院校或机构" label="获得学位的院校或机构" width="250px">
