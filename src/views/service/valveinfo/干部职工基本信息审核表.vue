@@ -93,7 +93,7 @@
           <el-row>
             <el-col :span="4">
               <el-form-item label="出生年月">
-                <el-date-picker type="month" placeholder="选择出生年月" v-model="user.出生年月"
+                <el-date-picker type="month" placeholder="选择出生年月" v-model="user.出生年月" value-format="yyyy-MM"
                                 style="width: 140px;"></el-date-picker>
               </el-form-item>
             </el-col>
@@ -226,22 +226,22 @@
           <el-row>
             <el-col :span="5">
               <el-form-item  label="全日制最高学历毕业院校、系及专业" label-width="150px">
-                <el-input v-model="user.全日制最高学历毕业院校" ></el-input>
+                <el-input v-model="user.全日制最高学历毕业院校系及专业" ></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="5">
               <el-form-item  label="全日制最高学位毕业院校、系及专业" label-width="150px">
-                <el-input v-model="user.全日制最高学位毕业院校" ></el-input>
+                <el-input v-model="user.全日制最高学位毕业院校系及专业" ></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="5">
               <el-form-item  label="在职最高学历毕业院校、系及专业" label-width="150px">
-                <el-input v-model="user.在职最高学历毕业院校" ></el-input>
+                <el-input v-model="user.在职最高学历毕业院校系及专业" ></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="5">
               <el-form-item  label="在职最高学位毕业院校、系及专业" label-width="150px">
-                <el-input v-model="user.在职最高学位毕业院校" ></el-input>
+                <el-input v-model="user.在职最高学位毕业院校系及专业" ></el-input>
               </el-form-item>
             </el-col>
 <!--            <el-col :span="4">-->
@@ -1194,96 +1194,11 @@ export default {
           { validator: checknumber, trigger: "blur" },
         ],
       },
-      最高学历学位: {
-        全日制最高学历: "o",
-        全日制最高学位: "o",
-        在职最高学历: "o",
-        在职最高学位: "o",
-        全日制最高学历毕业院校: "o",
-        全日制最高学位毕业院校: "o",
-        在职最高学历毕业院校: "o",
-        在职最高学位毕业院校: "o",
-        全日制教育最高学历学位: "o",
-        全日制教育毕业院校系及专业: "o",
-        在职教育最高学历学位: "o",
-        在职教育毕业院校系及专业: "o",
-      },
-      简历: {
-        学习经历: [
-          {
-            入学时间: "q",
-            学位: "q",
-            学历: "q",
-            毕业时间: "q",
-            获得学历的院校或机构: "q",
-            获得学位的院校或机构: "q",
-            获得学历的国家: "q",
-            获得学位的国家: "q",
-            所学专业: "q",
-          },
-        ],
-        工作经历: [
-          {
-            起始时间: "q",
-            终止时间: "q",
-            所在单位名称: "q",
-            从事工作: "q",
-            曾任党政职务: "q",
-            曾任专业技术职务: "q",
-            备注: "q",
-          },
-        ],
-        简历: "q",
-      },
       textarea: "", //简历区域
-      出生时间: {},
       出生时间rules: {},
-      参加工作时间: {},
       参加工作时间rules: {},
-      入党时间: {},
       入党时间rules: {},
-      学历学位材料: {
-        学习经历列表: [{}],
-      },
       学历学位材料rules: {},
-      user: {
-        工作经历列表: [{}],
-        奖励情况列表: [{}],
-        处分情况列表: [{}],
-        家庭成员列表: [{}],
-      },
-      奖惩情况: {
-        a2019年考核备注: "k",
-        a2019年考核结果: "k",
-        a2020年考核备注: "k",
-        a2020年考核结果: "k",
-        奖励情况记录: [
-          {
-            奖励情况: "k",
-            奖励时间: "",
-          },
-        ],
-        处分情况记录: [
-          {
-            处分情况: "k",
-            处分时间: "",
-          },
-        ],
-        奖惩情况: "k",
-        年度考核结果: "k",
-      },
-      家庭成员: {
-        家庭成员记录: [
-          {
-            出生年月: "j",
-            政治面貌: "j",
-            称谓: "j",
-            姓名: "j",
-            单位及职务: "j",
-            现居住地: "j",
-          },
-        ],
-      },
       rules: {
         职工号: [
           { required: true, message: "请输入职工号", trigger: "blur" },
@@ -1306,17 +1221,17 @@ export default {
         chinaName: [{ required: true, message: "必填", trigger: "blur" }],
         phone: [{ required: true, message: "必填", trigger: "blur" }],
       },
-      searchdisabled:false,
-      inputdisabled:false,
+      searchdisabled: false,
+      inputdisabled: false,
       isShow: false,
       isDisabled: false,
       showPartyDate: false,
       cancelshow: false,
       divshow: false,
       年龄: "?",
-      入党时间:"/",
-      参加工作时间:",",
-      出生年月:".",
+      入党时间: "/",
+      参加工作时间: ",",
+      出生年月: ".",
       user: {
         职工号: "1",
         单位: "2",
@@ -1398,10 +1313,53 @@ export default {
         }
       );
     },
-    flush(){
+    flush() {
+      Object.keys(this.user).forEach((key) => (this.user[key] = ""));
+      this.年龄 = "";
+      this.出生时间 = "";
+      this.参加工作时间 = "";
+      this.入党时间 = "";
     },
-    calculate(){
-
+    calculate() {
+      if (
+        this.user.复审认定出生时间 != null ||
+        this.user.复审认定出生时间 != ""
+      ) {
+        var date = this.user.复审认定出生时间.substring(0, 7);
+        this.出生年月 = date;
+      } else {
+        var date = this.user.复审认定出生时间.substring(0, 7);
+        this.出生年月 = date;
+      }
+      this.年龄 = this.getAge(this.出生年月);
+      if (
+        this.user.复审认定参加工作时间 != null ||
+        this.user.复审认定参加工作时间 != ""
+      ) {
+        this.参加工作时间 = this.user.复审认定参加工作时间;
+      } else {
+        this.参加工作时间 = this.user.初审认定参加工作时间;
+      }
+      if (
+        this.user.复审认定入党时间 != null ||
+        this.user.复审认定入党时间 != ""
+      ) {
+        this.入党时间 = this.user.复审认定参加工作时间;
+      } else {
+        this.入党时间 = this.user.初审认定参加工作时间;
+      }
+      console.log(this.入党时间);
+      console.log(this.出生年月);
+      console.log(this.年龄);
+      console.log(this.参加工作时间);
+    },
+    getAge(birthday) {
+      //出生时间 毫秒
+      var birthDayTime = new Date(birthday).getTime();
+      //当前时间 毫秒
+      var nowTime = new Date().getTime();
+      //一年毫秒数(365 * 86400000 = 31536000000)
+      return Math.ceil((nowTime - birthDayTime) / 31536000000);
     },
     editedu() {},
     // 查找信息
@@ -1409,7 +1367,7 @@ export default {
       this.searchdisabled = true;
       this.inputdisabled = true;
       var param = {
-        职工号: "123456789",
+        职工号: "",
         姓名: "",
         单位: "",
       };
@@ -1431,7 +1389,7 @@ export default {
         this.searchdisabled = false;
       } else if (count === 1) {
         this.user = resp.data.user;
-        this.calculateu();
+        this.calculate();
         this.divshow = true;
         this.$message({
           type: "success",
