@@ -1,46 +1,70 @@
 <template>
   <div class="app-container">
-    <el-form :model="基本信息" :rules="基本信息rules" ref="基本信息" label-position="center" label-width="120px" size="mini">
+    <el-form
+      :model="基本信息"
+      :rules="基本信息rules"
+      ref="基本信息"
+      label-position="center"
+      label-width="120px"
+      size="mini"
+    >
       <div class="cell">
         <div class="container">
-          <h4 style="text-align:center">基本信息</h4>
+          <h4 style="text-align: center">基本信息</h4>
           <el-row>
             <el-col :span="4">
               <el-form-item label="职工号" prop="职工号">
-                <el-input v-model="user.职工号"/>
+                <el-input v-model="user.职工号" />
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="单位" prop="单位">
-                <el-select v-model="user.单位" filterable placeholder="输入搜索">
+                <el-select
+                  v-model="user.单位"
+                  filterable
+                  placeholder="输入搜索"
+                >
                   <el-option
                     v-for="item in 单位字典"
                     :key="item"
                     :label="item"
-                    :value="item">
+                    :value="item"
+                  >
                   </el-option>
                 </el-select>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="姓名" prop="姓名">
-                <el-input v-model="user.姓名" controls-position="right" :min="0"/>
+                <el-input
+                  v-model="user.姓名"
+                  controls-position="right"
+                  :min="0"
+                />
               </el-form-item>
             </el-col>
-            <!-- <el-col :span="5">
+            <el-col :span="5">
               <el-form-item label="查询条件">
-                <el-select v-model="查询条件" placeholder="请选择" style="width: 130px">
+                <el-select
+                  v-model="查询条件"
+                  placeholder="请选择"
+                  style="width: 130px"
+                >
                   <el-option label="全部" value="0"></el-option>
                   <el-option label="职工号" value="1"></el-option>
                   <el-option label="单位和姓名" value="2"></el-option>
                 </el-select>
               </el-form-item>
-            </el-col> -->
-            <el-col :span="2">
-              <el-button type="primary" plain :disabled="isDisabled" size="mini" @click="search">查找</el-button>
             </el-col>
             <el-col :span="2">
-              <el-button type="success" plain :disabled="isDisabled" size="mini" @click="add">新增</el-button>
+              <el-button
+                type="primary"
+                plain
+                :disabled="isDisabled"
+                size="mini"
+                @click="search"
+                >查找</el-button
+              >
             </el-col>
           </el-row>
           <el-row>
@@ -54,62 +78,97 @@
             </el-col>
             <el-col :span="4">
               <el-form-item label="民族" prop="民族">
-                <el-input v-model="user.民族" controls-position="right" :min="0"/>
+                <el-input
+                  v-model="user.民族"
+                  controls-position="right"
+                  :min="0"
+                />
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="籍贯">
-                <el-input v-model="user.籍贯" controls-position="right" :min="0"/>
+                <el-input
+                  v-model="user.籍贯"
+                  controls-position="right"
+                  :min="0"
+                />
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="出生地">
-                <el-input v-model="user.出生地" controls-position="right" :min="0"/>
+                <el-input
+                  v-model="user.出生地"
+                  controls-position="right"
+                  :min="0"
+                />
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="健康状况">
-                <el-input v-model="user.健康状况" controls-position="right" :min="0"/>
+                <el-input
+                  v-model="user.健康状况"
+                  controls-position="right"
+                  :min="0"
+                />
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="4">
               <el-form-item label="现任职务" label-width="90px">
-                <el-input v-model="user.现任职务" controls-position="right" :min="0" style="width: 100px"/>
+                <el-input
+                  v-model="user.现任职务"
+                  controls-position="right"
+                  :min="0"
+                  style="width: 100px"
+                />
               </el-form-item>
             </el-col>
             <el-col :span="7">
               <el-form-item label="专业技术职务（职称）" label-width="180px">
-                <el-input v-model="user.专业技术职务职称" controls-position="right" :min="0"/>
+                <el-input
+                  v-model="user.专业技术职务职称"
+                  controls-position="right"
+                  :min="0"
+                />
               </el-form-item>
             </el-col>
             <el-col :span="6">
               <el-form-item label="熟悉专业、有何特长">
-                <el-input type="textarea" :rows="2" v-model="user.熟悉专业有何特长" style="width: 450px"/>
+                <el-input
+                  type="textarea"
+                  :rows="2"
+                  v-model="user.熟悉专业有何特长"
+                  style="width: 450px"
+                />
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="4">
               <el-form-item label="出生年月">
-                <el-date-picker type="month" placeholder="选择出生年月" v-model="user.出生年月" value-format="yyyy-MM"
-                                style="width: 140px;"></el-date-picker>
+                <el-date-picker
+                  type="month"
+                  placeholder="选择出生年月"
+                  v-model="user.出生年月"
+                  value-format="yyyy-MM"
+                  style="width: 140px"
+                ></el-date-picker>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="年龄">
-                <el-input v-model="年龄"></el-input>
+                <el-input v-model="user.年龄"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="参加工作时间">
-                <el-input v-model="参加工作时间"></el-input>
+                <el-input v-model="user.参加工作时间"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="入党时间">
-                <el-input v-model="入党时间"></el-input>
+                <el-input v-model="user.入党时间"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
@@ -117,34 +176,51 @@
       </div>
       <div class="cell">
         <div class="container">
-          <h4 style="text-align:center">审核情况</h4>
+          <h4 style="text-align: center">审核情况</h4>
           <el-row>
             <el-col :span="4">
               <el-form-item label="初审人职工号" prop="初审人职工号">
-                <el-input v-model="user.初审人职工号" controls-position="right" :min="0"/>
+                <el-input
+                  v-model="user.初审人职工号"
+                  controls-position="right"
+                  :min="0"
+                />
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="初审人" prop="初审人">
-                <el-input v-model="user.初审人" controls-position="right" :min="0"/>
+                <el-input
+                  v-model="user.初审人"
+                  controls-position="right"
+                  :min="0"
+                />
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="初审人单位" prop="初审人单位">
-                <el-select v-model="user.初审人单位" filterable placeholder="输入搜索">
+                <el-select
+                  v-model="user.初审人单位"
+                  filterable
+                  placeholder="输入搜索"
+                >
                   <el-option
                     v-for="item in 单位字典"
                     :key="item"
                     :label="item"
-                    :value="item">
+                    :value="item"
+                  >
                   </el-option>
                 </el-select>
               </el-form-item>
             </el-col>
             <el-col :span="5">
               <el-form-item label="初审时间" prop="初审时间">
-                <el-date-picker type="datetime" placeholder="选择日期" v-model="user.初审时间"
-                                style="width: 180px;"></el-date-picker>
+                <el-date-picker
+                  type="datetime"
+                  placeholder="选择日期"
+                  v-model="user.初审时间"
+                  style="width: 180px"
+                ></el-date-picker>
               </el-form-item>
             </el-col>
             <el-col :span="4">
@@ -160,30 +236,47 @@
           <el-row>
             <el-col :span="4">
               <el-form-item label="复审人职工号" prop="复审人职工号">
-                <el-input v-model="user.复审人职工号" controls-position="right" :min="0"/>
+                <el-input
+                  v-model="user.复审人职工号"
+                  controls-position="right"
+                  :min="0"
+                />
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="复审人" prop="复审人">
-                <el-input v-model="user.复审人" controls-position="right" :min="0"/>
+                <el-input
+                  v-model="user.复审人"
+                  controls-position="right"
+                  :min="0"
+                />
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="复审人单位" prop="复审人单位">
-                <el-select v-model="user.复审人单位" filterable placeholder="输入搜索">
+                <el-select
+                  v-model="user.复审人单位"
+                  filterable
+                  placeholder="输入搜索"
+                >
                   <el-option
                     v-for="item in 单位字典"
                     :key="item"
                     :label="item"
-                    :value="item">
+                    :value="item"
+                  >
                   </el-option>
                 </el-select>
               </el-form-item>
             </el-col>
             <el-col :span="5">
               <el-form-item label="复审时间" prop="复审时间">
-                <el-date-picker type="datetime" placeholder="选择日期" v-model="user.复审时间"
-                                style="width: 180px;"></el-date-picker>
+                <el-date-picker
+                  type="datetime"
+                  placeholder="选择日期"
+                  v-model="user.复审时间"
+                  style="width: 180px"
+                ></el-date-picker>
               </el-form-item>
             </el-col>
             <el-col :span="4">
@@ -200,312 +293,493 @@
       </div>
       <div class="cell">
         <div class="container">
-          <h4 style="text-align:center">最高学历学位</h4>
+          <h4 style="text-align: center">最高学历学位</h4>
           <el-row>
             <el-col :span="4">
-              <el-form-item  label="全日制最高学历">
-                <el-input v-model="user.全日制最高学历" ></el-input>
+              <el-form-item label="全日制最高学历">
+                <el-input v-model="user.全日制最高学历"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="4">
-              <el-form-item  label="全日制最高学位">
-                <el-input v-model="user.全日制最高学位" ></el-input>
+              <el-form-item label="全日制最高学位">
+                <el-input v-model="user.全日制最高学位"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="4">
-              <el-form-item  label="在职最高学历">
-                <el-input v-model="user.在职最高学历" ></el-input>
+              <el-form-item label="在职最高学历">
+                <el-input v-model="user.在职最高学历"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="4">
-              <el-form-item  label="在职最高学位">
-                <el-input v-model="user.在职最高学位" ></el-input>
+              <el-form-item label="在职最高学位">
+                <el-input v-model="user.在职最高学位"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="5">
-              <el-form-item  label="全日制最高学历毕业院校、系及专业" label-width="150px">
-                <el-input v-model="user.全日制最高学历毕业院校系及专业" ></el-input>
+              <el-form-item
+                label="全日制最高学历毕业院校、系及专业"
+                label-width="150px"
+              >
+                <el-input
+                  v-model="user.全日制最高学历毕业院校系及专业"
+                ></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="5">
-              <el-form-item  label="全日制最高学位毕业院校、系及专业" label-width="150px">
-                <el-input v-model="user.全日制最高学位毕业院校系及专业" ></el-input>
+              <el-form-item
+                label="全日制最高学位毕业院校、系及专业"
+                label-width="150px"
+              >
+                <el-input
+                  v-model="user.全日制最高学位毕业院校系及专业"
+                ></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="5">
-              <el-form-item  label="在职最高学历毕业院校、系及专业" label-width="150px">
-                <el-input v-model="user.在职最高学历毕业院校系及专业" ></el-input>
+              <el-form-item
+                label="在职最高学历毕业院校、系及专业"
+                label-width="150px"
+              >
+                <el-input
+                  v-model="user.在职最高学历毕业院校系及专业"
+                ></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="5">
-              <el-form-item  label="在职最高学位毕业院校、系及专业" label-width="150px">
-                <el-input v-model="user.在职最高学位毕业院校系及专业" ></el-input>
+              <el-form-item
+                label="在职最高学位毕业院校、系及专业"
+                label-width="150px"
+              >
+                <el-input
+                  v-model="user.在职最高学位毕业院校系及专业"
+                ></el-input>
               </el-form-item>
             </el-col>
-<!--            <el-col :span="4">-->
-<!--              <el-button @click="editedu(scope.row)" type="primary" icon="el-icon-edit" circle></el-button>-->
-<!--            </el-col>-->
+            <!--            <el-col :span="4">-->
+            <!--              <el-button @click="editedu(scope.row)" type="primary" icon="el-icon-edit" circle></el-button>-->
+            <!--            </el-col>-->
           </el-row>
           <div class="note">
             <p>【最高学历学位】：填写说明:</p>
             <ul>
-              <li>“全日制教育”栏，填写通过全日制教育获得的最高学历学位；“在职教育”栏，填写以其他学习方式获得的最高学历学位。</li>
-              <li> “毕业院校系及专业”栏，填写与学历学位相对应的毕业院校（科研院所等，下同）、系和专业，且应为毕业时院校系及专业名称。如原毕业院校系及专业现已更名，可加括号注明，不得直接填写现在的院校系及专业名称。</li>
-              <li>获得学历同时也获得学位的，应同时填写，并写明何学科学位。如，通过全日制教育获得了大学本科学历、理学学士学位，就在“全日制教育”栏分两行填写,上行填写“大学”，下行填写“理学学士”。</li>
-              <li> 获得学历但没有学位的或以同等学力攻读并获得学位的，按获得的学历或学位如实填写。如果一个人同时有这两种情况，且分别为其最高学历、学位，则这两种情况均填写。如，通过在职学习，先获得研究生学历（没有学位），后又以同等学力攻读学位，获得了经济学硕士，则在“在职教育”栏分两行填写,上行填写“研究生”，下行填写“经济学硕士”。“毕业院校系及专业”栏相对应地要将两个毕业院校、系及专业填入。</li>
-              <li>学历和学位的填写，一般分为两行，学历在第一行，学位在第二行，左右居中。如果只有学历或只有学位，则打印显示为一行，上下左右居中。</li>
-              <li>学历的毕业院校系及专业和学位的毕业院校系及专业分为两行填写，学历毕业院校系及专业在第一行，学位毕业院校系及专业在第二行，居左显示。如果学历或学位在同一个毕业院校系及专业取得，则只填写一行，显示上下居中、居左。</li>
+              <li>
+                “全日制教育”栏，填写通过全日制教育获得的最高学历学位；“在职教育”栏，填写以其他学习方式获得的最高学历学位。
+              </li>
+              <li>
+                “毕业院校系及专业”栏，填写与学历学位相对应的毕业院校（科研院所等，下同）、系和专业，且应为毕业时院校系及专业名称。如原毕业院校系及专业现已更名，可加括号注明，不得直接填写现在的院校系及专业名称。
+              </li>
+              <li>
+                获得学历同时也获得学位的，应同时填写，并写明何学科学位。如，通过全日制教育获得了大学本科学历、理学学士学位，就在“全日制教育”栏分两行填写,上行填写“大学”，下行填写“理学学士”。
+              </li>
+              <li>
+                获得学历但没有学位的或以同等学力攻读并获得学位的，按获得的学历或学位如实填写。如果一个人同时有这两种情况，且分别为其最高学历、学位，则这两种情况均填写。如，通过在职学习，先获得研究生学历（没有学位），后又以同等学力攻读学位，获得了经济学硕士，则在“在职教育”栏分两行填写,上行填写“研究生”，下行填写“经济学硕士”。“毕业院校系及专业”栏相对应地要将两个毕业院校、系及专业填入。
+              </li>
+              <li>
+                学历和学位的填写，一般分为两行，学历在第一行，学位在第二行，左右居中。如果只有学历或只有学位，则打印显示为一行，上下左右居中。
+              </li>
+              <li>
+                学历的毕业院校系及专业和学位的毕业院校系及专业分为两行填写，学历毕业院校系及专业在第一行，学位毕业院校系及专业在第二行，居左显示。如果学历或学位在同一个毕业院校系及专业取得，则只填写一行，显示上下居中、居左。
+              </li>
             </ul>
           </div>
           <el-row>
             <el-col :span="11">
-              <el-form-item label="全日制教育最高学历学位" prop="日制教育最高学历学位" label-width="250px">
-                <el-input type="textarea" :rows="1" v-model="user.全日制教育最高学历学位" style="width: 250px"/>
+              <el-form-item
+                label="全日制教育最高学历学位"
+                prop="日制教育最高学历学位"
+                label-width="250px"
+              >
+                <el-input
+                  type="textarea"
+                  :rows="1"
+                  v-model="user.全日制教育最高学历学位"
+                  style="width: 250px"
+                />
               </el-form-item>
             </el-col>
             <el-col :span="11">
-              <el-form-item label="全日制教育毕业院校系及专业" prop="全日制教育毕业院校、系及专业" label-width="250px">
-                <el-input type="textarea" :rows="1" v-model="user.全日制教育毕业院校系及专业" style="width: 250px"/>
+              <el-form-item
+                label="全日制教育毕业院校系及专业"
+                prop="全日制教育毕业院校、系及专业"
+                label-width="250px"
+              >
+                <el-input
+                  type="textarea"
+                  :rows="1"
+                  v-model="user.全日制教育毕业院校系及专业"
+                  style="width: 250px"
+                />
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="11">
-              <el-form-item label="在职教育最高学历学位" prop="在职教育最高学历学位" label-width="250px">
-                <el-input type="textarea" :rows="1" v-model="user.在职教育最高学历学位" style="width: 250px"/>
+              <el-form-item
+                label="在职教育最高学历学位"
+                prop="在职教育最高学历学位"
+                label-width="250px"
+              >
+                <el-input
+                  type="textarea"
+                  :rows="1"
+                  v-model="user.在职教育最高学历学位"
+                  style="width: 250px"
+                />
               </el-form-item>
             </el-col>
             <el-col :span="11">
-              <el-form-item label="在职教育毕业院校系及专业" prop="在职教育毕业院校、系及专业" label-width="250px">
-                <el-input type="textarea" :rows="1" v-model="user.在职教育毕业院校系及专业" style="width: 250px"/>
+              <el-form-item
+                label="在职教育毕业院校系及专业"
+                prop="在职教育毕业院校、系及专业"
+                label-width="250px"
+              >
+                <el-input
+                  type="textarea"
+                  :rows="1"
+                  v-model="user.在职教育毕业院校系及专业"
+                  style="width: 250px"
+                />
               </el-form-item>
             </el-col>
           </el-row>
-          <div class="mytable">
+          <!-- <div class="mytable">
             <el-table
               :data = "tabledata"
               :span-method="arraySpanMethod"
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="cell">
         <div class="container">
-          <br>
-          <br>
+          <br />
+          <br />
           <h4 style="text-align: center">简历</h4>
           <div class="note">
             <p>【简历】填写说明:</p>
             <ul>
-              <li>从参加工作时填起，大、中专院校学习毕业后参加工作的，从大、中专院校学习时填起，一段经历先填起止时间，后填学习所在院校系及专业或工作单位及职务。</li>
-              <li>起止时间填写到年月（年份用4位数字表示，月份用2位数字表示），起止之间用“--”连接，格式显示为：“1991.01--2000.01”。</li>
-              <li>起止时间输入完毕后输入两个空格，之后输入汉字部分。最近一段简历若无结束时间，则结束时间可用7个空格代替，与起止时间后的两空格共连续输入9个空格，格式显示为：“1991.01--         ”，之后输入汉字部分。</li>
-              <li>各段经历时间要前后衔接，上一段经历的结束时间即为下一段经历的开始时间，不得空断，因病休学、休养、待分配等都要如实填写。</li>
+              <li>
+                从参加工作时填起，大、中专院校学习毕业后参加工作的，从大、中专院校学习时填起，一段经历先填起止时间，后填学习所在院校系及专业或工作单位及职务。
+              </li>
+              <li>
+                起止时间填写到年月（年份用4位数字表示，月份用2位数字表示），起止之间用“--”连接，格式显示为：“1991.01--2000.01”。
+              </li>
+              <li>
+                起止时间输入完毕后输入两个空格，之后输入汉字部分。最近一段简历若无结束时间，则结束时间可用7个空格代替，与起止时间后的两空格共连续输入9个空格，格式显示为：“1991.01--
+                ”，之后输入汉字部分。
+              </li>
+              <li>
+                各段经历时间要前后衔接，上一段经历的结束时间即为下一段经历的开始时间，不得空断，因病休学、休养、待分配等都要如实填写。
+              </li>
               <li>工作单位和职务一律使用规范的简称。</li>
             </ul>
           </div>
-            <h5 style="text-align: left" >&emsp;&emsp;学习经历</h5>
-            <el-table
-              :data="user.学习经历"
-              align="center"
-              border >
-              <el-table-column prop="入学时间" label="入学时间" width="100px">
-              </el-table-column>
-              <el-table-column prop="毕业时间" label="毕业时间" width="100px">
-              </el-table-column>
-              <el-table-column prop="学历" label="学历" width="150px">
-              </el-table-column width="150px;">
-              <el-table-column prop="学位" label="学位" width="150px">
-              </el-table-column width="150px;">
-              <el-table-column prop="获得学历的院校或机构" label="获得学历的院校或机构" width="250px">
-              </el-table-column>
-              <el-table-column prop="获得学位的院校或机构" label="获得学位的院校或机构" width="250px">
-              </el-table-column>
-              <el-table-column prop="获得学历的国家" label="获得学历的国家（地区）" width="250px">
-              </el-table-column>
-              <el-table-column prop="获得学位的国家" label="获得学位的国家（地区）" width="250px">
-              </el-table-column>
-              <el-table-column prop="所学专业" label="所学专业" width="150px">
-              </el-table-column>
-              <el-table-column
+          <h5 style="text-align: left">&emsp;&emsp;学习经历</h5>
+          <el-table :data="user.学习经历" align="center" border>
+            <el-table-column prop="入学时间" label="入学时间" width="100px">
+            </el-table-column>
+            <el-table-column prop="毕业时间" label="毕业时间" width="100px">
+            </el-table-column>
+            <el-table-column prop="学历" label="学历" width="150px">
+            </el-table-column>
+            <el-table-column prop="学位" label="学位" width="150px">
+            </el-table-column>
+            <el-table-column
+              prop="获得学历的院校或机构"
+              label="获得学历的院校或机构"
+              width="250px"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="获得学位的院校或机构"
+              label="获得学位的院校或机构"
+              width="250px"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="获得学历的国家"
+              label="获得学历的国家（地区）"
+              width="250px"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="获得学位的国家"
+              label="获得学位的国家（地区）"
+              width="250px"
+            >
+            </el-table-column>
+            <el-table-column prop="所学专业" label="所学专业" width="150px">
+            </el-table-column>
+            <!-- <el-table-column
                 fixed="right"
                 label="操作"
                 width="100">
                 <template slot-scope="scope">
-                  <el-button @click="" ype="text" size="small">编辑</el-button>
+                  <el-button @click="edit" type="text" size="small">编辑</el-button>
                 </template>
-              </el-table-column>
-            </el-table>
-            <br>
-            <br>
-            <h5 style="text-align: left" >&emsp;&emsp;工作经历</h5>
-            <el-table
-            :data="user.工作经历"
-            align="center"
-            border >
+              </el-table-column> -->
+          </el-table>
+          <br />
+          <br />
+          <h5 style="text-align: left">&emsp;&emsp;工作经历</h5>
+          <el-table :data="user.工作经历" align="center" border>
             <el-table-column prop="起始时间" label="起始时间" width="100px">
             </el-table-column>
             <el-table-column prop="终止时间" label="终止时间" width="100px">
             </el-table-column>
-            <el-table-column prop="所在单位名称" label="所在单位名称" width="150px">
+            <el-table-column
+              prop="所在单位名称"
+              label="所在单位名称"
+              width="150px"
+            >
             </el-table-column>
             <el-table-column prop="从事工作" label="从事工作" width="250px">
             </el-table-column>
-            <el-table-column prop="曾任党政职务" label="曾任党政职务" width="250px">
+            <el-table-column
+              prop="曾任党政职务"
+              label="曾任党政职务"
+              width="250px"
+            >
             </el-table-column>
-            <el-table-column prop="曾任专业技术职务" label="曾任专业技术职务" width="250px">
+            <el-table-column
+              prop="曾任专业技术职务"
+              label="曾任专业技术职务"
+              width="250px"
+            >
             </el-table-column>
             <el-table-column prop="备注" label="备注" width="250px">
             </el-table-column>
-            <el-table-column
+            <!-- <el-table-column
               fixed="right"
               label="操作"
               width="100">
               <template slot-scope="scope">
-                <el-button @click="" ype="text" size="small">编辑</el-button>
+                <el-button @click="edit" ype="text" size="small">编辑</el-button>
               </template>
-            </el-table-column>
+            </el-table-column> -->
           </el-table>
-          <br>
-          <br>
-          <h5 style="text-align: left" >&emsp;&emsp;简历</h5>
-          <el-input class="简历"
+          <br />
+          <br />
+          <h5 style="text-align: left">&emsp;&emsp;简历</h5>
+          <el-input
+            class="简历"
             type="textarea"
-
             :rows="10"
             placeholder="请输入内容"
             style="width: 1200px"
-
-            v-model="user.简历">
+            v-model="user.简历"
+          >
           </el-input>
-          <br>
-          <br>
-          <br>
+          <br />
+          <br />
+          <br />
         </div>
       </div>
       <div class="cell">
         <div class="container">
-          <h4 style="text-align: center;">奖惩情况</h4>
+          <h4 style="text-align: center">奖惩情况</h4>
           <div class="note">
             <p>【年度考核结果】填写说明:</p>
             <ul>
-              <li>填写近两年的年度考核情况，没有年度考核结果的，应采取写实的办法注明。</li>
+              <li>
+                填写近两年的年度考核情况，没有年度考核结果的，应采取写实的办法注明。
+              </li>
             </ul>
-            <p >【奖惩情况】填写说明:</p>
+            <p>【奖惩情况】填写说明:</p>
             <ul>
-              <li>填写重要的奖励或记功、受处分的情况，主要为县处级以上奖励。受过处分的，要填写何年何月因何问题经何单位批准受何种处分等等。没有受过奖励和处分的，应填写“无”。</li>
+              <li>
+                填写重要的奖励或记功、受处分的情况，主要为县处级以上奖励。受过处分的，要填写何年何月因何问题经何单位批准受何种处分等等。没有受过奖励和处分的，应填写“无”。
+              </li>
             </ul>
           </div>
           <el-row>
             <el-col :span="7">
-              <el-form-item label="2019年年度考核结果" prop="awardResult2019" label-width="150px">
+              <el-form-item
+                label="2019年年度考核结果"
+                prop="awardResult2019"
+                label-width="150px"
+              >
                 <el-select v-model="user.a2019年考核结果" placeholder="请选择">
                   <el-option
                     v-for="item in 考核结果字典"
                     :key="item"
                     :label="item"
-                    :value="item">
+                    :value="item"
+                  >
                   </el-option>
                 </el-select>
               </el-form-item>
             </el-col>
             <el-col :span="9">
-              <el-form-item label="2019年年度考核备注" prop="awardResult备注2019" label-width="150px">
-                <el-input v-model="user.a2019年考核备注" style="width: 250px"></el-input>
+              <el-form-item
+                label="2019年年度考核备注"
+                prop="awardResult备注2019"
+                label-width="150px"
+              >
+                <el-input
+                  v-model="user.a2019年考核备注"
+                  style="width: 250px"
+                ></el-input>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="7">
-              <el-form-item label="2020年年度考核结果" prop="awardResult2020" label-width="150px">
+              <el-form-item
+                label="2020年年度考核结果"
+                prop="awardResult2020"
+                label-width="150px"
+              >
                 <el-select v-model="user.a2020年考核结果" placeholder="请选择">
                   <el-option
                     v-for="item in 考核结果字典"
                     :key="item"
                     :label="item"
-                    :value="item">
+                    :value="item"
+                  >
                   </el-option>
                 </el-select>
               </el-form-item>
             </el-col>
             <el-col :span="9">
-              <el-form-item label="2020年年度考核备注" prop="awardResult备注2020" label-width="150px">
-                <el-input v-model="user.a2020年考核备注" style="width: 250px"></el-input>
+              <el-form-item
+                label="2020年年度考核备注"
+                prop="awardResult备注2020"
+                label-width="150px"
+              >
+                <el-input
+                  v-model="user.a2020年考核备注"
+                  style="width: 250px"
+                ></el-input>
               </el-form-item>
             </el-col>
           </el-row>
-          <el-form-item label="添加奖励情况">
-            <el-button icon="el-icon-plus" type="success" size="mini" @click="addaward">添加</el-button>
-            <el-table :data="user.奖励情况记录" align="center" border style="width: 99%;margin-top: 10px"
-                      height="200">
+          <el-form-item label="奖励情况">
+            <!-- <el-button
+              icon="el-icon-plus"
+              type="success"
+              size="mini"
+              @click="addaward"
+              >添加</el-button
+            > -->
+            <el-table
+              :data="user.奖励情况记录"
+              align="center"
+              border
+              style="width: 99%; margin-top: 10px"
+              height="200"
+            >
               <el-table-column label="奖励时间">
                 <template slot-scope="scope">
-                  <el-form-item :prop="`奖励情况列表.${scope.$index}.奖励时间`" :rules="rules.chinaName">
-                    <el-date-picker type="date" placeholder="选择日期" v-model="scope.row.奖励时间"
-                                    style="width: 130px;"></el-date-picker>
+                  <el-form-item
+                    :prop="`奖励情况列表.${scope.$index}.奖励时间`"
+                    :rules="rules.chinaName"
+                  >
+                    <el-date-picker
+                      type="date"
+                      placeholder="选择日期"
+                      v-model="scope.row.奖励时间"
+                      style="width: 130px"
+                    ></el-date-picker>
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="奖励情况">
                 <template slot-scope="scope">
-                  <el-form-item :prop="`奖励情况列表.${scope.$index}.奖励情况`" :rules="rules.phone">
-                    <el-input v-model="scope.row.奖励情况"/>
+                  <el-form-item
+                    :prop="`奖励情况列表.${scope.$index}.奖励情况`"
+                    :rules="rules.phone"
+                  >
+                    <el-input v-model="scope.row.奖励情况" />
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column width="100px">
                 <template slot-scope="scope">
-                  <el-button @click.prevent="removeAward(scope.row)" style="width: 70px" type="danger"
-                             icon="el-icon-delete">删除
+                  <el-button
+                    @click.prevent="removeAward(scope.row)"
+                    style="width: 70px"
+                    type="danger"
+                    icon="el-icon-delete"
+                    >删除
                   </el-button>
                 </template>
               </el-table-column>
             </el-table>
           </el-form-item>
-          <el-form-item label="添加处分情况">
-            <el-button icon="el-icon-plus" type="success" size="mini" @click="addPunish">添加</el-button>
-            <el-table :data="user.处分情况记录" align="center" border style="width: 99%;margin-top: 10px"
-                      height="200">
+          <el-form-item label="处分情况">
+            <!-- <el-button
+              icon="el-icon-plus"
+              type="success"
+              size="mini"
+              @click="addPunish"
+              >添加</el-button
+            > -->
+            <el-table
+              :data="user.处分情况记录"
+              align="center"
+              border
+              style="width: 99%; margin-top: 10px"
+              height="200"
+            >
               <el-table-column label="处分时间">
                 <template slot-scope="scope">
-                  <el-form-item :prop="`奖励情况列表.${scope.$index}.处分时间`" :rules="rules.chinaName">
-                    <el-date-picker type="date" placeholder="选择日期" v-model="scope.row.处分时间"
-                                    style="width: 130px;"></el-date-picker>
+                  <el-form-item
+                    :prop="`奖励情况列表.${scope.$index}.处分时间`"
+                    :rules="rules.chinaName"
+                  >
+                    <el-date-picker
+                      type="date"
+                      placeholder="选择日期"
+                      v-model="scope.row.处分时间"
+                      style="width: 130px"
+                    ></el-date-picker>
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="处分情况">
                 <template slot-scope="scope">
-                  <el-form-item :prop="`奖励情况列表.${scope.$index}.处分情况`" :rules="rules.phone">
-                    <el-input v-model="scope.row.处分情况"/>
+                  <el-form-item
+                    :prop="`奖励情况列表.${scope.$index}.处分情况`"
+                    :rules="rules.phone"
+                  >
+                    <el-input v-model="scope.row.处分情况" />
                   </el-form-item>
                 </template>
               </el-table-column>
-              <el-table-column width="100px">
+              <!-- <el-table-column width="100px">
                 <template slot-scope="scope">
-                  <el-button @click.prevent="removePunish(scope.row)" style="width: 70px" type="danger"
-                             icon="el-icon-delete">删除
+                  <el-button
+                    @click.prevent="removePunish(scope.row)"
+                    style="width: 70px"
+                    type="danger"
+                    icon="el-icon-delete"
+                    >删除
                   </el-button>
                 </template>
-              </el-table-column>
+              </el-table-column> -->
             </el-table>
           </el-form-item>
-          <h5 style="text-align: left" >&emsp;&emsp;奖惩情况</h5>
-          <el-input class="简历"
-                    type="textarea"
-                    :rows="5"
-                    placeholder="请输入内容"
-                    style="width: 1200px"
-                    v-model="user.奖惩情况">
+          <h5 style="text-align: left">&emsp;&emsp;奖惩情况</h5>
+          <el-input
+            class="简历"
+            type="textarea"
+            :rows="5"
+            placeholder="请输入内容"
+            style="width: 1200px"
+            v-model="user.奖惩情况"
+          >
           </el-input>
-          <h5 style="text-align: left" >&emsp;&emsp;年度考核结果</h5>
-          <el-input class="简历"
-                    type="textarea"
-                    :rows="4"
-                    placeholder="请输入内容"
-                    style="width: 1200px"
-                    v-model="user.年度考核结果">
+          <h5 style="text-align: left">&emsp;&emsp;年度考核结果</h5>
+          <el-input
+            class="简历"
+            type="textarea"
+            :rows="4"
+            placeholder="请输入内容"
+            style="width: 1200px"
+            v-model="user.年度考核结果"
+          >
           </el-input>
         </div>
       </div>
@@ -513,39 +787,72 @@
         <div class="container">
           <h4 style="text-align: center">家庭主要成员及重要社会关系</h4>
           <el-form-item label="家庭主要成员及重要社会关系">
-            <el-button icon="el-icon-plus" type="success" size="mini" @click="addFamily">添加</el-button>
-            <el-table :data="user.家庭成员记录" align="center" border style="width: 99%;margin-top: 10px" height="250">
+            <!-- <el-button
+              icon="el-icon-plus"
+              type="success"
+              size="mini"
+              @click="addFamily"
+              >添加</el-button
+            > -->
+            <el-table
+              :data="user.家庭成员记录"
+              align="center"
+              border
+              style="width: 99%; margin-top: 10px"
+              height="250"
+            >
               <el-table-column label="称谓">
                 <template slot-scope="scope">
-                  <el-form-item :prop="`家庭成员列表.${scope.$index}.称谓`" :rules="rules.chinaName">
-                    <el-input v-model="scope.row.称谓"/>
+                  <el-form-item
+                    :prop="`家庭成员列表.${scope.$index}.称谓`"
+                    :rules="rules.chinaName"
+                  >
+                    <el-input v-model="scope.row.称谓" />
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="姓名">
                 <template slot-scope="scope">
-                  <el-form-item :prop="`家庭成员列表.${scope.$index}.姓名`" :rules="rules.chinaName">
-                    <el-input v-model="scope.row.姓名"/>
+                  <el-form-item
+                    :prop="`家庭成员列表.${scope.$index}.姓名`"
+                    :rules="rules.chinaName"
+                  >
+                    <el-input v-model="scope.row.姓名" />
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="出生年月">
                 <template slot-scope="scope">
-                  <el-form-item :prop="`家庭成员列表.${scope.$index}.出生年月`" :rules="rules.chinaName">
-                    <el-date-picker type="date" placeholder="选择日期" v-model="scope.row.出生年月"
-                                    style="width: 130px;"></el-date-picker>
+                  <el-form-item
+                    :prop="`家庭成员列表.${scope.$index}.出生年月`"
+                    :rules="rules.chinaName"
+                  >
+                    <el-date-picker
+                      type="date"
+                      placeholder="选择日期"
+                      v-model="scope.row.出生年月"
+                      style="width: 130px"
+                    ></el-date-picker>
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="政治面貌">
                 <template slot-scope="scope">
-                  <el-form-item :prop="`家庭成员列表.${scope.$index}.政治面貌`" :rules="rules.chinaName">
-                    <el-select v-model="scope.row.政治面貌"  filterable placeholder="输入搜索">
+                  <el-form-item
+                    :prop="`家庭成员列表.${scope.$index}.政治面貌`"
+                    :rules="rules.chinaName"
+                  >
+                    <el-select
+                      v-model="scope.row.政治面貌"
+                      filterable
+                      placeholder="输入搜索"
+                    >
                       <el-option
                         v-for="item in 政治面貌字典"
                         :key="item"
                         :label="item"
-                        :value="item">
+                        :value="item"
+                      >
                       </el-option>
                     </el-select>
                   </el-form-item>
@@ -553,25 +860,35 @@
               </el-table-column>
               <el-table-column label="工作/学习单位及职务">
                 <template slot-scope="scope">
-                  <el-form-item :prop="`家庭成员列表.${scope.$index}.单位及职务`" :rules="rules.phone">
-                    <el-input v-model="scope.row.单位及职务"/>
+                  <el-form-item
+                    :prop="`家庭成员列表.${scope.$index}.单位及职务`"
+                    :rules="rules.phone"
+                  >
+                    <el-input v-model="scope.row.单位及职务" />
                   </el-form-item>
                 </template>
               </el-table-column>
               <el-table-column label="现居住地">
                 <template slot-scope="scope">
-                  <el-form-item :prop="`家庭成员列表.${scope.$index}.现居住地`" :rules="rules.phone">
-                    <el-input v-model="scope.row.现居住地"/>
+                  <el-form-item
+                    :prop="`家庭成员列表.${scope.$index}.现居住地`"
+                    :rules="rules.phone"
+                  >
+                    <el-input v-model="scope.row.现居住地" />
                   </el-form-item>
                 </template>
               </el-table-column>
-              <el-table-column width="100px">
+              <!-- <el-table-column width="100px">
                 <template slot-scope="scope">
-                  <el-button @click.prevent="removeFamily(scope.row)" style="width: 70px" type="danger"
-                             icon="el-icon-delete">删除
+                  <el-button
+                    @click.prevent="removeFamily(scope.row)"
+                    style="width: 70px"
+                    type="danger"
+                    icon="el-icon-delete"
+                    >删除
                   </el-button>
                 </template>
-              </el-table-column>
+              </el-table-column> -->
             </el-table>
           </el-form-item>
         </div>
@@ -579,12 +896,17 @@
       <div class="cell">
         <div class="container">
           <h4 style="text-align: center">单位审核意见</h4>
-          <el-input type="textarea" :rows="10" placeholder="请输入单位审核意见" v-model="user.单位审核意见"
-          style="margin-left: 100px;width: 1100px;"></el-input>
+          <el-input
+            type="textarea"
+            :rows="10"
+            placeholder="请输入单位审核意见"
+            v-model="user.单位审核意见"
+            style="margin-left: 100px; width: 1100px"
+          ></el-input>
         </div>
       </div>
       <div class="mybottom">
-        <el-form-item style="text-align:center">
+        <el-form-item style="text-align: center">
           <el-button type="primary" @click="saveOrUpdate">提交</el-button>
           <el-button type="primary" @click="goback">取消</el-button>
         </el-form-item>
@@ -594,13 +916,8 @@
 </template>
 
 <script>
-import 基本信息 from "@/api/service/基本信息";
-import 审核情况 from "@/api/service/审核情况";
-import 出生时间 from "@/api/service/出生时间";
-import 参加工作时间 from "@/api/service/参加工作时间";
-import 入党时间 from "@/api/service/入党时间";
-import 学历学位材料 from "@/api/service/学历学位材料";
 import { getInfoRecord, putInfoRecord } from "@/api/service/干部基本信息审核表";
+import 基本信息 from '@/api/service/基本信息'
 export default {
   data() {
     var checknumber = (rule, value, callback) => {
@@ -643,526 +960,526 @@ export default {
       ],
       查询条件: "0",
       政治面貌字典: [
-        "党员",
-        "中共预备党员",
-        "共青团员",
-        "民革党员",
-        "民盟盟员",
-        "民建会员",
-        "民进会员",
-        "农工党党员",
-        "致公党党员",
-        "九三学社社员",
-        "台盟盟员",
-        "无党派人士",
-        "群众",
+        // "党员",
+        // "中共预备党员",
+        // "共青团员",
+        // "民革党员",
+        // "民盟盟员",
+        // "民建会员",
+        // "民进会员",
+        // "农工党党员",
+        // "致公党党员",
+        // "九三学社社员",
+        // "台盟盟员",
+        // "无党派人士",
+        // "群众",
       ],
       单位字典: [
-        "建筑学院",
-        "机械工程学院",
-        "能源与环境学院",
-        "信息科学与工程学院",
-        "土木工程学院",
-        "电子科学与工程学院、微电子学院",
-        "数学学院",
-        "自动化学院",
-        "计算机科学与工程学院、软件学院",
-        "物理学院",
-        "生物科学与医学工程学院",
-        "材料科学与工程学院",
-        "人文学院",
-        "艺术学院",
-        "法学院",
-        "经济管理学院",
-        "电气工程学院",
-        "外国语学院",
-        "体育系",
-        "化学化工学院",
-        "交通学院",
-        "仪器科学与工程学院",
-        "医学院",
-        "公共卫生学院",
-        "马克思主义学院",
-        "海外教育学院",
-        "生命科学与技术学院",
-        "网络空间安全学院",
-        "吴健雄学院",
-        "建筑研究所",
-        "成贤学院",
-        "无锡分校",
-        "继续教育学院",
-        "图书馆",
-        "档案馆",
-        "东南大学学报(自然科学版)",
-        "东南大学学报(哲学社会科学版)",
-        "东南大学学报(医学版)",
-        "党委教师工作部(教师教学发展中心)",
-        "网络与信息中心",
-        "城市工程科学技术研究院",
-        "智能交通运输系统(ITS)研究中心",
-        "东南大学-南京通信技术研究院",
-        "东南大学医院",
-        "研究生院(党委研究生工作部)",
-        "党委办公室、党委统战部",
-        "党委组织部",
-        "党委宣传部",
-        "纪委办公室(监察处)",
-        "团委",
-        "工会",
-        "党委老干部处",
-        "机关党委",
-        "产业党工委",
-        "校长办公室",
-        "科研院",
-        "保密办公室",
-        "教务处",
-        "教务处/电子电工实验中心",
-        "教务处/教育技术中心",
-        "人事处",
-        "党委学工部(学生处)",
-        "财务处",
-        "社会科学处",
-        "丁家桥校区管理委员会",
-        "苏州校区管理委员会",
-        "四牌楼校区管理委员会",
-        "发展委员会",
-        "国际合作处(港澳台办公室)",
-        "党委发展规划与学科建设部、" + "发展规划与学科建设处(双一流建设办公室)",
-        "审计处",
-        "党委保卫部(保卫处)",
-        "实验室与设备管理处",
-        "东南大学大数据计算中心",
-        "东南大学分析测试中心",
-        "资产管理处(国有资产管理委员会办公室)",
-        "基本建设处",
-        "总务处",
-        "后勤党工委",
-        "江苏东南大学资产管理经营有限公司",
-        "东南大学脑科学与智能技术研究院",
-        "中华民族视觉形象研究基地",
-        "东南大学文化传媒与国际战略研究院",
-        "附属中大医院",
+        // "建筑学院",
+        // "机械工程学院",
+        // "能源与环境学院",
+        // "信息科学与工程学院",
+        // "土木工程学院",
+        // "电子科学与工程学院、微电子学院",
+        // "数学学院",
+        // "自动化学院",
+        // "计算机科学与工程学院、软件学院",
+        // "物理学院",
+        // "生物科学与医学工程学院",
+        // "材料科学与工程学院",
+        // "人文学院",
+        // "艺术学院",
+        // "法学院",
+        // "经济管理学院",
+        // "电气工程学院",
+        // "外国语学院",
+        // "体育系",
+        // "化学化工学院",
+        // "交通学院",
+        // "仪器科学与工程学院",
+        // "医学院",
+        // "公共卫生学院",
+        // "马克思主义学院",
+        // "海外教育学院",
+        // "生命科学与技术学院",
+        // "网络空间安全学院",
+        // "吴健雄学院",
+        // "建筑研究所",
+        // "成贤学院",
+        // "无锡分校",
+        // "继续教育学院",
+        // "图书馆",
+        // "档案馆",
+        // "东南大学学报(自然科学版)",
+        // "东南大学学报(哲学社会科学版)",
+        // "东南大学学报(医学版)",
+        // "党委教师工作部(教师教学发展中心)",
+        // "网络与信息中心",
+        // "城市工程科学技术研究院",
+        // "智能交通运输系统(ITS)研究中心",
+        // "东南大学-南京通信技术研究院",
+        // "东南大学医院",
+        // "研究生院(党委研究生工作部)",
+        // "党委办公室、党委统战部",
+        // "党委组织部",
+        // "党委宣传部",
+        // "纪委办公室(监察处)",
+        // "团委",
+        // "工会",
+        // "党委老干部处",
+        // "机关党委",
+        // "产业党工委",
+        // "校长办公室",
+        // "科研院",
+        // "保密办公室",
+        // "教务处",
+        // "教务处/电子电工实验中心",
+        // "教务处/教育技术中心",
+        // "人事处",
+        // "党委学工部(学生处)",
+        // "财务处",
+        // "社会科学处",
+        // "丁家桥校区管理委员会",
+        // "苏州校区管理委员会",
+        // "四牌楼校区管理委员会",
+        // "发展委员会",
+        // "国际合作处(港澳台办公室)",
+        // "党委发展规划与学科建设部、" + "发展规划与学科建设处(双一流建设办公室)",
+        // "审计处",
+        // "党委保卫部(保卫处)",
+        // "实验室与设备管理处",
+        // "东南大学大数据计算中心",
+        // "东南大学分析测试中心",
+        // "资产管理处(国有资产管理委员会办公室)",
+        // "基本建设处",
+        // "总务处",
+        // "后勤党工委",
+        // "江苏东南大学资产管理经营有限公司",
+        // "东南大学脑科学与智能技术研究院",
+        // "中华民族视觉形象研究基地",
+        // "东南大学文化传媒与国际战略研究院",
+        // "附属中大医院",
       ],
       学历字典: [
-        {
-          value: "研究生教育",
-          label: "研究生教育",
-          children: [
-            {
-              value: "博士研究生",
-              label: "博士研究生",
-            },
-            {
-              value: "硕士研究生",
-              label: "硕士研究生",
-            },
-            {
-              value: "中央党校研究生",
-              label: "中央党校研究生",
-            },
-            {
-              value: "省(区、市)委党校研究生",
-              label: "省(区、市)委党校研究生",
-            },
-          ],
-        },
-        {
-          value: "本科教育",
-          label: "本科教育",
-          children: [
-            {
-              value: "大学",
-              label: "大学",
-            },
-            {
-              value: "中央党校大学",
-              label: "中央党校大学",
-            },
-            {
-              value: "省(区、市)委党校大学",
-              label: "省(区、市)委党校大学",
-            },
-          ],
-        },
-        {
-          value: "专科教育",
-          label: "专科教育",
-          children: [
-            {
-              value: "大专",
-              label: "大专",
-            },
-            {
-              value: "省(区、市)委党校大专",
-              label: "省(区、市)委党校大专",
-            },
-            {
-              value: "中央党校大专",
-              label: "中央党校大专",
-            },
-          ],
-        },
+        // {
+        //   value: "研究生教育",
+        //   label: "研究生教育",
+        //   children: [
+        //     {
+        //       value: "博士研究生",
+        //       label: "博士研究生",
+        //     },
+        //     {
+        //       value: "硕士研究生",
+        //       label: "硕士研究生",
+        //     },
+        //     {
+        //       value: "中央党校研究生",
+        //       label: "中央党校研究生",
+        //     },
+        //     {
+        //       value: "省(区、市)委党校研究生",
+        //       label: "省(区、市)委党校研究生",
+        //     },
+        //   ],
+        // },
+        // {
+        //   value: "本科教育",
+        //   label: "本科教育",
+        //   children: [
+        //     {
+        //       value: "大学",
+        //       label: "大学",
+        //     },
+        //     {
+        //       value: "中央党校大学",
+        //       label: "中央党校大学",
+        //     },
+        //     {
+        //       value: "省(区、市)委党校大学",
+        //       label: "省(区、市)委党校大学",
+        //     },
+        //   ],
+        // },
+        // {
+        //   value: "专科教育",
+        //   label: "专科教育",
+        //   children: [
+        //     {
+        //       value: "大专",
+        //       label: "大专",
+        //     },
+        //     {
+        //       value: "省(区、市)委党校大专",
+        //       label: "省(区、市)委党校大专",
+        //     },
+        //     {
+        //       value: "中央党校大专",
+        //       label: "中央党校大专",
+        //     },
+        //   ],
+        // },
       ],
       学位: [],
       学位字典: [
-        {
-          value: "博士",
-          label: "博士",
-          children: [
-            {
-              value: "哲学博士学位",
-              label: "哲学博士学位",
-            },
-            {
-              value: "经济学博士学位",
-              label: "经济学博士学位",
-            },
-            {
-              value: "法学博士学位",
-              label: "法学博士学位",
-            },
-            {
-              value: "教育学博士学位",
-              label: "教育学博士学位",
-            },
-            {
-              value: "文学博士学位",
-              label: "文学博士学位",
-            },
-            {
-              value: "历史学博士学位",
-              label: "历史学博士学位",
-            },
-            {
-              value: "理学博士学位",
-              label: "理学博士学位",
-            },
-            {
-              value: "工学博士学位",
-              label: "工学博士学位",
-            },
-            {
-              value: "农学博士学位",
-              label: "农学博士学位",
-            },
-            {
-              value: "医学博士学位",
-              label: "医学博士学位",
-            },
-            {
-              value: "军事学博士学位",
-              label: "军事学博士学位",
-            },
-            {
-              value: "管理学博士学位",
-              label: "管理学博士学位",
-            },
-            {
-              value: "艺术学博士学位",
-              label: "艺术学博士学位",
-            },
-            {
-              value: "教育博士专业学位",
-              label: "教育博士专业学位",
-            },
-            {
-              value: "工程博士专业学位",
-              label: "工程博士专业学位",
-            },
-            {
-              value: "临床医学博士专业学位",
-              label: "临床医学博士专业学位",
-            },
-            {
-              value: "兽医博士专业学位",
-              label: "兽医博士专业学位",
-            },
-            {
-              value: "口腔医学博士专业学位",
-              label: "口腔医学博士专业学位",
-            },
-          ],
-        },
-        {
-          value: "硕士",
-          label: "硕士",
-          children: [
-            {
-              value: "哲学硕士学位",
-              label: "哲学硕士学位",
-            },
-            {
-              value: "经济学硕士学位",
-              label: "经济学硕士学位",
-            },
-            {
-              value: "法学硕士学位",
-              label: "法学硕士学位",
-            },
-            {
-              value: "教育学硕士学位",
-              label: "教育学硕士学位",
-            },
-            {
-              value: "文学硕士学位",
-              label: "文学硕士学位",
-            },
-            {
-              value: "历史学硕士学位",
-              label: "历史学硕士学位",
-            },
-            {
-              value: "理学硕士学位",
-              label: "理学硕士学位",
-            },
-            {
-              value: "工学硕士学位",
-              label: "工学硕士学位",
-            },
-            {
-              value: "农学硕士学位",
-              label: "农学硕士学位",
-            },
-            {
-              value: "医学硕士学位",
-              label: "医学硕士学位",
-            },
-            {
-              value: "军事学硕士学位",
-              label: "军事学硕士学位",
-            },
-            {
-              value: "管理学硕士学位",
-              label: "管理学硕士学位",
-            },
-            {
-              value: "艺术学硕士学位",
-              label: "艺术学硕士学位",
-            },
-            {
-              value: "法律硕士专业学位",
-              label: "法律硕士专业学位",
-            },
-            {
-              value: "教育硕士专业学位",
-              label: "教育硕士专业学位",
-            },
-            {
-              value: "工程硕士专业学位",
-              label: "工程硕士专业学位",
-            },
-            {
-              value: "建筑学硕士专业学位",
-              label: "建筑学硕士专业学位",
-            },
-            {
-              value: "临床医学硕士专业学位",
-              label: "临床医学硕士专业学位",
-            },
-            {
-              value: "工商管理硕士专业学位",
-              label: "工商管理硕士专业学位",
-            },
-            {
-              value: "农业推广硕士专业学位",
-              label: "农业推广硕士专业学位",
-            },
-            {
-              value: "兽医硕士专业学位",
-              label: "兽医硕士专业学位",
-            },
-            {
-              value: "公共管理硕士专业学位",
-              label: "公共管理硕士专业学位",
-            },
-            {
-              value: "口腔医学硕士专业学位",
-              label: "口腔医学硕士专业学位",
-            },
-            {
-              value: "公共卫生硕士专业学位",
-              label: "公共卫生硕士专业学位",
-            },
-            {
-              value: "军事硕士专业学位",
-              label: "军事硕士专业学位",
-            },
-            {
-              value: "金融硕士专业学位",
-              label: "金融硕士专业学位",
-            },
-            {
-              value: "应用统计硕士专业学位",
-              label: "应用统计硕士专业学位",
-            },
-            {
-              value: "税务硕士专业学位",
-              label: "税务硕士专业学位",
-            },
-            {
-              value: "国际商务硕士专业学位",
-              label: "国际商务硕士专业学位",
-            },
-            {
-              value: "保险硕士专业学位",
-              label: "保险硕士专业学位",
-            },
-            {
-              value: "资产评估硕士专业学位",
-              label: "资产评估硕士专业学位",
-            },
-            {
-              value: "审计硕士专业学位",
-              label: "审计硕士专业学位",
-            },
-            {
-              value: "社会工作硕士专业学位",
-              label: "社会工作硕士专业学位",
-            },
-            {
-              value: "警务工作硕士专业学位",
-              label: "警务工作硕士专业学位",
-            },
-            {
-              value: "体育硕士专业学位",
-              label: "体育硕士专业学位",
-            },
-            {
-              value: "汉语国际教育硕士专业学位",
-              label: "汉语国际教育硕士专业学位",
-            },
-            {
-              value: "应用心理硕士专业学位",
-              label: "应用心理硕士专业学位",
-            },
-            {
-              value: "翻译硕士专业学位",
-              label: "翻译硕士专业学位",
-            },
-            {
-              value: "新闻与传播硕士专业学位",
-              label: "新闻与传播硕士专业学位",
-            },
-            {
-              value: "出版硕士专业学位",
-              label: "出版硕士专业学位",
-            },
-            {
-              value: "文物与博物馆硕士专业学位",
-              label: "文物与博物馆硕士专业学位",
-            },
-            {
-              value: "城市规划硕士专业学位",
-              label: "城市规划硕士专业学位",
-            },
-            {
-              value: "风景园林硕士专业学位",
-              label: "风景园林硕士专业学位",
-            },
-            {
-              value: "林业硕士专业学位",
-              label: "林业硕士专业学位",
-            },
-            {
-              value: "护理硕士专业学位",
-              label: "护理硕士专业学位",
-            },
-            {
-              value: "药学硕士专业学位",
-              label: "药学硕士专业学位",
-            },
-            {
-              value: "中药学硕士专业学位",
-              label: "中药学硕士专业学位",
-            },
-            {
-              value: "会计硕士专业学位",
-              label: "会计硕士专业学位",
-            },
-            {
-              value: "旅游管理硕士专业学位",
-              label: "旅游管理硕士专业学位",
-            },
-            {
-              value: "图书情报硕士专业学位",
-              label: "图书情报硕士专业学位",
-            },
-            {
-              value: "工程管理硕士专业学位",
-              label: "工程管理硕士专业学位",
-            },
-            {
-              value: "艺术硕士专业学位",
-              label: "艺术硕士专业学位",
-            },
-          ],
-        },
-        {
-          value: "学士",
-          label: "学士",
-          children: [
-            {
-              value: "哲学学士学位",
-              label: "哲学学士学位",
-            },
-            {
-              value: "经济学学士学位",
-              label: "经济学学士学位",
-            },
-            {
-              value: "法学学士学位",
-              label: "法学学士学位",
-            },
-            {
-              value: "教育学学士学位",
-              label: "教育学学士学位",
-            },
-            {
-              value: "文学学士学位",
-              label: "文学学士学位",
-            },
-            {
-              value: "历史学学士学位",
-              label: "历史学学士学位",
-            },
-            {
-              value: "理学学士学位",
-              label: "理学学士学位",
-            },
-            {
-              value: "工学学士学位",
-              label: "工学学士学位",
-            },
-            {
-              value: "农学学士学位",
-              label: "农学学士学位",
-            },
-            {
-              value: "医学学士学位",
-              label: "医学学士学位",
-            },
-            {
-              value: "军事学学士学位",
-              label: "军事学学士学位",
-            },
-            {
-              value: "管理学学士学位",
-              label: "管理学学士学位",
-            },
-            {
-              value: "艺术学学士学位",
-              label: "艺术学学士学位",
-            },
-            {
-              value: "建筑学学士专业学位",
-              label: "建筑学学士专业学位",
-            },
-          ],
-        },
-        {
-          value: "无",
-          label: "无",
-        },
+        // {
+        //   value: "博士",
+        //   label: "博士",
+        //   children: [
+        //     {
+        //       value: "哲学博士学位",
+        //       label: "哲学博士学位",
+        //     },
+        //     {
+        //       value: "经济学博士学位",
+        //       label: "经济学博士学位",
+        //     },
+        //     {
+        //       value: "法学博士学位",
+        //       label: "法学博士学位",
+        //     },
+        //     {
+        //       value: "教育学博士学位",
+        //       label: "教育学博士学位",
+        //     },
+        //     {
+        //       value: "文学博士学位",
+        //       label: "文学博士学位",
+        //     },
+        //     {
+        //       value: "历史学博士学位",
+        //       label: "历史学博士学位",
+        //     },
+        //     {
+        //       value: "理学博士学位",
+        //       label: "理学博士学位",
+        //     },
+        //     {
+        //       value: "工学博士学位",
+        //       label: "工学博士学位",
+        //     },
+        //     {
+        //       value: "农学博士学位",
+        //       label: "农学博士学位",
+        //     },
+        //     {
+        //       value: "医学博士学位",
+        //       label: "医学博士学位",
+        //     },
+        //     {
+        //       value: "军事学博士学位",
+        //       label: "军事学博士学位",
+        //     },
+        //     {
+        //       value: "管理学博士学位",
+        //       label: "管理学博士学位",
+        //     },
+        //     {
+        //       value: "艺术学博士学位",
+        //       label: "艺术学博士学位",
+        //     },
+        //     {
+        //       value: "教育博士专业学位",
+        //       label: "教育博士专业学位",
+        //     },
+        //     {
+        //       value: "工程博士专业学位",
+        //       label: "工程博士专业学位",
+        //     },
+        //     {
+        //       value: "临床医学博士专业学位",
+        //       label: "临床医学博士专业学位",
+        //     },
+        //     {
+        //       value: "兽医博士专业学位",
+        //       label: "兽医博士专业学位",
+        //     },
+        //     {
+        //       value: "口腔医学博士专业学位",
+        //       label: "口腔医学博士专业学位",
+        //     },
+        //   ],
+        // },
+        // {
+        //   value: "硕士",
+        //   label: "硕士",
+        //   children: [
+        //     {
+        //       value: "哲学硕士学位",
+        //       label: "哲学硕士学位",
+        //     },
+        //     {
+        //       value: "经济学硕士学位",
+        //       label: "经济学硕士学位",
+        //     },
+        //     {
+        //       value: "法学硕士学位",
+        //       label: "法学硕士学位",
+        //     },
+        //     {
+        //       value: "教育学硕士学位",
+        //       label: "教育学硕士学位",
+        //     },
+        //     {
+        //       value: "文学硕士学位",
+        //       label: "文学硕士学位",
+        //     },
+        //     {
+        //       value: "历史学硕士学位",
+        //       label: "历史学硕士学位",
+        //     },
+        //     {
+        //       value: "理学硕士学位",
+        //       label: "理学硕士学位",
+        //     },
+        //     {
+        //       value: "工学硕士学位",
+        //       label: "工学硕士学位",
+        //     },
+        //     {
+        //       value: "农学硕士学位",
+        //       label: "农学硕士学位",
+        //     },
+        //     {
+        //       value: "医学硕士学位",
+        //       label: "医学硕士学位",
+        //     },
+        //     {
+        //       value: "军事学硕士学位",
+        //       label: "军事学硕士学位",
+        //     },
+        //     {
+        //       value: "管理学硕士学位",
+        //       label: "管理学硕士学位",
+        //     },
+        //     {
+        //       value: "艺术学硕士学位",
+        //       label: "艺术学硕士学位",
+        //     },
+        //     {
+        //       value: "法律硕士专业学位",
+        //       label: "法律硕士专业学位",
+        //     },
+        //     {
+        //       value: "教育硕士专业学位",
+        //       label: "教育硕士专业学位",
+        //     },
+        //     {
+        //       value: "工程硕士专业学位",
+        //       label: "工程硕士专业学位",
+        //     },
+        //     {
+        //       value: "建筑学硕士专业学位",
+        //       label: "建筑学硕士专业学位",
+        //     },
+        //     {
+        //       value: "临床医学硕士专业学位",
+        //       label: "临床医学硕士专业学位",
+        //     },
+        //     {
+        //       value: "工商管理硕士专业学位",
+        //       label: "工商管理硕士专业学位",
+        //     },
+        //     {
+        //       value: "农业推广硕士专业学位",
+        //       label: "农业推广硕士专业学位",
+        //     },
+        //     {
+        //       value: "兽医硕士专业学位",
+        //       label: "兽医硕士专业学位",
+        //     },
+        //     {
+        //       value: "公共管理硕士专业学位",
+        //       label: "公共管理硕士专业学位",
+        //     },
+        //     {
+        //       value: "口腔医学硕士专业学位",
+        //       label: "口腔医学硕士专业学位",
+        //     },
+        //     {
+        //       value: "公共卫生硕士专业学位",
+        //       label: "公共卫生硕士专业学位",
+        //     },
+        //     {
+        //       value: "军事硕士专业学位",
+        //       label: "军事硕士专业学位",
+        //     },
+        //     {
+        //       value: "金融硕士专业学位",
+        //       label: "金融硕士专业学位",
+        //     },
+        //     {
+        //       value: "应用统计硕士专业学位",
+        //       label: "应用统计硕士专业学位",
+        //     },
+        //     {
+        //       value: "税务硕士专业学位",
+        //       label: "税务硕士专业学位",
+        //     },
+        //     {
+        //       value: "国际商务硕士专业学位",
+        //       label: "国际商务硕士专业学位",
+        //     },
+        //     {
+        //       value: "保险硕士专业学位",
+        //       label: "保险硕士专业学位",
+        //     },
+        //     {
+        //       value: "资产评估硕士专业学位",
+        //       label: "资产评估硕士专业学位",
+        //     },
+        //     {
+        //       value: "审计硕士专业学位",
+        //       label: "审计硕士专业学位",
+        //     },
+        //     {
+        //       value: "社会工作硕士专业学位",
+        //       label: "社会工作硕士专业学位",
+        //     },
+        //     {
+        //       value: "警务工作硕士专业学位",
+        //       label: "警务工作硕士专业学位",
+        //     },
+        //     {
+        //       value: "体育硕士专业学位",
+        //       label: "体育硕士专业学位",
+        //     },
+        //     {
+        //       value: "汉语国际教育硕士专业学位",
+        //       label: "汉语国际教育硕士专业学位",
+        //     },
+        //     {
+        //       value: "应用心理硕士专业学位",
+        //       label: "应用心理硕士专业学位",
+        //     },
+        //     {
+        //       value: "翻译硕士专业学位",
+        //       label: "翻译硕士专业学位",
+        //     },
+        //     {
+        //       value: "新闻与传播硕士专业学位",
+        //       label: "新闻与传播硕士专业学位",
+        //     },
+        //     {
+        //       value: "出版硕士专业学位",
+        //       label: "出版硕士专业学位",
+        //     },
+        //     {
+        //       value: "文物与博物馆硕士专业学位",
+        //       label: "文物与博物馆硕士专业学位",
+        //     },
+        //     {
+        //       value: "城市规划硕士专业学位",
+        //       label: "城市规划硕士专业学位",
+        //     },
+        //     {
+        //       value: "风景园林硕士专业学位",
+        //       label: "风景园林硕士专业学位",
+        //     },
+        //     {
+        //       value: "林业硕士专业学位",
+        //       label: "林业硕士专业学位",
+        //     },
+        //     {
+        //       value: "护理硕士专业学位",
+        //       label: "护理硕士专业学位",
+        //     },
+        //     {
+        //       value: "药学硕士专业学位",
+        //       label: "药学硕士专业学位",
+        //     },
+        //     {
+        //       value: "中药学硕士专业学位",
+        //       label: "中药学硕士专业学位",
+        //     },
+        //     {
+        //       value: "会计硕士专业学位",
+        //       label: "会计硕士专业学位",
+        //     },
+        //     {
+        //       value: "旅游管理硕士专业学位",
+        //       label: "旅游管理硕士专业学位",
+        //     },
+        //     {
+        //       value: "图书情报硕士专业学位",
+        //       label: "图书情报硕士专业学位",
+        //     },
+        //     {
+        //       value: "工程管理硕士专业学位",
+        //       label: "工程管理硕士专业学位",
+        //     },
+        //     {
+        //       value: "艺术硕士专业学位",
+        //       label: "艺术硕士专业学位",
+        //     },
+        //   ],
+        // },
+        // {
+        //   value: "学士",
+        //   label: "学士",
+        //   children: [
+        //     {
+        //       value: "哲学学士学位",
+        //       label: "哲学学士学位",
+        //     },
+        //     {
+        //       value: "经济学学士学位",
+        //       label: "经济学学士学位",
+        //     },
+        //     {
+        //       value: "法学学士学位",
+        //       label: "法学学士学位",
+        //     },
+        //     {
+        //       value: "教育学学士学位",
+        //       label: "教育学学士学位",
+        //     },
+        //     {
+        //       value: "文学学士学位",
+        //       label: "文学学士学位",
+        //     },
+        //     {
+        //       value: "历史学学士学位",
+        //       label: "历史学学士学位",
+        //     },
+        //     {
+        //       value: "理学学士学位",
+        //       label: "理学学士学位",
+        //     },
+        //     {
+        //       value: "工学学士学位",
+        //       label: "工学学士学位",
+        //     },
+        //     {
+        //       value: "农学学士学位",
+        //       label: "农学学士学位",
+        //     },
+        //     {
+        //       value: "医学学士学位",
+        //       label: "医学学士学位",
+        //     },
+        //     {
+        //       value: "军事学学士学位",
+        //       label: "军事学学士学位",
+        //     },
+        //     {
+        //       value: "管理学学士学位",
+        //       label: "管理学学士学位",
+        //     },
+        //     {
+        //       value: "艺术学学士学位",
+        //       label: "艺术学学士学位",
+        //     },
+        //     {
+        //       value: "建筑学学士专业学位",
+        //       label: "建筑学学士专业学位",
+        //     },
+        //   ],
+        // },
+        // {
+        //   value: "无",
+        //   label: "无",
+        // },
       ],
       考核结果字典: ["优秀"],
       基本信息: {
@@ -1228,10 +1545,6 @@ export default {
       showPartyDate: false,
       cancelshow: false,
       divshow: false,
-      年龄: "?",
-      入党时间: "/",
-      参加工作时间: ",",
-      出生年月: ".",
       user: {
         职工号: "1",
         单位: "2",
@@ -1242,6 +1555,10 @@ export default {
         出生地: "7",
         现任职务: "8",
         健康状况: "9",
+        年龄: "?",
+        入党时间: "/",
+        参加工作时间: ",",
+        出生年月: ".",
         专业技术职务职称: "q",
         熟悉专业有何特长: "w",
         初审认定出生时间: "e",
@@ -1295,24 +1612,30 @@ export default {
     };
   },
 
-  mounted() {
-    //this.fetchedu();
-  },
+  // mounted() {
+  //   //this.fetchedu();
+  // },
   created() {
     // 在页面渲染前调用methods中方法
+      基本信息.getlist().then((response) => {
+      this.政治面貌字典 = response.data.政治面貌字典;
+      this.单位字典 = response.data.单位字典;
+      this.学历字典 = response.data.学历字典;
+      this.学位字典 = response.data.学位字典;
+    })
   },
   methods: {
-    fetchedu() {
-      axios.get("url").then(
-        (response) => {
-          this.最高学历学位 = response.最高学历学位;
-        },
-        (response) => {
-          console.log("error");
-          alert("请求失败");
-        }
-      );
-    },
+    // fetchedu() {
+    //   axios.get("url").then(
+    //     (response) => {
+    //       this.最高学历学位 = response.最高学历学位;
+    //     },
+    //     (response) => {
+    //       console.log("error");
+    //       alert("请求失败");
+    //     }
+    //   );
+    // },
     flush() {
       Object.keys(this.user).forEach((key) => (this.user[key] = ""));
       this.年龄 = "";
@@ -1361,8 +1684,28 @@ export default {
       //一年毫秒数(365 * 86400000 = 31536000000)
       return Math.ceil((nowTime - birthDayTime) / 31536000000);
     },
-    editedu() {},
+    // editedu() {},
     // 查找信息
+    async saveOrUpdate() {
+      if (this.user.职工号 === "") {
+        alert("请确认职工号是否填写正确");
+      } else {
+        var userres = await putInfoRecord(this.user);
+        if (userres.data.count === 0) {
+          alert("查无此人，请先完善基本信息！");
+        } else if (userres.data.count === 1) {
+          this.$message({
+            type: "success",
+            message: "修改提交成功!",
+          });
+        } else {
+          this.$message({
+            type: "fail",
+            message: "修改提交失败!",
+          });
+        }
+      }
+    },
     async search() {
       this.searchdisabled = true;
       this.inputdisabled = true;
@@ -1371,10 +1714,42 @@ export default {
         姓名: "",
         单位: "",
       };
-      param.职工号 = this.user.职工号;
-      param.姓名 = this.user.姓名;
-      param.单位 = this.user.单位;
-      var resp = await getInfoRecord(param);
+      var resp;
+      if (this.查询条件 === "0") {
+        // 根据职工号、单位和姓名查询
+        if (
+          this.user.职工号 === "" ||
+          this.user.单位 === "" ||
+          this.user.姓名 === ""
+        ) {
+          alert("请填写职工号、单位和姓名");
+        } else {
+          param.职工号 = this.user.职工号;
+          param.姓名 = this.user.姓名;
+          param.单位 = this.user.单位;
+          resp = await getInfoRecord(param);
+        }
+      } else if (this.查询条件 === "1") {
+        // 只根据职工号查询
+        if (this.user.职工号 === "") {
+          alert("请填写职工号");
+        } else {
+          param.职工号 = this.user.职工号;
+          param.姓名 = this.user.姓名;
+          param.单位 = this.user.单位;
+          resp = await getInfoRecord(param);
+        }
+      } else if (this.查询条件 === "2") {
+        if (this.user.单位 === "" || this.user.姓名 === "") {
+          alert("请填写单位和姓名");
+        } else {
+          param.职工号 = this.user.职工号;
+          param.姓名 = this.user.姓名;
+          param.单位 = this.user.单位;
+          resp = await getInfoRecord(param);
+        }
+      }
+
       console.log(resp.data.count);
       var count = resp.data.count;
       if (count === 0) {
@@ -1486,10 +1861,8 @@ export default {
     //     this.user.partyDate = new Date();
     //   }
     // },
-    // saveOrUpdate() {
-    //   valve.save(this.user);
-    // },
-    // goback() {},
+
+    goback() {},
     // //添加一行
     // addedu() {
     //   this.学历学位材料.学习经历列表.push({});
