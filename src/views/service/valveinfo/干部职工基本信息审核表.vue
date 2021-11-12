@@ -7,12 +7,12 @@
           <el-row>
             <el-col :span="4">
               <el-form-item label="职工号" prop="职工号">
-                <el-input v-model="基本信息.职工号"/>
+                <el-input v-model="user.职工号"/>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="单位" prop="单位">
-                <el-select v-model="基本信息.单位" filterable placeholder="输入搜索">
+                <el-select v-model="user.单位" filterable placeholder="输入搜索">
                   <el-option
                     v-for="item in 单位字典"
                     :key="item"
@@ -24,10 +24,10 @@
             </el-col>
             <el-col :span="4">
               <el-form-item label="姓名" prop="姓名">
-                <el-input v-model="基本信息.姓名" controls-position="right" :min="0"/>
+                <el-input v-model="user.姓名" controls-position="right" :min="0"/>
               </el-form-item>
             </el-col>
-            <el-col :span="5">
+            <!-- <el-col :span="5">
               <el-form-item label="查询条件">
                 <el-select v-model="查询条件" placeholder="请选择" style="width: 130px">
                   <el-option label="全部" value="0"></el-option>
@@ -35,7 +35,7 @@
                   <el-option label="单位和姓名" value="2"></el-option>
                 </el-select>
               </el-form-item>
-            </el-col>
+            </el-col> -->
             <el-col :span="2">
               <el-button type="primary" plain :disabled="isDisabled" size="mini" @click="search">查找</el-button>
             </el-col>
@@ -46,7 +46,7 @@
           <el-row>
             <el-col :span="4">
               <el-form-item label="性别" prop="性别">
-                <el-select v-model="基本信息.性别" placeholder="请选择">
+                <el-select v-model="user.性别" placeholder="请选择">
                   <el-option label="男" value="男"></el-option>
                   <el-option label="女" value="女"></el-option>
                 </el-select>
@@ -54,62 +54,62 @@
             </el-col>
             <el-col :span="4">
               <el-form-item label="民族" prop="民族">
-                <el-input v-model="基本信息.民族" controls-position="right" :min="0"/>
+                <el-input v-model="user.民族" controls-position="right" :min="0"/>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="籍贯">
-                <el-input v-model="基本信息.籍贯" controls-position="right" :min="0"/>
+                <el-input v-model="user.籍贯" controls-position="right" :min="0"/>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="出生地">
-                <el-input v-model="基本信息.出生地" controls-position="right" :min="0"/>
+                <el-input v-model="user.出生地" controls-position="right" :min="0"/>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="健康状况">
-                <el-input v-model="基本信息.健康状况" controls-position="right" :min="0"/>
+                <el-input v-model="user.健康状况" controls-position="right" :min="0"/>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="4">
               <el-form-item label="现任职务" label-width="90px">
-                <el-input v-model="基本信息.现任职务" controls-position="right" :min="0" style="width: 100px"/>
+                <el-input v-model="user.现任职务" controls-position="right" :min="0" style="width: 100px"/>
               </el-form-item>
             </el-col>
             <el-col :span="7">
               <el-form-item label="专业技术职务（职称）" label-width="180px">
-                <el-input v-model="基本信息.专业技术职务职称" controls-position="right" :min="0"/>
+                <el-input v-model="user.专业技术职务职称" controls-position="right" :min="0"/>
               </el-form-item>
             </el-col>
             <el-col :span="6">
               <el-form-item label="熟悉专业、有何特长">
-                <el-input type="textarea" :rows="2" v-model="基本信息.熟悉专业有何特长" style="width: 450px"/>
+                <el-input type="textarea" :rows="2" v-model="user.熟悉专业有何特长" style="width: 450px"/>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="4">
               <el-form-item label="出生年月">
-                <el-date-picker type="month" placeholder="选择出生年月" v-model="基本信息.出生年月"
+                <el-date-picker type="month" placeholder="选择出生年月" v-model="user.出生年月"
                                 style="width: 140px;"></el-date-picker>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="年龄">
-                <el-input v-model="基本信息.年龄"></el-input>
+                <el-input v-model="年龄"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="参加工作时间">
-                <el-input v-model="基本信息.参加工作时间"></el-input>
+                <el-input v-model="参加工作时间"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="入党时间">
-                <el-input v-model="基本信息.入党时间"></el-input>
+                <el-input v-model="入党时间"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
@@ -121,17 +121,17 @@
           <el-row>
             <el-col :span="4">
               <el-form-item label="初审人职工号" prop="初审人职工号">
-                <el-input v-model="审核情况.初审人职工号" controls-position="right" :min="0"/>
+                <el-input v-model="user.初审人职工号" controls-position="right" :min="0"/>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="初审人" prop="初审人">
-                <el-input v-model="审核情况.初审人" controls-position="right" :min="0"/>
+                <el-input v-model="user.初审人" controls-position="right" :min="0"/>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="初审人单位" prop="初审人单位">
-                <el-select v-model="审核情况.初审人单位" filterable placeholder="输入搜索">
+                <el-select v-model="user.初审人单位" filterable placeholder="输入搜索">
                   <el-option
                     v-for="item in 单位字典"
                     :key="item"
@@ -143,13 +143,13 @@
             </el-col>
             <el-col :span="5">
               <el-form-item label="初审时间" prop="初审时间">
-                <el-date-picker type="datetime" placeholder="选择日期" v-model="审核情况.初审时间"
+                <el-date-picker type="datetime" placeholder="选择日期" v-model="user.初审时间"
                                 style="width: 180px;"></el-date-picker>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="初审状态" prop="初审状态">
-                <el-select v-model="审核情况.初审状态" style="width: 100px">
+                <el-select v-model="user.初审状态" style="width: 100px">
                   <el-option label="未初审" value="未初审"></el-option>
                   <el-option label="初审中" value="初审中"></el-option>
                   <el-option label="完成初审" value="完成初审"></el-option>
@@ -160,17 +160,17 @@
           <el-row>
             <el-col :span="4">
               <el-form-item label="复审人职工号" prop="复审人职工号">
-                <el-input v-model="审核情况.复审人职工号" controls-position="right" :min="0"/>
+                <el-input v-model="user.复审人职工号" controls-position="right" :min="0"/>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="复审人" prop="复审人">
-                <el-input v-model="审核情况.复审人" controls-position="right" :min="0"/>
+                <el-input v-model="user.复审人" controls-position="right" :min="0"/>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="复审人单位" prop="复审人单位">
-                <el-select v-model="审核情况.复审人单位" filterable placeholder="输入搜索">
+                <el-select v-model="user.复审人单位" filterable placeholder="输入搜索">
                   <el-option
                     v-for="item in 单位字典"
                     :key="item"
@@ -182,13 +182,13 @@
             </el-col>
             <el-col :span="5">
               <el-form-item label="复审时间" prop="复审时间">
-                <el-date-picker type="datetime" placeholder="选择日期" v-model="审核情况.复审时间"
+                <el-date-picker type="datetime" placeholder="选择日期" v-model="user.复审时间"
                                 style="width: 180px;"></el-date-picker>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="复审状态" prop="复审状态">
-                <el-select v-model="审核情况.复审状态" style="width: 100px">
+                <el-select v-model="user.复审状态" style="width: 100px">
                   <el-option label="未初审" value="未初审"></el-option>
                   <el-option label="初审中" value="初审中"></el-option>
                   <el-option label="完成初审" value="完成初审"></el-option>
@@ -204,44 +204,44 @@
           <el-row>
             <el-col :span="4">
               <el-form-item  label="全日制最高学历">
-                <el-input v-model="最高学历学位.全日制最高学历" ></el-input>
+                <el-input v-model="user.全日制最高学历" ></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item  label="全日制最高学位">
-                <el-input v-model="最高学历学位.全日制最高学位" ></el-input>
+                <el-input v-model="user.全日制最高学位" ></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item  label="在职最高学历">
-                <el-input v-model="最高学历学位.在职最高学历" ></el-input>
+                <el-input v-model="user.在职最高学历" ></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item  label="在职最高学位">
-                <el-input v-model="最高学历学位.在职最高学位" ></el-input>
+                <el-input v-model="user.在职最高学位" ></el-input>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="5">
               <el-form-item  label="全日制最高学历毕业院校、系及专业" label-width="150px">
-                <el-input v-model="最高学历学位.全日制最高学历毕业院校" ></el-input>
+                <el-input v-model="user.全日制最高学历毕业院校" ></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="5">
               <el-form-item  label="全日制最高学位毕业院校、系及专业" label-width="150px">
-                <el-input v-model="最高学历学位.全日制最高学位毕业院校" ></el-input>
+                <el-input v-model="user.全日制最高学位毕业院校" ></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="5">
               <el-form-item  label="在职最高学历毕业院校、系及专业" label-width="150px">
-                <el-input v-model="最高学历学位.在职最高学历毕业院校" ></el-input>
+                <el-input v-model="user.在职最高学历毕业院校" ></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="5">
               <el-form-item  label="在职最高学位毕业院校、系及专业" label-width="150px">
-                <el-input v-model="最高学历学位.在职最高学位毕业院校" ></el-input>
+                <el-input v-model="user.在职最高学位毕业院校" ></el-input>
               </el-form-item>
             </el-col>
 <!--            <el-col :span="4">-->
@@ -262,24 +262,24 @@
           <el-row>
             <el-col :span="11">
               <el-form-item label="全日制教育最高学历学位" prop="日制教育最高学历学位" label-width="250px">
-                <el-input type="textarea" :rows="1" v-model="最高学历学位.全日制教育最高学历学位" style="width: 250px"/>
+                <el-input type="textarea" :rows="1" v-model="user.全日制教育最高学历学位" style="width: 250px"/>
               </el-form-item>
             </el-col>
             <el-col :span="11">
               <el-form-item label="全日制教育毕业院校系及专业" prop="全日制教育毕业院校、系及专业" label-width="250px">
-                <el-input type="textarea" :rows="1" v-model="最高学历学位.全日制教育毕业院校系及专业" style="width: 250px"/>
+                <el-input type="textarea" :rows="1" v-model="user.全日制教育毕业院校系及专业" style="width: 250px"/>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="11">
               <el-form-item label="在职教育最高学历学位" prop="在职教育最高学历学位" label-width="250px">
-                <el-input type="textarea" :rows="1" v-model="最高学历学位.在职教育最高学历学位" style="width: 250px"/>
+                <el-input type="textarea" :rows="1" v-model="user.在职教育最高学历学位" style="width: 250px"/>
               </el-form-item>
             </el-col>
             <el-col :span="11">
               <el-form-item label="在职教育毕业院校系及专业" prop="在职教育毕业院校、系及专业" label-width="250px">
-                <el-input type="textarea" :rows="1" v-model="最高学历学位.在职教育毕业院校系及专业" style="width: 250px"/>
+                <el-input type="textarea" :rows="1" v-model="user.在职教育毕业院校系及专业" style="width: 250px"/>
               </el-form-item>
             </el-col>
           </el-row>
@@ -307,7 +307,7 @@
           </div>
             <h5 style="text-align: left" >&emsp;&emsp;学习经历</h5>
             <el-table
-              :data="简历.学习经历"
+              :data="user.学习经历"
               align="center"
               border >
               <el-table-column prop="入学时间" label="入学时间" width="100px">
@@ -341,7 +341,7 @@
             <br>
             <h5 style="text-align: left" >&emsp;&emsp;工作经历</h5>
             <el-table
-            :data="简历.工作经历"
+            :data="user.工作经历"
             align="center"
             border >
             <el-table-column prop="起始时间" label="起始时间" width="100px">
@@ -377,7 +377,7 @@
             placeholder="请输入内容"
             style="width: 1200px"
 
-            v-model="textarea">
+            v-model="user.简历">
           </el-input>
           <br>
           <br>
@@ -400,7 +400,7 @@
           <el-row>
             <el-col :span="7">
               <el-form-item label="2019年年度考核结果" prop="awardResult2019" label-width="150px">
-                <el-select v-model="奖惩情况.a2019年考核结果" placeholder="请选择">
+                <el-select v-model="user.a2019年考核结果" placeholder="请选择">
                   <el-option
                     v-for="item in 考核结果字典"
                     :key="item"
@@ -412,14 +412,14 @@
             </el-col>
             <el-col :span="9">
               <el-form-item label="2019年年度考核备注" prop="awardResult备注2019" label-width="150px">
-                <el-input v-model="奖惩情况.a2019年考核备注" style="width: 250px"></el-input>
+                <el-input v-model="user.a2019年考核备注" style="width: 250px"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="7">
               <el-form-item label="2020年年度考核结果" prop="awardResult2020" label-width="150px">
-                <el-select v-model="奖惩情况.a2020年考核结果" placeholder="请选择">
+                <el-select v-model="user.a2020年考核结果" placeholder="请选择">
                   <el-option
                     v-for="item in 考核结果字典"
                     :key="item"
@@ -431,13 +431,13 @@
             </el-col>
             <el-col :span="9">
               <el-form-item label="2020年年度考核备注" prop="awardResult备注2020" label-width="150px">
-                <el-input v-model="奖惩情况.a2020年考核备注" style="width: 250px"></el-input>
+                <el-input v-model="user.a2020年考核备注" style="width: 250px"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
           <el-form-item label="添加奖励情况">
             <el-button icon="el-icon-plus" type="success" size="mini" @click="addaward">添加</el-button>
-            <el-table :data="奖惩情况.奖励情况记录" align="center" border style="width: 99%;margin-top: 10px"
+            <el-table :data="user.奖励情况记录" align="center" border style="width: 99%;margin-top: 10px"
                       height="200">
               <el-table-column label="奖励时间">
                 <template slot-scope="scope">
@@ -465,7 +465,7 @@
           </el-form-item>
           <el-form-item label="添加处分情况">
             <el-button icon="el-icon-plus" type="success" size="mini" @click="addPunish">添加</el-button>
-            <el-table :data="奖惩情况.处分情况记录" align="center" border style="width: 99%;margin-top: 10px"
+            <el-table :data="user.处分情况记录" align="center" border style="width: 99%;margin-top: 10px"
                       height="200">
               <el-table-column label="处分时间">
                 <template slot-scope="scope">
@@ -497,7 +497,7 @@
                     :rows="5"
                     placeholder="请输入内容"
                     style="width: 1200px"
-                    v-model="奖惩情况.奖惩情况">
+                    v-model="user.奖惩情况">
           </el-input>
           <h5 style="text-align: left" >&emsp;&emsp;年度考核结果</h5>
           <el-input class="简历"
@@ -505,7 +505,7 @@
                     :rows="4"
                     placeholder="请输入内容"
                     style="width: 1200px"
-                    v-model="奖惩情况.年度考核结果">
+                    v-model="user.年度考核结果">
           </el-input>
         </div>
       </div>
@@ -514,7 +514,7 @@
           <h4 style="text-align: center">家庭主要成员及重要社会关系</h4>
           <el-form-item label="家庭主要成员及重要社会关系">
             <el-button icon="el-icon-plus" type="success" size="mini" @click="addFamily">添加</el-button>
-            <el-table :data="家庭成员.家庭成员记录" align="center" border style="width: 99%;margin-top: 10px" height="250">
+            <el-table :data="user.家庭成员记录" align="center" border style="width: 99%;margin-top: 10px" height="250">
               <el-table-column label="称谓">
                 <template slot-scope="scope">
                   <el-form-item :prop="`家庭成员列表.${scope.$index}.称谓`" :rules="rules.chinaName">
@@ -579,7 +579,7 @@
       <div class="cell">
         <div class="container">
           <h4 style="text-align: center">单位审核意见</h4>
-          <el-input type="textarea" :rows="10" placeholder="请输入单位审核意见" v-model="单位审核意见"
+          <el-input type="textarea" :rows="10" placeholder="请输入单位审核意见" v-model="user.单位审核意见"
           style="margin-left: 100px;width: 1100px;"></el-input>
         </div>
       </div>
@@ -600,6 +600,7 @@ import 出生时间 from "@/api/service/出生时间";
 import 参加工作时间 from "@/api/service/参加工作时间";
 import 入党时间 from "@/api/service/入党时间";
 import 学历学位材料 from "@/api/service/学历学位材料";
+import { getInfoRecord, putInfoRecord } from "@/api/service/干部基本信息审核表";
 export default {
   data() {
     var checknumber = (rule, value, callback) => {
@@ -1164,9 +1165,6 @@ export default {
         },
       ],
       考核结果字典: ["优秀"],
-      isShow: false,
-      isDisabled: false,
-      showPartyDate: false,
       基本信息: {
         职工号: "",
         单位: "",
@@ -1308,11 +1306,82 @@ export default {
         chinaName: [{ required: true, message: "必填", trigger: "blur" }],
         phone: [{ required: true, message: "必填", trigger: "blur" }],
       },
+      searchdisabled:false,
+      inputdisabled:false,
+      isShow: false,
+      isDisabled: false,
+      showPartyDate: false,
+      cancelshow: false,
+      divshow: false,
+      年龄: "?",
+      入党时间:"/",
+      参加工作时间:",",
+      出生年月:".",
+      user: {
+        职工号: "1",
+        单位: "2",
+        姓名: "3",
+        性别: "4",
+        民族: "5",
+        籍贯: "6",
+        出生地: "7",
+        现任职务: "8",
+        健康状况: "9",
+        专业技术职务职称: "q",
+        熟悉专业有何特长: "w",
+        初审认定出生时间: "e",
+        复审认定出生时间: "r",
+        复审认定参加工作时间: "t",
+        初审认定参加工作时间: "y",
+        初审认定入党时间: "u",
+        复审认定入党时间: "i",
+        //审核情况8项
+        初审人职工号: "o",
+        初审人: "p",
+        初审人单位: "l",
+        初审时间: "k",
+        初审状态: "j",
+        复审人职工号: "h",
+        复审人: "g",
+        复审人单位: "f",
+        复审时间: "d",
+        复审状态: "s",
+        //最高学历学位12项
+        全日制最高学历: "a",
+        全日制最高学位: "z",
+        在职最高学历: "x",
+        在职最高学位: "c",
+        全日制最高学历毕业院校系及专业: "v",
+        全日制最高学位毕业院校系及专业: "b",
+        在职最高学历毕业院校系及专业: "n",
+        在职最高学位毕业院校系及专业: "m",
+        全日制教育最高学历学位: "!",
+        全日制教育毕业院校系及专业: "@",
+        在职教育最高学历学位: "#",
+        在职教育毕业院校系及专业: "$",
+        //简历3项
+        学习经历: [],
+        工作经历: [],
+        简历: "%",
+        //奖惩情况8项
+        a2019年考核结果: "^",
+        a2019年考核备注: "&",
+        a2020年考核结果: "*",
+        a2020年考核备注: "（",
+        奖励情况记录: [],
+        处分情况记录: [],
+        奖惩情况: "）",
+        年度考核结果: "——",
+        //家庭主要成员及社会关系
+        家庭成员记录: [],
+        //单位审核意见
+        单位审核意见: "+",
+      },
     };
   },
 
   mounted() {
-    this.fetchedu();
+    //this.fetchedu();
   },
   created() {
     // 在页面渲染前调用methods中方法
@@ -1329,192 +1398,207 @@ export default {
         }
       );
     },
+    flush(){
+    },
+    calculate(){
+
+    },
     editedu() {},
     // 查找信息
-    search() {
-      if (this.查询条件 === "0") {
-        // 根据职工号、单位和姓名查询
-        if (
-          this.基本信息.职工号 === "" ||
-          this.基本信息.单位 === "" ||
-          this.基本信息.姓名 === ""
-        ) {
-          alert("请填写职工号、单位和姓名");
-        } else {
-          this.getdata();
-        }
-      } else if (this.查询条件 === "1") {
-        // 只根据职工号查询
-        if (this.基本信息.职工号 === "") {
-          alert("请填写职工号");
-        } else {
-          this.getdata();
-        }
-      } else if (this.查询条件 === "2") {
-        if (this.基本信息.单位 === "" || this.基本信息.姓名 === "") {
-          alert("请填写单位和姓名");
-        } else {
-          this.getdata();
-        }
-      }
-    },
-    getdata() {
-      基本信息.getdata(this.查询条件, this.基本信息).then((response) => {
-        if (response.data.count === 0) {
-          alert(
-            "该教职工信息未入库，请填写“单位”、“职工号”、“姓名”后点击“新增”按钮！"
-          );
-        } else if (response.data.count === 2) {
-          alert("该单位教职工姓名有重复，请输入职工号");
-        } else if (response.data.count === 1) {
-          this.基本信息 = response.data.data.基本信息;
-          this.审核情况 = response.data.data.审核情况;
-          this.最高学历学位 = response.data.data.学历学位;
-          this.简历.学习经历 = response.data.data.学历学位.学习经历记录;
-          this.简历.工作经历 = response.data.data.工作经历.工作经历列表;
-          this.奖惩情况 = response.data.data.奖惩情况;
-          this.家庭成员 = response.data.data.家庭成员;
-          this.isShow = true; // 显示后面模块
-          //this.isDisabled = true; // 禁用查询和新增按钮
-          this.$message({
-            type: "success",
-            message: "查询成功!",
-          });
-        } else {
-          alert("查询信息有误");
-        }
-      });
-    },
-    // 基本信息中新增按钮
-    add() {
-      this.isShow = true; // 显示后面模块
-      this.isDisabled = true; // 禁用查询和新增按钮
-    },
-    save1() {
-      基本信息.save(this.基本信息);
-    },
-    update1() {
-      基本信息.update(this.基本信息);
-    },
-    save2() {
-      this.审核情况.职工号 = this.基本信息.职工号;
-      审核情况.save(this.审核情况);
-    },
-    update2() {
-      this.审核情况.职工号 = this.基本信息.职工号;
-      审核情况.update(this.审核情况);
-    },
-    save3() {
-      this.出生时间.职工号 = this.基本信息.职工号;
-      出生时间.save(this.出生时间);
-    },
-    update3() {
-      this.出生时间.职工号 = this.基本信息.职工号;
-      出生时间.update(this.出生时间);
-    },
-    save4() {
-      this.参加工作时间.职工号 = this.基本信息.职工号;
-      参加工作时间.save(this.参加工作时间);
-    },
-    update4() {
-      this.参加工作时间.职工号 = this.基本信息.职工号;
-      参加工作时间.update(this.参加工作时间);
-    },
-    save5() {
-      this.入党时间.职工号 = this.基本信息.职工号;
-      入党时间.save(this.入党时间);
-    },
-    update5() {
-      this.入党时间.职工号 = this.基本信息.职工号;
-      入党时间.update(this.入党时间);
-    },
-    save6() {
-      this.学历学位材料.职工号 = this.基本信息.职工号;
-      学历学位材料.save(this.学历学位材料);
-    },
-    update6() {
-      this.学历学位材料.职工号 = this.基本信息.职工号;
-      学历学位材料.update(this.学历学位材料);
-    },
-    // 如果政治面貌是党员，显示入党时间
-    isPartyer(value) {
-      if (value === "中共党员") {
-        this.showPartyDate = true;
-      } else {
-        this.user.partyDate = new Date();
-      }
-    },
-    saveOrUpdate() {
-      valve.save(this.user);
-    },
-    goback() {},
-    //添加一行
-    addedu() {
-      this.学历学位材料.学习经历列表.push({});
-    },
-    addexperience() {
-      this.user.工作经历列表.push({
-        起始时间: "",
-        终止时间: "",
-        所在单位名称: "",
-        从事工作: "",
-        曾任党政职务: "",
-        曾任专业技术职务: "",
-        备注: "",
-      });
-    },
-    addaward() {
-      this.user.奖励情况列表.push({
-        奖励时间: "",
-        奖励情况: "",
-      });
-    },
-    addPunish() {
-      this.user.处分情况列表.push({
-        处分时间: "",
-        处分情况: "",
-      });
-    },
-    addFamily() {
-      this.user.家庭成员列表.push({
-        称谓: "",
+    async search() {
+      this.searchdisabled = true;
+      this.inputdisabled = true;
+      var param = {
+        职工号: "123456789",
         姓名: "",
-        出生年月: "",
-        政治面貌: "",
-        单位及职务: "",
-        现居住地: "",
-      });
-    },
-    removeEdu(item) {
-      var index = this.学历学位材料.学习经历列表.indexOf(item);
-      if (index !== -1) {
-        this.学历学位材料.学习经历列表.splice(index, 1);
+        单位: "",
+      };
+      param.职工号 = this.user.职工号;
+      param.姓名 = this.user.姓名;
+      param.单位 = this.user.单位;
+      var resp = await getInfoRecord(param);
+      console.log(resp.data.count);
+      var count = resp.data.count;
+      if (count === 0) {
+        this.flush();
+        alert("查无此人，请先完善基本信息");
+        this.inputdisabled = false;
+        this.searchdisabled = false;
+      } else if (count > 1) {
+        this.flush();
+        alert('人员信息存在重复，请以"职工号"进行查询');
+        this.inputdisabled = false;
+        this.searchdisabled = false;
+      } else if (count === 1) {
+        this.user = resp.data.user;
+        this.calculateu();
+        this.divshow = true;
+        this.$message({
+          type: "success",
+          message: "查询成功!",
+        });
+        this.cancelshow = true;
+      } else {
+        alert('请以"职工号"或"姓名"加"单位"的组合进行查询');
+        this.inputdisabled = false;
+        this.searchdisabled = false;
       }
+      // if (this.查询条件 === "0") {
+      //   // 根据职工号、单位和姓名查询
+      //   if (
+      //     this.基本信息.职工号 === "" ||
+      //     this.基本信息.单位 === "" ||
+      //     this.基本信息.姓名 === ""
+      //   ) {
+      //     alert("请填写职工号、单位和姓名");
+      //   } else {
+      //     this.getdata();
+      //   }
+      // } else if (this.查询条件 === "1") {
+      //   // 只根据职工号查询
+      //   if (this.基本信息.职工号 === "") {
+      //     alert("请填写职工号");
+      //   } else {
+      //     this.getdata();
+      //   }
+      // } else if (this.查询条件 === "2") {
+      //   if (this.基本信息.单位 === "" || this.基本信息.姓名 === "") {
+      //     alert("请填写单位和姓名");
+      //   } else {
+      //     this.getdata();
+      //   }
+      // }
     },
-    removeExperience(item) {
-      var index = this.user.工作经历列表.indexOf(item);
-      if (index !== -1) {
-        this.user.工作经历列表.splice(index, 1);
-      }
-    },
-    removeAward(item) {
-      var index = this.user.奖励情况列表.indexOf(item);
-      if (index !== -1) {
-        this.user.奖励情况列表.splice(index, 1);
-      }
-    },
-    removePunish(item) {
-      var index = this.user.处分情况列表.indexOf(item);
-      if (index !== -1) {
-        this.user.处分情况列表.splice(index, 1);
-      }
-    },
-    removeFamily(item) {
-      var index = this.user.家庭成员列表.indexOf(item);
-      if (index !== -1) {
-        this.user.家庭成员列表.splice(index, 1);
-      }
-    },
+    // // 基本信息中新增按钮
+    // add() {
+    //   this.isShow = true; // 显示后面模块
+    //   this.isDisabled = true; // 禁用查询和新增按钮
+    // },
+    // save1() {
+    //   基本信息.save(this.基本信息);
+    // },
+    // update1() {
+    //   基本信息.update(this.基本信息);
+    // },
+    // save2() {
+    //   this.审核情况.职工号 = this.基本信息.职工号;
+    //   审核情况.save(this.审核情况);
+    // },
+    // update2() {
+    //   this.审核情况.职工号 = this.基本信息.职工号;
+    //   审核情况.update(this.审核情况);
+    // },
+    // save3() {
+    //   this.出生时间.职工号 = this.基本信息.职工号;
+    //   出生时间.save(this.出生时间);
+    // },
+    // update3() {
+    //   this.出生时间.职工号 = this.基本信息.职工号;
+    //   出生时间.update(this.出生时间);
+    // },
+    // save4() {
+    //   this.参加工作时间.职工号 = this.基本信息.职工号;
+    //   参加工作时间.save(this.参加工作时间);
+    // },
+    // update4() {
+    //   this.参加工作时间.职工号 = this.基本信息.职工号;
+    //   参加工作时间.update(this.参加工作时间);
+    // },
+    // save5() {
+    //   this.入党时间.职工号 = this.基本信息.职工号;
+    //   入党时间.save(this.入党时间);
+    // },
+    // update5() {
+    //   this.入党时间.职工号 = this.基本信息.职工号;
+    //   入党时间.update(this.入党时间);
+    // },
+    // save6() {
+    //   this.学历学位材料.职工号 = this.基本信息.职工号;
+    //   学历学位材料.save(this.学历学位材料);
+    // },
+    // update6() {
+    //   this.学历学位材料.职工号 = this.基本信息.职工号;
+    //   学历学位材料.update(this.学历学位材料);
+    // },
+    // // 如果政治面貌是党员，显示入党时间
+    // isPartyer(value) {
+    //   if (value === "中共党员") {
+    //     this.showPartyDate = true;
+    //   } else {
+    //     this.user.partyDate = new Date();
+    //   }
+    // },
+    // saveOrUpdate() {
+    //   valve.save(this.user);
+    // },
+    // goback() {},
+    // //添加一行
+    // addedu() {
+    //   this.学历学位材料.学习经历列表.push({});
+    // },
+    // addexperience() {
+    //   this.user.工作经历列表.push({
+    //     起始时间: "",
+    //     终止时间: "",
+    //     所在单位名称: "",
+    //     从事工作: "",
+    //     曾任党政职务: "",
+    //     曾任专业技术职务: "",
+    //     备注: "",
+    //   });
+    // },
+    // addaward() {
+    //   this.user.奖励情况列表.push({
+    //     奖励时间: "",
+    //     奖励情况: "",
+    //   });
+    // },
+    // addPunish() {
+    //   this.user.处分情况列表.push({
+    //     处分时间: "",
+    //     处分情况: "",
+    //   });
+    // },
+    // addFamily() {
+    //   this.user.家庭成员列表.push({
+    //     称谓: "",
+    //     姓名: "",
+    //     出生年月: "",
+    //     政治面貌: "",
+    //     单位及职务: "",
+    //     现居住地: "",
+    //   });
+    // },
+    // removeEdu(item) {
+    //   var index = this.学历学位材料.学习经历列表.indexOf(item);
+    //   if (index !== -1) {
+    //     this.学历学位材料.学习经历列表.splice(index, 1);
+    //   }
+    // },
+    // removeExperience(item) {
+    //   var index = this.user.工作经历列表.indexOf(item);
+    //   if (index !== -1) {
+    //     this.user.工作经历列表.splice(index, 1);
+    //   }
+    // },
+    // removeAward(item) {
+    //   var index = this.user.奖励情况列表.indexOf(item);
+    //   if (index !== -1) {
+    //     this.user.奖励情况列表.splice(index, 1);
+    //   }
+    // },
+    // removePunish(item) {
+    //   var index = this.user.处分情况列表.indexOf(item);
+    //   if (index !== -1) {
+    //     this.user.处分情况列表.splice(index, 1);
+    //   }
+    // },
+    // removeFamily(item) {
+    //   var index = this.user.家庭成员列表.indexOf(item);
+    //   if (index !== -1) {
+    //     this.user.家庭成员列表.splice(index, 1);
+    //   }
+    // },
   },
 };
 </script>
