@@ -25,13 +25,12 @@
       </el-form-item>
       <el-form-item>
         <el-button :loading="loading" type="primary" style="width:100%;" @click.native.prevent="handleLogin">
-          Sign in
+          登录
         </el-button>
       </el-form-item>
-      <div class="tips">
-        <span style="margin-right:20px;">username: admin</span>
-        <span> password: admin</span>
-      </div>
+      <el-button  type="primary" plain style="width:100%;" @click="toRegister">
+        注册
+      </el-button>
     </el-form>
   </div>
 </template>
@@ -58,8 +57,8 @@ export default {
     }
     return {
       loginForm: {
-        username: 'admin',
-        password: 'admin'
+        username: '123456789',
+        password: '11111111'
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -102,6 +101,9 @@ export default {
           return false
         }
       })
+    },
+    toRegister(){
+      this.$router.push({path: '/register'})
     }
   }
 }
@@ -109,7 +111,7 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss">
 $bg:#2d3a4b;
-$light_gray:#eee;
+$light_gray: #000000;
 
 /* reset element-ui css */
 .login-container {
@@ -144,30 +146,24 @@ $light_gray:#eee;
 <style rel="stylesheet/scss" lang="scss" scoped>
 $bg:#2d3a4b;
 $dark_gray:#889aa4;
-$light_gray:#eee;
+$light_gray: #726c6c;
 .login-container {
   position: fixed;
   height: 100%;
   width: 100%;
-  background-color: $bg;
+  background-size: cover;
+  background-position: center;
+  background-image: url("../../assets/background/main3.jpg");
   .login-form {
     position: absolute;
     left: 0;
     right: 0;
     width: 520px;
     max-width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 0 25px #cac6c6;
     padding: 35px 35px 15px 35px;
     margin: 120px auto;
-  }
-  .tips {
-    font-size: 14px;
-    color: #fff;
-    margin-bottom: 10px;
-    span {
-      &:first-of-type {
-        margin-right: 16px;
-      }
-    }
   }
   .svg-container {
     padding: 6px 5px 6px 15px;
