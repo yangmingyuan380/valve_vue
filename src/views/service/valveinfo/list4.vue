@@ -105,6 +105,11 @@
                 </el-select>
               </el-form-item>
             </el-col>
+            <el-col :span="4">
+              <el-form-item label="进入本校时间">
+                <el-input v-model="user.进入本校时间"></el-input>
+              </el-form-item>
+            </el-col>
           </el-row>
           <el-form-item label="熟悉专业、有何特长">
             <el-input type="textarea" :rows="2" v-model="基本信息.熟悉专业有何特长" style="width: 500px"/>

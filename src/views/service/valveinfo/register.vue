@@ -90,7 +90,15 @@
       label-width="120px"
       size="mini"
     >
+<<<<<<< HEAD
       <div class="mytable" v-show="divshow">
+=======
+
+
+
+
+      <div class="mytable" >
+>>>>>>> 7fcc3e920f48e7edded06f7d88cb45ad7d457009
         <el-container style="height: 850px">
           <el-main width="main" class="main">
             <el-table

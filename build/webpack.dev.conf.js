@@ -9,6 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
+
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -47,6 +48,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     }
   },
   plugins: [
+
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
     }),
