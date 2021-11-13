@@ -108,6 +108,11 @@
                 </el-select>
               </el-form-item>
             </el-col>
+            <el-col :span="4">
+              <el-form-item label="进入本校时间">
+                <el-input v-model="user.进入本校时间"></el-input>
+              </el-form-item>
+            </el-col>
           </el-row>
         </div>
       </div>

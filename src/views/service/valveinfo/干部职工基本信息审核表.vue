@@ -145,6 +145,64 @@
             </el-col>
           </el-row>
           <el-row>
+            <el-col :span="5">
+              <el-form-item label="初审认定出生时间" label-width="150px">
+                <el-input
+                  v-model="user.初审认定出生时间"
+                  controls-position="right"
+                  :min="0"
+                  ></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="5">
+              <el-form-item label="初审认定参加工作时间" label-width="180px">
+                <el-input
+                  v-model="user.初审认定参加工作时间"
+                  controls-position="right"
+                  :min="0"
+                ></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="5">
+              <el-form-item label="初审认定入党时间" label-width="150px">
+                <el-input
+                  v-model="user.初审认定入党时间"
+                  controls-position="right"
+                  :min="0"
+                ></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="5">
+              <el-form-item label="复审认定出生时间" label-width="150px">
+                <el-input
+                  v-model="user.复审认定出生时间"
+                  controls-position="right"
+                  :min="0"
+                ></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="5">
+              <el-form-item label="复审认定参加工作时间" label-width="180px">
+                <el-input
+                  v-model="user.复审认定参加工作时间"
+                  controls-position="right"
+                  :min="0"
+                ></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="5">
+              <el-form-item label="复审认定入党时间" label-width="150px">
+                <el-input
+                  v-model="user.复审认定入党时间"
+                  controls-position="right"
+                  :min="0"
+                ></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
             <el-col :span="4">
               <el-form-item label="出生年月">
                 <el-date-picker
@@ -169,6 +227,11 @@
             <el-col :span="4">
               <el-form-item label="入党时间">
                 <el-input v-model="user.入党时间"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="4">
+              <el-form-item label="进入本校时间">
+                <el-input v-model="user.进入本校时间"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
@@ -295,29 +358,33 @@
         <div class="container">
           <h4 style="text-align: center">最高学历学位</h4>
           <el-row>
-            <el-col :span="4">
+            <el-col :span="5">
               <el-form-item label="全日制最高学历">
-                <el-input v-model="user.全日制最高学历"></el-input>
+                <el-input v-model="user.全日制最高学历"
+                style="width: 155px"></el-input>
               </el-form-item>
             </el-col>
-            <el-col :span="4">
+            <el-col :span="5">
               <el-form-item label="全日制最高学位">
-                <el-input v-model="user.全日制最高学位"></el-input>
+                <el-input v-model="user.全日制最高学位"
+                          style="width: 155px"></el-input>
               </el-form-item>
             </el-col>
-            <el-col :span="4">
+            <el-col :span="5">
               <el-form-item label="在职最高学历">
-                <el-input v-model="user.在职最高学历"></el-input>
+                <el-input v-model="user.在职最高学历"
+                          style="width: 155px"></el-input>
               </el-form-item>
             </el-col>
-            <el-col :span="4">
+            <el-col :span="5">
               <el-form-item label="在职最高学位">
-                <el-input v-model="user.在职最高学位"></el-input>
+                <el-input v-model="user.在职最高学位"
+                          style="width: 155px"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <el-form-item
                 label="全日制最高学历毕业院校、系及专业"
                 label-width="150px"
@@ -327,7 +394,7 @@
                 ></el-input>
               </el-form-item>
             </el-col>
-            <el-col :span="5">
+            <el-col :span="6">
               <el-form-item
                 label="全日制最高学位毕业院校、系及专业"
                 label-width="150px"
@@ -337,7 +404,7 @@
                 ></el-input>
               </el-form-item>
             </el-col>
-            <el-col :span="5">
+            <el-col :span="6">
               <el-form-item
                 label="在职最高学历毕业院校、系及专业"
                 label-width="150px"
@@ -347,13 +414,14 @@
                 ></el-input>
               </el-form-item>
             </el-col>
-            <el-col :span="5">
+            <el-col :span="6">
               <el-form-item
                 label="在职最高学位毕业院校、系及专业"
                 label-width="150px"
               >
                 <el-input
                   v-model="user.在职最高学位毕业院校系及专业"
+                  style="width: 168px;"
                 ></el-input>
               </el-form-item>
             </el-col>
@@ -481,6 +549,8 @@
             </el-table-column>
             <el-table-column prop="毕业时间" label="毕业时间" width="100px">
             </el-table-column>
+            <el-table-column prop="所学专业" label="所学专业" width="150px">
+            </el-table-column>
             <el-table-column prop="学历" label="学历" width="150px">
             </el-table-column>
             <el-table-column prop="学位" label="学位" width="150px">
@@ -508,8 +578,6 @@
               label="获得学位的国家（地区）"
               width="250px"
             >
-            </el-table-column>
-            <el-table-column prop="所学专业" label="所学专业" width="150px">
             </el-table-column>
             <!-- <el-table-column
                 fixed="right"
@@ -1557,6 +1625,7 @@ export default {
         健康状况: "9",
         年龄: "?",
         入党时间: "/",
+        进入本校时间: "/",
         参加工作时间: ",",
         出生年月: ".",
         专业技术职务职称: "q",

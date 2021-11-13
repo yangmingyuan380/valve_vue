@@ -57,78 +57,8 @@
             @click="cancel"
           >放弃修改</el-button
           >
-          <el-button type="success" plain :disabled="isDisabled" size="mini" @click="add">新增</el-button>
         </el-col>
       </el-row>
-          <el-row>
-            <el-col :span="4">
-              <el-form-item label="性别">
-                <el-select v-model="基本信息.性别" placeholder="请选择">
-                  <el-option label="男" value="男"></el-option>
-                  <el-option label="女" value="女"></el-option>
-                </el-select>
-              </el-form-item>
-            </el-col>
-            <el-col :span="4">
-              <el-form-item label="民族">
-                <el-input v-model="基本信息.民族" controls-position="right" :min="0"/>
-              </el-form-item>
-            </el-col>
-            <el-col :span="5">
-              <el-form-item label="籍贯">
-                <el-input v-model="基本信息.籍贯" controls-position="right"  style="width: 150px" :min="0"/>
-              </el-form-item>
-            </el-col>
-            <el-col :span="5">
-              <el-form-item label="出生地">
-                <el-input v-model="基本信息.出生地" controls-position="right" style="width: 140px" :min="0"/>
-              </el-form-item>
-            </el-col>
-            <el-col :span="4">
-              <el-form-item label="健康状况">
-                <el-input v-model="基本信息.健康状况" controls-position="right" :min="0"/>
-              </el-form-item>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="4">
-              <el-form-item label="现任职务" >
-                <el-input v-model="基本信息.现任职务" controls-position="right" :min="0" style="width: 80px"/>
-              </el-form-item>
-            </el-col>
-            <el-col :span="5">
-              <el-form-item label="管理岗位等级">
-                <el-select v-model="基本信息.管理岗位等级" style="width: 120px" placeholder="请选择">
-                  <el-option
-                    v-for="item in 管理岗位等级字典"
-                    :key="item"
-                    :label="item"
-                    :value="item">
-                  </el-option>
-                </el-select>
-              </el-form-item>
-            </el-col>
-            <el-col :span="5">
-              <el-form-item label="专业技术职务（职称）" label-width="180px">
-                <el-input v-model="基本信息.专业技术职务职称" controls-position="right" :min="0"/>
-              </el-form-item>
-            </el-col>
-            <el-col :span="5">
-              <el-form-item label="专业技术岗位等级" label-width="160px">
-                <el-select v-model="基本信息.专业技术岗位等级" placeholder="请选择" style="width: 150px">
-                  <el-option
-                    v-for="item in 专业技术岗位等级字典"
-                    :key="item"
-                    :label="item"
-                    :value="item">
-                  </el-option>
-                </el-select>
-              </el-form-item>
-            </el-col>
-          </el-row>
-          <el-form-item label="熟悉专业、有何特长">
-            <el-input type="textarea" :rows="2" v-model="基本信息.熟悉专业有何特长" style="width: 500px"/>
-          </el-form-item>
     </el-form>
     <el-form
       :model="user"
@@ -142,7 +72,7 @@
 
 
 
-      <div class="mytable" v-show="divshow">
+      <div class="mytable" >
         <el-container style="height: 850px">
           <el-main width="main" class="main">
             <el-table
