@@ -56,14 +56,20 @@
                 </el-select>
               </el-form-item>
             </el-col>
-            <el-col :span="2">
+            <el-col :span="4">
               <el-button
                 type="primary"
-                plain
                 :disabled="isDisabled"
                 size="mini"
                 @click="search"
                 >查找</el-button
+              >
+              <el-button
+                type="danger"
+                :disabled="isDisabled"
+                size="mini"
+                @click="goback"
+                >取消</el-button
               >
             </el-col>
           </el-row>
@@ -151,7 +157,7 @@
                   v-model="user.初审认定出生时间"
                   controls-position="right"
                   :min="0"
-                  ></el-input>
+                ></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="5">
@@ -360,26 +366,34 @@
           <el-row>
             <el-col :span="5">
               <el-form-item label="全日制最高学历">
-                <el-input v-model="user.全日制最高学历"
-                style="width: 155px"></el-input>
+                <el-input
+                  v-model="user.全日制最高学历"
+                  style="width: 155px"
+                ></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="5">
               <el-form-item label="全日制最高学位">
-                <el-input v-model="user.全日制最高学位"
-                          style="width: 155px"></el-input>
+                <el-input
+                  v-model="user.全日制最高学位"
+                  style="width: 155px"
+                ></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="5">
               <el-form-item label="在职最高学历">
-                <el-input v-model="user.在职最高学历"
-                          style="width: 155px"></el-input>
+                <el-input
+                  v-model="user.在职最高学历"
+                  style="width: 155px"
+                ></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="5">
               <el-form-item label="在职最高学位">
-                <el-input v-model="user.在职最高学位"
-                          style="width: 155px"></el-input>
+                <el-input
+                  v-model="user.在职最高学位"
+                  style="width: 155px"
+                ></el-input>
               </el-form-item>
             </el-col>
           </el-row>
@@ -421,7 +435,7 @@
               >
                 <el-input
                   v-model="user.在职最高学位毕业院校系及专业"
-                  style="width: 168px;"
+                  style="width: 168px"
                 ></el-input>
               </el-form-item>
             </el-col>
@@ -967,8 +981,7 @@
       </div>
       <div class="mybottom">
         <el-form-item style="text-align: center">
-          <el-button type="primary" @click="saveOrUpdate">提交</el-button>
-          <el-button type="primary" @click="goback">取消</el-button>
+          <el-button type="success" @click="saveOrUpdate">提交</el-button>
         </el-form-item>
       </div>
     </el-form>
@@ -977,7 +990,7 @@
 
 <script>
 import { getInfoRecord, putInfoRecord } from "@/api/service/干部基本信息审核表";
-import 基本信息 from '@/api/service/基本信息'
+import 基本信息 from "@/api/service/基本信息";
 export default {
   data() {
     var checknumber = (rule, value, callback) => {
@@ -1678,13 +1691,13 @@ export default {
   // },
   created() {
     // 在页面渲染前调用methods中方法
-      基本信息.getlist().then((response) => {
+    基本信息.getlist().then((response) => {
       this.政治面貌字典 = response.data.政治面貌字典;
       this.单位字典 = response.data.单位字典;
       this.学历字典 = response.data.学历字典;
       this.学位字典 = response.data.学位字典;
       console.log(this.单位字典);
-    })
+    });
   },
   methods: {
     // fetchedu() {
@@ -1811,7 +1824,6 @@ export default {
           resp = await getInfoRecord(param);
         }
       }
-
       console.log(resp.data.count);
       var count = resp.data.count;
       if (count === 0) {
