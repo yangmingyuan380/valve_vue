@@ -1585,7 +1585,7 @@ export default {
       //变更材料
       this.tableData[83].problem = res.变更材料更改工作时间;
       this.tableData[84].problem = res.变更材料更改出生日期;
-      this.problemsupdate();
+      //this.problemsupdate();
     },
     problemsupdate() {
       this.tableData3[0].problems = "";
@@ -1700,6 +1700,7 @@ export default {
       this.tableData2[1].number = res.处分份数;
       this.tableData2[0].problem = res.奖励材料登记;
       this.tableData2[1].problem = res.处分材料登记;
+      this.tableData3[0].problems = res.完整性问题汇总;
       this.commitdisabled = false;
     },
     refill() {
@@ -1865,6 +1866,7 @@ export default {
       this.problem.变更材料更改工作时间 = this.tableData[83].problem;
       this.problem.变更材料更改出生日期 = this.tableData[84].problem;
       this.problemsupdate();
+      this.user.完整性问题汇总 = this.tableData3[0].problems;
     },
   },
 };

@@ -14,7 +14,7 @@
           <el-row>
             <el-col :span="4">
               <el-form-item label="职工号" prop="职工号">
-                <el-input v-model="user.职工号" />
+                <el-input :disabled="inputdisabled" v-model="user.职工号" />
               </el-form-item>
             </el-col>
             <el-col :span="4">
@@ -59,14 +59,14 @@
             <el-col :span="4">
               <el-button
                 type="primary"
-                :disabled="isDisabled"
+                :disabled="searchdisabled"
                 size="mini"
                 @click="search"
                 >查找</el-button
               >
               <el-button
                 type="danger"
-                :disabled="isDisabled"
+                v-show="cancelshow"
                 size="mini"
                 @click="goback"
                 >取消</el-button
@@ -153,58 +153,64 @@
           <el-row>
             <el-col :span="5">
               <el-form-item label="初审认定出生时间" label-width="150px">
-                <el-input
+                <el-date-picker
+                  type="date"
+                  placeholder="选择日期"
+                  style="width: 120px"
                   v-model="user.初审认定出生时间"
-                  controls-position="right"
-                  :min="0"
-                ></el-input>
+                ></el-date-picker>
               </el-form-item>
             </el-col>
             <el-col :span="5">
               <el-form-item label="初审认定参加工作时间" label-width="170px">
-                <el-input
+                <el-date-picker
+                  type="date"
+                  placeholder="选择日期"
+                  style="width: 120px"
                   v-model="user.初审认定参加工作时间"
-                  controls-position="right"
-                  :min="0"
-                ></el-input>
+                ></el-date-picker>
               </el-form-item>
             </el-col>
             <el-col :span="5">
               <el-form-item label="初审认定入党时间" label-width="150px">
-                <el-input
+                <el-date-picker
+                  type="date"
+                  placeholder="选择日期"
+                  style="width: 120px"
                   v-model="user.初审认定入党时间"
-                  controls-position="right"
-                  :min="0"
-                ></el-input>
+                ></el-date-picker>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="5">
               <el-form-item label="复审认定出生时间" label-width="150px">
-                <el-input
+                <el-date-picker
+                  type="date"
+                  placeholder="选择日期"
+                  style="width: 120px"
                   v-model="user.复审认定出生时间"
-                  controls-position="right"
-                  :min="0"
-                ></el-input>
+                ></el-date-picker>
               </el-form-item>
             </el-col>
             <el-col :span="5">
               <el-form-item label="复审认定参加工作时间" label-width="170px">
-                <el-input
+                <el-date-picker
+                  type="date"
+                  placeholder="选择日期"
+                  style="width: 120px"
                   v-model="user.复审认定参加工作时间"
-                  controls-position="right"
-                  :min="0"
-                ></el-input>
+                ></el-date-picker>
               </el-form-item>
             </el-col>
             <el-col :span="5">
               <el-form-item label="复审认定入党时间" label-width="150px">
-                <el-input
+                <el-date-picker
+                  type="date"
+                  placeholder="选择日期"
+                  style="width: 120px"
                   v-model="user.复审认定入党时间"
-                  controls-position="right"
-                  :min="0"
-                ></el-input>
+                ></el-date-picker>
               </el-form-item>
             </el-col>
           </el-row>
@@ -227,23 +233,38 @@
             </el-col>
             <el-col :span="4">
               <el-form-item label="参加工作时间">
-                <el-input v-model="user.参加工作时间"></el-input>
+                <el-date-picker
+                  type="date"
+                  placeholder="选择日期"
+                  style="width: 120px"
+                  v-model="user.参加工作时间"
+                ></el-date-picker>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="入党时间">
-                <el-input v-model="user.入党时间"></el-input>
+                <el-date-picker
+                  type="date"
+                  placeholder="选择日期"
+                  style="width: 120px"
+                  v-model="user.入党时间"
+                ></el-date-picker>
               </el-form-item>
             </el-col>
             <el-col :span="4">
               <el-form-item label="进入本校时间">
-                <el-input v-model="user.进入本校时间"></el-input>
+                <el-date-picker
+                  type="date"
+                  placeholder="选择日期"
+                  style="width: 120px"
+                  v-model="user.进入本校时间"
+                ></el-date-picker>
               </el-form-item>
             </el-col>
           </el-row>
         </div>
       </div>
-      <div class="cell">
+      <div class="cell" v-show="divshow">
         <div class="container">
           <h4 style="text-align: center">审核情况</h4>
           <el-row>
@@ -360,40 +381,52 @@
           </el-row>
         </div>
       </div>
-      <div class="cell">
+      <div class="cell" v-show="divshow">
         <div class="container">
           <h4 style="text-align: center">最高学历学位</h4>
           <el-row>
             <el-col :span="5">
               <el-form-item label="全日制最高学历">
-                <el-input
+                <el-cascader
+                  :show-all-levels="false"
+                  :options="学历字典"
+                  :props="学历字典属性"
                   v-model="user.全日制最高学历"
-                  style="width: 155px"
-                ></el-input>
+                >
+                </el-cascader>
               </el-form-item>
             </el-col>
             <el-col :span="5">
               <el-form-item label="全日制最高学位">
-                <el-input
+                <el-cascader
+                  :show-all-levels="false"
+                  :options="学位字典"
+                  :props="学位字典属性"
                   v-model="user.全日制最高学位"
-                  style="width: 155px"
-                ></el-input>
+                >
+                </el-cascader>
               </el-form-item>
             </el-col>
             <el-col :span="5">
-              <el-form-item label="在职最高学历">
-                <el-input
+              <el-form-item label="在职最高学历" prop="在职最高学历">
+                <el-cascader
+                  :show-all-levels="false"
+                  :options="学历字典"
+                  :props="学历字典属性"
                   v-model="user.在职最高学历"
-                  style="width: 155px"
-                ></el-input>
+                >
+                </el-cascader>
               </el-form-item>
             </el-col>
             <el-col :span="5">
               <el-form-item label="在职最高学位">
-                <el-input
+                <el-cascader
+                  :show-all-levels="false"
+                  :options="学位字典"
+                  :props="学位字典属性"
                   v-model="user.在职最高学位"
-                  style="width: 155px"
-                ></el-input>
+                >
+                </el-cascader>
               </el-form-item>
             </el-col>
           </el-row>
@@ -525,7 +558,7 @@
           </el-row>
         </div>
       </div>
-      <div class="cell">
+      <div class="cell" v-show="divshow">
         <div class="container">
           <br />
           <br />
@@ -650,7 +683,7 @@
           <br />
         </div>
       </div>
-      <div class="cell">
+      <div class="cell" v-show="divshow">
         <div class="container">
           <h4 style="text-align: center">奖惩情况</h4>
           <div class="note">
@@ -857,7 +890,7 @@
           </el-input>
         </div>
       </div>
-      <div class="cell">
+      <div class="cell" v-show="divshow">
         <div class="container">
           <h4 style="text-align: center">家庭主要成员及重要社会关系</h4>
           <el-form-item label="家庭主要成员及重要社会关系">
@@ -967,7 +1000,7 @@
           </el-form-item>
         </div>
       </div>
-      <div class="cell">
+      <div class="cell" v-show="divshow">
         <div class="container">
           <h4 style="text-align: center">单位审核意见</h4>
           <el-input
@@ -979,9 +1012,14 @@
           ></el-input>
         </div>
       </div>
-      <div class="mybottom">
+      <div class="mybottom" v-show="divshow">
         <el-form-item style="text-align: center">
-          <el-button type="success" @click="saveOrUpdate">提交</el-button>
+          <el-button
+            type="success"
+            @click="saveOrUpdate"
+            :disabled="commitdisabled"
+            >提交</el-button
+          >
         </el-form-item>
       </div>
     </el-form>
@@ -1019,6 +1057,14 @@ export default {
         "管理岗位九级",
         "管理岗位十级",
       ],
+      学历字典属性: {
+        label: "value",
+        emitPath: false,
+      },
+      学位字典属性: {
+        label: "value",
+        emitPath: false,
+      },
       专业技术岗位等级字典: [
         "专业技术岗位一级",
         "专业技术岗位二级",
@@ -1584,7 +1630,6 @@ export default {
           { validator: checknumber, trigger: "blur" },
         ],
       },
-      textarea: "", //简历区域
       出生时间rules: {},
       参加工作时间rules: {},
       入党时间rules: {},
@@ -1618,70 +1663,71 @@ export default {
       showPartyDate: false,
       cancelshow: false,
       divshow: false,
+      commitdisabled: true,
       user: {
-        职工号: "1",
-        单位: "2",
-        姓名: "3",
-        性别: "4",
-        民族: "5",
-        籍贯: "6",
-        出生地: "7",
-        现任职务: "8",
-        健康状况: "9",
-        年龄: "?",
-        入党时间: "/",
-        进入本校时间: "/",
-        参加工作时间: ",",
-        出生年月: ".",
-        专业技术职务职称: "q",
-        熟悉专业有何特长: "w",
-        初审认定出生时间: "e",
-        复审认定出生时间: "r",
-        复审认定参加工作时间: "t",
-        初审认定参加工作时间: "y",
-        初审认定入党时间: "u",
-        复审认定入党时间: "i",
+        职工号: "",
+        单位: "",
+        姓名: "",
+        性别: "",
+        民族: "",
+        籍贯: "",
+        出生地: "",
+        现任职务: "",
+        健康状况: "",
+        年龄: null,
+        入党时间: "",
+        进入本校时间: "",
+        参加工作时间: "",
+        出生年月: "",
+        专业技术职务职称: "",
+        熟悉专业有何特长: "",
+        初审认定出生时间: "",
+        复审认定出生时间: "",
+        复审认定参加工作时间: "",
+        初审认定参加工作时间: "",
+        初审认定入党时间: "",
+        复审认定入党时间: "",
         //审核情况8项
-        初审人职工号: "o",
-        初审人: "p",
-        初审人单位: "l",
-        初审时间: "k",
-        初审状态: "j",
-        复审人职工号: "h",
-        复审人: "g",
-        复审人单位: "f",
-        复审时间: "d",
-        复审状态: "s",
+        初审人职工号: "",
+        初审人: "",
+        初审人单位: "",
+        初审时间: "",
+        初审状态: "",
+        复审人职工号: "",
+        复审人: "",
+        复审人单位: "",
+        复审时间: "",
+        复审状态: "",
         //最高学历学位12项
-        全日制最高学历: "a",
-        全日制最高学位: "z",
-        在职最高学历: "x",
-        在职最高学位: "c",
-        全日制最高学历毕业院校系及专业: "v",
-        全日制最高学位毕业院校系及专业: "b",
-        在职最高学历毕业院校系及专业: "n",
-        在职最高学位毕业院校系及专业: "m",
-        全日制教育最高学历学位: "!",
-        全日制教育毕业院校系及专业: "@",
-        在职教育最高学历学位: "#",
-        在职教育毕业院校系及专业: "$",
+        全日制最高学历: "",
+        全日制最高学位: "",
+        在职最高学历: "",
+        在职最高学位: "",
+        全日制最高学历毕业院校系及专业: "",
+        全日制最高学位毕业院校系及专业: "",
+        在职最高学历毕业院校系及专业: "",
+        在职最高学位毕业院校系及专业: "",
+        全日制教育最高学历学位: "",
+        全日制教育毕业院校系及专业: "",
+        在职教育最高学历学位: "",
+        在职教育毕业院校系及专业: "",
         //简历3项
         学习经历: [],
         工作经历: [],
-        简历: "%",
+        简历: "",
         //奖惩情况8项
-        a2019年考核结果: "^",
-        a2019年考核备注: "&",
-        a2020年考核结果: "*",
-        a2020年考核备注: "（",
+        a2019年考核结果: "",
+        a2019年考核备注: "",
+        a2020年考核结果: "",
+        a2020年考核备注: "",
         奖励情况记录: [],
         处分情况记录: [],
-        奖惩情况: "）",
-        年度考核结果: "——",
+        奖惩情况: "",
+        年度考核结果: "",
         //家庭主要成员及社会关系
         家庭成员记录: [],
         //单位审核意见
-        单位审核意见: "+",
+        单位审核意见: "",
       },
     };
   },
@@ -1713,52 +1759,51 @@ export default {
     // },
     flush() {
       Object.keys(this.user).forEach((key) => (this.user[key] = ""));
-      this.年龄 = "";
+      this.user.学习经历 = [];
+      this.user.工作经历 = [];
+      this.user.奖励情况记录 = [];
+      this.user.处分情况记录 = [];
+      this.user.家庭成员记录 = [];
+      this.年龄 = null;
       this.出生时间 = "";
       this.参加工作时间 = "";
       this.入党时间 = "";
+      this.commitdisabled = true;
+      this.divshow = false;
     },
-    calculate() {
-      if (
-        this.user.复审认定出生时间 != null ||
-        this.user.复审认定出生时间 != ""
-      ) {
-        var date = this.user.复审认定出生时间.substring(0, 7);
-        this.出生年月 = date;
-      } else {
-        var date = this.user.复审认定出生时间.substring(0, 7);
-        this.出生年月 = date;
-      }
-      this.年龄 = this.getAge(this.出生年月);
-      if (
-        this.user.复审认定参加工作时间 != null ||
-        this.user.复审认定参加工作时间 != ""
-      ) {
-        this.参加工作时间 = this.user.复审认定参加工作时间;
-      } else {
-        this.参加工作时间 = this.user.初审认定参加工作时间;
-      }
-      if (
-        this.user.复审认定入党时间 != null ||
-        this.user.复审认定入党时间 != ""
-      ) {
-        this.入党时间 = this.user.复审认定参加工作时间;
-      } else {
-        this.入党时间 = this.user.初审认定参加工作时间;
-      }
-      console.log(this.入党时间);
-      console.log(this.出生年月);
-      console.log(this.年龄);
-      console.log(this.参加工作时间);
-    },
-    getAge(birthday) {
-      //出生时间 毫秒
-      var birthDayTime = new Date(birthday).getTime();
-      //当前时间 毫秒
-      var nowTime = new Date().getTime();
-      //一年毫秒数(365 * 86400000 = 31536000000)
-      return Math.ceil((nowTime - birthDayTime) / 31536000000);
-    },
+    // calculate() {
+    //   if (
+    //     this.user.复审认定出生时间 != null ||
+    //     this.user.复审认定出生时间 != ""
+    //   ) {
+    //     var date = this.user.复审认定出生时间.substring(0, 7);
+    //     this.出生年月 = date;
+    //   } else {
+    //     var date = this.user.复审认定出生时间.substring(0, 7);
+    //     this.出生年月 = date;
+    //   }
+    //   this.年龄 = this.getAge(this.出生年月);
+    //   if (
+    //     this.user.复审认定参加工作时间 != null ||
+    //     this.user.复审认定参加工作时间 != ""
+    //   ) {
+    //     this.参加工作时间 = this.user.复审认定参加工作时间;
+    //   } else {
+    //     this.参加工作时间 = this.user.初审认定参加工作时间;
+    //   }
+    //   if (
+    //     this.user.复审认定入党时间 != null ||
+    //     this.user.复审认定入党时间 != ""
+    //   ) {
+    //     this.入党时间 = this.user.复审认定参加工作时间;
+    //   } else {
+    //     this.入党时间 = this.user.初审认定参加工作时间;
+    //   }
+    //   console.log(this.入党时间);
+    //   console.log(this.出生年月);
+    //   console.log(this.年龄);
+    //   console.log(this.参加工作时间);
+    // },
     // editedu() {},
     // 查找信息
     async saveOrUpdate() {
@@ -1766,6 +1811,7 @@ export default {
         alert("请确认职工号是否填写正确");
       } else {
         var userres = await putInfoRecord(this.user);
+        console.log(this.user.年龄);
         if (userres.data.count === 0) {
           alert("查无此人，请先完善基本信息！");
         } else if (userres.data.count === 1) {
@@ -1798,6 +1844,9 @@ export default {
           this.user.姓名 === ""
         ) {
           alert("请填写职工号、单位和姓名");
+          this.searchdisabled = false;
+          this.inputdisabled = false;
+          return;
         } else {
           param.职工号 = this.user.职工号;
           param.姓名 = this.user.姓名;
@@ -1808,6 +1857,9 @@ export default {
         // 只根据职工号查询
         if (this.user.职工号 === "") {
           alert("请填写职工号");
+          this.searchdisabled = false;
+          this.inputdisabled = false;
+          return;
         } else {
           param.职工号 = this.user.职工号;
           param.姓名 = this.user.姓名;
@@ -1817,6 +1869,9 @@ export default {
       } else if (this.查询条件 === "2") {
         if (this.user.单位 === "" || this.user.姓名 === "") {
           alert("请填写单位和姓名");
+          this.searchdisabled = false;
+          this.inputdisabled = false;
+          return;
         } else {
           param.职工号 = this.user.职工号;
           param.姓名 = this.user.姓名;
@@ -1838,13 +1893,14 @@ export default {
         this.searchdisabled = false;
       } else if (count === 1) {
         this.user = resp.data.user;
-        this.calculate();
+        //this.calculate();
         this.divshow = true;
         this.$message({
           type: "success",
           message: "查询成功!",
         });
         this.cancelshow = true;
+        this.commitdisabled = false;
       } else {
         alert('请以"职工号"或"姓名"加"单位"的组合进行查询');
         this.inputdisabled = false;
@@ -1936,7 +1992,13 @@ export default {
     //   }
     // },
 
-    goback() {},
+    goback() {
+      this.flush();
+      this.searchdisabled = false;
+      this.commitdisabled = true;
+      this.cancelshow = false;
+      this.inputdisabled = false;
+    },
     // //添加一行
     // addedu() {
     //   this.学历学位材料.学习经历列表.push({});
