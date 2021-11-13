@@ -70,14 +70,14 @@
             :disabled="commitdisabled"
             size="mini"
             @click="saveOrUpdate"
-            >提交修改</el-button
+            >提交</el-button
           >
           <el-button
             type="danger"
             v-show="cancelshow"
             size="mini"
             @click="cancel"
-            >放弃修改</el-button
+            >放弃</el-button
           >
         </el-col>
       </el-row>
@@ -90,15 +90,7 @@
       label-width="120px"
       size="mini"
     >
-<<<<<<< HEAD
       <div class="mytable" v-show="divshow">
-=======
-
-
-
-
-      <div class="mytable" >
->>>>>>> 7fcc3e920f48e7edded06f7d88cb45ad7d457009
         <el-container style="height: 850px">
           <el-main width="main" class="main">
             <el-table
