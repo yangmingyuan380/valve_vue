@@ -1,32 +1,41 @@
 <template>
   <div class="app-container">
     <h4 style="text-align: center">专项审核材料完整性登记表</h4>
-    <el-form :model="基本信息" :rules="基本信息rules" ref="基本信息" label-position="center" label-width="120px" size="mini">
-          <h4 style="text-align:center">基本信息</h4>
-          <el-row>
+    <el-form
+      :model="user"
+      :rules="userrules"
+      ref="user"
+      label-position="center"
+      label-width="120px"
+      size="mini"
+    >
+      <h4 style="text-align: center">基本信息</h4>
+      <el-row>
         <el-col :span="4">
-          <el-form-item label="职工号" prop="userID">
+          <el-form-item label="职工号" prop="职工号">
             <el-input v-model="user.职工号" :disabled="inputdisabled" />
           </el-form-item>
         </el-col>
-        <!-- <el-form-item label="单位" prop="单位">
-          <el-select v-model="基本信息.单位" style="width: 250px">
-            <el-option
-              v-for="item in 单位字典"
-              :key="item.单位"
-              :label="item.单位"
-              :value="item.单位"
-            >
-            </el-option>
-          </el-select>
-        </el-form-item> -->
         <el-col :span="4">
-          <el-form-item label="单位" prop="userID">
-            <el-input v-model="user.单位" :disabled="inputdisabled" />
+          <el-form-item label="单位" prop="单位">
+            <el-select v-model="user.单位" :disabled="inputdisabled">
+              <el-option
+                v-for="item in 单位字典"
+                :key="item.单位"
+                :label="item.单位"
+                :value="item.单位"
+              >
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
+        <!-- <el-col :span="4">
+          <el-form-item label="单位" prop="单位">
+            <el-input v-model="user.单位" :disabled="inputdisabled" />
+          </el-form-item>
+        </el-col> -->
         <el-col :span="4">
-          <el-form-item label="姓名" prop="userName">
+          <el-form-item label="姓名" prop="姓名">
             <el-input
               v-model="user.姓名"
               :disabled="inputdisabled"
@@ -35,100 +44,43 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="10" align="middle">
+        <el-col :span="4">
+          <el-form-item label="查询条件">
+            <el-select
+              v-model="查询条件"
+              placeholder="请选择"
+              style="width: 130px"
+            >
+              <el-option label="全部" value="0"></el-option>
+              <el-option label="职工号" value="1"></el-option>
+              <el-option label="单位和姓名" value="2"></el-option>
+            </el-select>
+          </el-form-item>
+        </el-col>
+        <el-col :span="4" align="middle">
           <el-button
             type="primary"
             :disabled="searchdisabled"
             size="mini"
             @click="search"
-          >查找</el-button
+            >查找</el-button
           >
           <el-button
             type="success"
             :disabled="commitdisabled"
             size="mini"
             @click="saveOrUpdate"
-          >提交修改</el-button
+            >提交修改</el-button
           >
           <el-button
             type="danger"
             v-show="cancelshow"
             size="mini"
             @click="cancel"
-          >放弃修改</el-button
+            >放弃修改</el-button
           >
-          <el-button type="success" plain :disabled="isDisabled" size="mini" @click="add">新增</el-button>
         </el-col>
       </el-row>
-          <el-row>
-            <el-col :span="4">
-              <el-form-item label="性别">
-                <el-select v-model="基本信息.性别" placeholder="请选择">
-                  <el-option label="男" value="男"></el-option>
-                  <el-option label="女" value="女"></el-option>
-                </el-select>
-              </el-form-item>
-            </el-col>
-            <el-col :span="4">
-              <el-form-item label="民族">
-                <el-input v-model="基本信息.民族" controls-position="right" :min="0"/>
-              </el-form-item>
-            </el-col>
-            <el-col :span="5">
-              <el-form-item label="籍贯">
-                <el-input v-model="基本信息.籍贯" controls-position="right"  style="width: 150px" :min="0"/>
-              </el-form-item>
-            </el-col>
-            <el-col :span="5">
-              <el-form-item label="出生地">
-                <el-input v-model="基本信息.出生地" controls-position="right" style="width: 140px" :min="0"/>
-              </el-form-item>
-            </el-col>
-            <el-col :span="4">
-              <el-form-item label="健康状况">
-                <el-input v-model="基本信息.健康状况" controls-position="right" :min="0"/>
-              </el-form-item>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="4">
-              <el-form-item label="现任职务" >
-                <el-input v-model="基本信息.现任职务" controls-position="right" :min="0" style="width: 80px"/>
-              </el-form-item>
-            </el-col>
-            <el-col :span="5">
-              <el-form-item label="管理岗位等级">
-                <el-select v-model="基本信息.管理岗位等级" style="width: 120px" placeholder="请选择">
-                  <el-option
-                    v-for="item in 管理岗位等级字典"
-                    :key="item"
-                    :label="item"
-                    :value="item">
-                  </el-option>
-                </el-select>
-              </el-form-item>
-            </el-col>
-            <el-col :span="5">
-              <el-form-item label="专业技术职务（职称）" label-width="180px">
-                <el-input v-model="基本信息.专业技术职务职称" controls-position="right" :min="0"/>
-              </el-form-item>
-            </el-col>
-            <el-col :span="5">
-              <el-form-item label="专业技术岗位等级" label-width="160px">
-                <el-select v-model="基本信息.专业技术岗位等级" placeholder="请选择" style="width: 150px">
-                  <el-option
-                    v-for="item in 专业技术岗位等级字典"
-                    :key="item"
-                    :label="item"
-                    :value="item">
-                  </el-option>
-                </el-select>
-              </el-form-item>
-            </el-col>
-          </el-row>
-          <el-form-item label="熟悉专业、有何特长">
-            <el-input type="textarea" :rows="2" v-model="基本信息.熟悉专业有何特长" style="width: 500px"/>
-          </el-form-item>
     </el-form>
     <el-form
       :model="user"
@@ -138,10 +90,6 @@
       label-width="120px"
       size="mini"
     >
-
-
-
-
       <div class="mytable" v-show="divshow">
         <el-container style="height: 850px">
           <el-main width="main" class="main">
@@ -265,21 +213,26 @@ import {
 import 基本信息 from "@/api/service/基本信息";
 export default {
   data() {
+    var checknumber = (rule, value, callback) => {
+      if (value === "") {
+        callback(new Error("职工号不能为空"));
+      } else {
+        var numReg = /^[0-9]{9}$/;
+        if (!numReg.test(value)) {
+          callback(new Error("职工号应为9位数字"));
+        } else {
+          callback();
+        }
+      }
+    };
     return {
       基本信息: [],
       单位字典: [],
+      查询条件: "0",
       user: {
         职工号: "",
         单位: "",
         姓名: "",
-        性别: "",
-        民族: "",
-        籍贯: "",
-        出生地: "",
-        现任职务: "",
-        管理岗位等级: "",
-        专业技术职务职称: "",
-        专业技术岗位等级: "",
         //审核情况
         初审人职工号: "",
         初审人: "",
@@ -401,6 +354,16 @@ export default {
         处分材料登记: "",
         //问题汇总
         完整性问题汇总: "",
+      },
+      userrules: {
+        职工号: [
+          { required: true, message: "请输入职工号", trigger: "blur" },
+          { validator: checknumber, trigger: "blur" },
+        ],
+        单位: [{ required: true, message: "请选择单位", trigger: "blur" }],
+        姓名: [{ required: true, message: "请输入姓名", trigger: "blur" }],
+        性别: [{ required: true, message: "请选择性别", trigger: "blur" }],
+        民族: [{ required: true, message: "请填写民族", trigger: "blur" }],
       },
       problem: {
         职工号: "",
@@ -1094,12 +1057,12 @@ export default {
       ],
     };
   },
-  // created() {
-  //   // 在页面渲染前调用methods中方法
-  //   基本信息.getlist().then((response) => {
-  //     this.单位字典 = response.data.单位字典;
-  //   })
-  // },
+  created() {
+    // 在页面渲染前调用methods中方法
+    基本信息.getlist().then((response) => {
+      this.单位字典 = response.data.单位字典;
+    });
+  },
   methods: {
     arraySpanMethod({ row, column, rowIndex, columnIndex }) {
       if (rowIndex === 0 || rowIndex === 1) {
@@ -1412,8 +1375,47 @@ export default {
     async search() {
       this.searchdisabled = true;
       this.inputdisabled = true;
-      var resp = await getIntegrityRecord(this.user);
-      var count = resp.data.count;
+      var resp;
+      var count;
+
+      if (this.查询条件 === "0") {
+        // 根据职工号、单位和姓名查询
+        if (
+          this.user.职工号 === "" ||
+          this.user.单位 === "" ||
+          this.user.姓名 === ""
+        ) {
+          alert("请填写职工号、单位和姓名");
+          this.inputdisabled = false;
+          this.searchdisabled = false;
+          return;
+        } else {
+          resp = await getIntegrityRecord(this.user);
+          count = resp.data.count;
+        }
+      } else if (this.查询条件 === "1") {
+        // 只根据职工号查询
+        if (this.user.职工号 === "") {
+          alert("请填写职工号");
+          this.inputdisabled = false;
+          this.searchdisabled = false;
+          return;
+        } else {
+          resp = await getIntegrityRecord(this.user);
+          count = resp.data.count;
+        }
+      } else if (this.查询条件 === "2") {
+        if (this.user.单位 === "" || this.user.姓名 === "") {
+          alert("请填写单位和姓名");
+          this.inputdisabled = false;
+          this.searchdisabled = false;
+          return;
+        } else {
+          resp = await getIntegrityRecord(this.user);
+          count = resp.data.count;
+        }
+      }
+
       if (count === 0) {
         this.flush();
         alert("查无此人，请先完善基本信息");
@@ -1883,12 +1885,10 @@ export default {
   /deep/.el-table .cell {
     white-space: pre-line; /*保留换行符*/
   }
-  /deep/.el-table{
+  /deep/.el-table {
     .el-table {
-      height:500px;
+      height: 500px;
     }
   }
-
-
 }
 </style>
