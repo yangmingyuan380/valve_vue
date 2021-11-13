@@ -152,17 +152,17 @@
             <el-row>
               <el-col :span="4">
                 <el-form-item label="初审人职工号" prop="初审人职工号">
-                  <el-input v-model="审核情况.初审人职工号" controls-position="right" :min="0"/>
+                  <el-input v-model="审核情况.初审人职工号" :disabled="初审信息禁用" controls-position="right" :min="0"/>
                 </el-form-item>
               </el-col>
               <el-col :span="4">
                 <el-form-item label="初审人" prop="初审人">
-                  <el-input v-model="审核情况.初审人" controls-position="right" :min="0"/>
+                  <el-input v-model="审核情况.初审人" :disabled="初审信息禁用" controls-position="right" :min="0"/>
                 </el-form-item>
               </el-col>
               <el-col :span="5">
                 <el-form-item label="初审人单位">
-                  <el-select v-model="审核情况.初审人单位" filterable placeholder="输入搜索" style="width: 150px">
+                  <el-select v-model="审核情况.初审人单位" :disabled="初审信息禁用" filterable placeholder="输入搜索" style="width: 150px">
                     <el-option
                       v-for="item in 单位字典"
                       :key="item.单位"
@@ -174,13 +174,13 @@
               </el-col>
               <el-col :span="5">
                 <el-form-item label="初审时间">
-                  <el-date-picker type="datetime" placeholder="选择日期" v-model="审核情况.初审时间"
+                  <el-date-picker type="datetime" :disabled="初审信息禁用" placeholder="选择日期" v-model="审核情况.初审时间"
                                   style="width: 180px;"></el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="4">
                 <el-form-item label="初审状态">
-                  <el-select v-model="审核情况.初审状态" style="width: 100px">
+                  <el-select v-model="审核情况.初审状态" :disabled="初审信息禁用" style="width: 100px">
                     <el-option label="未初审" value="未初审"></el-option>
                     <el-option label="初审中" value="初审中"></el-option>
                     <el-option label="完成初审" value="完成初审"></el-option>
@@ -190,18 +190,18 @@
             </el-row>
             <el-row>
               <el-col :span="4">
-                <el-form-item label="复审人职工号">
-                  <el-input v-model="审核情况.复审人职工号" controls-position="right" :min="0"/>
+                <el-form-item label="复审人职工号" >
+                  <el-input v-model="审核情况.复审人职工号" :disabled="复审信息禁用" controls-position="right" :min="0"/>
                 </el-form-item>
               </el-col>
               <el-col :span="4">
                 <el-form-item label="复审人" prop="复审人">
-                  <el-input v-model="审核情况.复审人" controls-position="right" :min="0"/>
+                  <el-input v-model="审核情况.复审人" :disabled="复审信息禁用" controls-position="right" :min="0"/>
                 </el-form-item>
               </el-col>
               <el-col :span="5">
                 <el-form-item label="复审人单位" prop="复审人单位">
-                  <el-select v-model="审核情况.复审人单位" filterable placeholder="输入搜索" style="width: 150px">
+                  <el-select v-model="审核情况.复审人单位" :disabled="复审信息禁用" filterable placeholder="输入搜索" style="width: 150px">
                     <el-option
                       v-for="item in 单位字典"
                       :key="item.单位"
@@ -213,13 +213,13 @@
               </el-col>
               <el-col :span="5">
                 <el-form-item label="复审时间" prop="复审时间">
-                  <el-date-picker type="datetime" placeholder="选择日期" v-model="审核情况.复审时间"
+                  <el-date-picker type="datetime" :disabled="复审信息禁用" placeholder="选择日期" v-model="审核情况.复审时间"
                                   style="width: 180px;"></el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="4">
                 <el-form-item label="复审状态" prop="复审状态">
-                  <el-select v-model="审核情况.复审状态" style="width: 100px">
+                  <el-select v-model="审核情况.复审状态" :disabled="复审信息禁用" style="width: 100px">
                     <el-option label="未初审" value="未初审"></el-option>
                     <el-option label="初审中" value="初审中"></el-option>
                     <el-option label="完成初审" value="完成初审"></el-option>
@@ -1070,6 +1070,8 @@ export default {
       政治面貌字典2: [],
       单位字典: [],
       学历字典: [],
+      初审信息禁用:false,
+      复审信息禁用:false,
       学历字典属性:{
         label: "value",
         emitPath:false
@@ -1197,6 +1199,12 @@ export default {
       this.学历字典 = response.data.学历字典;
       this.学位字典 = response.data.学位字典;
     })
+    if(this.$store.getters.roles==="初审人"){
+      this.复审信息禁用 = true; // 初审人禁止编辑复审人信息
+    }
+    if(this.$store.getters.roles==="复审人"){
+      this.初审信息禁用 = true; // 复审人禁止编辑初审人信息
+    }
   },
   mounted() {
     window.onbeforeunload = function (e) {
