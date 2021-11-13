@@ -155,7 +155,7 @@
               </el-form-item>
             </el-col>
             <el-col :span="5">
-              <el-form-item label="初审认定参加工作时间" label-width="180px">
+              <el-form-item label="初审认定参加工作时间" label-width="170px">
                 <el-input
                   v-model="user.初审认定参加工作时间"
                   controls-position="right"
@@ -184,7 +184,7 @@
               </el-form-item>
             </el-col>
             <el-col :span="5">
-              <el-form-item label="复审认定参加工作时间" label-width="180px">
+              <el-form-item label="复审认定参加工作时间" label-width="170px">
                 <el-input
                   v-model="user.复审认定参加工作时间"
                   controls-position="right"
@@ -636,7 +636,7 @@
           <br />
         </div>
       </div>
-      <!-- <div class="cell">
+      <div class="cell">
         <div class="container">
           <h4 style="text-align: center">奖惩情况</h4>
           <div class="note">
@@ -716,13 +716,13 @@
             </el-col>
           </el-row>
           <el-form-item label="奖励情况">
-            <el-button
+            <!-- <el-button
               icon="el-icon-plus"
               type="success"
               size="mini"
               @click="addaward"
               >添加</el-button
-            >
+            > -->
             <el-table
               :data="user.奖励情况记录"
               align="center"
@@ -733,7 +733,7 @@
               <el-table-column label="奖励时间">
                 <template slot-scope="scope">
                   <el-form-item
-                    :prop="`奖励情况列表.${scope.$index}.奖励时间`"
+                    :prop="`奖励情况记录.${scope.$index}.奖励时间`"
                     :rules="rules.chinaName"
                   >
                     <el-date-picker
@@ -748,14 +748,14 @@
               <el-table-column label="奖励情况">
                 <template slot-scope="scope">
                   <el-form-item
-                    :prop="`奖励情况列表.${scope.$index}.奖励情况`"
+                    :prop="`奖励情况记录.${scope.$index}.奖励情况`"
                     :rules="rules.phone"
                   >
                     <el-input v-model="scope.row.奖励情况" />
                   </el-form-item>
                 </template>
               </el-table-column>
-              <el-table-column width="100px">
+              <!-- <el-table-column width="100px">
                 <template slot-scope="scope">
                   <el-button
                     @click.prevent="removeAward(scope.row)"
@@ -765,17 +765,17 @@
                     >删除
                   </el-button>
                 </template>
-              </el-table-column>
+              </el-table-column> -->
             </el-table>
           </el-form-item>
           <el-form-item label="处分情况">
-            <el-button
+            <!-- <el-button
               icon="el-icon-plus"
               type="success"
               size="mini"
               @click="addPunish"
               >添加</el-button
-            >
+            > -->
             <el-table
               :data="user.处分情况记录"
               align="center"
@@ -786,7 +786,7 @@
               <el-table-column label="处分时间">
                 <template slot-scope="scope">
                   <el-form-item
-                    :prop="`奖励情况列表.${scope.$index}.处分时间`"
+                    :prop="`处分情况记录.${scope.$index}.处分时间`"
                     :rules="rules.chinaName"
                   >
                     <el-date-picker
@@ -801,14 +801,14 @@
               <el-table-column label="处分情况">
                 <template slot-scope="scope">
                   <el-form-item
-                    :prop="`奖励情况列表.${scope.$index}.处分情况`"
+                    :prop="`处分情况记录.${scope.$index}.处分情况`"
                     :rules="rules.phone"
                   >
                     <el-input v-model="scope.row.处分情况" />
                   </el-form-item>
                 </template>
               </el-table-column>
-              <el-table-column width="100px">
+              <!-- <el-table-column width="100px">
                 <template slot-scope="scope">
                   <el-button
                     @click.prevent="removePunish(scope.row)"
@@ -818,7 +818,7 @@
                     >删除
                   </el-button>
                 </template>
-              </el-table-column>
+              </el-table-column> -->
             </el-table>
           </el-form-item>
           <h5 style="text-align: left">&emsp;&emsp;奖惩情况</h5>
@@ -842,7 +842,7 @@
           >
           </el-input>
         </div>
-      </div> -->
+      </div>
       <div class="cell">
         <div class="container">
           <h4 style="text-align: center">家庭主要成员及重要社会关系</h4>
@@ -864,7 +864,7 @@
               <el-table-column label="称谓">
                 <template slot-scope="scope">
                   <el-form-item
-                    :prop="`家庭成员列表.${scope.$index}.称谓`"
+                    :prop="`家庭成员记录.${scope.$index}.称谓`"
                     :rules="rules.chinaName"
                   >
                     <el-input v-model="scope.row.称谓" />
@@ -874,7 +874,7 @@
               <el-table-column label="姓名">
                 <template slot-scope="scope">
                   <el-form-item
-                    :prop="`家庭成员列表.${scope.$index}.姓名`"
+                    :prop="`家庭成员记录.${scope.$index}.姓名`"
                     :rules="rules.chinaName"
                   >
                     <el-input v-model="scope.row.姓名" />
@@ -884,7 +884,7 @@
               <el-table-column label="出生年月">
                 <template slot-scope="scope">
                   <el-form-item
-                    :prop="`家庭成员列表.${scope.$index}.出生年月`"
+                    :prop="`家庭成员记录.${scope.$index}.出生年月`"
                     :rules="rules.chinaName"
                   >
                     <el-date-picker
@@ -899,7 +899,7 @@
               <el-table-column label="政治面貌">
                 <template slot-scope="scope">
                   <el-form-item
-                    :prop="`家庭成员列表.${scope.$index}.政治面貌`"
+                    :prop="`家庭成员记录.${scope.$index}.政治面貌`"
                     :rules="rules.chinaName"
                   >
                     <el-select
@@ -921,7 +921,7 @@
               <el-table-column label="工作/学习单位及职务">
                 <template slot-scope="scope">
                   <el-form-item
-                    :prop="`家庭成员列表.${scope.$index}.单位及职务`"
+                    :prop="`家庭成员记录.${scope.$index}.单位及职务`"
                     :rules="rules.phone"
                   >
                     <el-input v-model="scope.row.单位及职务" />
@@ -931,7 +931,7 @@
               <el-table-column label="现居住地">
                 <template slot-scope="scope">
                   <el-form-item
-                    :prop="`家庭成员列表.${scope.$index}.现居住地`"
+                    :prop="`家庭成员记录.${scope.$index}.现居住地`"
                     :rules="rules.phone"
                   >
                     <el-input v-model="scope.row.现居住地" />
@@ -953,7 +953,7 @@
           </el-form-item>
         </div>
       </div>
-      <!-- <div class="cell">
+      <div class="cell">
         <div class="container">
           <h4 style="text-align: center">单位审核意见</h4>
           <el-input
@@ -964,13 +964,13 @@
             style="margin-left: 100px; width: 1100px"
           ></el-input>
         </div>
-      </div> -->
-      <!-- <div class="mybottom">
+      </div>
+      <div class="mybottom">
         <el-form-item style="text-align: center">
           <el-button type="primary" @click="saveOrUpdate">提交</el-button>
           <el-button type="primary" @click="goback">取消</el-button>
         </el-form-item>
-      </div> -->
+      </div>
     </el-form>
   </div>
 </template>
