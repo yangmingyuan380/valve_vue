@@ -1,9 +1,9 @@
 <template>
   <div class="app-container">
     <el-form
-      :model="基本信息"
-      :rules="基本信息rules"
-      ref="基本信息"
+      :model="user"
+      :rules="userrules"
+      ref="user"
       label-position="center"
       label-width="120px"
       size="mini"
@@ -26,9 +26,9 @@
                 >
                   <el-option
                     v-for="item in 单位字典"
-                    :key="item"
-                    :label="item"
-                    :value="item"
+                    :key="item.单位"
+                    :label="item.单位"
+                    :value="item.单位"
                   >
                   </el-option>
                 </el-select>
@@ -205,9 +205,9 @@
                 >
                   <el-option
                     v-for="item in 单位字典"
-                    :key="item"
-                    :label="item"
-                    :value="item"
+                    :key="item.单位"
+                    :label="item.单位"
+                    :value="item.单位"
                   >
                   </el-option>
                 </el-select>
@@ -261,9 +261,9 @@
                 >
                   <el-option
                     v-for="item in 单位字典"
-                    :key="item"
-                    :label="item"
-                    :value="item"
+                    :key="item.单位"
+                    :label="item.单位"
+                    :value="item.单位"
                   >
                   </el-option>
                 </el-select>
@@ -357,9 +357,6 @@
                 ></el-input>
               </el-form-item>
             </el-col>
-            <!--            <el-col :span="4">-->
-            <!--              <el-button @click="editedu(scope.row)" type="primary" icon="el-icon-edit" circle></el-button>-->
-            <!--            </el-col>-->
           </el-row>
           <div class="note">
             <p>【最高学历学位】：填写说明:</p>
@@ -444,11 +441,6 @@
               </el-form-item>
             </el-col>
           </el-row>
-          <!-- <div class="mytable">
-            <el-table
-              :data = "tabledata"
-              :span-method="arraySpanMethod"
-          </div> -->
         </div>
       </div>
       <div class="cell">
@@ -576,7 +568,7 @@
           <br />
         </div>
       </div>
-      <div class="cell">
+      <!-- <div class="cell">
         <div class="container">
           <h4 style="text-align: center">奖惩情况</h4>
           <div class="note">
@@ -656,13 +648,13 @@
             </el-col>
           </el-row>
           <el-form-item label="奖励情况">
-            <!-- <el-button
+            <el-button
               icon="el-icon-plus"
               type="success"
               size="mini"
               @click="addaward"
               >添加</el-button
-            > -->
+            >
             <el-table
               :data="user.奖励情况记录"
               align="center"
@@ -709,13 +701,13 @@
             </el-table>
           </el-form-item>
           <el-form-item label="处分情况">
-            <!-- <el-button
+            <el-button
               icon="el-icon-plus"
               type="success"
               size="mini"
               @click="addPunish"
               >添加</el-button
-            > -->
+            >
             <el-table
               :data="user.处分情况记录"
               align="center"
@@ -748,7 +740,7 @@
                   </el-form-item>
                 </template>
               </el-table-column>
-              <!-- <el-table-column width="100px">
+              <el-table-column width="100px">
                 <template slot-scope="scope">
                   <el-button
                     @click.prevent="removePunish(scope.row)"
@@ -758,7 +750,7 @@
                     >删除
                   </el-button>
                 </template>
-              </el-table-column> -->
+              </el-table-column>
             </el-table>
           </el-form-item>
           <h5 style="text-align: left">&emsp;&emsp;奖惩情况</h5>
@@ -782,7 +774,7 @@
           >
           </el-input>
         </div>
-      </div>
+      </div> -->
       <div class="cell">
         <div class="container">
           <h4 style="text-align: center">家庭主要成员及重要社会关系</h4>
@@ -849,9 +841,9 @@
                     >
                       <el-option
                         v-for="item in 政治面貌字典"
-                        :key="item"
-                        :label="item"
-                        :value="item"
+                        :key="item.政治面貌"
+                        :label="item.政治面貌"
+                        :value="item.政治面貌"
                       >
                       </el-option>
                     </el-select>
@@ -893,7 +885,7 @@
           </el-form-item>
         </div>
       </div>
-      <div class="cell">
+      <!-- <div class="cell">
         <div class="container">
           <h4 style="text-align: center">单位审核意见</h4>
           <el-input
@@ -904,13 +896,13 @@
             style="margin-left: 100px; width: 1100px"
           ></el-input>
         </div>
-      </div>
-      <div class="mybottom">
+      </div> -->
+      <!-- <div class="mybottom">
         <el-form-item style="text-align: center">
           <el-button type="primary" @click="saveOrUpdate">提交</el-button>
           <el-button type="primary" @click="goback">取消</el-button>
         </el-form-item>
-      </div>
+      </div> -->
     </el-form>
   </div>
 </template>
@@ -1482,12 +1474,12 @@ export default {
         // },
       ],
       考核结果字典: ["优秀"],
-      基本信息: {
-        职工号: "",
-        单位: "",
-        姓名: "",
-      },
-      基本信息rules: {
+      // 基本信息: {
+      //   职工号: "",
+      //   单位: "",
+      //   姓名: "",
+      // },
+      userrules: {
         职工号: [
           { required: true, message: "请输入职工号", trigger: "blur" },
           { validator: checknumber, trigger: "blur" },
@@ -1622,6 +1614,7 @@ export default {
       this.单位字典 = response.data.单位字典;
       this.学历字典 = response.data.学历字典;
       this.学位字典 = response.data.学位字典;
+      console.log(this.单位字典);
     })
   },
   methods: {
