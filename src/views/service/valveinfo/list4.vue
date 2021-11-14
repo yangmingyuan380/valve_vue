@@ -304,6 +304,10 @@ export default {
       审核情况一览表.getdata(this.page,this.limit,初审时间开始,初审时间结束,复审时间开始,复审时间结束,this.基本信息).then((response) => {
         this.审核情况 = response.data.list;
         this.total = response.data.total;
+        this.$message({
+          type: "success",
+          message: "查询成功!",
+        })
       })
     },
     formatDate(datetime){ // 将date类型准换为yyy-MM-dd HH:mm:ss格式
