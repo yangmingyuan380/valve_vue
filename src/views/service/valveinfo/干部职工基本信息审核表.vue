@@ -584,27 +584,83 @@
           </div>
           <h5 style="text-align: left">&emsp;&emsp;学习经历</h5>
           <el-table :data="user.学习经历" align="center" border>
-            <el-table-column prop="入学时间" label="入学时间" width="100px">
+            <el-table-column prop="入学时间" label="入学时间" width="100px" :key="random">
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.入学时间"/>
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px">{{scope.row.入学时间}}}</span>
+                </div>
+              </template>
             </el-table-column>
-            <el-table-column prop="毕业时间" label="毕业时间" width="100px">
+            <el-table-column prop="毕业时间" label="毕业时间" width="100px" :key="random">
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.毕业时间"/>
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px">{{scope.row.毕业时间}}}</span>
+                </div>
+              </template>
             </el-table-column>
             <el-table-column prop="所学专业" label="所学专业" width="150px">
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.所学专业"/>
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px">{{scope.row.所学专业}}}</span>
+                </div>
+              </template>
             </el-table-column>
             <el-table-column prop="学历" label="学历" width="150px">
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.学历"/>
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px">{{scope.row.学历}}}</span>
+                </div>
+              </template>
             </el-table-column>
             <el-table-column prop="学位" label="学位" width="150px">
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.学位"/>
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px">{{scope.row.学位}}}</span>
+                </div>
+              </template>
             </el-table-column>
             <el-table-column
               prop="获得学历的院校或机构"
               label="获得学历的院校或机构"
               width="250px"
             >
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.获得学历的院校或机构"/>
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px">{{scope.row.获得学历的院校或机构}}}</span>
+                </div>
+              </template>
             </el-table-column>
             <el-table-column
               prop="获得学位的院校或机构"
               label="获得学位的院校或机构"
               width="250px"
             >
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.获得学位的院校或机构"/>
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px">{{scope.row.获得学位的院校或机构}}}</span>
+                </div>
+              </template>
             </el-table-column>
             <el-table-column
               prop="获得学历的国家"
@@ -617,54 +673,118 @@
               label="获得学位的国家（地区）"
               width="250px"
             >
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.获得学位的国家"/>
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px">{{scope.row.获得学位的国家}}}</span>
+                </div>
+              </template>
             </el-table-column>
-            <!-- <el-table-column
+            <el-table-column
                 fixed="right"
                 label="操作"
                 width="100">
                 <template slot-scope="scope">
-                  <el-button @click="edit" type="text" size="small">编辑</el-button>
+                  <el-button @click="edit(scope.$index,scope.row)"  type="text" size="small">编辑</el-button>
                 </template>
-              </el-table-column> -->
+              </el-table-column>
           </el-table>
           <br />
           <br />
           <h5 style="text-align: left">&emsp;&emsp;工作经历</h5>
           <el-table :data="user.工作经历" align="center" border>
-            <el-table-column prop="起始时间" label="起始时间" width="100px">
+            <el-table-column prop="起始时间" label="起始时间" width="100px" :key="random">
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.起始时间"/>
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px">{{scope.row.起始时间}}}</span>
+                </div>
+              </template>
             </el-table-column>
             <el-table-column prop="终止时间" label="终止时间" width="100px">
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.终止时间"/>
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px">{{scope.row.终止时间}}}</span>
+                </div>
+              </template>
             </el-table-column>
             <el-table-column
               prop="所在单位名称"
               label="所在单位名称"
               width="150px"
             >
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.所在单位名称"/>
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px">{{scope.row.所在单位名称}}}</span>
+                </div>
+              </template>
             </el-table-column>
             <el-table-column prop="从事工作" label="从事工作" width="250px">
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.从事工作"/>
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px">{{scope.row.从事工作}}}</span>
+                </div>
+              </template>
             </el-table-column>
             <el-table-column
               prop="曾任党政职务"
               label="曾任党政职务"
               width="250px"
             >
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.曾任党政职务"/>
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px">{{scope.row.曾任党政职务}}}</span>
+                </div>
+              </template>
             </el-table-column>
             <el-table-column
               prop="曾任专业技术职务"
               label="曾任专业技术职务"
               width="250px"
             >
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.曾任专业技术职务"/>
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px">{{scope.row.曾任专业技术职务}}}</span>
+                </div>
+              </template>
             </el-table-column>
             <el-table-column prop="备注" label="备注" width="250px">
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.备注"/>
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px">{{scope.row.备注}}}</span>
+                </div>
+              </template>
             </el-table-column>
-            <!-- <el-table-column
+            <el-table-column
               fixed="right"
               label="操作"
               width="100">
               <template slot-scope="scope">
-                <el-button @click="edit" ype="text" size="small">编辑</el-button>
+                <el-button @click="edit(scope.$index,scope.row)" type="text" size="small">编辑</el-button>
               </template>
-            </el-table-column> -->
+            </el-table-column>
           </el-table>
           <br />
           <br />
@@ -762,46 +882,40 @@
               </el-form-item>
             </el-col>
           </el-row>
-          <el-form-item label="奖励情况">
-            <!-- <el-button
-              icon="el-icon-plus"
-              type="success"
-              size="mini"
-              @click="addaward"
-              >添加</el-button
-            > -->
-            <el-table
+          <h5 style="text-align: left">&emsp;&emsp;奖励情况</h5>
+          <el-table
               :data="user.奖励情况记录"
-              align="center"
+              align="left"
               border
-              style="width: 99%; margin-top: 10px"
               height="200"
             >
-              <el-table-column label="奖励时间">
+            <el-table-column label="奖励时间" width="300px" :key="random">
+                    <template slot-scope="scope">
+                      <div v-if="scope.row.seen">
+                        <el-input v-model="scope.row.奖励时间"/>
+                      </div>
+                      <div v-else>
+                        <span style="margin-left: 10px">{{scope.row.奖励时间}}}</span>
+                      </div>
+                    </template>
+                  </el-table-column>
+            <el-table-column label="奖励情况" width="300px" :key="random">
                 <template slot-scope="scope">
-                  <el-form-item
-                    :prop="`奖励情况记录.${scope.$index}.奖励时间`"
-                    :rules="rules.chinaName"
-                  >
-                    <el-date-picker
-                      type="date"
-                      placeholder="选择日期"
-                      v-model="scope.row.奖励时间"
-                      style="width: 130px"
-                    ></el-date-picker>
-                  </el-form-item>
+                  <div v-if="scope.row.seen">
+                    <el-input v-model="scope.row.奖励情况"/>
+                  </div>
+                  <div v-else>
+                    <span style="margin-left: 10px">{{scope.row.奖励情况}}}</span>
+                  </div>
                 </template>
               </el-table-column>
-              <el-table-column label="奖励情况">
-                <template slot-scope="scope">
-                  <el-form-item
-                    :prop="`奖励情况记录.${scope.$index}.奖励情况`"
-                    :rules="rules.phone"
-                  >
-                    <el-input v-model="scope.row.奖励情况" />
-                  </el-form-item>
-                </template>
-              </el-table-column>
+            <el-table-column
+              label="操作"
+              width="100">
+              <template slot-scope="scope">
+                <el-button @click="edit(scope.$index,scope.row)" type="text" size="small">编辑</el-button>
+              </template>
+            </el-table-column>
               <!-- <el-table-column width="100px">
                 <template slot-scope="scope">
                   <el-button
@@ -814,8 +928,41 @@
                 </template>
               </el-table-column> -->
             </el-table>
-          </el-form-item>
-          <el-form-item label="处分情况">
+          <h5 style="text-align: left">&emsp;&emsp;处分情况</h5>
+          <el-table
+            :data="user.处分情况记录"
+            align="left"
+            border
+            height="200"
+            >
+            <el-table-column label="处分时间" width="300px" :key="random">
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.处分时间"/>
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px">{{scope.row.处分时间}}}</span>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column label="处分情况" width="300px" :key="random">
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.处分情况"/>
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px">{{scope.row.处分情况}}}</span>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column
+              label="操作"
+              width="100">
+              <template slot-scope="scope">
+                <el-button @click="edit(scope.$index,scope.row)" type="text" size="small">编辑</el-button>
+              </template>
+            </el-table-column>
+          </el-table>
             <!-- <el-button
               icon="el-icon-plus"
               type="success"
@@ -823,51 +970,6 @@
               @click="addPunish"
               >添加</el-button
             > -->
-            <el-table
-              :data="user.处分情况记录"
-              align="center"
-              border
-              style="width: 99%; margin-top: 10px"
-              height="200"
-            >
-              <el-table-column label="处分时间">
-                <template slot-scope="scope">
-                  <el-form-item
-                    :prop="`处分情况记录.${scope.$index}.处分时间`"
-                    :rules="rules.chinaName"
-                  >
-                    <el-date-picker
-                      type="date"
-                      placeholder="选择日期"
-                      v-model="scope.row.处分时间"
-                      style="width: 130px"
-                    ></el-date-picker>
-                  </el-form-item>
-                </template>
-              </el-table-column>
-              <el-table-column label="处分情况">
-                <template slot-scope="scope">
-                  <el-form-item
-                    :prop="`处分情况记录.${scope.$index}.处分情况`"
-                    :rules="rules.phone"
-                  >
-                    <el-input v-model="scope.row.处分情况" />
-                  </el-form-item>
-                </template>
-              </el-table-column>
-              <!-- <el-table-column width="100px">
-                <template slot-scope="scope">
-                  <el-button
-                    @click.prevent="removePunish(scope.row)"
-                    style="width: 70px"
-                    type="danger"
-                    icon="el-icon-delete"
-                    >删除
-                  </el-button>
-                </template>
-              </el-table-column> -->
-            </el-table>
-          </el-form-item>
           <h5 style="text-align: left">&emsp;&emsp;奖惩情况</h5>
           <el-input
             class="简历"
@@ -894,13 +996,6 @@
         <div class="container">
           <h4 style="text-align: center">家庭主要成员及重要社会关系</h4>
           <el-form-item label="家庭主要成员及重要社会关系">
-            <!-- <el-button
-              icon="el-icon-plus"
-              type="success"
-              size="mini"
-              @click="addFamily"
-              >添加</el-button
-            > -->
             <el-table
               :data="user.家庭成员记录"
               align="center"
@@ -1057,6 +1152,7 @@ export default {
         "管理岗位九级",
         "管理岗位十级",
       ],
+      random:0,
       学历字典属性: {
         label: "value",
         emitPath: false,
@@ -1659,6 +1755,7 @@ export default {
       searchdisabled: false,
       inputdisabled: false,
       isShow: false,
+      seen: false,
       isDisabled: false,
       showPartyDate: false,
       cancelshow: false,
@@ -1757,6 +1854,13 @@ export default {
     //     }
     //   );
     // },
+    //#1 新增参数
+    edit(index,row){
+      this.random=Math.random();
+      console.log(index,row.seen);
+      row.seen = true;
+      console.log(row.seen);
+    },
     flush() {
       Object.keys(this.user).forEach((key) => (this.user[key] = ""));
       this.user.学习经历 = [];
