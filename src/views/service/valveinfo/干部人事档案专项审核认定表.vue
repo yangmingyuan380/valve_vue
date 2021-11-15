@@ -132,7 +132,7 @@
           </el-row>
         </div>
       </div>
-      <div class="cell">
+      <div class="cell" v-show="divshow">
         <div class="container">
           <h4 style="text-align: center">审核情况</h4>
           <el-row>
@@ -295,16 +295,16 @@
           ></el-input>
         </div>
       </div>
-      <div class="mybottom">
+      <div class="mybottom" v-show="divshow">
         <el-form-item style="margin: 10px 10px 10px 400px">
           <el-button
-            type="primary"
+            type="success"
             :disabled = "commitdisabled"
             @click="saveOrUpdate"
             style="margin: 10px 10px 10px 0px"
             >提交</el-button
           >
-          <el-button v-show = "cancelshow" type="primary" @click="goback">取消</el-button>
+          <el-button v-show = "cancelshow" type="danger" @click="goback">取消</el-button>
         </el-form-item>
       </div>
     </el-form>
@@ -641,6 +641,11 @@ export default {
       this.commitdisabled = true;
       this.cancelshow = false;
       this.inputdisabled = false;
+    },
+    flush() {
+      Object.keys(this.基本信息).forEach((key) => (this.基本信息[key] = ""));
+      this.commitdisabled = true;
+      this.divshow = false;
     },
     //添加一行
   },
