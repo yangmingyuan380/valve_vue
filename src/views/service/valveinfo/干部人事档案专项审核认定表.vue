@@ -26,9 +26,9 @@
                 >
                   <el-option
                     v-for="item in 单位字典"
-                    :key="item"
-                    :label="item"
-                    :value="item"
+                    :key="item.单位"
+                    :label="item.单位"
+                    :value="item.单位"
                   >
                   </el-option>
                 </el-select>
@@ -477,8 +477,7 @@ export default {
         ],
         单位: [{ required: true, message: "请选择单位", trigger: "blur" }],
         姓名: [{ required: true, message: "请输入姓名", trigger: "blur" }],
-        性别: [{ required: true, message: "请选择性别", trigger: "blur" }],
-        民族: [{ required: true, message: "请填写民族", trigger: "blur" }],
+        性别: [{ required: true, message: "请选择性别", trigger: "blur" }]
       },
       审核情况: {
         初审时间: new Date(),
@@ -508,7 +507,6 @@ export default {
         单位: [{ required: true, message: "请选择单位", trigger: "blur" }],
         姓名: [{ required: true, message: "请输入姓名", trigger: "blur" }],
         性别: [{ required: true, message: "请选择性别", trigger: "blur" }],
-        民族: [{ required: true, message: "请填写民族", trigger: "blur" }],
         birthDate: [{ required: true, message: "请选择日期", trigger: "blur" }],
         birthIsTrue1: [{ required: true, message: "请选择", trigger: "blur" }],
         birthIsTrue2: [{ required: true, message: "请选择", trigger: "blur" }],
