@@ -93,7 +93,7 @@
             </el-col>
             <el-col :span="4">
               <el-form-item label="初审状态">
-                <el-select v-model="基本信息.初审状态"style="width: 100px">
+                <el-select v-model="基本信息.初审状态" style="width: 100px">
                   <el-option label="未初审" value="未初审"></el-option>
                   <el-option label="初审中" value="初审中"></el-option>
                   <el-option label="完成初审" value="完成初审"></el-option>
@@ -122,7 +122,7 @@
             </el-col>
             <el-col :span="4">
               <el-form-item label="复审状态">
-                <el-select v-model="基本信息.复审状态"style="width: 100px">
+                <el-select v-model="基本信息.复审状态" style="width: 100px">
                   <el-option label="未复审" value="未复审"></el-option>
                   <el-option label="复审中" value="复审中"></el-option>
                   <el-option label="完成复审" value="完成复审"></el-option>
