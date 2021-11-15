@@ -220,9 +220,9 @@
               <el-col :span="4">
                 <el-form-item label="复审状态" prop="复审状态">
                   <el-select v-model="审核情况.复审状态" :disabled="复审信息禁用" style="width: 100px">
-                    <el-option label="未初审" value="未初审"></el-option>
-                    <el-option label="初审中" value="初审中"></el-option>
-                    <el-option label="完成初审" value="完成初审"></el-option>
+                    <el-option label="未复审" value="未复审"></el-option>
+                    <el-option label="复审中" value="复审中"></el-option>
+                    <el-option label="完成复审" value="完成复审"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>

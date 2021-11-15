@@ -12,7 +12,7 @@
             </el-col>
             <el-col :span="6">
               <el-form-item label="单位" prop="单位">
-                <el-select v-model="基本信息.单位" filterable placeholder="输入以搜索" style="width: 250px">
+                <el-select v-model="基本信息.单位" filterable clearable placeholder="输入以搜索" style="width: 250px">
                   <el-option
                     v-for="item in 单位字典"
                     :key="item.单位"
@@ -29,7 +29,7 @@
             </el-col>
             <el-col :span="4">
               <el-form-item label="性别">
-                <el-select v-model="基本信息.性别" placeholder="请选择">
+                <el-select v-model="基本信息.性别" clearable placeholder="请选择">
                   <el-option label="男" value="男"></el-option>
                   <el-option label="女" value="女"></el-option>
                 </el-select>
@@ -49,7 +49,7 @@
             </el-col>
             <el-col :span="5">
               <el-form-item label="管理岗位等级">
-                <el-select v-model="基本信息.管理岗位等级" style="width: 120px" placeholder="请选择">
+                <el-select v-model="基本信息.管理岗位等级" clearable style="width: 120px" placeholder="请选择">
                   <el-option
                     v-for="item in 管理岗位等级字典"
                     :key="item"
@@ -66,7 +66,7 @@
             </el-col>
             <el-col :span="5">
               <el-form-item label="专业技术岗位等级" label-width="160px">
-                <el-select v-model="基本信息.专业技术岗位等级" placeholder="请选择" style="width: 150px">
+                <el-select v-model="基本信息.专业技术岗位等级" clearable placeholder="请选择" style="width: 150px">
                   <el-option
                     v-for="item in 专业技术岗位等级字典"
                     :key="item"
@@ -93,7 +93,7 @@
             </el-col>
             <el-col :span="4">
               <el-form-item label="初审状态">
-                <el-select v-model="基本信息.初审状态"style="width: 100px">
+                <el-select v-model="基本信息.初审状态" style="width: 100px">
                   <el-option label="未初审" value="未初审"></el-option>
                   <el-option label="初审中" value="初审中"></el-option>
                   <el-option label="完成初审" value="完成初审"></el-option>
@@ -108,7 +108,7 @@
           </el-row>
           <el-row>
             <el-col :span="10">
-              <el-form-item label="初审时间">
+              <el-form-item label="复审时间">
                 <el-date-picker
                   v-model="复审时间"
                   type="datetimerange"
@@ -121,17 +121,17 @@
               </el-form-item>
             </el-col>
             <el-col :span="4">
-              <el-form-item label="初审状态">
-                <el-select v-model="基本信息.复审状态"style="width: 100px">
-                  <el-option label="未初审" value="未初审"></el-option>
-                  <el-option label="初审中" value="初审中"></el-option>
-                  <el-option label="完成初审" value="完成初审"></el-option>
+              <el-form-item label="复审状态">
+                <el-select v-model="基本信息.复审状态" style="width: 100px">
+                  <el-option label="未复审" value="未复审"></el-option>
+                  <el-option label="复审中" value="复审中"></el-option>
+                  <el-option label="完成复审" value="完成复审"></el-option>
                 </el-select>
               </el-form-item>
             </el-col>
             <el-col :span="4">
-              <el-form-item label="初审人" prop="复审人">
-                <el-input v-model="基本信息.初审人" controls-position="right" :min="0"/>
+              <el-form-item label="复审人" prop="复审人">
+                <el-input v-model="基本信息.复审人" controls-position="right" :min="0"/>
               </el-form-item>
             </el-col>
           </el-row>
@@ -271,6 +271,9 @@ export default {
   },
 
   created() {
+    基本信息.getlist().then((response) => {
+      this.单位字典 = response.data.单位字典;
+    })
     // 在页面渲染前调用methods中方法
     this.getdata()
   },
@@ -301,6 +304,10 @@ export default {
       审核情况一览表.getdata(this.page,this.limit,初审时间开始,初审时间结束,复审时间开始,复审时间结束,this.基本信息).then((response) => {
         this.审核情况 = response.data.list;
         this.total = response.data.total;
+        this.$message({
+          type: "success",
+          message: "查询成功!",
+        })
       })
     },
     formatDate(datetime){ // 将date类型准换为yyy-MM-dd HH:mm:ss格式
