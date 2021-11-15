@@ -65,7 +65,7 @@ export const constantRouterMap = [
       {
         path: 'getSpecialReview',
         name: 'SpecialReview',
-        component: () => import('@/views/service/valveinfo/list3'),
+        component: () => import('@/views/service/valveinfo/干部人事档案专项审核认定表'),
         meta: {title: '干部人事档案专项审核认定表', icon: 'table'}
       },
       {
