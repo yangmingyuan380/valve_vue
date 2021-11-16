@@ -12,12 +12,12 @@
         <div class="container">
           <h4 style="text-align: center">基本信息</h4>
           <el-row>
-            <el-col :span="4">
+            <el-col :span="5">
               <el-form-item label="职工号" prop="职工号">
                 <el-input v-model="基本信息.职工号" />
               </el-form-item>
             </el-col>
-            <el-col :span="4">
+            <el-col :span="6">
               <el-form-item label="单位" prop="单位">
                 <el-select
                   v-model="基本信息.单位"
@@ -67,7 +67,7 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="4">
+            <el-col :span="5">
               <el-form-item label="性别" prop="性别">
                 <el-select v-model="基本信息.性别" placeholder="请选择">
                   <el-option label="男" value="男"></el-option>
@@ -86,12 +86,17 @@
             </el-col>
             <el-col :span="5">
               <el-form-item label="进入本校时间" label-width="160px">
-                <el-input v-model="基本信息.进入本校时间"></el-input>
+                <el-date-picker
+                  type="date"
+                  placeholder="选择日期"
+                  v-model="基本信息.进入本校时间"
+                  style="width: 180px"
+                ></el-date-picker>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="4">
+            <el-col :span="5">
               <el-form-item label="管理岗位等级">
                 <el-select v-model="基本信息.管理岗位等级" placeholder="请选择">
                   <el-option
@@ -113,7 +118,7 @@
                 />
               </el-form-item>
             </el-col>
-            <el-col :span="5">
+            <el-col :span="6">
               <el-form-item label="专业技术岗位等级" label-width="160px">
                 <el-select
                   v-model="基本信息.专业技术岗位等级"
@@ -250,14 +255,21 @@
           <div class="mytable">
             <el-table
               border
+              :data="tableData"
               align="center"
               height="500px"
               style="width: 1000px"
               :cell-style="{ padding: '5px' }"
             >
-              <el-table-column label="审核项目" align="center" width="500px">
+              <el-table-column
+                prop="审核项目"
+                label="审核项目"
+                align="center"
+                width="300px"
+              >
               </el-table-column>
-              <el-table-column  label="存在问题">
+
+              <el-table-column prop="存在问题" label="存在问题">
               </el-table-column>
             </el-table>
           </div>
@@ -273,10 +285,7 @@
               </el-form-item>
             </el-col>
             <el-col :span="4">
-              <el-form-item
-                label="工作单位及职务(职称)"
-                prop="工作单位及职务"
-              >
+              <el-form-item label="工作单位及职务(职称)" prop="工作单位及职务">
                 <el-input
                   v-model="认定.工作单位及职务"
                   style="width: 300px"
@@ -299,12 +308,14 @@
         <el-form-item style="margin: 10px 10px 10px 400px">
           <el-button
             type="success"
-            :disabled = "commitdisabled"
+            :disabled="commitdisabled"
             @click="saveOrUpdate"
             style="margin: 10px 10px 10px 0px"
             >提交</el-button
           >
-          <el-button v-show = "cancelshow" type="danger" @click="goback">取消</el-button>
+          <el-button v-show="cancelshow" type="danger" @click="goback"
+            >取消</el-button
+          >
         </el-form-item>
       </div>
     </el-form>
@@ -313,7 +324,11 @@
 
 <script>
 import 基本信息 from "@/api/service/基本信息";
-import { getAccountRecord, putAccountRecord} from "@/api/service/干部人事档案专项审核认定表";
+import {
+  getAccountRecord,
+  putAccountRecord,
+} from "@/api/service/干部人事档案专项审核认定表";
+import { getAccountProblem } from "@/api/service/审核问题";
 export default {
   data() {
     var checknumber = (rule, value, callback) => {
@@ -353,6 +368,48 @@ export default {
         "专业技术岗位八级",
         "专业技术岗位九级",
         "专业技术岗位十级",
+      ],
+      tableData: [
+        {
+          审核项目: "出生时间存在问题",
+          存在问题: "",
+        },
+        {
+          审核项目: "参加工作时间存在问题",
+          存在问题: "",
+        },
+        {
+          审核项目: "入党时间存在问题",
+          存在问题: "",
+        },
+        {
+          审核项目: "学历学位存在问题",
+          存在问题: "",
+        },
+        {
+          审核项目: "工作经历存在问题",
+          存在问题: "",
+        },
+        {
+          审核项目: "奖惩情况存在问题",
+          存在问题: "",
+        },
+        {
+          审核项目: "家庭主要成员存在问题",
+          存在问题: "",
+        },
+        {
+          审核项目: "审核问题及审核意见",
+          存在问题: "",
+        },
+        {
+          审核项目: "单位审核意见",
+          存在问题: "",
+        },
+        {
+          审核项目: "完整性问题汇总",
+          存在问题: "",
+        },
       ],
       查询条件: "0",
       单位字典: [
@@ -449,26 +506,26 @@ export default {
       divshow: false,
       commitdisabled: true,
       基本信息: {
-        职工号: "1",
-        单位: "2",
-        姓名: "3",
-        性别: "4",
-        现任职务: "5",
-        管理岗位等级: "6",
-        专业技术职务职称: "7",
-        专业技术岗位等级: "8",
-        进入本校时间: "9",
-        初审人职工号: "0",
-        初审人: "q",
-        初审人单位: "w",
-        初审时间: "e",
-        初审状态: "r",
-        复审人职工号: "t",
-        复审人: "y",
-        复审人单位: "u",
-        复审时间: "i",
-        复审状态: "o",
-        审核问题及审核意见: "p",
+        职工号: "",
+        单位: "",
+        姓名: "",
+        性别: "",
+        现任职务: "",
+        管理岗位等级: "",
+        专业技术职务职称: "",
+        专业技术岗位等级: "",
+        进入本校时间: "",
+        初审人职工号: "",
+        初审人: "",
+        初审人单位: "",
+        初审时间: "",
+        初审状态: "",
+        复审人职工号: "",
+        复审人: "",
+        复审人单位: "",
+        复审时间: "",
+        复审状态: "",
+        审核问题及审核意见: "",
       },
       基本信息rules: {
         职工号: [
@@ -477,16 +534,16 @@ export default {
         ],
         单位: [{ required: true, message: "请选择单位", trigger: "blur" }],
         姓名: [{ required: true, message: "请输入姓名", trigger: "blur" }],
-        性别: [{ required: true, message: "请选择性别", trigger: "blur" }]
+        性别: [{ required: true, message: "请选择性别", trigger: "blur" }],
       },
       审核情况: {
         初审时间: new Date(),
         初审状态: "未审核",
       },
       认定: {
-        姓名: "z",
-        工作单位及职务: "x",
-        单位审核意见: "c",
+        姓名: "",
+        工作单位及职务: "",
+        单位审核意见: "",
       },
       审核情况rules: {
         初审人职工号: [
@@ -497,8 +554,7 @@ export default {
           { required: true, message: "请输入职工号", trigger: "blur" },
           { validator: checknumber, trigger: "blur" },
         ],
-      },
-      textarea: "", //简历区域
+      }, //简历区域
       rules: {
         职工号: [
           { required: true, message: "请输入职工号", trigger: "blur" },
@@ -523,8 +579,7 @@ export default {
     };
   },
 
-  mounted() {
-  },
+  mounted() {},
   created() {
     // 在页面渲染前调用methods中方法
     基本信息.getlist().then((response) => {
@@ -535,11 +590,10 @@ export default {
   methods: {
     // 查找信息
     async saveOrUpdate() {
-      if (this.user.职工号 === "") {
+      if (this.基本信息.职工号 === "") {
         alert("请确认职工号是否填写正确");
       } else {
-        var userres = await putInfoRecord(this.user);
-        console.log(this.user.年龄);
+        var userres = await putAccountRecord(this.基本信息);
         if (userres.data.count === 0) {
           alert("查无此人，请先完善基本信息！");
         } else if (userres.data.count === 1) {
@@ -554,6 +608,18 @@ export default {
           });
         }
       }
+    },
+    fullfill(res) {
+      this.tableData[0].存在问题 = res.出生时间存在问题;
+      this.tableData[1].存在问题 = res.参加工作时间存在问题;
+      this.tableData[2].存在问题 = res.入党时间存在问题;
+      this.tableData[3].存在问题 = res.学历学位存在问题;
+      this.tableData[4].存在问题 = res.工作经历存在问题;
+      this.tableData[5].存在问题 = res.奖惩情况存在问题;
+      this.tableData[6].存在问题 = res.家庭主要成员存在问题;
+      this.tableData[7].存在问题 = res.审核问题及审核意见;
+      this.tableData[8].存在问题 = res.单位审核意见;
+      this.tableData[9].存在问题 = res.完整性问题汇总;
     },
     async search() {
       this.searchdisabled = true;
@@ -621,6 +687,21 @@ export default {
         this.searchdisabled = false;
       } else if (count === 1) {
         this.基本信息 = resp.data.user;
+        this.认定.姓名 = this.基本信息.姓名;
+        this.认定.工作单位及职务 =
+          this.基本信息.单位 +
+          (this.基本信息.现任职务 === (null || "无")
+            ? ""
+            : this.基本信息.现任职务);
+        var para = {
+          职工号: "",
+        };
+        para.职工号 = this.基本信息.职工号;
+        var prob = await getAccountProblem(para);
+        var res = prob.data;
+        var problem = res.problem;
+        this.fullfill(problem);
+        console.log(problem);
         //this.calculate();
         this.divshow = true;
         this.$message({
