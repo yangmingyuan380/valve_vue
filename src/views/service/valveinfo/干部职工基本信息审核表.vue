@@ -594,7 +594,7 @@
                 </div>
               </template>
             </el-table-column>
-            <el-table-column prop="毕业时间" label="毕业时间" width="100px" :key="random">
+            <el-table-column prop="毕业时间" label="毕业时间" width="100px" >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
                   <el-input v-model="scope.row.毕业时间"/>
@@ -687,7 +687,8 @@
                 label="操作"
                 width="100">
                 <template slot-scope="scope">
-                  <el-button @click="edit(scope.$index,scope.row)"  type="text" size="small">编辑</el-button>
+                  <el-button @click="edit(scope.$index,scope.row)"  type="text" size="small" v-if="!scope.row.isEdit">编辑</el-button>
+                  <el-button @click="save(scope.$index,scope.row)" type="text" size="small" v-else>确认</el-button>
                 </template>
               </el-table-column>
           </el-table>
@@ -695,7 +696,7 @@
           <br />
           <h5 style="text-align: left">&emsp;&emsp;工作经历</h5>
           <el-table :data="user.工作经历" align="center" border>
-            <el-table-column prop="起始时间" label="起始时间" width="100px" :key="random">
+            <el-table-column prop="起始时间" label="起始时间" width="100px" :key="random1">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
                   <el-input v-model="scope.row.起始时间"/>
@@ -782,7 +783,7 @@
               label="操作"
               width="100">
               <template slot-scope="scope">
-                <el-button @click="edit(scope.$index,scope.row)" type="text" size="small">编辑</el-button>
+                <el-button @click="edit1(scope.$index,scope.row)" type="text" size="small">编辑</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -889,7 +890,7 @@
               border
               height="200"
             >
-            <el-table-column label="奖励时间" width="300px" :key="random">
+            <el-table-column label="奖励时间" width="300px" :key="random3">
                     <template slot-scope="scope">
                       <div v-if="scope.row.seen">
                         <el-input v-model="scope.row.奖励时间"/>
@@ -899,7 +900,7 @@
                       </div>
                     </template>
                   </el-table-column>
-            <el-table-column label="奖励情况" width="300px" :key="random">
+            <el-table-column label="奖励情况" width="300px" >
                 <template slot-scope="scope">
                   <div v-if="scope.row.seen">
                     <el-input v-model="scope.row.奖励情况"/>
@@ -913,7 +914,7 @@
               label="操作"
               width="100">
               <template slot-scope="scope">
-                <el-button @click="edit(scope.$index,scope.row)" type="text" size="small">编辑</el-button>
+                <el-button @click="edit3(scope.$index,scope.row)" type="text" size="small">编辑</el-button>
               </template>
             </el-table-column>
               <!-- <el-table-column width="100px">
@@ -935,7 +936,7 @@
             border
             height="200"
             >
-            <el-table-column label="处分时间" width="300px" :key="random">
+            <el-table-column label="处分时间" width="300px" :key="random4">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
                   <el-input v-model="scope.row.处分时间"/>
@@ -945,7 +946,7 @@
                 </div>
               </template>
             </el-table-column>
-            <el-table-column label="处分情况" width="300px" :key="random">
+            <el-table-column label="处分情况" width="300px" >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
                   <el-input v-model="scope.row.处分情况"/>
@@ -959,7 +960,7 @@
               label="操作"
               width="100">
               <template slot-scope="scope">
-                <el-button @click="edit(scope.$index,scope.row)" type="text" size="small">编辑</el-button>
+                <el-button @click="edit4(scope.$index,scope.row)" type="text" size="small">编辑</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -1153,6 +1154,10 @@ export default {
         "管理岗位十级",
       ],
       random:0,
+      random1:1,
+      random2:2,
+      random3:3,
+      random4:4,
       学历字典属性: {
         label: "value",
         emitPath: false,
@@ -1760,6 +1765,7 @@ export default {
       showPartyDate: false,
       cancelshow: false,
       divshow: false,
+      isEdit: false,
       commitdisabled: true,
       user: {
         职工号: "",
@@ -1857,6 +1863,41 @@ export default {
     //#1 新增参数
     edit(index,row){
       this.random=Math.random();
+      console.log(index,row.seen);
+      row.isEdit = true;
+      row.seen = true;
+      console.log(row.seen);
+    },
+    save(index,row){
+      row.isEdit = false;
+      row.seen = false;
+    },
+    edit1(index,row){
+      this.random1=Math.random();
+      console.log(index,row.seen);
+      row.seen = true;
+      console.log(row.seen);
+    },
+    edit2(index,row){
+      this.random2=Math.random();
+      console.log(index,row.seen);
+      row.seen = true;
+      console.log(row.seen);
+    },
+    edit3(index,row){
+      this.random3=Math.random();
+      console.log(index,row.seen);
+      row.seen = true;
+      console.log(row.seen);
+    },
+    edit4(index,row){
+      this.random4=Math.random();
+      console.log(index,row.seen);
+      row.seen = true;
+      console.log(row.seen);
+    },
+    edit5(index,row){
+      this.random5=Math.random();
       console.log(index,row.seen);
       row.seen = true;
       console.log(row.seen);
