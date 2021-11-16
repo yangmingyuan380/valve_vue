@@ -783,7 +783,8 @@
               label="操作"
               width="100">
               <template slot-scope="scope">
-                <el-button @click="edit1(scope.$index,scope.row)" type="text" size="small">编辑</el-button>
+                <el-button @click="edit1(scope.$index,scope.row)" type="text" size="small" v-if="!scope.row.isEdit">编辑</el-button>
+                <el-button @click="save(scope.$index,scope.row)" type="text" size="small" v-else>确认</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -914,7 +915,8 @@
               label="操作"
               width="100">
               <template slot-scope="scope">
-                <el-button @click="edit3(scope.$index,scope.row)" type="text" size="small">编辑</el-button>
+                <el-button @click="edit3(scope.$index,scope.row)" type="text" size="small" v-if="!scope.row.isEdit">编辑</el-button>
+                <el-button @click="save(scope.$index,scope.row)" type="text" size="small" v-else>确认</el-button>
               </template>
             </el-table-column>
               <!-- <el-table-column width="100px">
@@ -960,7 +962,8 @@
               label="操作"
               width="100">
               <template slot-scope="scope">
-                <el-button @click="edit4(scope.$index,scope.row)" type="text" size="small">编辑</el-button>
+                <el-button @click="edit4(scope.$index,scope.row)" type="text" size="small" v-if="!scope.row.isEdit">编辑</el-button>
+                <el-button @click="save(scope.$index,scope.row)" type="text" size="small" v-else>确认</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -1876,24 +1879,28 @@ export default {
       this.random1=Math.random();
       console.log(index,row.seen);
       row.seen = true;
+      row.isEdit = true;
       console.log(row.seen);
     },
     edit2(index,row){
       this.random2=Math.random();
       console.log(index,row.seen);
       row.seen = true;
+      row.isEdit = true;
       console.log(row.seen);
     },
     edit3(index,row){
       this.random3=Math.random();
       console.log(index,row.seen);
       row.seen = true;
+      row.isEdit = true;
       console.log(row.seen);
     },
     edit4(index,row){
       this.random4=Math.random();
       console.log(index,row.seen);
       row.seen = true;
+      row.isEdit = true;
       console.log(row.seen);
     },
     edit5(index,row){
@@ -2037,7 +2044,29 @@ export default {
         this.inputdisabled = false;
         this.searchdisabled = false;
       } else if (count === 1) {
+
         this.user = resp.data.user;
+        let i;            //遍历变量
+        for(i=0;i<this.user.学习经历.length;i++){
+          this.user.学习经历[i].seen=false;
+        }
+
+        for (i=0;i<this.user.工作经历.length;i++){
+          this.user.工作经历[i].seen=false;
+        }
+
+        for (i=0;i<this.user.奖励情况记录.length;i++){
+          this.user.奖励情况记录[i].seen=false;
+        }
+
+        for (i=0;i<this.user.处分情况记录.length;i++){
+          this.user.处分情况记录[i].seen=false;
+        }
+
+        for (i=0;i<this.user.家庭成员记录.length;i++){
+          this.user.家庭成员记录[i].seen=false;
+        }
+
         //this.calculate();
         this.divshow = true;
         this.$message({
