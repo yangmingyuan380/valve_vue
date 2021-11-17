@@ -1063,6 +1063,36 @@ export default {
       this.单位字典 = response.data.单位字典;
     });
   },
+  mounted() {
+    window.onbeforeunload = function (e) {
+      e = e || window.event;
+      // 兼容IE8和Firefox 4之前的版本
+      if (e) {
+        e.returnValue = "关闭提示";
+      }
+      // Chrome, Safari, Firefox 4+, Opera 12+ , IE 9+
+      return "关闭提示";
+    };
+  },
+  destroyed() {
+    window.onbeforeunload = null;
+  },
+  beforeRouteLeave(to, from, next) {
+    const answer = window.confirm("当前页面数据未保存，确定要离开？");
+    if (answer) {
+      next();
+    } else {
+      next(false);
+    }
+  },
+  beforeRouteLeave(to, from, next) {
+    const answer = window.confirm("当前页面数据未保存，确定要离开？");
+    if (answer) {
+      next();
+    } else {
+      next(false);
+    }
+  },
   methods: {
     arraySpanMethod({ row, column, rowIndex, columnIndex }) {
       if (rowIndex === 0 || rowIndex === 1) {
@@ -1449,46 +1479,13 @@ export default {
         this.inputdisabled = false;
         this.searchdisabled = false;
       }
-      // if (this.user.职工号 != "") {
-      //   const params = {
-      //     职工号: this.user.职工号,
-      //   };
-      //   getIntegrityRecord(params).then((resp) => {
-      //     if (resp.data === null) {
-      //       alert("查无此人，请添加！");
-      //     } else {
-      //       var res = resp.data;
-      //       this.user = res.data;
-      //       this.fullfill(res.data);
-      //       console.log(this.user);
-      //       this.divshow = true;
-      //     }
-      //   });
-      // } else if (this.user.单位 != "" && this.user.姓名 != "") {
-      //   console.log("fuck!");
-      //   const params = {
-      //     姓名: this.user.姓名,
-      //     单位: this.user.单位,
-      //   };
-      //   getIntegrityRecords(params).then((resp) => {
-      //     var count = resp.data.count;
-      //     console.log(count);
-      //     if (count > 1) {
-      //       this.divshow = false;
-      //       alert('存在重名，请以"职工号"进行查询！');
-      //     } else if (count === 0) {
-      //       this.divshow = false;
-      //       alert("查无此人，请添加！");
-      //     } else {
-      //       this.user = resp.data.data[0];
-      //       this.divshow = true;
-      //     }
-      //   });
-      // } else {
-      //   alert('请以"职工号"或"姓名"加"单位"的组合进行查询！');
-      // }
     },
     cancel() {
+      const answer = window.confirm("请确认是否放弃更改");
+      if (answer) {
+      } else {
+        return;
+      }
       this.flush();
       this.searchdisabled = false;
       this.commitdisabled = true;
@@ -1512,6 +1509,13 @@ export default {
       this.divshow = false;
     },
     async saveOrUpdate() {
+      const answer = window.confirm(
+        "请确认初审与复审信息是否完善，确认后将提交"
+      );
+      if (answer) {
+      } else {
+        return;
+      }
       if (this.user.职工号 === "") {
         alert("请确认职工号是否填写正确");
       } else {
