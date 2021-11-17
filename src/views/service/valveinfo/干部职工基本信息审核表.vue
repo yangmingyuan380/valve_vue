@@ -1838,9 +1838,36 @@ export default {
     };
   },
 
-  // mounted() {
-  //   //this.fetchedu();
-  // },
+  mounted() {
+    window.onbeforeunload = function (e) {
+      e = e || window.event;
+      // 兼容IE8和Firefox 4之前的版本
+      if (e) {
+        e.returnValue = "关闭提示";
+      }
+      // Chrome, Safari, Firefox 4+, Opera 12+ , IE 9+
+      return "关闭提示";
+    };
+  },
+  destroyed() {
+    window.onbeforeunload = null;
+  },
+  beforeRouteLeave(to, from, next) {
+    const answer = window.confirm("当前页面数据未保存，确定要离开？");
+    if (answer) {
+      next();
+    } else {
+      next(false);
+    }
+  },
+  beforeRouteLeave(to, from, next) {
+    const answer = window.confirm("当前页面数据未保存，确定要离开？");
+    if (answer) {
+      next();
+    } else {
+      next(false);
+    }
+  },
   created() {
     // 在页面渲染前调用methods中方法
     基本信息.getlist().then((response) => {
@@ -1848,7 +1875,7 @@ export default {
       this.单位字典 = response.data.单位字典;
       this.学历字典 = response.data.学历字典;
       this.学位字典 = response.data.学位字典;
-      console.log(this.单位字典);
+      //console.log(this.单位字典);
     });
   },
   methods: {
@@ -1866,10 +1893,10 @@ export default {
     //#1 新增参数
     edit(index,row){
       this.random=Math.random();
-      console.log(index,row.seen);
+      //console.log(index,row.seen);
       row.isEdit = true;
       row.seen = true;
-      console.log(row.seen);
+      //console.log(row.seen);
     },
     save(index,row){
       row.isEdit = false;
@@ -1877,37 +1904,37 @@ export default {
     },
     edit1(index,row){
       this.random1=Math.random();
-      console.log(index,row.seen);
+      //console.log(index,row.seen);
       row.seen = true;
       row.isEdit = true;
-      console.log(row.seen);
+      //console.log(row.seen);
     },
     edit2(index,row){
       this.random2=Math.random();
-      console.log(index,row.seen);
+      //console.log(index,row.seen);
       row.seen = true;
       row.isEdit = true;
-      console.log(row.seen);
+      //console.log(row.seen);
     },
     edit3(index,row){
       this.random3=Math.random();
-      console.log(index,row.seen);
+      //console.log(index,row.seen);
       row.seen = true;
       row.isEdit = true;
-      console.log(row.seen);
+      //console.log(row.seen);
     },
     edit4(index,row){
       this.random4=Math.random();
-      console.log(index,row.seen);
+      //console.log(index,row.seen);
       row.seen = true;
       row.isEdit = true;
-      console.log(row.seen);
+      //console.log(row.seen);
     },
     edit5(index,row){
       this.random5=Math.random();
-      console.log(index,row.seen);
+      //console.log(index,row.seen);
       row.seen = true;
-      console.log(row.seen);
+      //console.log(row.seen);
     },
     flush() {
       Object.keys(this.user).forEach((key) => (this.user[key] = ""));
@@ -1959,12 +1986,19 @@ export default {
     // editedu() {},
     // 查找信息
     async saveOrUpdate() {
+      const answer = window.confirm(
+        "请确认初审与复审信息是否完善，确认后将提交"
+      );
+      if (answer) {
+      } else {
+        return;
+      }
       if (this.user.职工号 === "") {
         alert("请确认职工号是否填写正确");
       } else {
         this.user.出生年月 = this.user.出生年月+="-01";
         var userres = await putInfoRecord(this.user);
-        console.log(this.user.年龄);
+        //console.log(this.user.年龄);
         if (userres.data.count === 0) {
           alert("查无此人，请先完善基本信息！");
         } else if (userres.data.count === 1) {
@@ -2046,8 +2080,8 @@ export default {
       } else if (count === 1) {
         this.user = resp.data.user;
         this.user.出生年月 = this.user.出生年月.substring(0,7);
-        console.log(resp.data.user);
-        console.log(this.user.出生年月);
+        //console.log(resp.data.user);
+        //console.log(this.user.出生年月);
         let i;            //遍历变量
         for(i=0;i<this.user.学习经历.length;i++){
           this.user.学习经历[i].seen=false;
@@ -2169,6 +2203,13 @@ export default {
     // },
 
     goback() {
+      const answer = window.confirm(
+        "请确认是否放弃更改"
+      );
+      if (answer) {
+      } else {
+        return;
+      }
       this.flush();
       this.searchdisabled = false;
       this.commitdisabled = true;

@@ -579,17 +579,53 @@ export default {
     };
   },
 
-  mounted() {},
+  mounted() {
+    window.onbeforeunload = function (e) {
+      e = e || window.event;
+      // 兼容IE8和Firefox 4之前的版本
+      if (e) {
+        e.returnValue = "关闭提示";
+      }
+      // Chrome, Safari, Firefox 4+, Opera 12+ , IE 9+
+      return "关闭提示";
+    };
+  },
+  destroyed() {
+    window.onbeforeunload = null;
+  },
+  beforeRouteLeave(to, from, next) {
+    const answer = window.confirm("当前页面数据未保存，确定要离开？");
+    if (answer) {
+      next();
+    } else {
+      next(false);
+    }
+  },
+  beforeRouteLeave(to, from, next) {
+    const answer = window.confirm("当前页面数据未保存，确定要离开？");
+    if (answer) {
+      next();
+    } else {
+      next(false);
+    }
+  },
   created() {
     // 在页面渲染前调用methods中方法
     基本信息.getlist().then((response) => {
       this.单位字典 = response.data.单位字典;
-      console.log(this.单位字典);
+      //console.log(this.单位字典);
     });
   },
   methods: {
     // 查找信息
     async saveOrUpdate() {
+      const answer = window.confirm(
+        "请确认初审与复审信息是否完善，确认后将提交"
+      );
+      if (answer) {
+      } else {
+        return;
+      }
       if (this.基本信息.职工号 === "") {
         alert("请确认职工号是否填写正确");
       } else {
@@ -675,7 +711,7 @@ export default {
           resp = await getAccountRecord(param);
         }
       }
-      console.log(resp.data.count);
+      //console.log(resp.data.count);
       var count = resp.data.count;
       if (count === 0) {
         this.flush();
@@ -703,7 +739,7 @@ export default {
         var res = prob.data;
         var problem = res.problem;
         this.fullfill(problem);
-        console.log(problem);
+        //console.log(problem);
         //this.calculate();
         this.divshow = true;
         this.$message({
@@ -719,6 +755,13 @@ export default {
       }
     },
     goback() {
+            const answer = window.confirm(
+        "请确认是否放弃更改"
+      );
+      if (answer) {
+      } else {
+        return;
+      }
       this.flush();
       this.searchdisabled = false;
       this.commitdisabled = true;
@@ -767,7 +810,7 @@ export default {
       width: 1000px;
       margin: 20px 200px 100px 100px;
     }
-    /deep/.el-table{
+    /deep/.el-table {
       .cell {
         white-space: pre-wrap;
       }
