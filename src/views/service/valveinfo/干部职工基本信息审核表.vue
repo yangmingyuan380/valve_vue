@@ -667,6 +667,14 @@
               label="获得学历的国家（地区）"
               width="250px"
             >
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.获得学历的国家"/>
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px">{{scope.row.获得学历的国家}}}</span>
+                </div>
+              </template>
             </el-table-column>
             <el-table-column
               prop="获得学位的国家"
