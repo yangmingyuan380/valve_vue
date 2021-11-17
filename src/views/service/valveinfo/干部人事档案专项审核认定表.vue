@@ -269,7 +269,7 @@
               >
               </el-table-column>
 
-              <el-table-column prop="存在问题" label="存在问题">
+              <el-table-column prop="存在问题" label="存在问题" class="cell">
               </el-table-column>
             </el-table>
           </div>
@@ -619,6 +619,8 @@ export default {
       this.tableData[6].存在问题 = res.家庭主要成员存在问题;
       this.tableData[7].存在问题 = res.审核问题及审核意见;
       this.tableData[8].存在问题 = res.单位审核意见;
+      // let sumProblem = res.完整性问题汇总;
+      // sumProblem = sumProblem.split("\n");
       this.tableData[9].存在问题 = res.完整性问题汇总;
     },
     async search() {
@@ -764,6 +766,11 @@ export default {
       float: left;
       width: 1000px;
       margin: 20px 200px 100px 100px;
+    }
+    /deep/.el-table{
+      .cell {
+        white-space: pre-wrap;
+      }
     }
   }
 }
