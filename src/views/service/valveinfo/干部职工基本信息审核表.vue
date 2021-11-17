@@ -1962,6 +1962,7 @@ export default {
       if (this.user.职工号 === "") {
         alert("请确认职工号是否填写正确");
       } else {
+        this.user.出生年月 = this.user.出生年月+="-01";
         var userres = await putInfoRecord(this.user);
         console.log(this.user.年龄);
         if (userres.data.count === 0) {
@@ -2031,7 +2032,6 @@ export default {
           resp = await getInfoRecord(param);
         }
       }
-      console.log(resp.data.count);
       var count = resp.data.count;
       if (count === 0) {
         this.flush();
@@ -2044,8 +2044,10 @@ export default {
         this.inputdisabled = false;
         this.searchdisabled = false;
       } else if (count === 1) {
-
         this.user = resp.data.user;
+        this.user.出生年月 = this.user.出生年月.substring(0,7);
+        console.log(resp.data.user);
+        console.log(this.user.出生年月);
         let i;            //遍历变量
         for(i=0;i<this.user.学习经历.length;i++){
           this.user.学习经历[i].seen=false;
