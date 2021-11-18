@@ -214,6 +214,7 @@
 import 基本信息 from '@/api/service/基本信息'
 import 审核情况一览表 from '@/api/service/审核情况一览表'
 import 导出excel表 from '@/api/service/导出excel表'
+
 export default {
   data() {
     var checknumber = (rule, value, callback) => {
@@ -233,8 +234,8 @@ export default {
       limit: 10, // 每页记录数
       管理岗位等级字典: ['管理岗位一级', '管理岗位二级', '管理岗位三级', '管理岗位四级', '管理岗位五级', '管理岗位六级', '管理岗位七级', '管理岗位八级', '管理岗位九级', '管理岗位十级',],
       专业技术岗位等级字典: ['专业技术岗位一级', '专业技术岗位二级', '专业技术岗位三级', '专业技术岗位四级', '专业技术岗位五级', '专业技术岗位六级', '专业技术岗位七级', '专业技术岗位八级', '专业技术岗位九级', '专业技术岗位十级',],
-      初审时间:'',
-      复审时间:'',
+      初审时间: '',
+      复审时间: '',
       基本信息: {
         职工号: '',
         单位: '',
@@ -300,15 +301,15 @@ export default {
       let 初审时间结束 = '';
       let 复审时间开始 = '';
       let 复审时间结束 = '';
-      if(this.初审时间!==''){
+      if (this.初审时间 !== '') {
         初审时间开始 = this.formatDate(this.初审时间[0]);
         初审时间结束 = this.formatDate(this.初审时间[1]);
       }
-      if(this.复审时间!=='') {
+      if (this.复审时间 !== '') {
         复审时间开始 = this.formatDate(this.复审时间[0]);
         复审时间结束 = this.formatDate(this.复审时间[1]);
       }
-      审核情况一览表.getdata(this.page,this.limit,初审时间开始,初审时间结束,复审时间开始,复审时间结束,this.基本信息).then((response) => {
+      审核情况一览表.getdata(this.page, this.limit, 初审时间开始, 初审时间结束, 复审时间开始, 复审时间结束, this.基本信息).then((response) => {
         this.审核情况 = response.data.list;
         this.total = response.data.total;
         this.$message({
@@ -317,28 +318,38 @@ export default {
         })
       })
     },
-    formatDate(datetime){ // 将date类型准换为yyy-MM-dd HH:mm:ss格式
+    formatDate(datetime) { // 将date类型准换为yyy-MM-dd HH:mm:ss格式
       var year = datetime.getFullYear();
       var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
       var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
-      var hour = datetime.getHours()< 10 ? "0" + datetime.getHours() : datetime.getHours();
-      var minute = datetime.getMinutes()< 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
-      var second = datetime.getSeconds()< 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
-      return year + "-" + month + "-" + date+" "+hour+":"+minute+":"+second;
+      var hour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
+      var minute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
+      var second = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
+      return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
     },
     // 导出每日情况登记表
-    output1(){
+    output1() {
       let idList = [];
-      for(let i=0;i<this.审核情况.length;i++){
-        if(this.审核情况[i].checked){
+      for (let i = 0; i < this.审核情况.length; i++) {
+        if (this.审核情况[i].checked) {
           idList.push(this.审核情况[i].职工号)
         }
       }
-      导出excel表.output1(idList).then(()=>{
+      导出excel表.output1(idList).then(response => {
+        const blob = new Blob([response]);  // 把得到的结果用流对象转一下
+        var a = document.createElement("a"); //创建一个<a></a>标签
+        a.href = URL.createObjectURL(blob); // 将流文件写入a标签的href属性值
+        a.download = "每日情况登记表.xlsx"; //设置文件名
+        a.style.display = "none";  // 障眼法藏起来a标签
+        document.body.appendChild(a); // 将a标签追加到文档对象中
+        a.click(); // 模拟点击了a标签，会触发a标签的href的读取，浏览器就会自动下载了
+        a.remove(); // 一次性的，用完就删除a标签
         this.$message({
           type: "success",
           message: "每日情况登记表导出成功!",
         })
+      }).catch(error => {
+        console.log('error', error); //这里会打印捕获的异常是什么，我这里是false
       })
     }
   }

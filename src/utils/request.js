@@ -31,6 +31,9 @@ service.interceptors.response.use(
      * code为非1是抛错 可结合自己业务进行修改
      */
     const res = response.data
+    if(response.headers['content-type']==='application/octet-stream'){
+      return response.data;
+    }
     if (res.code !== 1) {
       Message({
         message: res.message,

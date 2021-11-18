@@ -7,7 +7,8 @@ export default {
     return request({
       url: `${api_url}/getexcel4`, // 后端接口完整路径
       method: 'post',
-      data:idList
+      data:idList,
+      responseType: 'arraybuffer'
     })
   },
 
