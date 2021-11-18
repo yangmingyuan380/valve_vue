@@ -148,8 +148,9 @@
           border
           style="width: 1280px;margin: 10px">
           <af-table-column label="序号"
-                           width="50">
+                           width="60">
             <template slot-scope="scope">
+              <el-checkbox v-model="scope.row.checked"></el-checkbox>
               {{ (page - 1) * limit + scope.$index + 1 }}
             </template>
           </af-table-column>
@@ -199,6 +200,11 @@
           layout="total, prev, pager, next, jumper"
           @current-change="getdata"
         />
+        <el-row>
+          <el-row :span="8">
+            <el-button @click="output1">导出每日情况登记表</el-button>
+          </el-row>
+        </el-row>
       </div>
     </div>
   </div>
@@ -207,6 +213,7 @@
 <script>
 import 基本信息 from '@/api/service/基本信息'
 import 审核情况一览表 from '@/api/service/审核情况一览表'
+import 导出excel表 from '@/api/service/导出excel表'
 export default {
   data() {
     var checknumber = (rule, value, callback) => {
@@ -319,6 +326,17 @@ export default {
       var second = datetime.getSeconds()< 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
       return year + "-" + month + "-" + date+" "+hour+":"+minute+":"+second;
     },
+    // 导出每日情况登记表
+    output1(){
+      let idList = [];
+      for(let i=0;i<this.审核情况.length;i++){
+        if(this.审核情况[i].checked){
+          idList.push(this.审核情况[i].职工号)
+        }
+      }
+      console.log(idList)
+      导出excel表.output1(idList)
+    }
   }
 };
 </script>
