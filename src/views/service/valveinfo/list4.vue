@@ -334,8 +334,12 @@ export default {
           idList.push(this.审核情况[i].职工号)
         }
       }
-      console.log(idList)
-      导出excel表.output1(idList)
+      导出excel表.output1(idList).then(()=>{
+        this.$message({
+          type: "success",
+          message: "每日情况登记表导出成功!",
+        })
+      })
     }
   }
 };
