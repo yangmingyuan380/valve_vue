@@ -145,12 +145,20 @@
       <div class="container">
         <el-table
           :data="审核情况"
+          ref="审核情况"
           border
+          @select="changeSelect"
+          @select-all="selectAll"
           style="width: 1280px;margin: 10px">
+          <el-table-column
+            type="selection"
+            width="55"
+          :align="'center'">
+          </el-table-column>
           <af-table-column label="序号"
-                           width="60">
+                           width="60"
+                           :align="'center'">
             <template slot-scope="scope">
-              <el-checkbox v-model="scope.row.checked"></el-checkbox>
               {{ (page - 1) * limit + scope.$index + 1 }}
             </template>
           </af-table-column>
@@ -192,19 +200,21 @@
           </af-table-column>
         </el-table>
         <!-- 分页 -->
-        <el-pagination
-          :current-page="page"
-          :page-size="limit"
-          :total="total"
-          style="padding: 30px 0; text-align: center"
-          layout="total, prev, pager, next, jumper"
-          @current-change="getdata"
-        />
-        <el-row>
-          <el-row :span="8">
-            <el-button @click="output1">导出每日情况登记表</el-button>
-          </el-row>
-        </el-row>
+        <div class="all-el-page">
+          <div class="all-check">
+	        <span class="all-check-span">已选择{{ saveCheckList.length }}条数据</span>
+            <el-checkbox v-model="pageChecked" @change="checkAll">全选</el-checkbox>
+          </div>
+          <el-pagination
+            :current-page="page"
+            :page-size="limit"
+            :total="total"
+            style="padding: 30px 0; text-align: center"
+            layout="total, prev, pager, next, jumper"
+            @current-change="getdata"
+          />
+        </div>
+        <el-button @click="output1" style="margin: 5px 600px">导出每日情况登记表</el-button>
       </div>
     </div>
   </div>
@@ -229,6 +239,9 @@ export default {
     };
     // 定义初始化数据
     return {
+      pageChecked:false, //全选切换状态
+      // 保存起来的选择项
+      saveCheckList: [],
       total: 0, // 总记录数
       page: 1, // 页码
       limit: 10, // 每页记录数
@@ -286,6 +299,87 @@ export default {
     this.getdata()
   },
   methods: {
+    // 当页勾选以及取消
+    changeSelect(selection, row) {
+      // 从保存项saveCheckList里面寻找,如果找到了row则删除，如果没找到则添加
+      let fitemIndex = this.saveCheckList.findIndex((item) => {
+        return item === row.职工号;
+      });
+      if (fitemIndex < 0) {
+        this.saveCheckList.push(row.职工号);
+      } else {
+        this.saveCheckList.splice(fitemIndex, 1);
+      }
+    },
+    // 表格全选内容
+    selectAll(val) {
+      // 如果为空，则为清除选项状态，此时将table中的所有内容都从saveCheckList移除
+      if (val && val.length === 0) {
+        this.审核情况.forEach((row) => {
+          // 从保存项saveCheckList里面寻找,如果找到了row则删除，如果没找到则添加
+          let fitemIndex = this.saveCheckList.findIndex((item) => {
+            return item=== row.职工号;
+          });
+          // 找到了就删除掉
+          if (fitemIndex >= 0) {
+            this.saveCheckList.splice(fitemIndex, 1);
+          }
+        });
+      } else if (val && val.length !== 0 && this.saveCheckList.length !== 0) {
+        // 如果不为空,且this.saveCheckList也不为空则从val里面找
+        val.forEach((row) => {
+          // 从保存项saveCheckList里面寻找,如果找到了row则删除，如果没找到则添加
+          let fitemIndex = this.saveCheckList.findIndex((item) => {
+            return item === row.职工号;
+          });
+          // 没找到就push进去
+          if (fitemIndex < 0) {
+            this.saveCheckList.push(row.职工号);
+          }
+        });
+      } else if (val && val.length !== 0 && this.saveCheckList.length === 0) {
+        val.forEach((row) => {
+          this.saveCheckList.push(row.职工号);
+        });
+      }
+    },
+    // 全选按钮
+    checkAll() {
+      // 全选操作
+      if (this.pageChecked) {
+        this.saveCheckList = []
+        // 调用接口查询所有的列表数据并且保存起来
+        let 初审时间开始 = '';
+        let 初审时间结束 = '';
+        let 复审时间开始 = '';
+        let 复审时间结束 = '';
+        if (this.初审时间 !== '') {
+          初审时间开始 = this.formatDate(this.初审时间[0]);
+          初审时间结束 = this.formatDate(this.初审时间[1]);
+        }
+        if (this.复审时间 !== '') {
+          复审时间开始 = this.formatDate(this.复审时间[0]);
+          复审时间结束 = this.formatDate(this.复审时间[1]);
+        }
+        审核情况一览表.getdata(0, 300000, 初审时间开始, 初审时间结束, 复审时间开始, 复审时间结束, this.基本信息).then((response) => {
+          response.data.list.forEach(item=>{
+            this.saveCheckList.push(item.职工号)
+          })
+            // 将当前的页的所有内容加上勾选状态
+            this.$nextTick(() => {
+              this.$refs["审核情况"].clearSelection();
+              this.$refs["审核情况"].toggleAllSelection();
+            });
+        });
+      } else {
+        // 取消全选，当前所有选择项清空
+        this.saveCheckList = [];
+        // 将当前的页的所有内容取消勾选状态
+        this.$nextTick(() => {
+          this.$refs["审核情况"].clearSelection();
+        });
+      }
+    },
     // 查找信息
     search() {
       this.$refs['基本信息'].validate((valid) => {
@@ -296,7 +390,21 @@ export default {
         }
       })
     },
-    getdata() {
+    // 分页切换时准备表格的选中状态 -- 这个内容必须放在表格数据赋值之后--()
+    // tableList 为当前表格的数据
+    checkPageStatus(tableList) {
+      tableList.forEach((row) => {
+        let findex = this.saveCheckList.findIndex((item) => {
+          return item === row.职工号;
+        });
+        if (findex >= 0) {
+          this.$nextTick(() => {
+            this.$refs["审核情况"].toggleRowSelection(row);
+          });
+        }
+      });
+    },
+    getdata(page=1) {
       let 初审时间开始 = '';
       let 初审时间结束 = '';
       let 复审时间开始 = '';
@@ -309,9 +417,10 @@ export default {
         复审时间开始 = this.formatDate(this.复审时间[0]);
         复审时间结束 = this.formatDate(this.复审时间[1]);
       }
-      审核情况一览表.getdata(this.page, this.limit, 初审时间开始, 初审时间结束, 复审时间开始, 复审时间结束, this.基本信息).then((response) => {
+      审核情况一览表.getdata(page, this.limit, 初审时间开始, 初审时间结束, 复审时间开始, 复审时间结束, this.基本信息).then((response) => {
         this.审核情况 = response.data.list;
         this.total = response.data.total;
+        this.checkPageStatus(this.审核情况)
         this.$message({
           type: "success",
           message: "查询成功!",
@@ -329,13 +438,8 @@ export default {
     },
     // 导出每日情况登记表
     output1() {
-      let idList = [];
-      for (let i = 0; i < this.审核情况.length; i++) {
-        if (this.审核情况[i].checked) {
-          idList.push(this.审核情况[i].职工号)
-        }
-      }
-      导出excel表.output1(idList).then(response => {
+      let checkList = this.saveCheckList.concat(this.pageCheckList);
+      导出excel表.output1(checkList).then(response => {
         const blob = new Blob([response]);  // 把得到的结果用流对象转一下
         var a = document.createElement("a"); //创建一个<a></a>标签
         a.href = URL.createObjectURL(blob); // 将流文件写入a标签的href属性值
@@ -373,6 +477,10 @@ export default {
     margin: 8px 15px 8px 0px;
     float: left;
   }
+}
+.all-check-span{
+  padding-left: 10px;
+  font-size: 14px;
 }
 
 </style>

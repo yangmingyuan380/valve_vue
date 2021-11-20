@@ -11,5 +11,4 @@ export default {
       responseType: 'arraybuffer'
     })
   },
-
 }

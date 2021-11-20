@@ -71,7 +71,7 @@ export const constantRouterMap = [
       {
         path: 'overview',
         name: 'reviewstatusOverview',
-        component: () => import('@/views/service/valveinfo/list4'),
+        component: () => import('@/views/service/valveinfo/审核情况一览表'),
         meta: {title: '审核情况一览表', icon: 'table'}
       }
     ]
