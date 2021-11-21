@@ -316,6 +316,9 @@
           <el-button v-show="cancelshow" type="danger" @click="goback"
             >取消</el-button
           >
+          <el-button @click="output" 
+              >导出专项审核认定表</el-button
+            >
         </el-form-item>
       </div>
     </el-form>
@@ -324,6 +327,7 @@
 
 <script>
 import 基本信息 from "@/api/service/基本信息";
+import 导出excel表 from "@/api/service/导出excel表";
 import {
   getAccountRecord,
   putAccountRecord,
@@ -772,6 +776,30 @@ export default {
       Object.keys(this.基本信息).forEach((key) => (this.基本信息[key] = ""));
       this.commitdisabled = true;
       this.divshow = false;
+    },
+    output() {
+      const params = {
+        职工号: this.基本信息.职工号
+      };
+      导出excel表
+        .output4(params)
+        .then((response) => {
+          const blob = new Blob([response]); // 把得到的结果用流对象转一下
+          var a = document.createElement("a"); //创建一F个<a></a>标签
+          a.href = URL.createObjectURL(blob); // 将流文件写入a标签的href属性值
+          a.download = "干部人事档案专项审核认定表.doc"; //设置文件名
+          a.style.display = "none"; // 障眼法藏起来a标签
+          document.body.appendChild(a); // 将a标签追加到文档对象中
+          a.click(); // 模拟点击了a标签，会触发a标签的href的读取，浏览器就会自动下载了
+          a.remove(); // 一次性的，用完就删除a标签
+          this.$message({
+            type: "success",
+            message: "干部人事档案专项审核认定表导出成功!",
+          });
+        })
+        .catch((error) => {
+          console.log("error", error); //这里会打印捕获的异常是什么，我这里是false
+        });
     },
     //添加一行
   },

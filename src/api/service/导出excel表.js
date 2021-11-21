@@ -11,4 +11,28 @@ export default {
       responseType: 'arraybuffer'
     })
   },
+  output(id) { // 插入新的基本信息
+    return request({
+      url: `${api_url}/getexcel1`, // 后端接口完整路径
+      method: 'post',
+      params: id,
+      responseType: 'arraybuffer'
+    })
+  },
+  output3(id) { // 插入新的基本信息
+    return request({
+      url: `${api_url}/getword1`, // 后端接口完整路径
+      method: 'post',
+      params: id,
+      responseType: 'arraybuffer'
+    })
+  },
+  output4(id) { // 插入新的基本信息
+    return request({
+      url: `${api_url}/getword3`, // 后端接口完整路径
+      method: 'post',
+      params: id,
+      responseType: 'arraybuffer'
+    })
+  },
 }
