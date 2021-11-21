@@ -316,9 +316,7 @@
           <el-button v-show="cancelshow" type="danger" @click="goback"
             >取消</el-button
           >
-          <el-button @click="output" 
-              >导出专项审核认定表</el-button
-            >
+          <el-button @click="output">导出专项审核认定表</el-button>
         </el-form-item>
       </div>
     </el-form>
@@ -778,11 +776,10 @@ export default {
       this.divshow = false;
     },
     output() {
-      const params = {
-        职工号: this.基本信息.职工号
-      };
+      let idList = [];
+      idList.push(this.基本信息.职工号);
       导出excel表
-        .output4(params)
+        .output4(idList)
         .then((response) => {
           const blob = new Blob([response]); // 把得到的结果用流对象转一下
           var a = document.createElement("a"); //创建一F个<a></a>标签
@@ -794,7 +791,7 @@ export default {
           a.remove(); // 一次性的，用完就删除a标签
           this.$message({
             type: "success",
-            message: "干部人事档案专项审核认定表导出成功!",
+            message: "干部人事档案专项审核认定表导出成功",
           });
         })
         .catch((error) => {
