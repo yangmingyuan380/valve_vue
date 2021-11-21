@@ -7,31 +7,31 @@ export default {
     return request({
       url: `${api_url}/getexcel4`, // 后端接口完整路径
       method: 'post',
-      data:idList,
+      data: idList,
       responseType: 'arraybuffer'
     })
   },
-  output(id) { // 插入新的基本信息
+  output(idList) { // 插入新的基本信息
     return request({
       url: `${api_url}/getexcel1`, // 后端接口完整路径
       method: 'post',
-      params: id,
+      data: idList,
       responseType: 'arraybuffer'
     })
   },
-  output3(id) { // 插入新的基本信息
+  output3(idList) { // 插入新的基本信息
     return request({
       url: `${api_url}/getword1`, // 后端接口完整路径
       method: 'post',
-      params: id,
+      data: idList,
       responseType: 'arraybuffer'
     })
   },
-  output4(id) { // 插入新的基本信息
+  output4(idList) { // 插入新的基本信息
     return request({
       url: `${api_url}/getword3`, // 后端接口完整路径
       method: 'post',
-      params: id,
+      data: idList,
       responseType: 'arraybuffer'
     })
   },

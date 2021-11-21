@@ -63,21 +63,21 @@
             :disabled="searchdisabled"
             size="mini"
             @click="search"
-            >查找</el-button
+          >查找</el-button
           >
           <el-button
             type="success"
             :disabled="commitdisabled"
             size="mini"
             @click="saveOrUpdate"
-            >提交</el-button
+          >提交</el-button
           >
           <el-button
             type="danger"
             v-show="cancelshow"
             size="mini"
             @click="cancel"
-            >放弃</el-button
+          >放弃</el-button
           >
         </el-col>
       </el-row>
@@ -178,7 +178,7 @@
               </el-table-column>
             </el-table>
             <el-button @click="output" style="margin: 5px 600px"
-              >导出完整性登记表</el-button
+            >导出完整性登记表</el-button
             >
           </el-main>
 
@@ -1712,11 +1712,10 @@ export default {
       this.commitdisabled = false;
     },
     output() {
-      const params = {
-        职工号: this.user.职工号,
-      };
+      let idList = [];
+      idList.push(this.user.职工号);
       导出excel表
-        .output(params)
+        .output(idList)
         .then((response) => {
           const blob = new Blob([response]); // 把得到的结果用流对象转一下
           var a = document.createElement("a"); //创建一F个<a></a>标签

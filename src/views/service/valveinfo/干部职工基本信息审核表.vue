@@ -62,14 +62,14 @@
                 :disabled="searchdisabled"
                 size="mini"
                 @click="search"
-                >查找</el-button
+              >查找</el-button
               >
               <el-button
                 type="danger"
                 v-show="cancelshow"
                 size="mini"
                 @click="goback"
-                >取消</el-button
+              >取消</el-button
               >
             </el-col>
           </el-row>
@@ -584,53 +584,64 @@
           </div>
           <h5 style="text-align: left">&emsp;&emsp;学习经历</h5>
           <el-table :data="user.学习经历" align="center" border>
-            <el-table-column prop="入学时间" label="入学时间" width="100px" :key="random">
+            <el-table-column
+              prop="入学时间"
+              label="入学时间"
+              width="100px"
+              :key="random"
+            >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.入学时间"/>
+                  <el-input v-model="scope.row.入学时间" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px">{{scope.row.入学时间}}}</span>
+                  <span style="margin-left: 10px"
+                  >{{ scope.row.入学时间 }}}</span
+                  >
                 </div>
               </template>
             </el-table-column>
-            <el-table-column prop="毕业时间" label="毕业时间" width="100px" >
+            <el-table-column prop="毕业时间" label="毕业时间" width="100px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.毕业时间"/>
+                  <el-input v-model="scope.row.毕业时间" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px">{{scope.row.毕业时间}}}</span>
+                  <span style="margin-left: 10px"
+                  >{{ scope.row.毕业时间 }}}</span
+                  >
                 </div>
               </template>
             </el-table-column>
             <el-table-column prop="所学专业" label="所学专业" width="150px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.所学专业"/>
+                  <el-input v-model="scope.row.所学专业" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px">{{scope.row.所学专业}}}</span>
+                  <span style="margin-left: 10px"
+                  >{{ scope.row.所学专业 }}}</span
+                  >
                 </div>
               </template>
             </el-table-column>
             <el-table-column prop="学历" label="学历" width="150px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.学历"/>
+                  <el-input v-model="scope.row.学历" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px">{{scope.row.学历}}}</span>
+                  <span style="margin-left: 10px">{{ scope.row.学历 }}}</span>
                 </div>
               </template>
             </el-table-column>
             <el-table-column prop="学位" label="学位" width="150px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.学位"/>
+                  <el-input v-model="scope.row.学位" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px">{{scope.row.学位}}}</span>
+                  <span style="margin-left: 10px">{{ scope.row.学位 }}}</span>
                 </div>
               </template>
             </el-table-column>
@@ -641,10 +652,12 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.获得学历的院校或机构"/>
+                  <el-input v-model="scope.row.获得学历的院校或机构" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px">{{scope.row.获得学历的院校或机构}}}</span>
+                  <span style="margin-left: 10px"
+                  >{{ scope.row.获得学历的院校或机构 }}}</span
+                  >
                 </div>
               </template>
             </el-table-column>
@@ -655,10 +668,12 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.获得学位的院校或机构"/>
+                  <el-input v-model="scope.row.获得学位的院校或机构" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px">{{scope.row.获得学位的院校或机构}}}</span>
+                  <span style="margin-left: 10px"
+                  >{{ scope.row.获得学位的院校或机构 }}}</span
+                  >
                 </div>
               </template>
             </el-table-column>
@@ -669,10 +684,12 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.获得学历的国家"/>
+                  <el-input v-model="scope.row.获得学历的国家" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px">{{scope.row.获得学历的国家}}}</span>
+                  <span style="margin-left: 10px"
+                  >{{ scope.row.获得学历的国家 }}}</span
+                  >
                 </div>
               </template>
             </el-table-column>
@@ -683,44 +700,64 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.获得学位的国家"/>
+                  <el-input v-model="scope.row.获得学位的国家" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px">{{scope.row.获得学位的国家}}}</span>
+                  <span style="margin-left: 10px"
+                  >{{ scope.row.获得学位的国家 }}}</span
+                  >
                 </div>
               </template>
             </el-table-column>
-            <el-table-column
-                fixed="right"
-                label="操作"
-                width="100">
-                <template slot-scope="scope">
-                  <el-button @click="edit(scope.$index,scope.row)"  type="text" size="small" v-if="!scope.row.isEdit">编辑</el-button>
-                  <el-button @click="save(scope.$index,scope.row)" type="text" size="small" v-else>确认</el-button>
-                </template>
-              </el-table-column>
+            <el-table-column fixed="right" label="操作" width="100">
+              <template slot-scope="scope">
+                <el-button
+                  @click="edit(scope.$index, scope.row)"
+                  type="text"
+                  size="small"
+                  v-if="!scope.row.isEdit"
+                >编辑</el-button
+                >
+                <el-button
+                  @click="save(scope.$index, scope.row)"
+                  type="text"
+                  size="small"
+                  v-else
+                >确认</el-button
+                >
+              </template>
+            </el-table-column>
           </el-table>
           <br />
           <br />
           <h5 style="text-align: left">&emsp;&emsp;工作经历</h5>
           <el-table :data="user.工作经历" align="center" border>
-            <el-table-column prop="起始时间" label="起始时间" width="100px" :key="random1">
+            <el-table-column
+              prop="起始时间"
+              label="起始时间"
+              width="100px"
+              :key="random1"
+            >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.起始时间"/>
+                  <el-input v-model="scope.row.起始时间" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px">{{scope.row.起始时间}}}</span>
+                  <span style="margin-left: 10px"
+                  >{{ scope.row.起始时间 }}}</span
+                  >
                 </div>
               </template>
             </el-table-column>
             <el-table-column prop="终止时间" label="终止时间" width="100px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.终止时间"/>
+                  <el-input v-model="scope.row.终止时间" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px">{{scope.row.终止时间}}}</span>
+                  <span style="margin-left: 10px"
+                  >{{ scope.row.终止时间 }}}</span
+                  >
                 </div>
               </template>
             </el-table-column>
@@ -731,20 +768,24 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.所在单位名称"/>
+                  <el-input v-model="scope.row.所在单位名称" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px">{{scope.row.所在单位名称}}}</span>
+                  <span style="margin-left: 10px"
+                  >{{ scope.row.所在单位名称 }}}</span
+                  >
                 </div>
               </template>
             </el-table-column>
             <el-table-column prop="从事工作" label="从事工作" width="250px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.从事工作"/>
+                  <el-input v-model="scope.row.从事工作" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px">{{scope.row.从事工作}}}</span>
+                  <span style="margin-left: 10px"
+                  >{{ scope.row.从事工作 }}}</span
+                  >
                 </div>
               </template>
             </el-table-column>
@@ -755,10 +796,12 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.曾任党政职务"/>
+                  <el-input v-model="scope.row.曾任党政职务" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px">{{scope.row.曾任党政职务}}}</span>
+                  <span style="margin-left: 10px"
+                  >{{ scope.row.曾任党政职务 }}}</span
+                  >
                 </div>
               </template>
             </el-table-column>
@@ -769,30 +812,41 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.曾任专业技术职务"/>
+                  <el-input v-model="scope.row.曾任专业技术职务" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px">{{scope.row.曾任专业技术职务}}}</span>
+                  <span style="margin-left: 10px"
+                  >{{ scope.row.曾任专业技术职务 }}}</span
+                  >
                 </div>
               </template>
             </el-table-column>
             <el-table-column prop="备注" label="备注" width="250px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.备注"/>
+                  <el-input v-model="scope.row.备注" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px">{{scope.row.备注}}}</span>
+                  <span style="margin-left: 10px">{{ scope.row.备注 }}}</span>
                 </div>
               </template>
             </el-table-column>
-            <el-table-column
-              fixed="right"
-              label="操作"
-              width="100">
+            <el-table-column fixed="right" label="操作" width="100">
               <template slot-scope="scope">
-                <el-button @click="edit1(scope.$index,scope.row)" type="text" size="small" v-if="!scope.row.isEdit">编辑</el-button>
-                <el-button @click="save(scope.$index,scope.row)" type="text" size="small" v-else>确认</el-button>
+                <el-button
+                  @click="edit1(scope.$index, scope.row)"
+                  type="text"
+                  size="small"
+                  v-if="!scope.row.isEdit"
+                >编辑</el-button
+                >
+                <el-button
+                  @click="save(scope.$index, scope.row)"
+                  type="text"
+                  size="small"
+                  v-else
+                >确认</el-button
+                >
               </template>
             </el-table-column>
           </el-table>
@@ -893,41 +947,50 @@
             </el-col>
           </el-row>
           <h5 style="text-align: left">&emsp;&emsp;奖励情况</h5>
-          <el-table
-              :data="user.奖励情况记录"
-              align="left"
-              border
-              height="200"
-            >
+          <el-table :data="user.奖励情况记录" align="left" border height="200">
             <el-table-column label="奖励时间" width="300px" :key="random3">
-                    <template slot-scope="scope">
-                      <div v-if="scope.row.seen">
-                        <el-input v-model="scope.row.奖励时间"/>
-                      </div>
-                      <div v-else>
-                        <span style="margin-left: 10px">{{scope.row.奖励时间}}}</span>
-                      </div>
-                    </template>
-                  </el-table-column>
-            <el-table-column label="奖励情况" width="300px" >
-                <template slot-scope="scope">
-                  <div v-if="scope.row.seen">
-                    <el-input v-model="scope.row.奖励情况"/>
-                  </div>
-                  <div v-else>
-                    <span style="margin-left: 10px">{{scope.row.奖励情况}}}</span>
-                  </div>
-                </template>
-              </el-table-column>
-            <el-table-column
-              label="操作"
-              width="100">
               <template slot-scope="scope">
-                <el-button @click="edit3(scope.$index,scope.row)" type="text" size="small" v-if="!scope.row.isEdit">编辑</el-button>
-                <el-button @click="save(scope.$index,scope.row)" type="text" size="small" v-else>确认</el-button>
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.奖励时间" />
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px"
+                  >{{ scope.row.奖励时间 }}}</span
+                  >
+                </div>
               </template>
             </el-table-column>
-              <!-- <el-table-column width="100px">
+            <el-table-column label="奖励情况" width="300px">
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input v-model="scope.row.奖励情况" />
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px"
+                  >{{ scope.row.奖励情况 }}}</span
+                  >
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column label="操作" width="100">
+              <template slot-scope="scope">
+                <el-button
+                  @click="edit3(scope.$index, scope.row)"
+                  type="text"
+                  size="small"
+                  v-if="!scope.row.isEdit"
+                >编辑</el-button
+                >
+                <el-button
+                  @click="save(scope.$index, scope.row)"
+                  type="text"
+                  size="small"
+                  v-else
+                >确认</el-button
+                >
+              </template>
+            </el-table-column>
+            <!-- <el-table-column width="100px">
                 <template slot-scope="scope">
                   <el-button
                     @click.prevent="removeAward(scope.row)"
@@ -938,44 +1001,53 @@
                   </el-button>
                 </template>
               </el-table-column> -->
-            </el-table>
+          </el-table>
           <h5 style="text-align: left">&emsp;&emsp;处分情况</h5>
-          <el-table
-            :data="user.处分情况记录"
-            align="left"
-            border
-            height="200"
-            >
+          <el-table :data="user.处分情况记录" align="left" border height="200">
             <el-table-column label="处分时间" width="300px" :key="random4">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.处分时间"/>
+                  <el-input v-model="scope.row.处分时间" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px">{{scope.row.处分时间}}}</span>
+                  <span style="margin-left: 10px"
+                  >{{ scope.row.处分时间 }}}</span
+                  >
                 </div>
               </template>
             </el-table-column>
-            <el-table-column label="处分情况" width="300px" >
+            <el-table-column label="处分情况" width="300px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.处分情况"/>
+                  <el-input v-model="scope.row.处分情况" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px">{{scope.row.处分情况}}}</span>
+                  <span style="margin-left: 10px"
+                  >{{ scope.row.处分情况 }}}</span
+                  >
                 </div>
               </template>
             </el-table-column>
-            <el-table-column
-              label="操作"
-              width="100">
+            <el-table-column label="操作" width="100">
               <template slot-scope="scope">
-                <el-button @click="edit4(scope.$index,scope.row)" type="text" size="small" v-if="!scope.row.isEdit">编辑</el-button>
-                <el-button @click="save(scope.$index,scope.row)" type="text" size="small" v-else>确认</el-button>
+                <el-button
+                  @click="edit4(scope.$index, scope.row)"
+                  type="text"
+                  size="small"
+                  v-if="!scope.row.isEdit"
+                >编辑</el-button
+                >
+                <el-button
+                  @click="save(scope.$index, scope.row)"
+                  type="text"
+                  size="small"
+                  v-else
+                >确认</el-button
+                >
               </template>
             </el-table-column>
           </el-table>
-            <!-- <el-button
+          <!-- <el-button
               icon="el-icon-plus"
               type="success"
               size="mini"
@@ -1125,11 +1197,9 @@
             type="success"
             @click="saveOrUpdate"
             :disabled="commitdisabled"
-            >提交</el-button
+          >提交</el-button
           >
-          <el-button @click="output"
-              >导出基本信息审核表</el-button
-            >
+          <el-button @click="output">导出基本信息审核表</el-button>
         </el-form-item>
       </div>
     </el-form>
@@ -1168,11 +1238,11 @@ export default {
         "管理岗位九级",
         "管理岗位十级",
       ],
-      random:0,
-      random1:1,
-      random2:2,
-      random3:3,
-      random4:4,
+      random: 0,
+      random1: 1,
+      random2: 2,
+      random3: 3,
+      random4: 4,
       学历字典属性: {
         label: "value",
         emitPath: false,
@@ -1903,47 +1973,47 @@ export default {
     //   );
     // },
     //#1 新增参数
-    edit(index,row){
-      this.random=Math.random();
+    edit(index, row) {
+      this.random = Math.random();
       //console.log(index,row.seen);
       row.isEdit = true;
       row.seen = true;
       //console.log(row.seen);
     },
-    save(index,row){
+    save(index, row) {
       row.isEdit = false;
       row.seen = false;
     },
-    edit1(index,row){
-      this.random1=Math.random();
+    edit1(index, row) {
+      this.random1 = Math.random();
       //console.log(index,row.seen);
       row.seen = true;
       row.isEdit = true;
       //console.log(row.seen);
     },
-    edit2(index,row){
-      this.random2=Math.random();
+    edit2(index, row) {
+      this.random2 = Math.random();
       //console.log(index,row.seen);
       row.seen = true;
       row.isEdit = true;
       //console.log(row.seen);
     },
-    edit3(index,row){
-      this.random3=Math.random();
+    edit3(index, row) {
+      this.random3 = Math.random();
       //console.log(index,row.seen);
       row.seen = true;
       row.isEdit = true;
       //console.log(row.seen);
     },
-    edit4(index,row){
-      this.random4=Math.random();
+    edit4(index, row) {
+      this.random4 = Math.random();
       //console.log(index,row.seen);
       row.seen = true;
       row.isEdit = true;
       //console.log(row.seen);
     },
-    edit5(index,row){
-      this.random5=Math.random();
+    edit5(index, row) {
+      this.random5 = Math.random();
       //console.log(index,row.seen);
       row.seen = true;
       //console.log(row.seen);
@@ -2008,7 +2078,7 @@ export default {
       if (this.user.职工号 === "") {
         alert("请确认职工号是否填写正确");
       } else {
-        this.user.出生年月 = this.user.出生年月+="-01";
+        this.user.出生年月 = this.user.出生年月 += "-01";
         var userres = await putInfoRecord(this.user);
         //console.log(this.user.年龄);
         if (userres.data.count === 0) {
@@ -2091,28 +2161,28 @@ export default {
         this.searchdisabled = false;
       } else if (count === 1) {
         this.user = resp.data.user;
-        this.user.出生年月 = this.user.出生年月.substring(0,7);
+        this.user.出生年月 = this.user.出生年月.substring(0, 7);
         //console.log(resp.data.user);
         //console.log(this.user.出生年月);
-        let i;            //遍历变量
-        for(i=0;i<this.user.学习经历.length;i++){
-          this.user.学习经历[i].seen=false;
+        let i; //遍历变量
+        for (i = 0; i < this.user.学习经历.length; i++) {
+          this.user.学习经历[i].seen = false;
         }
 
-        for (i=0;i<this.user.工作经历.length;i++){
-          this.user.工作经历[i].seen=false;
+        for (i = 0; i < this.user.工作经历.length; i++) {
+          this.user.工作经历[i].seen = false;
         }
 
-        for (i=0;i<this.user.奖励情况记录.length;i++){
-          this.user.奖励情况记录[i].seen=false;
+        for (i = 0; i < this.user.奖励情况记录.length; i++) {
+          this.user.奖励情况记录[i].seen = false;
         }
 
-        for (i=0;i<this.user.处分情况记录.length;i++){
-          this.user.处分情况记录[i].seen=false;
+        for (i = 0; i < this.user.处分情况记录.length; i++) {
+          this.user.处分情况记录[i].seen = false;
         }
 
-        for (i=0;i<this.user.家庭成员记录.length;i++){
-          this.user.家庭成员记录[i].seen=false;
+        for (i = 0; i < this.user.家庭成员记录.length; i++) {
+          this.user.家庭成员记录[i].seen = false;
         }
 
         //this.calculate();
@@ -2215,9 +2285,7 @@ export default {
     // },
 
     goback() {
-      const answer = window.confirm(
-        "请确认是否放弃更改"
-      );
+      const answer = window.confirm("请确认是否放弃更改");
       if (answer) {
       } else {
         return;
@@ -2229,11 +2297,10 @@ export default {
       this.inputdisabled = false;
     },
     output() {
-      const params = {
-        职工号: this.user.职工号,
-      };
+      let idList = [];
+      idList.push(this.user.职工号);
       导出excel表
-        .output3(params)
+        .output3(idList)
         .then((response) => {
           const blob = new Blob([response]); // 把得到的结果用流对象转一下
           var a = document.createElement("a"); //创建一F个<a></a>标签
@@ -2245,7 +2312,7 @@ export default {
           a.remove(); // 一次性的，用完就删除a标签
           this.$message({
             type: "success",
-            message: "干部职工基本信息审核表导出成功!",
+            message: "干部职工基本信息审核表导出成功",
           });
         })
         .catch((error) => {
