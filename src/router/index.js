@@ -47,13 +47,13 @@ export const constantRouterMap = [
       {
         path: 'getRegister',
         name: 'Register',
-        component: () => import('@/views/service/valveinfo/register'),
+        component: () => import('@/views/service/valveinfo/完整性登记表'),
         meta: { title: '完整性登记表', icon: 'table' }
       },
       {
         path: 'getValveStatus',
         name: 'ValveStatus',
-        component: () => import('@/views/service/valveinfo/list'),
+        component: () => import('@/views/service/valveinfo/审核情况登记表'),
         meta: { title: '审核情况登记表', icon: 'table' }
       },
       {

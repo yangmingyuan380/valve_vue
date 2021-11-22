@@ -1089,14 +1089,6 @@ export default {
       next(false);
     }
   },
-  beforeRouteLeave(to, from, next) {
-    const answer = window.confirm("当前页面数据未保存，确定要离开？");
-    if (answer) {
-      next();
-    } else {
-      next(false);
-    }
-  },
   methods: {
     arraySpanMethod({ row, column, rowIndex, columnIndex }) {
       if (rowIndex === 0 || rowIndex === 1) {
