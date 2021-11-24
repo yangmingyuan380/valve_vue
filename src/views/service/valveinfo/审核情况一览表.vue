@@ -82,8 +82,9 @@
               <el-form-item label="初审时间">
                 <el-date-picker
                   v-model="初审时间"
-                  type="datetimerange"
+                  type="daterange"
                   :picker-options="pickerOptions"
+                  :default-time="['00:00:00', '23:59:59']"
                   range-separator="至"
                   start-placeholder="开始日期"
                   end-placeholder="结束日期"
@@ -93,7 +94,7 @@
             </el-col>
             <el-col :span="4">
               <el-form-item label="初审状态">
-                <el-select v-model="基本信息.初审状态" style="width: 100px">
+                <el-select v-model="基本信息.初审状态" clearable style="width: 100px">
                   <el-option label="未初审" value="未初审"></el-option>
                   <el-option label="初审中" value="初审中"></el-option>
                   <el-option label="完成初审" value="完成初审"></el-option>
@@ -111,7 +112,8 @@
               <el-form-item label="复审时间">
                 <el-date-picker
                   v-model="复审时间"
-                  type="datetimerange"
+                  type="daterange"
+                  :default-time="['00:00:00', '23:59:59']"
                   :picker-options="pickerOptions"
                   range-separator="至"
                   start-placeholder="开始日期"
@@ -122,7 +124,7 @@
             </el-col>
             <el-col :span="4">
               <el-form-item label="复审状态">
-                <el-select v-model="基本信息.复审状态" style="width: 100px">
+                <el-select v-model="基本信息.复审状态" clearable style="width: 100px">
                   <el-option label="未复审" value="未复审"></el-option>
                   <el-option label="复审中" value="复审中"></el-option>
                   <el-option label="完成复审" value="完成复审"></el-option>
@@ -135,9 +137,7 @@
               </el-form-item>
             </el-col>
           </el-row>
-          <el-form-item style="text-align:center">
-            <el-button type="primary" plain size="medium" @click="getdata">查找</el-button>
-          </el-form-item>
+          <el-button type="primary" plain size="medium" @click="getdata" style="display: block;margin: 0 auto">查找</el-button>
         </div>
       </div>
     </el-form>
@@ -145,11 +145,12 @@
       <div class="container">
         <el-table
           :data="审核情况"
+          :row-style="{height: '0'}"
+          :cell-style="{padding: '0'}"
           ref="审核情况"
           border
           @select="changeSelect"
-          @select-all="selectAll"
-          style="width: 1280px;margin: 10px">
+          @select-all="selectAll">
           <el-table-column
             type="selection"
             width="55"
@@ -163,38 +164,47 @@
             </template>
           </af-table-column>
           <af-table-column
+            sortable
             prop="单位"
             label="单位">
           </af-table-column>
           <af-table-column
+            sortable
             prop="职工号"
             label="职工号">
           </af-table-column>
           <af-table-column
+            sortable
             prop="姓名"
             label="姓名">
           </af-table-column>
           <af-table-column
+            sortable
             prop="初审状态"
             label="初审状态">
           </af-table-column>
           <af-table-column
+            sortable
             prop="初审时间"
             label="初审时间">
           </af-table-column>
           <af-table-column
+            sortable
             prop="初审人"
             label="初审人">
           </af-table-column>
           <af-table-column
+            sortable
             prop="复审状态"
             label="复审状态">
           </af-table-column>
           <af-table-column
+            sortable
             prop="复审时间"
             label="复审时间">
           </af-table-column>
           <af-table-column
+            sortable
             prop="复审人"
             label="复审人">
           </af-table-column>
@@ -214,7 +224,7 @@
             @current-change="getdata"
           />
         </div>
-        <el-button @click="output1" style="margin: 5px 600px">导出每日情况登记表</el-button>
+        <el-button @click="output1" style="display: block;margin: 0 auto">导出每日情况登记表</el-button>
       </div>
     </div>
   </div>
@@ -404,7 +414,7 @@ export default {
         }
       });
     },
-    getdata(page = 1) {
+    getdata() {
       let 初审时间开始 = '';
       let 初审时间结束 = '';
       let 复审时间开始 = '';
@@ -417,7 +427,7 @@ export default {
         复审时间开始 = this.formatDate(this.复审时间[0]);
         复审时间结束 = this.formatDate(this.复审时间[1]);
       }
-      审核情况一览表.getdata(page, this.limit, 初审时间开始, 初审时间结束, 复审时间开始, 复审时间结束, this.基本信息).then((response) => {
+      审核情况一览表.getdata(this.page, this.limit, 初审时间开始, 初审时间结束, 复审时间开始, 复审时间结束, this.基本信息).then((response) => {
         this.审核情况 = response.data.list;
         this.total = response.data.total;
         this.checkPageStatus(this.审核情况)
@@ -464,23 +474,7 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-.cell {
-  //background-color: #eceaea;
-  background-size: cover;
-  background-position: center;
-  border-radius: 15px;
-  background-clip: padding-box;
-  float: left;
-  margin: 15px auto;
-  width: 1300px;
-  box-shadow: 0 0 5px #cac6c6;
-
-  .container {
-    width: 100%;
-    margin: 8px 15px 8px 0px;
-    float: left;
-  }
-}
+@import "../../../styles/baseCell";
 
 .all-check-span {
   padding-left: 10px;

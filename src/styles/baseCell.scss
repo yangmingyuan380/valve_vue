@@ -1,0 +1,25 @@
+ // 设置页面通用样式
+.cell {
+//background-color: #eceaea;
+  display: block;
+  border-radius: 15px;
+  margin: 15px auto;
+  width: 1300px;
+  box-shadow: 0 0 5px #cac6c6;
+
+.container {
+  display: block;
+  width: 100%;
+  padding: 8px;
+}
+}
+ .centerButton{
+   display: block;
+   margin: 0 auto;
+ }
+ // 表格里嵌套的表单
+ .el-table{
+   .el-form-item{
+     margin: 0!important;
+   }
+ }

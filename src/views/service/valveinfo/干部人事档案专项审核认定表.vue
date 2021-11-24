@@ -14,7 +14,7 @@
           <el-row>
             <el-col :span="5">
               <el-form-item label="职工号" prop="职工号">
-                <el-input v-model="基本信息.职工号" />
+                <el-input v-model="基本信息.职工号"/>
               </el-form-item>
             </el-col>
             <el-col :span="6">
@@ -62,7 +62,8 @@
                 :disabled="searchdisabled"
                 size="mini"
                 @click="search"
-                >查找</el-button
+              >查找
+              </el-button
               >
             </el-col>
           </el-row>
@@ -311,10 +312,12 @@
             :disabled="commitdisabled"
             @click="saveOrUpdate"
             style="margin: 10px 10px 10px 0px"
-            >提交</el-button
+          >提交
+          </el-button
           >
           <el-button v-show="cancelshow" type="danger" @click="goback"
-            >取消</el-button
+          >取消
+          </el-button
           >
           <el-button @click="output">导出专项审核认定表</el-button>
         </el-form-item>
@@ -330,7 +333,8 @@ import {
   getAccountRecord,
   putAccountRecord,
 } from "@/api/service/干部人事档案专项审核认定表";
-import { getAccountProblem } from "@/api/service/审核问题";
+import {getAccountProblem} from "@/api/service/审核问题";
+
 export default {
   data() {
     var checknumber = (rule, value, callback) => {
@@ -531,12 +535,12 @@ export default {
       },
       基本信息rules: {
         职工号: [
-          { required: true, message: "请输入职工号", trigger: "blur" },
-          { validator: checknumber, trigger: "blur" },
+          {required: true, message: "请输入职工号", trigger: "blur"},
+          {validator: checknumber, trigger: "blur"},
         ],
-        单位: [{ required: true, message: "请选择单位", trigger: "blur" }],
-        姓名: [{ required: true, message: "请输入姓名", trigger: "blur" }],
-        性别: [{ required: true, message: "请选择性别", trigger: "blur" }],
+        单位: [{required: true, message: "请选择单位", trigger: "blur"}],
+        姓名: [{required: true, message: "请输入姓名", trigger: "blur"}],
+        性别: [{required: true, message: "请选择性别", trigger: "blur"}],
       },
       审核情况: {
         初审时间: new Date(),
@@ -549,34 +553,34 @@ export default {
       },
       审核情况rules: {
         初审人职工号: [
-          { required: true, message: "请输入职工号", trigger: "blur" },
-          { validator: checknumber, trigger: "blur" },
+          {required: true, message: "请输入职工号", trigger: "blur"},
+          {validator: checknumber, trigger: "blur"},
         ],
         复审人职工号: [
-          { required: true, message: "请输入职工号", trigger: "blur" },
-          { validator: checknumber, trigger: "blur" },
+          {required: true, message: "请输入职工号", trigger: "blur"},
+          {validator: checknumber, trigger: "blur"},
         ],
       }, //简历区域
       rules: {
         职工号: [
-          { required: true, message: "请输入职工号", trigger: "blur" },
-          { validator: checknumber, trigger: "blur" },
+          {required: true, message: "请输入职工号", trigger: "blur"},
+          {validator: checknumber, trigger: "blur"},
         ],
-        单位: [{ required: true, message: "请选择单位", trigger: "blur" }],
-        姓名: [{ required: true, message: "请输入姓名", trigger: "blur" }],
-        性别: [{ required: true, message: "请选择性别", trigger: "blur" }],
-        birthDate: [{ required: true, message: "请选择日期", trigger: "blur" }],
-        birthIsTrue1: [{ required: true, message: "请选择", trigger: "blur" }],
-        birthIsTrue2: [{ required: true, message: "请选择", trigger: "blur" }],
-        birthIsTrue3: [{ required: true, message: "请选择", trigger: "blur" }],
-        birthIsTrue4: [{ required: true, message: "请选择", trigger: "blur" }],
-        workDate: [{ required: true, message: "请选择日期", trigger: "blur" }],
-        workIsTrue1: [{ required: true, message: "请选择", trigger: "blur" }],
-        workIsTrue2: [{ required: true, message: "请选择", trigger: "blur" }],
-        workIsTrue3: [{ required: true, message: "请选择", trigger: "blur" }],
-        partyDate: [{ required: true, message: "请选择日期", trigger: "blur" }],
-        chinaName: [{ required: true, message: "必填", trigger: "blur" }],
-        phone: [{ required: true, message: "必填", trigger: "blur" }],
+        单位: [{required: true, message: "请选择单位", trigger: "blur"}],
+        姓名: [{required: true, message: "请输入姓名", trigger: "blur"}],
+        性别: [{required: true, message: "请选择性别", trigger: "blur"}],
+        birthDate: [{required: true, message: "请选择日期", trigger: "blur"}],
+        birthIsTrue1: [{required: true, message: "请选择", trigger: "blur"}],
+        birthIsTrue2: [{required: true, message: "请选择", trigger: "blur"}],
+        birthIsTrue3: [{required: true, message: "请选择", trigger: "blur"}],
+        birthIsTrue4: [{required: true, message: "请选择", trigger: "blur"}],
+        workDate: [{required: true, message: "请选择日期", trigger: "blur"}],
+        workIsTrue1: [{required: true, message: "请选择", trigger: "blur"}],
+        workIsTrue2: [{required: true, message: "请选择", trigger: "blur"}],
+        workIsTrue3: [{required: true, message: "请选择", trigger: "blur"}],
+        partyDate: [{required: true, message: "请选择日期", trigger: "blur"}],
+        chinaName: [{required: true, message: "必填", trigger: "blur"}],
+        phone: [{required: true, message: "必填", trigger: "blur"}],
       },
     };
   },
@@ -757,7 +761,7 @@ export default {
       }
     },
     goback() {
-            const answer = window.confirm(
+      const answer = window.confirm(
         "请确认是否放弃更改"
       );
       if (answer) {
@@ -804,41 +808,32 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-.cell {
-  //background-color: #eceaea;
-  background-size: cover;
-  background-position: center;
-  border-radius: 15px;
-  background-clip: padding-box;
-  float: left;
-  margin: 15px auto;
-  width: 1300px;
-  box-shadow: 0 0 5px #cac6c6;
+@import "../../../styles/baseCell";
 
-  .container {
-    width: 100%;
-    margin: 8px 15px 8px 0px;
+
+.cell > .container {
+
+  .note {
+    margin-left: 10px;
+    font-size: 13px;
+    color: red;
+  }
+
+  .简历 {
+    margin-left: 30px;
+    font-size: 15px;
+  }
+
+  .mytable {
+    box-shadow: 0 0 5px #cac6c6;
     float: left;
+    width: 1000px;
+    margin: 20px 200px 100px 100px;
+  }
 
-    .note {
-      margin-left: 10px;
-      font-size: 13px;
-      color: red;
-    }
-    .简历 {
-      margin-left: 30px;
-      font-size: 15px;
-    }
-    .mytable {
-      box-shadow: 0 0 5px #cac6c6;
-      float: left;
-      width: 1000px;
-      margin: 20px 200px 100px 100px;
-    }
-    /deep/.el-table {
-      .cell {
-        white-space: pre-wrap;
-      }
+  /deep/ .el-table {
+    .cell {
+      white-space: pre-wrap;
     }
   }
 }

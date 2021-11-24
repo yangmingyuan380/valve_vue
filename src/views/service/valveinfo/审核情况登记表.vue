@@ -80,7 +80,7 @@
             </el-col>
             <el-col :span="5">
               <el-form-item label="籍贯">
-                <el-input v-model="基本信息.籍贯" controls-position="right"  style="width: 150px" :min="0"/>
+                <el-input v-model="基本信息.籍贯" controls-position="right" style="width: 150px" :min="0"/>
               </el-form-item>
             </el-col>
             <el-col :span="5">
@@ -96,7 +96,7 @@
           </el-row>
           <el-row>
             <el-col :span="4">
-              <el-form-item label="现任职务" >
+              <el-form-item label="现任职务">
                 <el-input v-model="基本信息.现任职务" controls-position="right" :min="0" style="width: 80px"/>
               </el-form-item>
             </el-col>
@@ -133,9 +133,7 @@
           <el-form-item label="熟悉专业、有何特长">
             <el-input type="textarea" :rows="2" v-model="基本信息.熟悉专业有何特长" style="width: 500px"/>
           </el-form-item>
-          <el-form-item style="text-align:center">
-            <el-button type="primary" @click="saveOrUpdate1">保存</el-button>
-          </el-form-item>
+          <el-button type="primary" @click="saveOrUpdate1" size="mini" class="centerButton">保存</el-button>
         </div>
       </div>
     </el-form>
@@ -190,7 +188,7 @@
             </el-row>
             <el-row>
               <el-col :span="4">
-                <el-form-item label="复审人职工号" >
+                <el-form-item label="复审人职工号">
                   <el-input v-model="审核情况.复审人职工号" :disabled="复审信息禁用" controls-position="right" :min="0"/>
                 </el-form-item>
               </el-col>
@@ -227,9 +225,7 @@
                 </el-form-item>
               </el-col>
             </el-row>
-            <el-form-item style="text-align:center">
-              <el-button type="primary" @click="saveOrUpdate2">保存</el-button>
-            </el-form-item>
+            <el-button type="primary" @click="saveOrUpdate2" size="mini" class="centerButton">保存</el-button>
           </div>
         </div>
       </el-form>
@@ -304,9 +300,7 @@
             <el-form-item label="出生时间存在问题" prop="birthProblem" label-width="150px">
               <el-input type="textarea" :rows="3" v-model="出生时间.出生时间存在问题" style="width: 700px"/>
             </el-form-item>
-            <el-form-item style="text-align:center">
-              <el-button type="primary" @click="saveOrUpdate3">保存</el-button>
-            </el-form-item>
+            <el-button type="primary" @click="saveOrUpdate3" size="mini" class="centerButton">保存</el-button>
           </div>
         </div>
       </el-form>
@@ -381,9 +375,7 @@
             <el-form-item label="参加工作时间存在问题" label-width="200px">
               <el-input type="textarea" :rows="3" v-model="参加工作时间.参加工作时间存在问题" style="width: 700px"/>
             </el-form-item>
-            <el-form-item style="text-align:center">
-              <el-button type="primary" @click="saveOrUpdate4">保存</el-button>
-            </el-form-item>
+            <el-button type="primary" @click="saveOrUpdate4" size="mini" class="centerButton">保存</el-button>
           </div>
         </div>
       </el-form>
@@ -493,9 +485,7 @@
             <el-form-item label="入党时间存在问题" prop="入党时间存在问题" label-width="200px">
               <el-input type="textarea" :rows="3" v-model="入党时间.入党时间存在问题" style="width: 700px"/>
             </el-form-item>
-            <el-form-item style="text-align:center">
-              <el-button type="primary" @click="saveOrUpdate5">保存</el-button>
-            </el-form-item>
+            <el-button type="primary" @click="saveOrUpdate5" size="mini" class="centerButton">保存</el-button>
           </div>
         </div>
       </el-form>
@@ -698,9 +688,7 @@
             <el-form-item label="学历学位材料存在问题" label-width="160px">
               <el-input type="textarea" :rows="3" v-model="学历学位材料.学历学位存在问题" style="width: 700px"/>
             </el-form-item>
-            <el-form-item style="text-align:center">
-              <el-button type="primary" @click="saveOrUpdate6">保存</el-button>
-            </el-form-item>
+            <el-button type="primary" @click="saveOrUpdate6" size="mini" class="centerButton">保存</el-button>
           </div>
         </div>
       </el-form>
@@ -806,9 +794,7 @@
             <el-form-item label="工作经历存在问题" label-width="130px" prop="eduProblem">
               <el-input type="textarea" :rows="3" v-model="工作经历.工作经历存在问题" style="width: 700px"/>
             </el-form-item>
-            <el-form-item style="text-align:center">
-              <el-button type="primary" @click="saveOrUpdate7">保存</el-button>
-            </el-form-item>
+            <el-button type="primary" @click="saveOrUpdate7" size="mini" class="centerButton">保存</el-button>
           </div>
         </div>
       </el-form>
@@ -920,9 +906,7 @@
             <el-form-item label="奖惩情况存在问题" prop="奖惩情况存在问题" label-width="150px">
               <el-input type="textarea" :rows="3" v-model="奖惩情况.奖惩情况存在问题" style="width: 700px"/>
             </el-form-item>
-            <el-form-item style="text-align:center">
-              <el-button type="primary" @click="saveOrUpdate8">保存</el-button>
-            </el-form-item>
+            <el-button type="primary" @click="saveOrUpdate8" size="mini" class="centerButton">保存</el-button>
           </div>
         </div>
       </el-form>
@@ -1024,9 +1008,7 @@
             <el-form-item label="家庭主要成员存在问题" prop="家庭主要成员存在问题" label-width="170px">
               <el-input type="textarea" :rows="3" v-model="家庭成员.家庭主要成员存在问题" style="width: 700px"/>
             </el-form-item>
-            <el-form-item style="text-align:center">
-              <el-button type="primary" @click="saveOrUpdate9">保存</el-button>
-            </el-form-item>
+            <el-button type="primary" @click="saveOrUpdate9" size="mini" class="centerButton">保存</el-button>
           </div>
         </div>
       </el-form>
@@ -1070,16 +1052,16 @@ export default {
       政治面貌字典2: [],
       单位字典: [],
       学历字典: [],
-      初审信息禁用:false,
-      复审信息禁用:false,
-      学历字典属性:{
+      初审信息禁用: false,
+      复审信息禁用: false,
+      学历字典属性: {
         label: "value",
-        emitPath:false
+        emitPath: false
       },
       学位字典: [],
-      学位字典属性:{
+      学位字典属性: {
         label: "value",
-        emitPath:false
+        emitPath: false
       },
       考核结果字典: ['优秀'],
       isShow: false,
@@ -1194,15 +1176,15 @@ export default {
     基本信息.getlist().then((response) => {
       this.政治面貌字典 = response.data.政治面貌字典;
       this.政治面貌字典2 = this.政治面貌字典;
-      this.政治面貌字典2.splice(0,2,{'政治面貌':'无'});
+      this.政治面貌字典2.splice(0, 2, {'政治面貌': '无'});
       this.单位字典 = response.data.单位字典;
       this.学历字典 = response.data.学历字典;
       this.学位字典 = response.data.学位字典;
     })
-    if(this.$store.getters.roles==="初审人"){
+    if (this.$store.getters.roles === "初审人") {
       this.复审信息禁用 = true; // 初审人禁止编辑复审人信息
     }
-    if(this.$store.getters.roles==="复审人"){
+    if (this.$store.getters.roles === "复审人") {
       this.初审信息禁用 = true; // 复审人禁止编辑初审人信息
     }
   },
@@ -1421,27 +1403,10 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-.cell {
-  //background-color: #eceaea;
-  background-size: cover;
-  background-position: center;
-  border-radius: 15px;
-  background-clip: padding-box;
-  float: left;
-  margin: 15px auto;
-  width: 1300px;
-  box-shadow: 0 0 5px #cac6c6;
+@import "../../../styles/baseCell";
 
-  .container {
-    width: 100%;
-    margin: 8px 15px 8px 0px;
-    float: left;
-
-    .note {
-      margin-left: 10px;
-      font-size: 13px;
-      color: red;
-    }
-  }
+.cell > .container > .note {
+  font-size: 13px;
+  color: red;
 }
 </style>

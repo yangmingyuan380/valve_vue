@@ -14,7 +14,7 @@
           <el-row>
             <el-col :span="4">
               <el-form-item label="职工号" prop="职工号">
-                <el-input :disabled="inputdisabled" v-model="user.职工号" />
+                <el-input :disabled="inputdisabled" v-model="user.职工号"/>
               </el-form-item>
             </el-col>
             <el-col :span="4">
@@ -62,14 +62,16 @@
                 :disabled="searchdisabled"
                 size="mini"
                 @click="search"
-              >查找</el-button
+              >查找
+              </el-button
               >
               <el-button
                 type="danger"
                 v-show="cancelshow"
                 size="mini"
                 @click="goback"
-              >取消</el-button
+              >取消
+              </el-button
               >
             </el-col>
           </el-row>
@@ -560,8 +562,8 @@
       </div>
       <div class="cell" v-show="divshow">
         <div class="container">
-          <br />
-          <br />
+          <br/>
+          <br/>
           <h4 style="text-align: center">简历</h4>
           <div class="note">
             <p>【简历】填写说明:</p>
@@ -592,7 +594,7 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.入学时间" />
+                  <el-input v-model="scope.row.入学时间"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px"
@@ -604,7 +606,7 @@
             <el-table-column prop="毕业时间" label="毕业时间" width="100px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.毕业时间" />
+                  <el-input v-model="scope.row.毕业时间"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px"
@@ -616,7 +618,7 @@
             <el-table-column prop="所学专业" label="所学专业" width="150px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.所学专业" />
+                  <el-input v-model="scope.row.所学专业"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px"
@@ -628,7 +630,7 @@
             <el-table-column prop="学历" label="学历" width="150px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.学历" />
+                  <el-input v-model="scope.row.学历"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px">{{ scope.row.学历 }}}</span>
@@ -638,7 +640,7 @@
             <el-table-column prop="学位" label="学位" width="150px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.学位" />
+                  <el-input v-model="scope.row.学位"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px">{{ scope.row.学位 }}}</span>
@@ -652,7 +654,7 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.获得学历的院校或机构" />
+                  <el-input v-model="scope.row.获得学历的院校或机构"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px"
@@ -668,7 +670,7 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.获得学位的院校或机构" />
+                  <el-input v-model="scope.row.获得学位的院校或机构"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px"
@@ -684,7 +686,7 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.获得学历的国家" />
+                  <el-input v-model="scope.row.获得学历的国家"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px"
@@ -700,7 +702,7 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.获得学位的国家" />
+                  <el-input v-model="scope.row.获得学位的国家"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px"
@@ -716,20 +718,22 @@
                   type="text"
                   size="small"
                   v-if="!scope.row.isEdit"
-                >编辑</el-button
+                >编辑
+                </el-button
                 >
                 <el-button
                   @click="save(scope.$index, scope.row)"
                   type="text"
                   size="small"
                   v-else
-                >确认</el-button
+                >确认
+                </el-button
                 >
               </template>
             </el-table-column>
           </el-table>
-          <br />
-          <br />
+          <br/>
+          <br/>
           <h5 style="text-align: left">&emsp;&emsp;工作经历</h5>
           <el-table :data="user.工作经历" align="center" border>
             <el-table-column
@@ -740,7 +744,7 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.起始时间" />
+                  <el-input v-model="scope.row.起始时间"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px"
@@ -752,7 +756,7 @@
             <el-table-column prop="终止时间" label="终止时间" width="100px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.终止时间" />
+                  <el-input v-model="scope.row.终止时间"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px"
@@ -768,7 +772,7 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.所在单位名称" />
+                  <el-input v-model="scope.row.所在单位名称"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px"
@@ -780,7 +784,7 @@
             <el-table-column prop="从事工作" label="从事工作" width="250px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.从事工作" />
+                  <el-input v-model="scope.row.从事工作"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px"
@@ -796,7 +800,7 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.曾任党政职务" />
+                  <el-input v-model="scope.row.曾任党政职务"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px"
@@ -812,7 +816,7 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.曾任专业技术职务" />
+                  <el-input v-model="scope.row.曾任专业技术职务"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px"
@@ -824,7 +828,7 @@
             <el-table-column prop="备注" label="备注" width="250px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.备注" />
+                  <el-input v-model="scope.row.备注"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px">{{ scope.row.备注 }}}</span>
@@ -838,20 +842,22 @@
                   type="text"
                   size="small"
                   v-if="!scope.row.isEdit"
-                >编辑</el-button
+                >编辑
+                </el-button
                 >
                 <el-button
                   @click="save(scope.$index, scope.row)"
                   type="text"
                   size="small"
                   v-else
-                >确认</el-button
+                >确认
+                </el-button
                 >
               </template>
             </el-table-column>
           </el-table>
-          <br />
-          <br />
+          <br/>
+          <br/>
           <h5 style="text-align: left">&emsp;&emsp;简历</h5>
           <el-input
             class="简历"
@@ -862,9 +868,9 @@
             v-model="user.简历"
           >
           </el-input>
-          <br />
-          <br />
-          <br />
+          <br/>
+          <br/>
+          <br/>
         </div>
       </div>
       <div class="cell" v-show="divshow">
@@ -951,7 +957,7 @@
             <el-table-column label="奖励时间" width="300px" :key="random3">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.奖励时间" />
+                  <el-input v-model="scope.row.奖励时间"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px"
@@ -963,7 +969,7 @@
             <el-table-column label="奖励情况" width="300px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.奖励情况" />
+                  <el-input v-model="scope.row.奖励情况"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px"
@@ -979,14 +985,16 @@
                   type="text"
                   size="small"
                   v-if="!scope.row.isEdit"
-                >编辑</el-button
+                >编辑
+                </el-button
                 >
                 <el-button
                   @click="save(scope.$index, scope.row)"
                   type="text"
                   size="small"
                   v-else
-                >确认</el-button
+                >确认
+                </el-button
                 >
               </template>
             </el-table-column>
@@ -1007,7 +1015,7 @@
             <el-table-column label="处分时间" width="300px" :key="random4">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.处分时间" />
+                  <el-input v-model="scope.row.处分时间"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px"
@@ -1019,7 +1027,7 @@
             <el-table-column label="处分情况" width="300px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input v-model="scope.row.处分情况" />
+                  <el-input v-model="scope.row.处分情况"/>
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px"
@@ -1035,14 +1043,16 @@
                   type="text"
                   size="small"
                   v-if="!scope.row.isEdit"
-                >编辑</el-button
+                >编辑
+                </el-button
                 >
                 <el-button
                   @click="save(scope.$index, scope.row)"
                   type="text"
                   size="small"
                   v-else
-                >确认</el-button
+                >确认
+                </el-button
                 >
               </template>
             </el-table-column>
@@ -1093,7 +1103,7 @@
                     :prop="`家庭成员记录.${scope.$index}.称谓`"
                     :rules="rules.chinaName"
                   >
-                    <el-input v-model="scope.row.称谓" />
+                    <el-input v-model="scope.row.称谓"/>
                   </el-form-item>
                 </template>
               </el-table-column>
@@ -1103,7 +1113,7 @@
                     :prop="`家庭成员记录.${scope.$index}.姓名`"
                     :rules="rules.chinaName"
                   >
-                    <el-input v-model="scope.row.姓名" />
+                    <el-input v-model="scope.row.姓名"/>
                   </el-form-item>
                 </template>
               </el-table-column>
@@ -1150,7 +1160,7 @@
                     :prop="`家庭成员记录.${scope.$index}.单位及职务`"
                     :rules="rules.phone"
                   >
-                    <el-input v-model="scope.row.单位及职务" />
+                    <el-input v-model="scope.row.单位及职务"/>
                   </el-form-item>
                 </template>
               </el-table-column>
@@ -1160,7 +1170,7 @@
                     :prop="`家庭成员记录.${scope.$index}.现居住地`"
                     :rules="rules.phone"
                   >
-                    <el-input v-model="scope.row.现居住地" />
+                    <el-input v-model="scope.row.现居住地"/>
                   </el-form-item>
                 </template>
               </el-table-column>
@@ -1197,7 +1207,8 @@
             type="success"
             @click="saveOrUpdate"
             :disabled="commitdisabled"
-          >提交</el-button
+          >提交
+          </el-button
           >
           <el-button @click="output">导出基本信息审核表</el-button>
         </el-form-item>
@@ -1207,9 +1218,10 @@
 </template>
 
 <script>
-import { getInfoRecord, putInfoRecord } from "@/api/service/干部基本信息审核表";
+import {getInfoRecord, putInfoRecord} from "@/api/service/干部基本信息审核表";
 import 导出excel表 from "@/api/service/导出excel表";
 import 基本信息 from "@/api/service/基本信息";
+
 export default {
   data() {
     var checknumber = (rule, value, callback) => {
@@ -1794,13 +1806,13 @@ export default {
       // },
       userrules: {
         职工号: [
-          { required: true, message: "请输入职工号", trigger: "blur" },
-          { validator: checknumber, trigger: "blur" },
+          {required: true, message: "请输入职工号", trigger: "blur"},
+          {validator: checknumber, trigger: "blur"},
         ],
-        单位: [{ required: true, message: "请选择单位", trigger: "blur" }],
-        姓名: [{ required: true, message: "请输入姓名", trigger: "blur" }],
-        性别: [{ required: true, message: "请选择性别", trigger: "blur" }],
-        民族: [{ required: true, message: "请填写民族", trigger: "blur" }],
+        单位: [{required: true, message: "请选择单位", trigger: "blur"}],
+        姓名: [{required: true, message: "请输入姓名", trigger: "blur"}],
+        性别: [{required: true, message: "请选择性别", trigger: "blur"}],
+        民族: [{required: true, message: "请填写民族", trigger: "blur"}],
       },
       审核情况: {
         初审时间: new Date(),
@@ -1808,12 +1820,12 @@ export default {
       },
       审核情况rules: {
         初审人职工号: [
-          { required: true, message: "请输入职工号", trigger: "blur" },
-          { validator: checknumber, trigger: "blur" },
+          {required: true, message: "请输入职工号", trigger: "blur"},
+          {validator: checknumber, trigger: "blur"},
         ],
         复审人职工号: [
-          { required: true, message: "请输入职工号", trigger: "blur" },
-          { validator: checknumber, trigger: "blur" },
+          {required: true, message: "请输入职工号", trigger: "blur"},
+          {validator: checknumber, trigger: "blur"},
         ],
       },
       出生时间rules: {},
@@ -1822,25 +1834,25 @@ export default {
       学历学位材料rules: {},
       rules: {
         职工号: [
-          { required: true, message: "请输入职工号", trigger: "blur" },
-          { validator: checknumber, trigger: "blur" },
+          {required: true, message: "请输入职工号", trigger: "blur"},
+          {validator: checknumber, trigger: "blur"},
         ],
-        单位: [{ required: true, message: "请选择单位", trigger: "blur" }],
-        姓名: [{ required: true, message: "请输入姓名", trigger: "blur" }],
-        性别: [{ required: true, message: "请选择性别", trigger: "blur" }],
-        民族: [{ required: true, message: "请填写民族", trigger: "blur" }],
-        birthDate: [{ required: true, message: "请选择日期", trigger: "blur" }],
-        birthIsTrue1: [{ required: true, message: "请选择", trigger: "blur" }],
-        birthIsTrue2: [{ required: true, message: "请选择", trigger: "blur" }],
-        birthIsTrue3: [{ required: true, message: "请选择", trigger: "blur" }],
-        birthIsTrue4: [{ required: true, message: "请选择", trigger: "blur" }],
-        workDate: [{ required: true, message: "请选择日期", trigger: "blur" }],
-        workIsTrue1: [{ required: true, message: "请选择", trigger: "blur" }],
-        workIsTrue2: [{ required: true, message: "请选择", trigger: "blur" }],
-        workIsTrue3: [{ required: true, message: "请选择", trigger: "blur" }],
-        partyDate: [{ required: true, message: "请选择日期", trigger: "blur" }],
-        chinaName: [{ required: true, message: "必填", trigger: "blur" }],
-        phone: [{ required: true, message: "必填", trigger: "blur" }],
+        单位: [{required: true, message: "请选择单位", trigger: "blur"}],
+        姓名: [{required: true, message: "请输入姓名", trigger: "blur"}],
+        性别: [{required: true, message: "请选择性别", trigger: "blur"}],
+        民族: [{required: true, message: "请填写民族", trigger: "blur"}],
+        birthDate: [{required: true, message: "请选择日期", trigger: "blur"}],
+        birthIsTrue1: [{required: true, message: "请选择", trigger: "blur"}],
+        birthIsTrue2: [{required: true, message: "请选择", trigger: "blur"}],
+        birthIsTrue3: [{required: true, message: "请选择", trigger: "blur"}],
+        birthIsTrue4: [{required: true, message: "请选择", trigger: "blur"}],
+        workDate: [{required: true, message: "请选择日期", trigger: "blur"}],
+        workIsTrue1: [{required: true, message: "请选择", trigger: "blur"}],
+        workIsTrue2: [{required: true, message: "请选择", trigger: "blur"}],
+        workIsTrue3: [{required: true, message: "请选择", trigger: "blur"}],
+        partyDate: [{required: true, message: "请选择日期", trigger: "blur"}],
+        chinaName: [{required: true, message: "必填", trigger: "blur"}],
+        phone: [{required: true, message: "必填", trigger: "blur"}],
       },
       searchdisabled: false,
       inputdisabled: false,
@@ -2391,31 +2403,19 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-.cell {
-  //background-color: #eceaea;
-  background-size: cover;
-  background-position: center;
-  border-radius: 15px;
-  background-clip: padding-box;
-  float: left;
-  margin: 15px auto;
-  width: 1300px;
-  box-shadow: 0 0 5px #cac6c6;
+@import "../../../styles/baseCell";
 
-  .container {
-    width: 100%;
-    margin: 8px 15px 8px 0px;
-    float: left;
+.cell > .container {
+  .note {
 
-    .note {
-      margin-left: 10px;
-      font-size: 13px;
-      color: red;
-    }
-    .简历 {
-      margin-left: 30px;
-      font-size: 15px;
-    }
+    margin-left: 10px;
+    font-size: 13px;
+    color: red;
+  }
+
+  .简历 {
+    margin-left: 30px;
+    font-size: 15px;
   }
 }
 
