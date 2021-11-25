@@ -137,7 +137,7 @@
               </el-form-item>
             </el-col>
           </el-row>
-          <el-button type="primary" plain size="medium" @click="getdata" style="display: block;margin: 0 auto">查找</el-button>
+          <el-button type="primary" plain size="medium" @click="getdata" class="centerButton">查找</el-button>
         </div>
       </div>
     </el-form>

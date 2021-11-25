@@ -9,13 +9,6 @@ export function getInfoRecord(token) {
     data: token
   })
 }
-// export function getIntegrityRecords(token) {
-//   return request({
-//     url: `${api_url}/records`,
-//     method: 'get',
-//     data: token
-//   })
-// }
 export function putInfoRecord(integritychart) {
   return request({
     url: `${api_url}/record`,
@@ -23,10 +16,3 @@ export function putInfoRecord(integritychart) {
     data:integritychart
   })
 }
-// export function postIntegrityRecord(integritychart) {
-//   return request({
-//     url: `${api_url}/record`,
-//     method: 'post',
-//     data:integritychart
-//   })
-// }
