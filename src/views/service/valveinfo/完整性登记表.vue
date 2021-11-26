@@ -9,78 +9,77 @@
       label-width="120px"
       size="mini"
     >
-      <h4 style="text-align: center">基本信息</h4>
-      <el-row>
-        <el-col :span="4">
-          <el-form-item label="职工号" prop="职工号">
-            <el-input v-model="user.职工号" :disabled="inputdisabled" />
-          </el-form-item>
-        </el-col>
-        <el-col :span="4">
-          <el-form-item label="单位" prop="单位">
-            <el-select v-model="user.单位" :disabled="inputdisabled">
-              <el-option
-                v-for="item in 单位字典"
-                :key="item.单位"
-                :label="item.单位"
-                :value="item.单位"
-              >
-              </el-option>
-            </el-select>
-          </el-form-item>
-        </el-col>
-        <!-- <el-col :span="4">
-          <el-form-item label="单位" prop="单位">
-            <el-input v-model="user.单位" :disabled="inputdisabled" />
-          </el-form-item>
-        </el-col> -->
-        <el-col :span="4">
-          <el-form-item label="姓名" prop="姓名">
-            <el-input
-              v-model="user.姓名"
-              :disabled="inputdisabled"
-              controls-position="right"
-              :min="0"
-            />
-          </el-form-item>
-        </el-col>
-        <el-col :span="4">
-          <el-form-item label="查询条件">
-            <el-select
-              v-model="查询条件"
-              placeholder="请选择"
-              style="width: 130px"
-            >
-              <el-option label="全部" value="0"></el-option>
-              <el-option label="职工号" value="1"></el-option>
-              <el-option label="单位和姓名" value="2"></el-option>
-            </el-select>
-          </el-form-item>
-        </el-col>
-        <el-col :span="4" align="middle">
-          <el-button
-            type="primary"
-            :disabled="searchdisabled"
-            size="mini"
-            @click="search"
-          >查找</el-button
-          >
-          <el-button
-            type="success"
-            :disabled="commitdisabled"
-            size="mini"
-            @click="saveOrUpdate"
-          >提交</el-button
-          >
-          <el-button
-            type="danger"
-            v-show="cancelshow"
-            size="mini"
-            @click="cancel"
-          >放弃</el-button
-          >
-        </el-col>
-      </el-row>
+      <div class="cell">
+        <div class="container">
+          <h4 style="text-align: center">基本信息</h4>
+          <el-row>
+            <el-col :span="4">
+              <el-form-item label="职工号" prop="职工号">
+                <el-input v-model="user.职工号" :disabled="inputdisabled"/>
+              </el-form-item>
+            </el-col>
+            <el-col :span="4">
+              <el-form-item label="单位" prop="单位">
+                <el-select v-model="user.单位" :disabled="inputdisabled">
+                  <el-option
+                    v-for="item in 单位字典"
+                    :key="item.单位"
+                    :label="item.单位"
+                    :value="item.单位"
+                  >
+                  </el-option>
+                </el-select>
+              </el-form-item>
+            </el-col>
+            <el-col :span="4">
+              <el-form-item label="姓名" prop="姓名">
+                <el-input
+                  v-model="user.姓名"
+                  :disabled="inputdisabled"
+                  controls-position="right"
+                  :min="0"
+                />
+              </el-form-item>
+            </el-col>
+            <el-col :span="4">
+              <el-form-item label="查询条件">
+                <el-select
+                  v-model="查询条件"
+                  placeholder="请选择"
+                  style="width: 130px"
+                >
+                  <el-option label="全部" value="0"></el-option>
+                  <el-option label="职工号" value="1"></el-option>
+                  <el-option label="单位和姓名" value="2"></el-option>
+                </el-select>
+              </el-form-item>
+            </el-col>
+            <el-col :span="8" align="middle">
+              <el-button
+                type="primary"
+                :disabled="searchdisabled"
+                size="mini"
+                @click="search">
+                查找
+              </el-button>
+              <el-button
+                type="success"
+                :disabled="commitdisabled"
+                size="mini"
+                @click="saveOrUpdate">
+                提交
+              </el-button>
+              <el-button
+                type="danger"
+                v-show="cancelshow"
+                size="mini"
+                @click="cancel">
+                放弃
+              </el-button>
+            </el-col>
+          </el-row>
+        </div>
+      </div>
     </el-form>
     <el-form
       :model="user"
@@ -100,8 +99,8 @@
               border
               align="center"
               height="500px"
-              style="width: 1000px"
-              :cell-style="{ padding: '5px' }"
+              :row-style="{height: '0'}"
+              :cell-style="{padding: '0'}"
             >
               <el-table-column
                 label="审核项目及材料名称"
@@ -110,8 +109,8 @@
               >
                 <el-table-column prop="name" align="center" width="55px">
                 </el-table-column>
-                <el-table-column prop="data1"> </el-table-column>
-                <el-table-column prop="data2"> </el-table-column>
+                <el-table-column prop="data1"></el-table-column>
+                <el-table-column prop="data2"></el-table-column>
               </el-table-column>
               <el-table-column
                 prop="chose"
@@ -142,8 +141,8 @@
               :header-cell-style="headFirst"
               border
               align="center"
-              style="width: 1000px"
-              :row-style="{ height: '0px' }"
+              :row-style="{height: '0'}"
+              :cell-style="{padding: '0'}"
             >
               <el-table-column
                 label="审核项目及材料名称"
@@ -152,7 +151,7 @@
               >
                 <el-table-column prop="name" align="center" width="50px">
                 </el-table-column>
-                <el-table-column prop="data"> </el-table-column>
+                <el-table-column prop="data"></el-table-column>
               </el-table-column>
               <el-table-column prop="number" label="有(份数)" width="80px">
                 <template slot-scope="scope">
@@ -177,18 +176,19 @@
                 </template>
               </el-table-column>
             </el-table>
-            <el-button @click="output" style="margin: 5px 600px"
-            >导出完整性登记表</el-button
+            <el-button @click="output" class="centerButton" style="margin-top: 20px">
+              导出完整性登记表
+            </el-button
             >
           </el-main>
 
-          <el-aside padding="20px">
+          <el-aside style="padding:20px">
             <el-table
               :data="tableData3"
               :header-cell-style="headFirst"
               border
               align="center"
-              style="width: 310px"
+              height="500px"
             >
               <el-table-column
                 prop="problems"
@@ -215,6 +215,7 @@ import {
 } from "@/api/service/完整性问题";
 import 基本信息 from "@/api/service/基本信息";
 import 导出excel表 from "@/api/service/导出excel表";
+
 export default {
   data() {
     var checknumber = (rule, value, callback) => {
@@ -361,13 +362,13 @@ export default {
       },
       userrules: {
         职工号: [
-          { required: true, message: "请输入职工号", trigger: "blur" },
-          { validator: checknumber, trigger: "blur" },
+          {required: true, message: "请输入职工号", trigger: "blur"},
+          {validator: checknumber, trigger: "blur"},
         ],
-        单位: [{ required: true, message: "请选择单位", trigger: "blur" }],
-        姓名: [{ required: true, message: "请输入姓名", trigger: "blur" }],
-        性别: [{ required: true, message: "请选择性别", trigger: "blur" }],
-        民族: [{ required: true, message: "请填写民族", trigger: "blur" }],
+        单位: [{required: true, message: "请选择单位", trigger: "blur"}],
+        姓名: [{required: true, message: "请输入姓名", trigger: "blur"}],
+        性别: [{required: true, message: "请选择性别", trigger: "blur"}],
+        民族: [{required: true, message: "请填写民族", trigger: "blur"}],
       },
       problem: {
         职工号: "",
@@ -1090,7 +1091,7 @@ export default {
     }
   },
   methods: {
-    arraySpanMethod({ row, column, rowIndex, columnIndex }) {
+    arraySpanMethod({row, column, rowIndex, columnIndex}) {
       if (rowIndex === 0 || rowIndex === 1) {
         if (columnIndex === 1) {
           return [1, 2];
@@ -1391,10 +1392,10 @@ export default {
         // }
       }
     },
-    headFirst({ row, colunm, rowIndex, columnIndex }) {
+    headFirst({row, colunm, rowIndex, columnIndex}) {
       if (rowIndex === 1) {
         //这里为了是将第二列的表头隐藏，就形成了合并表头的效果
-        return { display: "none" };
+        return {display: "none"};
       }
       return "background:#f5f7fa";
     },
@@ -1712,7 +1713,7 @@ export default {
           const blob = new Blob([response]); // 把得到的结果用流对象转一下
           var a = document.createElement("a"); //创建一F个<a></a>标签
           a.href = URL.createObjectURL(blob); // 将流文件写入a标签的href属性值
-          a.download = "完整性登记表-"+this.user.单位+"-"+this.user.姓名+".xlsx"; //设置文件名
+          a.download = "完整性登记表-" + this.user.单位 + "-" + this.user.姓名 + ".xlsx"; //设置文件名
           a.style.display = "none"; // 障眼法藏起来a标签
           document.body.appendChild(a); // 将a标签追加到文档对象中
           a.click(); // 模拟点击了a标签，会触发a标签的href的读取，浏览器就会自动下载了
@@ -1896,21 +1897,25 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+@import "../../../styles/baseCell";
+
 .app-container {
   width: 100%;
   height: 100%;
 
   .mytable {
+    border-radius: 15px;
     box-shadow: 0 0 5px #cac6c6;
-    float: left;
+    display: block;
     width: 1300px;
-    margin: 20px 10px 20px;
+    margin: 10px auto;
   }
 
-  /deep/.el-table .cell {
+  /deep/ .el-table .cell {
     white-space: pre-line; /*保留换行符*/
   }
-  /deep/.el-table {
+
+  /deep/ .el-table {
     .el-table {
       height: 500px;
     }
