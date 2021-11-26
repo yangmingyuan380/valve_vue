@@ -439,6 +439,8 @@
                 label-width="150px"
               >
                 <el-input
+                  type="textarea"
+                  :rows="2"
                   v-model="user.全日制最高学历毕业院校系及专业"
                 ></el-input>
               </el-form-item>
@@ -449,6 +451,8 @@
                 label-width="150px"
               >
                 <el-input
+                  type="textarea"
+                  :rows="2"
                   v-model="user.全日制最高学位毕业院校系及专业"
                 ></el-input>
               </el-form-item>
@@ -459,6 +463,8 @@
                 label-width="150px"
               >
                 <el-input
+                  type="textarea"
+                  :rows="2"
                   v-model="user.在职最高学历毕业院校系及专业"
                 ></el-input>
               </el-form-item>
@@ -469,6 +475,8 @@
                 label-width="150px"
               >
                 <el-input
+                  type="textarea"
+                  :rows="2"
                   v-model="user.在职最高学位毕业院校系及专业"
                   style="width: 168px"
                 ></el-input>
@@ -976,6 +984,16 @@
               </el-form-item>
             </el-col>
           </el-row>
+          <h5 style="text-align: left">&emsp;&emsp;年度考核结果</h5>
+          <el-input
+            class="简历"
+            type="textarea"
+            :rows="4"
+            placeholder="请输入内容"
+            style="width: 1200px"
+            v-model="user.年度考核结果"
+          >
+          </el-input>
           <h5 style="text-align: left">&emsp;&emsp;奖励情况</h5>
           <el-table :data="user.奖励情况记录" align="left" border height="200" :row-style="{height: '0'}"
                     :cell-style="{padding: '0'}">
@@ -1086,16 +1104,6 @@
             placeholder="请输入内容"
             style="width: 1200px"
             v-model="user.奖惩情况"
-          >
-          </el-input>
-          <h5 style="text-align: left">&emsp;&emsp;年度考核结果</h5>
-          <el-input
-            class="简历"
-            type="textarea"
-            :rows="4"
-            placeholder="请输入内容"
-            style="width: 1200px"
-            v-model="user.年度考核结果"
           >
           </el-input>
         </div>
@@ -1295,7 +1303,7 @@ export default {
       学历字典: [],
       学位: [],
       学位字典: [],
-      考核结果字典: ["优秀"],
+      考核结果字典: ['优秀','合格','基本合格','不合格','未参加考核'],
       userrules: {
         职工号: [
           {required: true, message: "请输入职工号", trigger: "blur"},

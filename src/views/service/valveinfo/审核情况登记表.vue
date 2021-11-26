@@ -32,8 +32,8 @@
               </el-form-item>
             </el-col>
             <el-col :span="6">
-              <el-form-item label="单位" prop="单位">
-                <el-select v-model="基本信息.单位" filterable placeholder="输入以搜索" style="width: 250px">
+              <el-form-item label="单位">
+                <el-select v-model="基本信息.单位" filterable clearable placeholder="输入以搜索" style="width: 250px">
                   <el-option
                     v-for="item in 单位字典"
                     :key="item.单位"
@@ -44,7 +44,7 @@
               </el-form-item>
             </el-col>
             <el-col :span="4">
-              <el-form-item label="姓名" prop="姓名">
+              <el-form-item label="姓名">
                 <el-input v-model="基本信息.姓名" controls-position="right" :min="0"/>
               </el-form-item>
             </el-col>
@@ -154,7 +154,7 @@
                 </el-form-item>
               </el-col>
               <el-col :span="4">
-                <el-form-item label="初审人" prop="初审人">
+                <el-form-item label="初审人">
                   <el-input v-model="审核情况.初审人" :disabled="初审信息禁用" controls-position="right" :min="0"/>
                 </el-form-item>
               </el-col>
@@ -188,17 +188,17 @@
             </el-row>
             <el-row>
               <el-col :span="4">
-                <el-form-item label="复审人职工号">
+                <el-form-item label="复审人职工号" prop="复审人职工号">
                   <el-input v-model="审核情况.复审人职工号" :disabled="复审信息禁用" controls-position="right" :min="0"/>
                 </el-form-item>
               </el-col>
               <el-col :span="4">
-                <el-form-item label="复审人" prop="复审人">
+                <el-form-item label="复审人">
                   <el-input v-model="审核情况.复审人" :disabled="复审信息禁用" controls-position="right" :min="0"/>
                 </el-form-item>
               </el-col>
               <el-col :span="5">
-                <el-form-item label="复审人单位" prop="复审人单位">
+                <el-form-item label="复审人单位">
                   <el-select v-model="审核情况.复审人单位" :disabled="复审信息禁用" filterable placeholder="输入搜索" style="width: 150px">
                     <el-option
                       v-for="item in 单位字典"
@@ -603,7 +603,7 @@
               <el-table :data="学历学位材料.学习经历记录" align="center" border style="width: 99%;margin-top: 10px" height="250">
                 <el-table-column label="入学时间">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`学习经历记录.${scope.$index}.入学时间`" :rules="rules.入学时间">
+                    <el-form-item :prop="`学习经历记录.${scope.$index}.入学时间`">
                       <el-date-picker type="date" placeholder="选择日期" v-model="scope.row.入学时间"
                                       style="width: 130px;"></el-date-picker>
                     </el-form-item>
@@ -611,7 +611,7 @@
                 </el-table-column>
                 <el-table-column label="毕业时间">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`学习经历记录.${scope.$index}.毕业时间`" :rules="rules.毕业时间">
+                    <el-form-item :prop="`学习经历记录.${scope.$index}.毕业时间`">
                       <el-date-picker type="date" placeholder="选择日期" v-model="scope.row.毕业时间"
                                       style="width: 130px;"></el-date-picker>
                     </el-form-item>
@@ -733,7 +733,7 @@
                         height="250">
                 <el-table-column label="起始时间">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`工作经历列表.${scope.$index}.起始时间`" :rules="rules.chinaName">
+                    <el-form-item :prop="`工作经历列表.${scope.$index}.起始时间`">
                       <el-date-picker type="date" placeholder="选择日期" v-model="scope.row.起始时间"
                                       style="width: 130px;"></el-date-picker>
                     </el-form-item>
@@ -741,7 +741,7 @@
                 </el-table-column>
                 <el-table-column label="终止时间">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`工作经历列表.${scope.$index}.终止时间`" :rules="rules.chinaName">
+                    <el-form-item :prop="`工作经历列表.${scope.$index}.终止时间`">
                       <el-date-picker type="date" placeholder="选择日期" v-model="scope.row.终止时间"
                                       style="width: 130px;"></el-date-picker>
                     </el-form-item>
@@ -749,7 +749,7 @@
                 </el-table-column>
                 <el-table-column label="所在单位名称">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`工作经历列表.${scope.$index}.所在单位名称`" :rules="rules.phone">
+                    <el-form-item :prop="`工作经历列表.${scope.$index}.所在单位名称`">
                       <el-input v-model="scope.row.所在单位名称"/>
                     </el-form-item>
                   </template>
@@ -853,7 +853,7 @@
                         height="250">
                 <el-table-column label="奖励时间">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`奖励情况记录.${scope.$index}.奖励时间`" :rules="rules.chinaName">
+                    <el-form-item :prop="`奖励情况记录.${scope.$index}.奖励时间`">
                       <el-date-picker type="date" placeholder="选择日期" v-model="scope.row.奖励时间"
                                       style="width: 130px;"></el-date-picker>
                     </el-form-item>
@@ -861,7 +861,7 @@
                 </el-table-column>
                 <el-table-column label="奖励情况">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`奖励情况记录.${scope.$index}.奖励情况`" :rules="rules.phone">
+                    <el-form-item :prop="`奖励情况记录.${scope.$index}.奖励情况`">
                       <el-input v-model="scope.row.奖励情况"/>
                     </el-form-item>
                   </template>
@@ -881,7 +881,7 @@
                         height="250">
                 <el-table-column label="处分时间">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`处分情况记录.${scope.$index}.处分时间`" :rules="rules.chinaName">
+                    <el-form-item :prop="`处分情况记录.${scope.$index}.处分时间`">
                       <el-date-picker type="date" placeholder="选择日期" v-model="scope.row.处分时间"
                                       style="width: 130px;"></el-date-picker>
                     </el-form-item>
@@ -889,7 +889,7 @@
                 </el-table-column>
                 <el-table-column label="处分情况">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`处分情况记录.${scope.$index}.处分情况`" :rules="rules.phone">
+                    <el-form-item :prop="`处分情况记录.${scope.$index}.处分情况`">
                       <el-input v-model="scope.row.处分情况"/>
                     </el-form-item>
                   </template>
@@ -948,21 +948,21 @@
               <el-table :data="家庭成员.家庭成员记录" align="center" border style="width: 99%;margin-top: 10px" height="250">
                 <el-table-column label="称谓">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`家庭成员记录.${scope.$index}.称谓`" :rules="rules.chinaName">
+                    <el-form-item :prop="`家庭成员记录.${scope.$index}.称谓`">
                       <el-input v-model="scope.row.称谓"/>
                     </el-form-item>
                   </template>
                 </el-table-column>
                 <el-table-column label="姓名">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`家庭成员记录.${scope.$index}.姓名`" :rules="rules.chinaName">
+                    <el-form-item :prop="`家庭成员记录.${scope.$index}.姓名`">
                       <el-input v-model="scope.row.姓名"/>
                     </el-form-item>
                   </template>
                 </el-table-column>
                 <el-table-column label="出生年月">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`家庭成员记录.${scope.$index}.出生年月`" :rules="rules.chinaName">
+                    <el-form-item :prop="`家庭成员记录.${scope.$index}.出生年月`">
                       <el-date-picker type="date" placeholder="选择日期" v-model="scope.row.出生年月"
                                       style="width: 130px;"></el-date-picker>
                     </el-form-item>
@@ -970,7 +970,7 @@
                 </el-table-column>
                 <el-table-column label="政治面貌">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`家庭成员记录.${scope.$index}.政治面貌`" :rules="rules.chinaName">
+                    <el-form-item :prop="`家庭成员记录.${scope.$index}.政治面貌`">
                       <el-select v-model="scope.row.政治面貌" placeholder="请选择">
                         <el-option
                           v-for="item in 政治面貌字典"
@@ -984,14 +984,14 @@
                 </el-table-column>
                 <el-table-column label="工作/学习单位及职务">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`家庭成员记录.${scope.$index}.单位及职务`" :rules="rules.phone">
+                    <el-form-item :prop="`家庭成员记录.${scope.$index}.单位及职务`">
                       <el-input v-model="scope.row.单位及职务"/>
                     </el-form-item>
                   </template>
                 </el-table-column>
                 <el-table-column label="现居住地">
                   <template slot-scope="scope">
-                    <el-form-item :prop="`家庭成员记录.${scope.$index}.现居住地`" :rules="rules.phone">
+                    <el-form-item :prop="`家庭成员记录.${scope.$index}.现居住地`">
                       <el-input v-model="scope.row.现居住地"/>
                     </el-form-item>
                   </template>
@@ -1030,8 +1030,9 @@ import 家庭成员 from '@/api/service/家庭成员'
 export default {
   data() {
     var checknumber = (rule, value, callback) => {
+      console.log('value',value)
       if (value === '') {
-        callback(new Error('职工号不能为空'));
+        callback();
       } else {
         var numReg = /^[0-9]{9}$/;
         if (!numReg.test(value)) {
@@ -1063,7 +1064,7 @@ export default {
         label: "value",
         emitPath: false
       },
-      考核结果字典: ['优秀'],
+      考核结果字典: ['优秀','合格','基本合格','不合格','未参加考核'],
       isShow: false,
       isDisabled: false,
       showPartyDate: true,
@@ -1078,30 +1079,19 @@ export default {
           {required: true, message: '请输入职工号', trigger: 'blur'},
           {validator: checknumber, trigger: 'blur'}
         ],
-        单位: [
-          {required: true, message: '请选择单位', trigger: 'blur'},
-        ],
-        姓名: [
-          {required: true, message: '请输入姓名', trigger: 'blur'},
-        ],
-        性别: [
-          {required: true, message: '请选择性别', trigger: 'blur'},
-        ],
-        民族: [
-          {required: true, message: '请填写民族', trigger: 'blur'},
-        ],
       },
       审核情况: {
+        初审人职工号: '',
         初审时间: new Date(),
-        初审状态: '未审核',
+        初审状态: '未初审',
+        复审人职工号: '',
       },
       审核情况rules: {
         初审人职工号: [
-          {required: true, message: '请输入职工号', trigger: 'blur'},
           {validator: checknumber, trigger: 'blur'}
         ],
-        初审人: [
-          {required: true, message: '请输入初审人', trigger: 'blur'},
+        复审人职工号: [
+          {validator: checknumber, trigger: 'blur'}
         ],
       },
       出生时间: {},
@@ -1127,40 +1117,6 @@ export default {
         家庭成员记录: [{}],
       },
       家庭成员rules: {},
-      rules: {
-        birthDate: [
-          {required: true, message: '请选择日期', trigger: 'blur'},
-        ],
-        birthIsTrue1: [
-          {required: true, message: '请选择', trigger: 'blur'},
-        ],
-        birthIsTrue2: [
-          {required: true, message: '请选择', trigger: 'blur'},
-        ],
-        birthIsTrue3: [
-          {required: true, message: '请选择', trigger: 'blur'},
-        ],
-        birthIsTrue4: [
-          {required: true, message: '请选择', trigger: 'blur'},
-        ],
-        workDate: [
-          {required: true, message: '请选择日期', trigger: 'blur'},
-        ],
-        workIsTrue1: [
-          {required: true, message: '请选择', trigger: 'blur'},
-        ],
-        workIsTrue2: [
-          {required: true, message: '请选择', trigger: 'blur'},
-        ],
-        workIsTrue3: [
-          {required: true, message: '请选择', trigger: 'blur'},
-        ],
-        partyDate: [
-          {required: true, message: '请选择日期', trigger: 'blur'},
-        ],
-        chinaName: [{required: true, message: '必填', trigger: 'blur'}],
-        phone: [{required: true, message: '必填', trigger: 'blur'}],
-      },
     };
   },
   beforeRouteLeave(to, from, next) {
@@ -1294,6 +1250,12 @@ export default {
       this.$refs['审核情况'].validate((valid) => {
         if (valid) {
           this.审核情况.职工号 = this.基本信息.职工号
+          if(this.审核情况.初审人职工号===""){
+            delete this.审核情况.初审人职工号;
+          }
+          if(this.审核情况.复审人职工号===""){
+            delete this.审核情况.复审人职工号;
+          }
           审核情况.saveOrUpdate(this.审核情况).then(
             this.successmes
           )
