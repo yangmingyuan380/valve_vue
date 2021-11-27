@@ -15,7 +15,7 @@
           <el-row>
             <el-col :span="4">
               <el-form-item label="职工号" prop="职工号">
-                <el-input v-model="user.职工号" :disabled="inputdisabled"/>
+                <el-input v-model="user.职工号" :disabled="inputdisabled" />
               </el-form-item>
             </el-col>
             <el-col :span="4">
@@ -59,21 +59,24 @@
                 type="primary"
                 :disabled="searchdisabled"
                 size="mini"
-                @click="search">
+                @click="search"
+              >
                 查找
               </el-button>
               <el-button
                 type="success"
                 :disabled="commitdisabled"
                 size="mini"
-                @click="saveOrUpdate">
+                @click="saveOrUpdate"
+              >
                 提交
               </el-button>
               <el-button
                 type="danger"
                 v-show="cancelshow"
                 size="mini"
-                @click="cancel">
+                @click="cancel"
+              >
                 放弃
               </el-button>
             </el-col>
@@ -99,8 +102,8 @@
               border
               align="center"
               height="500px"
-              :row-style="{height: '0'}"
-              :cell-style="{padding: '0'}"
+              :row-style="{ height: '0' }"
+              :cell-style="{ padding: '0' }"
             >
               <el-table-column
                 label="审核项目及材料名称"
@@ -136,7 +139,7 @@
                 </template>
               </el-table-column>
             </el-table>
-            <el-table
+            <!-- <el-table
               :data="tableData2"
               :header-cell-style="headFirst"
               border
@@ -175,14 +178,10 @@
                   />
                 </template>
               </el-table-column>
-            </el-table>
-            <el-button @click="output" class="centerButton" style="margin-top: 20px">
-              导出完整性登记表
-            </el-button
-            >
+            </el-table> -->
           </el-main>
 
-          <el-aside style="padding:20px">
+          <el-aside style="padding: 20px">
             <el-table
               :data="tableData3"
               :header-cell-style="headFirst"
@@ -199,6 +198,45 @@
             </el-table>
           </el-aside>
         </el-container>
+
+        <el-table
+          :data="tableData2"
+          align="center"
+          border
+          style="width: 99%; margin-top: 10px"
+          height="250"
+        >
+          <el-table-column width="50px" label="序号">
+          </el-table-column>
+          <el-table-column label="材料类型">
+          </el-table-column>
+          <el-table-column label="具体缺失">
+          </el-table-column>
+          <el-table-column label="材料形成单位">
+          
+          </el-table-column>
+          <el-table-column label="补档情况">
+            
+          </el-table-column>
+          <el-table-column width="110px">
+            <template slot-scope="scope">
+              <el-button
+                @click.prevent="removeFamily(scope.row)"
+                type="danger"
+                icon="el-icon-delete"
+                >删除
+              </el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+
+        <el-button
+          @click="output"
+          class="centerButton"
+          style="margin-top: 20px"
+        >
+          导出完整性登记表
+        </el-button>
       </div>
     </el-form>
   </div>
@@ -359,16 +397,17 @@ export default {
         处分材料登记: "",
         //问题汇总
         完整性问题汇总: "",
+        交接清单列表:[]
       },
       userrules: {
         职工号: [
-          {required: true, message: "请输入职工号", trigger: "blur"},
-          {validator: checknumber, trigger: "blur"},
+          { required: true, message: "请输入职工号", trigger: "blur" },
+          { validator: checknumber, trigger: "blur" },
         ],
-        单位: [{required: true, message: "请选择单位", trigger: "blur"}],
-        姓名: [{required: true, message: "请输入姓名", trigger: "blur"}],
-        性别: [{required: true, message: "请选择性别", trigger: "blur"}],
-        民族: [{required: true, message: "请填写民族", trigger: "blur"}],
+        单位: [{ required: true, message: "请选择单位", trigger: "blur" }],
+        姓名: [{ required: true, message: "请输入姓名", trigger: "blur" }],
+        性别: [{ required: true, message: "请选择性别", trigger: "blur" }],
+        民族: [{ required: true, message: "请填写民族", trigger: "blur" }],
       },
       problem: {
         职工号: "",
@@ -1091,7 +1130,7 @@ export default {
     }
   },
   methods: {
-    arraySpanMethod({row, column, rowIndex, columnIndex}) {
+    arraySpanMethod({ row, column, rowIndex, columnIndex }) {
       if (rowIndex === 0 || rowIndex === 1) {
         if (columnIndex === 1) {
           return [1, 2];
@@ -1392,10 +1431,10 @@ export default {
         // }
       }
     },
-    headFirst({row, colunm, rowIndex, columnIndex}) {
+    headFirst({ row, colunm, rowIndex, columnIndex }) {
       if (rowIndex === 1) {
         //这里为了是将第二列的表头隐藏，就形成了合并表头的效果
-        return {display: "none"};
+        return { display: "none" };
       }
       return "background:#f5f7fa";
     },
@@ -1713,7 +1752,8 @@ export default {
           const blob = new Blob([response]); // 把得到的结果用流对象转一下
           var a = document.createElement("a"); //创建一F个<a></a>标签
           a.href = URL.createObjectURL(blob); // 将流文件写入a标签的href属性值
-          a.download = "完整性登记表-" + this.user.单位 + "-" + this.user.姓名 + ".xlsx"; //设置文件名
+          a.download =
+            "完整性登记表-" + this.user.单位 + "-" + this.user.姓名 + ".xlsx"; //设置文件名
           a.style.display = "none"; // 障眼法藏起来a标签
           document.body.appendChild(a); // 将a标签追加到文档对象中
           a.click(); // 模拟点击了a标签，会触发a标签的href的读取，浏览器就会自动下载了
