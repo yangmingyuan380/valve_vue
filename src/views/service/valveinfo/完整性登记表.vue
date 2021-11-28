@@ -93,8 +93,8 @@
       size="mini"
     >
       <div class="mytable" v-show="divshow">
-        <el-container style="height: 850px">
-          <el-main width="main" class="main">
+        <el-container style="height: 550px">
+          <el-main  class="main">
             <el-table
               :data="tableData"
               :span-method="arraySpanMethod"
@@ -139,49 +139,8 @@
                 </template>
               </el-table-column>
             </el-table>
-            <!-- <el-table
-              :data="tableData2"
-              :header-cell-style="headFirst"
-              border
-              align="center"
-              :row-style="{height: '0'}"
-              :cell-style="{padding: '0'}"
-            >
-              <el-table-column
-                label="审核项目及材料名称"
-                align="center"
-                width="180px"
-              >
-                <el-table-column prop="name" align="center" width="50px">
-                </el-table-column>
-                <el-table-column prop="data"></el-table-column>
-              </el-table-column>
-              <el-table-column prop="number" label="有(份数)" width="80px">
-                <template slot-scope="scope">
-                  <el-input v-model="scope.row.number"></el-input>
-                </template>
-              </el-table-column>
-              <el-table-column prop="isNo" label="无/不存在" width="130px">
-                <template slot-scope="scope">
-                  <el-select v-model="scope.row.isNo">
-                    <el-option label="是" value="1"></el-option>
-                    <el-option label="否" value="0"></el-option>
-                  </el-select>
-                </template>
-              </el-table-column>
-              <el-table-column prop="problem" label="奖励或处分名称及时间">
-                <template slot-scope="scope">
-                  <el-input
-                    type="textarea"
-                    :rows="1"
-                    v-model="scope.row.problem"
-                  />
-                </template>
-              </el-table-column>
-            </el-table> -->
           </el-main>
-
-          <el-aside style="padding: 20px">
+          <el-aside style="padding: 20px;height: 450px;">
             <el-table
               :data="tableData3"
               :header-cell-style="headFirst"
@@ -198,45 +157,104 @@
             </el-table>
           </el-aside>
         </el-container>
-
-        <el-table
-          :data="tableData2"
-          align="center"
-          border
-          style="width: 99%; margin-top: 10px"
-          height="250"
-        >
-          <el-table-column width="50px" label="序号">
-          </el-table-column>
-          <el-table-column label="材料类型">
-          </el-table-column>
-          <el-table-column label="具体缺失">
-          </el-table-column>
-          <el-table-column label="材料形成单位">
-          
-          </el-table-column>
-          <el-table-column label="补档情况">
-            
-          </el-table-column>
-          <el-table-column width="110px">
-            <template slot-scope="scope">
-              <el-button
-                @click.prevent="removeFamily(scope.row)"
-                type="danger"
-                icon="el-icon-delete"
-                >删除
-              </el-button>
-            </template>
-          </el-table-column>
-        </el-table>
-
-        <el-button
-          @click="output"
-          class="centerButton"
-          style="margin-top: 20px"
-        >
-          导出完整性登记表
-        </el-button>
+        <el-container style="height: 300px">
+          <el-main class="main">
+            <h4 style="text-align: center">教职工反馈材料交接清单</h4>
+            <el-table
+              :data="交接清单列表"
+              align="center"
+              border
+              style="width: 99%; margin-top: 10px;height: 150px"
+            >
+              <el-table-column width="50px" label="序号" prop="序号" :key="random">
+                <template slot-scope="scope">
+                  <div v-if="scope.row.seen">
+                    <el-input size="mini" v-model="scope.row.序号"/>
+                  </div>
+                  <div v-else>
+                    <span style="margin-left: 10px">{{ scope.row.序号 }}</span>
+                  </div>
+                </template>
+              </el-table-column>
+              <el-table-column label="材料类型" prop="材料类型" >
+                <template slot-scope="scope">
+                  <div v-if="scope.row.seen">
+                    <el-input size="mini" v-model="scope.row.材料类型"/>
+                  </div>
+                  <div v-else>
+                    <span style="margin-left: 10px">{{ scope.row.材料类型 }}</span>
+                  </div>
+                </template>
+              </el-table-column>
+              <el-table-column label="具体缺失" prop="具体缺失" >
+                <template slot-scope="scope">
+                  <div v-if="scope.row.seen">
+                    <el-input size="mini" v-model="scope.row.具体缺失"/>
+                  </div>
+                  <div v-else>
+                    <span style="margin-left: 10px">{{ scope.row.具体缺失 }}</span>
+                  </div>
+                </template>
+              </el-table-column>
+              <el-table-column label="材料形成单位" prop="材料形成单位" >
+                <template slot-scope="scope">
+                  <div v-if="scope.row.seen">
+                    <el-input size="mini" v-model="scope.row.材料形成单位"/>
+                  </div>
+                  <div v-else>
+                    <span style="margin-left: 10px">{{ scope.row.材料形成单位 }}</span>
+                  </div>
+                </template>
+              </el-table-column>
+              <el-table-column label="补档情况" prop="补档情况" >
+                <template slot-scope="scope">
+                  <div v-if="scope.row.seen">
+                    <el-input size="mini" v-model="scope.row.补档情况"/>
+                  </div>
+                  <div v-else>
+                    <span style="margin-left: 10px">{{ scope.row.补档情况 }}</span>
+                  </div>
+                </template>
+              </el-table-column>
+              <el-table-column label="操作" width="110px">
+                <template slot-scope="scope">
+                  <el-button
+                    @click="edit(scope.$index, scope.row)"
+                    type="text"
+                    size="small"
+                    v-if="!scope.row.isEdit"
+                  >编辑
+                  </el-button
+                  >
+                  <el-button
+                    @click="save(scope.$index, scope.row)"
+                    type="text"
+                    size="small"
+                    v-else
+                  >确认
+                  </el-button
+                  >
+                </template>
+              </el-table-column>
+              <el-table-column width="100px">
+                <template slot-scope="scope">
+                  <el-button @click.prevent="removeRow(scope.row)" style="width: 70px" type="danger"
+                             >删除
+                  </el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+          </el-main>
+        </el-container>
+        <el-container style="height: 100px">
+          <el-button
+            @click="output"
+            class="centerButton"
+            style="margin: 10px auto;height: 40px"
+          >
+            导出完整性登记表
+          </el-button>
+        </el-container>
       </div>
     </el-form>
   </div>
@@ -269,6 +287,7 @@ export default {
       }
     };
     return {
+      random: 0,      //key值，更新渲染
       基本信息: [],
       单位字典: [],
       查询条件: "0",
@@ -397,8 +416,17 @@ export default {
         处分材料登记: "",
         //问题汇总
         完整性问题汇总: "",
-        交接清单列表:[]
+
       },
+      交接清单列表:[{
+        序号: "1",
+        材料类型: "dfasafds",
+        具体缺失: "大部分缺失",
+        材料形成单位: "教务处",
+        补档情况: "未补档"
+      },],
+      isEdit: false,
+      seen: false,
       userrules: {
         职工号: [
           { required: true, message: "请输入职工号", trigger: "blur" },
@@ -1130,6 +1158,23 @@ export default {
     }
   },
   methods: {
+    edit(index, row) {
+      this.random = Math.random();
+      //console.log(index,row.seen);
+      row.isEdit = true;
+      row.seen = true;
+      //console.log(row.seen);
+    },
+    removeRow(item) {         //删除行逻辑
+      var index = this.交接清单列表.indexOf(item)
+      if (index !== -1) {
+        this.交接清单列表.splice(index, 1)
+      }
+    },
+    save(index, row) {
+      row.isEdit = false;
+      row.seen = false;
+    },
     arraySpanMethod({ row, column, rowIndex, columnIndex }) {
       if (rowIndex === 0 || rowIndex === 1) {
         if (columnIndex === 1) {
