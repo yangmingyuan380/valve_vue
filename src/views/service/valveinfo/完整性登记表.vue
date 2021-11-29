@@ -425,18 +425,9 @@ export default {
         处分材料登记: "",
         //问题汇总
         完整性问题汇总: "",
+        材料交接清单: [{}],
       },
-      材料交接清单: [{
-        材料类型: "高级",
-        具体缺失: "大部分缺失",
-        材料形成单位: "教务处",
-        补档情况: "无",
-      },{
-        材料类型: "高级",
-        具体缺失: "大部分缺失",
-        材料形成单位: "教务处",
-        补档情况: "无",
-      }],
+      材料交接清单: [{}],
       isEdit: false,
       seen: false,
       userrules: {
@@ -1806,7 +1797,7 @@ export default {
       this.tableData2[0].problem = res.奖励材料登记;
       this.tableData2[1].problem = res.处分材料登记;
       this.tableData3[0].problems = res.完整性问题汇总;
-      // this.材料交接清单 = res.材料交接清单;
+      this.材料交接清单 = res.材料交接清单;
       this.commitdisabled = false;
     },
     output() {
