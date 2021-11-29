@@ -162,7 +162,6 @@
             <h4 style="text-align: center">教职工反馈材料交接清单</h4>
             <el-row>
               <el-button  type="success" size="mini"
-                          style="float: right;margin-right: 400px"
                           @click="add(index, row)">添加</el-button>
             </el-row>
           </el-main>
@@ -253,6 +252,7 @@
                 </template>
               </el-table-column>
             </el-table>
+            
           </el-main>
         </el-container>
         <el-container style="height: 100px">
