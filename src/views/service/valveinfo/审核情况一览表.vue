@@ -217,11 +217,13 @@
           </div>
           <el-pagination
             :current-page="page"
+            :page-sizes="[10,20,30,40,50]"
             :page-size="limit"
             :total="total"
             style="padding: 30px 0; text-align: center"
-            layout="total, prev, pager, next, jumper"
+            layout="total, sizes, prev, pager, next, jumper"
             @current-change="getdata"
+            @size-change="handleSizeChange"
           />
         </div>
         <el-button @click="output1" style="display: block;margin: 0 auto">导出每日情况登记表</el-button>
@@ -414,7 +416,11 @@ export default {
         }
       });
     },
-    getdata() {
+    // 更改每页数据量
+    handleSizeChange(limit){
+      this.getdata(this.page,limit);
+    },
+    getdata(page=1,limit=10) {
       let 初审时间开始 = '';
       let 初审时间结束 = '';
       let 复审时间开始 = '';
@@ -427,7 +433,7 @@ export default {
         复审时间开始 = this.formatDate(this.复审时间[0]);
         复审时间结束 = this.formatDate(this.复审时间[1]);
       }
-      审核情况一览表.getdata(this.page, this.limit, 初审时间开始, 初审时间结束, 复审时间开始, 复审时间结束, this.基本信息).then((response) => {
+      审核情况一览表.getdata(page, limit, 初审时间开始, 初审时间结束, 复审时间开始, 复审时间结束, this.基本信息).then((response) => {
         this.审核情况 = response.data.list;
         this.total = response.data.total;
         this.checkPageStatus(this.审核情况)

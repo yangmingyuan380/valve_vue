@@ -149,7 +149,7 @@
             </div>
             <el-row>
               <el-col :span="4">
-                <el-form-item label="初审人职工号" prop="初审人职工号">
+                <el-form-item label="初审人单位号" prop="初审人职工号">
                   <el-input v-model="审核情况.初审人职工号" :disabled="初审信息禁用" controls-position="right" :min="0"/>
                 </el-form-item>
               </el-col>
@@ -188,7 +188,7 @@
             </el-row>
             <el-row>
               <el-col :span="4">
-                <el-form-item label="复审人职工号" prop="复审人职工号">
+                <el-form-item label="复审人单位号" prop="复审人职工号">
                   <el-input v-model="审核情况.复审人职工号" :disabled="复审信息禁用" controls-position="right" :min="0"/>
                 </el-form-item>
               </el-col>
