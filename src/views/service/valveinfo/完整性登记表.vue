@@ -162,18 +162,20 @@
             <h4 style="text-align: center">教职工反馈材料交接清单</h4>
             <el-row>
               <el-button  type="success" size="mini"
-                          style="float: right;margin-right: 20px;width: 70px;height: 40px"
+                          style="float: right;margin-right: 400px"
                           @click="add(index, row)">添加</el-button>
             </el-row>
           </el-main>
         </el-container>
-        <el-container style="height: 400px">
+        <el-container style="height: 300px">
           <el-main class="main">
             <el-table
               :data="材料交接清单"
               align="center"
               border
               :row-class-name="rowClassName"
+              :row-style="{height: '0'}"
+              :cell-style="{padding: '0'}"
               style="width: 99%; margin-top: 10px; height: 350px"
             >
               <el-table-column
@@ -227,16 +229,16 @@
                   <el-button
                     @click="edit(scope.$index, scope.row)"
                     type="text"
-                    size="small"
+                    size="mini"
                     v-if="!scope.row.isEdit"
                     >编辑
                   </el-button>
                   <el-button
                     @click="save(scope.$index, scope.row)"
                     type="text"
-                    size="small"
-                    v-else
-                    >确认
+                    size="mini"
+                    v-else>
+                    确认
                   </el-button>
                 </template>
               </el-table-column>
@@ -244,7 +246,7 @@
                 <template slot-scope="scope">
                   <el-button
                     @click.prevent="removeRow(scope.row)"
-                    style="width: 70px"
+                    size="mini"
                     type="danger"
                     >删除
                   </el-button>
@@ -1189,6 +1191,7 @@ export default {
       }
     },
     save(index, row) {
+      this.random = Math.random();
       row.isEdit = false;
       row.seen = false;
     },
