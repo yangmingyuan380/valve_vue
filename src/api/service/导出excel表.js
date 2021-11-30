@@ -35,4 +35,12 @@ export default {
       responseType: 'arraybuffer'
     })
   },
+  output5(idList) { // 插入新的基本信息
+    return request({
+      url: `${api_url}/getword4`, // 后端接口完整路径
+      method: 'post',
+      data: idList,
+      responseType: 'arraybuffer'
+    })
+  },
 }
