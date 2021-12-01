@@ -683,6 +683,21 @@
                 </div>
               </template>
             </el-table-column>
+            <el-table-column prop="学院" label="学院" width="150px">
+              <template slot-scope="scope">
+                <div v-if="scope.row.seen">
+                  <el-input
+                    size="mini"
+                    v-model="scope.row.学院"
+                  />
+                </div>
+                <div v-else>
+                  <span style="margin-left: 10px">{{
+                      scope.row.学院
+                    }}</span>
+                </div>
+              </template>
+            </el-table-column>
             <el-table-column
               prop="获得学历的院校或机构"
               label="获得学历的院校或机构"
@@ -1748,7 +1763,7 @@ export default {
         } else {
           str += 学习经历[i].获得学位的院校或机构;
         }
-        //str += 学习经历[i].学院;
+        str += 学习经历[i].学院;
         str += 学习经历[i].所学专业;
         str += "，";
         str += 学习经历[i].学历;

@@ -641,6 +641,13 @@
                     </el-form-item>
                   </template>
                 </el-table-column>
+                <el-table-column label="学院">
+                  <template slot-scope="scope">
+                    <el-form-item :prop="`学习经历记录.$(scope.$index).学院`">
+                      <el-input v-model="scope.row.学院"/>
+                    </el-form-item>
+                  </template>
+                </el-table-column>
                 <el-table-column label="获得学历的院校或机构">
                   <template slot-scope="scope">
                     <el-form-item :prop="`学习经历记录.${scope.$index}.获得学历的院校或机构`">
