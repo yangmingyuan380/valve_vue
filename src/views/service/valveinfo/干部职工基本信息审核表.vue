@@ -14,7 +14,7 @@
           <el-row>
             <el-col :span="4">
               <el-form-item label="职工号" prop="职工号">
-                <el-input :disabled="inputdisabled" v-model="user.职工号"/>
+                <el-input :disabled="inputdisabled" v-model="user.职工号" />
               </el-form-item>
             </el-col>
             <el-col :span="4">
@@ -62,17 +62,15 @@
                 :disabled="searchdisabled"
                 size="mini"
                 @click="search"
-              >查找
-              </el-button
-              >
+                >查找
+              </el-button>
               <el-button
                 type="danger"
                 v-show="cancelshow"
                 size="mini"
                 @click="goback"
-              >取消
-              </el-button
-              >
+                >取消
+              </el-button>
             </el-col>
           </el-row>
           <el-row>
@@ -570,8 +568,8 @@
       </div>
       <div class="cell" v-show="divshow">
         <div class="container">
-          <br/>
-          <br/>
+          <br />
+          <br />
           <h4 style="text-align: center">简历</h4>
           <div class="note">
             <p>【简历】填写说明:</p>
@@ -593,8 +591,13 @@
             </ul>
           </div>
           <h5 style="text-align: left">&emsp;&emsp;学习经历</h5>
-          <el-table :data="user.学习经历" align="center" border :row-style="{height: '0'}"
-                    :cell-style="{padding: '0'}">
+          <el-table
+            :data="user.学习经历"
+            align="center"
+            border
+            :row-style="{ height: '0' }"
+            :cell-style="{ padding: '0' }"
+          >
             <el-table-column
               prop="入学时间"
               label="入学时间"
@@ -605,11 +608,15 @@
                 <div v-if="scope.row.seen">
                   <el-date-picker
                     v-model="scope.row.入学时间"
-                    type="date" size="mini">
+                    type="date"
+                    size="mini"
+                  >
                   </el-date-picker>
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px">{{ formatDate(scope.row.入学时间) }}</span>
+                  <span style="margin-left: 10px">{{
+                    formatDate(scope.row.入学时间)
+                  }}</span>
                 </div>
               </template>
             </el-table-column>
@@ -618,25 +625,27 @@
                 <div v-if="scope.row.seen">
                   <el-date-picker
                     v-model="scope.row.毕业时间"
-                    type="date" size="mini">
+                    type="date"
+                    size="mini"
+                  >
                   </el-date-picker>
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px"
-                  >{{ formatDate(scope.row.毕业时间) }}</span
-                  >
+                  <span style="margin-left: 10px">{{
+                    formatDate(scope.row.毕业时间)
+                  }}</span>
                 </div>
               </template>
             </el-table-column>
             <el-table-column prop="所学专业" label="所学专业" width="150px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input size="mini" v-model="scope.row.所学专业"/>
+                  <el-input size="mini" v-model="scope.row.所学专业" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px"
-                  >{{ scope.row.所学专业 }}</span
-                  >
+                  <span style="margin-left: 10px">{{
+                    scope.row.所学专业
+                  }}</span>
                 </div>
               </template>
             </el-table-column>
@@ -648,7 +657,8 @@
                     :options="学历字典"
                     :props="学历字典属性"
                     size="mini"
-                    v-model="scope.row.学历">
+                    v-model="scope.row.学历"
+                  >
                   </el-cascader>
                 </div>
                 <div v-else>
@@ -664,7 +674,8 @@
                     :options="学位字典"
                     :props="学位字典属性"
                     size="mini"
-                    v-model="scope.row.学位">
+                    v-model="scope.row.学位"
+                  >
                   </el-cascader>
                 </div>
                 <div v-else>
@@ -679,12 +690,15 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input size="mini" v-model="scope.row.获得学历的院校或机构"/>
+                  <el-input
+                    size="mini"
+                    v-model="scope.row.获得学历的院校或机构"
+                  />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px"
-                  >{{ scope.row.获得学历的院校或机构 }}</span
-                  >
+                  <span style="margin-left: 10px">{{
+                    scope.row.获得学历的院校或机构
+                  }}</span>
                 </div>
               </template>
             </el-table-column>
@@ -695,12 +709,15 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input size="mini" v-model="scope.row.获得学位的院校或机构"/>
+                  <el-input
+                    size="mini"
+                    v-model="scope.row.获得学位的院校或机构"
+                  />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px"
-                  >{{ scope.row.获得学位的院校或机构 }}</span
-                  >
+                  <span style="margin-left: 10px">{{
+                    scope.row.获得学位的院校或机构
+                  }}</span>
                 </div>
               </template>
             </el-table-column>
@@ -711,12 +728,12 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input size="mini" v-model="scope.row.获得学历的国家"/>
+                  <el-input size="mini" v-model="scope.row.获得学历的国家" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px"
-                  >{{ scope.row.获得学历的国家 }}</span
-                  >
+                  <span style="margin-left: 10px">{{
+                    scope.row.获得学历的国家
+                  }}</span>
                 </div>
               </template>
             </el-table-column>
@@ -727,12 +744,12 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input size="mini" v-model="scope.row.获得学位的国家"/>
+                  <el-input size="mini" v-model="scope.row.获得学位的国家" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px"
-                  >{{ scope.row.获得学位的国家 }}</span
-                  >
+                  <span style="margin-left: 10px">{{
+                    scope.row.获得学位的国家
+                  }}</span>
                 </div>
               </template>
             </el-table-column>
@@ -743,25 +760,28 @@
                   type="text"
                   size="small"
                   v-if="!scope.row.isEdit"
-                >编辑
-                </el-button
-                >
+                  >编辑
+                </el-button>
                 <el-button
                   @click="save(scope.$index, scope.row)"
                   type="text"
                   size="small"
                   v-else
-                >确认
-                </el-button
-                >
+                  >确认
+                </el-button>
               </template>
             </el-table-column>
           </el-table>
-          <br/>
-          <br/>
+          <br />
+          <br />
           <h5 style="text-align: left">&emsp;&emsp;工作经历</h5>
-          <el-table :data="user.工作经历" align="center" border :row-style="{height: '0'}"
-                    :cell-style="{padding: '0'}">
+          <el-table
+            :data="user.工作经历"
+            align="center"
+            border
+            :row-style="{ height: '0' }"
+            :cell-style="{ padding: '0' }"
+          >
             <el-table-column
               prop="起始时间"
               label="起始时间"
@@ -772,13 +792,15 @@
                 <div v-if="scope.row.seen">
                   <el-date-picker
                     v-model="scope.row.起始时间"
-                    type="date" size="mini">
+                    type="date"
+                    size="mini"
+                  >
                   </el-date-picker>
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px"
-                  >{{ formatDate(scope.row.起始时间) }}</span
-                  >
+                  <span style="margin-left: 10px">{{
+                    formatDate(scope.row.起始时间)
+                  }}</span>
                 </div>
               </template>
             </el-table-column>
@@ -787,13 +809,15 @@
                 <div v-if="scope.row.seen">
                   <el-date-picker
                     v-model="scope.row.终止时间"
-                    type="date" size="mini">
+                    type="date"
+                    size="mini"
+                  >
                   </el-date-picker>
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px"
-                  >{{ formatDate(scope.row.终止时间) }}</span
-                  >
+                  <span style="margin-left: 10px">{{
+                    formatDate(scope.row.终止时间)
+                  }}</span>
                 </div>
               </template>
             </el-table-column>
@@ -804,24 +828,24 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input size="mini" v-model="scope.row.所在单位名称"/>
+                  <el-input size="mini" v-model="scope.row.所在单位名称" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px"
-                  >{{ scope.row.所在单位名称 }}</span
-                  >
+                  <span style="margin-left: 10px">{{
+                    scope.row.所在单位名称
+                  }}</span>
                 </div>
               </template>
             </el-table-column>
             <el-table-column prop="从事工作" label="从事工作" width="250px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input size="mini" v-model="scope.row.从事工作"/>
+                  <el-input size="mini" v-model="scope.row.从事工作" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px"
-                  >{{ scope.row.从事工作 }}</span
-                  >
+                  <span style="margin-left: 10px">{{
+                    scope.row.从事工作
+                  }}</span>
                 </div>
               </template>
             </el-table-column>
@@ -832,12 +856,12 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input size="mini" v-model="scope.row.曾任党政职务"/>
+                  <el-input size="mini" v-model="scope.row.曾任党政职务" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px"
-                  >{{ scope.row.曾任党政职务 }}</span
-                  >
+                  <span style="margin-left: 10px">{{
+                    scope.row.曾任党政职务
+                  }}</span>
                 </div>
               </template>
             </el-table-column>
@@ -848,19 +872,19 @@
             >
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input size="mini" v-model="scope.row.曾任专业技术职务"/>
+                  <el-input size="mini" v-model="scope.row.曾任专业技术职务" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px"
-                  >{{ scope.row.曾任专业技术职务 }}</span
-                  >
+                  <span style="margin-left: 10px">{{
+                    scope.row.曾任专业技术职务
+                  }}</span>
                 </div>
               </template>
             </el-table-column>
             <el-table-column prop="备注" label="备注" width="250px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input size="mini" v-model="scope.row.备注"/>
+                  <el-input size="mini" v-model="scope.row.备注" />
                 </div>
                 <div v-else>
                   <span style="margin-left: 10px">{{ scope.row.备注 }}</span>
@@ -874,23 +898,30 @@
                   type="text"
                   size="small"
                   v-if="!scope.row.isEdit"
-                >编辑
-                </el-button
-                >
+                  >编辑
+                </el-button>
                 <el-button
                   @click="save(scope.$index, scope.row)"
                   type="text"
                   size="small"
                   v-else
-                >确认
-                </el-button
-                >
+                  >确认
+                </el-button>
               </template>
             </el-table-column>
           </el-table>
-          <br/>
-          <br/>
-          <h5 style="text-align: left">&emsp;&emsp;简历</h5>
+          <br />
+          <br />
+          <el-container>
+            <el-main>
+              <h5 style="text-align: left">简历</h5>
+              <el-row>
+                <el-button type="primary" size="mini" @click="generate"
+                  >生成简历
+                </el-button>
+              </el-row>
+            </el-main>
+          </el-container>
           <el-input
             class="简历"
             type="textarea"
@@ -900,9 +931,10 @@
             v-model="user.简历"
           >
           </el-input>
-          <br/>
-          <br/>
-          <br/>
+
+          <br />
+          <br />
+          <br />
         </div>
       </div>
       <div class="cell" v-show="divshow">
@@ -995,32 +1027,40 @@
           >
           </el-input>
           <h5 style="text-align: left">&emsp;&emsp;奖励情况</h5>
-          <el-table :data="user.奖励情况记录" align="left" border height="200" :row-style="{height: '0'}"
-                    :cell-style="{padding: '0'}">
+          <el-table
+            :data="user.奖励情况记录"
+            align="left"
+            border
+            height="200"
+            :row-style="{ height: '0' }"
+            :cell-style="{ padding: '0' }"
+          >
             <el-table-column label="奖励时间" width="300px" :key="random3">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
                   <el-date-picker
                     v-model="scope.row.奖励时间"
-                    type="date" size="mini">
+                    type="date"
+                    size="mini"
+                  >
                   </el-date-picker>
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px"
-                  >{{ formatDate(scope.row.奖励时间) }}</span
-                  >
+                  <span style="margin-left: 10px">{{
+                    formatDate(scope.row.奖励时间)
+                  }}</span>
                 </div>
               </template>
             </el-table-column>
             <el-table-column label="奖励情况" width="300px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input size="mini" v-model="scope.row.奖励情况"/>
+                  <el-input size="mini" v-model="scope.row.奖励情况" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px"
-                  >{{ scope.row.奖励情况 }}</span
-                  >
+                  <span style="margin-left: 10px">{{
+                    scope.row.奖励情况
+                  }}</span>
                 </div>
               </template>
             </el-table-column>
@@ -1031,47 +1071,53 @@
                   type="text"
                   size="small"
                   v-if="!scope.row.isEdit"
-                >编辑
-                </el-button
-                >
+                  >编辑
+                </el-button>
                 <el-button
                   @click="save(scope.$index, scope.row)"
                   type="text"
                   size="small"
                   v-else
-                >确认
-                </el-button
-                >
+                  >确认
+                </el-button>
               </template>
             </el-table-column>
           </el-table>
           <h5 style="text-align: left">&emsp;&emsp;处分情况</h5>
-          <el-table :data="user.处分情况记录" align="left" border height="200" :row-style="{height: '0'}"
-                    :cell-style="{padding: '0'}">
+          <el-table
+            :data="user.处分情况记录"
+            align="left"
+            border
+            height="200"
+            :row-style="{ height: '0' }"
+            :cell-style="{ padding: '0' }"
+          >
             <el-table-column label="处分时间" width="300px" :key="random4">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
                   <el-date-picker
                     v-model="scope.row.处分时间"
-                    type="date" size="mini">
+                    type="date"
+                    size="mini"
+                  >
                   </el-date-picker>
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px"
-                  >{{ formatDate(scope.row.处分时间) }}</span
-                  >
+                  <span style="margin-left: 10px">{{
+                    formatDate(scope.row.处分时间)
+                  }}</span>
                 </div>
               </template>
             </el-table-column>
             <el-table-column label="处分情况" width="300px">
               <template slot-scope="scope">
                 <div v-if="scope.row.seen">
-                  <el-input size="mini" v-model="scope.row.处分情况"/>
+                  <el-input size="mini" v-model="scope.row.处分情况" />
                 </div>
                 <div v-else>
-                  <span style="margin-left: 10px"
-                  >{{ scope.row.处分情况 }}</span
-                  >
+                  <span style="margin-left: 10px">{{
+                    scope.row.处分情况
+                  }}</span>
                 </div>
               </template>
             </el-table-column>
@@ -1082,17 +1128,15 @@
                   type="text"
                   size="small"
                   v-if="!scope.row.isEdit"
-                >编辑
-                </el-button
-                >
+                  >编辑
+                </el-button>
                 <el-button
                   @click="save(scope.$index, scope.row)"
                   type="text"
                   size="small"
                   v-else
-                >确认
-                </el-button
-                >
+                  >确认
+                </el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -1125,7 +1169,7 @@
                     :prop="`家庭成员记录.${scope.$index}.称谓`"
                     :rules="rules.chinaName"
                   >
-                    <el-input v-model="scope.row.称谓"/>
+                    <el-input v-model="scope.row.称谓" />
                   </el-form-item>
                 </template>
               </el-table-column>
@@ -1135,7 +1179,7 @@
                     :prop="`家庭成员记录.${scope.$index}.姓名`"
                     :rules="rules.chinaName"
                   >
-                    <el-input v-model="scope.row.姓名"/>
+                    <el-input v-model="scope.row.姓名" />
                   </el-form-item>
                 </template>
               </el-table-column>
@@ -1182,7 +1226,7 @@
                     :prop="`家庭成员记录.${scope.$index}.单位及职务`"
                     :rules="rules.phone"
                   >
-                    <el-input v-model="scope.row.单位及职务"/>
+                    <el-input v-model="scope.row.单位及职务" />
                   </el-form-item>
                 </template>
               </el-table-column>
@@ -1192,7 +1236,7 @@
                     :prop="`家庭成员记录.${scope.$index}.现居住地`"
                     :rules="rules.phone"
                   >
-                    <el-input v-model="scope.row.现居住地"/>
+                    <el-input v-model="scope.row.现居住地" />
                   </el-form-item>
                 </template>
               </el-table-column>
@@ -1229,9 +1273,8 @@
             type="success"
             @click="saveOrUpdate"
             :disabled="commitdisabled"
-          >提交
-          </el-button
-          >
+            >提交
+          </el-button>
           <el-button @click="output">导出基本信息审核表</el-button>
         </el-form-item>
       </div>
@@ -1240,7 +1283,7 @@
 </template>
 
 <script>
-import {getInfoRecord, putInfoRecord} from "@/api/service/干部基本信息审核表";
+import { getInfoRecord, putInfoRecord } from "@/api/service/干部基本信息审核表";
 import 导出excel表 from "@/api/service/导出excel表";
 import 基本信息 from "@/api/service/基本信息";
 
@@ -1303,16 +1346,16 @@ export default {
       学历字典: [],
       学位: [],
       学位字典: [],
-      考核结果字典: ['优秀','合格','基本合格','不合格','未参加考核'],
+      考核结果字典: ["优秀", "合格", "基本合格", "不合格", "未参加考核"],
       userrules: {
         职工号: [
-          {required: true, message: "请输入职工号", trigger: "blur"},
-          {validator: checknumber, trigger: "blur"},
+          { required: true, message: "请输入职工号", trigger: "blur" },
+          { validator: checknumber, trigger: "blur" },
         ],
-        单位: [{required: true, message: "请选择单位", trigger: "blur"}],
-        姓名: [{required: true, message: "请输入姓名", trigger: "blur"}],
-        性别: [{required: true, message: "请选择性别", trigger: "blur"}],
-        民族: [{required: true, message: "请填写民族", trigger: "blur"}],
+        单位: [{ required: true, message: "请选择单位", trigger: "blur" }],
+        姓名: [{ required: true, message: "请输入姓名", trigger: "blur" }],
+        性别: [{ required: true, message: "请选择性别", trigger: "blur" }],
+        民族: [{ required: true, message: "请填写民族", trigger: "blur" }],
       },
       审核情况: {
         初审时间: new Date(),
@@ -1320,12 +1363,12 @@ export default {
       },
       审核情况rules: {
         初审人职工号: [
-          {required: true, message: "请输入职工号", trigger: "blur"},
-          {validator: checknumber, trigger: "blur"},
+          { required: true, message: "请输入职工号", trigger: "blur" },
+          { validator: checknumber, trigger: "blur" },
         ],
         复审人职工号: [
-          {required: true, message: "请输入职工号", trigger: "blur"},
-          {validator: checknumber, trigger: "blur"},
+          { required: true, message: "请输入职工号", trigger: "blur" },
+          { validator: checknumber, trigger: "blur" },
         ],
       },
       出生时间rules: {},
@@ -1334,25 +1377,25 @@ export default {
       学历学位材料rules: {},
       rules: {
         职工号: [
-          {required: true, message: "请输入职工号", trigger: "blur"},
-          {validator: checknumber, trigger: "blur"},
+          { required: true, message: "请输入职工号", trigger: "blur" },
+          { validator: checknumber, trigger: "blur" },
         ],
-        单位: [{required: true, message: "请选择单位", trigger: "blur"}],
-        姓名: [{required: true, message: "请输入姓名", trigger: "blur"}],
-        性别: [{required: true, message: "请选择性别", trigger: "blur"}],
-        民族: [{required: true, message: "请填写民族", trigger: "blur"}],
-        birthDate: [{required: true, message: "请选择日期", trigger: "blur"}],
-        birthIsTrue1: [{required: true, message: "请选择", trigger: "blur"}],
-        birthIsTrue2: [{required: true, message: "请选择", trigger: "blur"}],
-        birthIsTrue3: [{required: true, message: "请选择", trigger: "blur"}],
-        birthIsTrue4: [{required: true, message: "请选择", trigger: "blur"}],
-        workDate: [{required: true, message: "请选择日期", trigger: "blur"}],
-        workIsTrue1: [{required: true, message: "请选择", trigger: "blur"}],
-        workIsTrue2: [{required: true, message: "请选择", trigger: "blur"}],
-        workIsTrue3: [{required: true, message: "请选择", trigger: "blur"}],
-        partyDate: [{required: true, message: "请选择日期", trigger: "blur"}],
-        chinaName: [{required: true, message: "必填", trigger: "blur"}],
-        phone: [{required: true, message: "必填", trigger: "blur"}],
+        单位: [{ required: true, message: "请选择单位", trigger: "blur" }],
+        姓名: [{ required: true, message: "请输入姓名", trigger: "blur" }],
+        性别: [{ required: true, message: "请选择性别", trigger: "blur" }],
+        民族: [{ required: true, message: "请填写民族", trigger: "blur" }],
+        birthDate: [{ required: true, message: "请选择日期", trigger: "blur" }],
+        birthIsTrue1: [{ required: true, message: "请选择", trigger: "blur" }],
+        birthIsTrue2: [{ required: true, message: "请选择", trigger: "blur" }],
+        birthIsTrue3: [{ required: true, message: "请选择", trigger: "blur" }],
+        birthIsTrue4: [{ required: true, message: "请选择", trigger: "blur" }],
+        workDate: [{ required: true, message: "请选择日期", trigger: "blur" }],
+        workIsTrue1: [{ required: true, message: "请选择", trigger: "blur" }],
+        workIsTrue2: [{ required: true, message: "请选择", trigger: "blur" }],
+        workIsTrue3: [{ required: true, message: "请选择", trigger: "blur" }],
+        partyDate: [{ required: true, message: "请选择日期", trigger: "blur" }],
+        chinaName: [{ required: true, message: "必填", trigger: "blur" }],
+        phone: [{ required: true, message: "必填", trigger: "blur" }],
       },
       searchdisabled: false,
       inputdisabled: false,
@@ -1464,11 +1507,16 @@ export default {
     });
   },
   methods: {
-    formatDate(datetime) { // 将date类型准换为yyy-MM-dd格式
+    formatDate(datetime) {
+      // 将date类型准换为yyy-MM-dd格式
       datetime = new Date(datetime);
       var year = datetime.getFullYear();
-      var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
-      var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+      var month =
+        datetime.getMonth() + 1 < 10
+          ? "0" + (datetime.getMonth() + 1)
+          : datetime.getMonth() + 1;
+      var date =
+        datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
       return year + "-" + month + "-" + date;
     },
     //#1 新增参数
@@ -1676,6 +1724,94 @@ export default {
       this.cancelshow = false;
       this.inputdisabled = false;
     },
+    generate() {
+      var 学习经历 = this.user.学习经历;
+      var str = "";
+      for (var i = 0; i < 学习经历.length; i++) {
+        var 起始时间 = new Date(学习经历[i].入学时间.toString());
+        var 终止时间 = new Date(学习经历[i].毕业时间.toString());
+        str +=
+          起始时间.getFullYear().toString() +
+          "." +
+          起始时间.getMonth().toString();
+        str += "-";
+        str +=
+          终止时间.getFullYear().toString() +
+          "." +
+          终止时间.getMonth().toString();
+        str += "  ";
+        if (
+          学习经历[i].获得学历的院校或机构 != null &&
+          学习经历[i].获得学历的院校或机构 != ""
+        ) {
+          str += 学习经历[i].获得学历的院校或机构;
+        } else {
+          str += 学习经历[i].获得学位的院校或机构;
+        }
+        //str += 学习经历[i].学院;
+        str += 学习经历[i].所学专业;
+        str += "，";
+        str += 学习经历[i].学历;
+
+        str += "\n";
+      }
+      var 工作经历 = this.user.工作经历;
+      for (var i = 0; i < 工作经历.length; i++) {
+        var 起始时间 = new Date(工作经历[i].起始时间.toString());
+        var 终止时间 = new Date(工作经历[i].终止时间.toString());
+        str +=
+          起始时间.getFullYear().toString() +
+          "." +
+          起始时间.getMonth().toString();
+        str += "-";
+        str +=
+          终止时间.getFullYear().toString() +
+          "." +
+          终止时间.getMonth().toString();
+        str += "  ";
+        str += 工作经历[i].所在单位名称;
+        str += 工作经历[i].从事工作;
+        if (
+          (工作经历[i].曾任专业技术职务 == null ||
+            工作经历[i].曾任专业技术职务 == "") &&
+          (工作经历[i].曾任党政职务 == null ||
+            工作经历[i].曾任党政职务 == "") &&
+          (工作经历[i].备注 == null || 工作经历[i].备注 == "")
+        ) {
+        } else {
+          str += "（";
+          if (
+            (工作经历[i].曾任专业技术职务 != null &&
+              工作经历[i].曾任专业技术职务 != "") ||
+            (工作经历[i].曾任党政职务 != null && 工作经历[i].曾任党政职务 != "")
+          ) {
+            str += "期间：";
+            if (
+              工作经历[i].曾任党政职务 != null &&
+              工作经历[i].曾任党政职务 != ""
+            ) {
+              str += 工作经历[i].曾任党政职务;
+            }
+            if (
+              工作经历[i].曾任专业技术职务 != null &&
+              工作经历[i].曾任专业技术职务 != ""
+            ) {
+              str += "；";
+              str += 工作经历[i].曾任专业技术职务;
+            }
+            if (工作经历[i].备注 != null && 工作经历[i].备注 != "") {
+              str += "；";
+              str += 工作经历[i].备注;
+            }
+          } else {
+            str += 工作经历[i].备注;
+          }
+          str += "）";
+        }
+        str += "\n";
+      }
+      this.user.简历 = str;
+    },
     output() {
       let idList = [];
       idList.push(this.user.职工号);
@@ -1685,7 +1821,12 @@ export default {
           const blob = new Blob([response]); // 把得到的结果用流对象转一下
           var a = document.createElement("a"); //创建一F个<a></a>标签
           a.href = URL.createObjectURL(blob); // 将流文件写入a标签的href属性值
-          a.download = "干部职工基本信息审核表-"+this.user.单位+"-"+this.user.姓名+".doc"; //设置文件名
+          a.download =
+            "干部职工基本信息审核表-" +
+            this.user.单位 +
+            "-" +
+            this.user.姓名 +
+            ".doc"; //设置文件名
           a.style.display = "none"; // 障眼法藏起来a标签
           document.body.appendChild(a); // 将a标签追加到文档对象中
           a.click(); // 模拟点击了a标签，会触发a标签的href的读取，浏览器就会自动下载了
@@ -1699,7 +1840,6 @@ export default {
           console.log("error", error); //这里会打印捕获的异常是什么，我这里是false
         });
     },
-
   },
 };
 </script>
@@ -1709,7 +1849,6 @@ export default {
 
 .cell > .container {
   .note {
-
     margin-left: 10px;
     font-size: 13px;
     color: red;
