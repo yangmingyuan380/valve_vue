@@ -143,7 +143,7 @@
           <h4 style="text-align: center">审核情况</h4>
           <el-row>
             <el-col :span="4">
-              <el-form-item label="初审人职工号" prop="初审人职工号">
+              <el-form-item label="初审人单位号" prop="初审人职工号">
                 <el-input
                   v-model="基本信息.初审人职工号"
                   controls-position="right"
@@ -199,7 +199,7 @@
           </el-row>
           <el-row>
             <el-col :span="4">
-              <el-form-item label="复审人职工号" prop="复审人职工号">
+              <el-form-item label="复审人单位号" prop="复审人职工号">
                 <el-input
                   v-model="基本信息.复审人职工号"
                   controls-position="right"
