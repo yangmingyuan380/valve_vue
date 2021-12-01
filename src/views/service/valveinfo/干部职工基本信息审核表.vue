@@ -151,64 +151,64 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <el-form-item label="初审认定出生时间" label-width="150px">
                 <el-date-picker
                   type="date"
                   placeholder="选择日期"
-                  style="width: 120px"
+                  style="width: 130px"
                   v-model="user.初审认定出生时间"
                 ></el-date-picker>
               </el-form-item>
             </el-col>
-            <el-col :span="5">
+            <el-col :span="6">
               <el-form-item label="初审认定参加工作时间" label-width="170px">
                 <el-date-picker
                   type="date"
                   placeholder="选择日期"
-                  style="width: 120px"
+                  style="width: 130px"
                   v-model="user.初审认定参加工作时间"
                 ></el-date-picker>
               </el-form-item>
             </el-col>
-            <el-col :span="5">
+            <el-col :span="6">
               <el-form-item label="初审认定入党时间" label-width="150px">
                 <el-date-picker
                   type="date"
                   placeholder="选择日期"
-                  style="width: 120px"
+                  style="width: 130px"
                   v-model="user.初审认定入党时间"
                 ></el-date-picker>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="5">
+            <el-col :span="6">
               <el-form-item label="复审认定出生时间" label-width="150px">
                 <el-date-picker
                   type="date"
                   placeholder="选择日期"
-                  style="width: 120px"
+                  style="width: 130px"
                   v-model="user.复审认定出生时间"
                 ></el-date-picker>
               </el-form-item>
             </el-col>
-            <el-col :span="5">
+            <el-col :span="6">
               <el-form-item label="复审认定参加工作时间" label-width="170px">
                 <el-date-picker
                   type="date"
                   placeholder="选择日期"
-                  style="width: 120px"
+                  style="width: 130px"
                   v-model="user.复审认定参加工作时间"
                 ></el-date-picker>
               </el-form-item>
             </el-col>
-            <el-col :span="5">
+            <el-col :span="6">
               <el-form-item label="复审认定入党时间" label-width="150px">
                 <el-date-picker
                   type="date"
                   placeholder="选择日期"
-                  style="width: 120px"
+                  style="width: 130px"
                   v-model="user.复审认定入党时间"
                 ></el-date-picker>
               </el-form-item>
@@ -236,17 +236,17 @@
                 <el-date-picker
                   type="date"
                   placeholder="选择日期"
-                  style="width: 120px"
+                  style="width: 130px"
                   v-model="user.参加工作时间"
                 ></el-date-picker>
               </el-form-item>
             </el-col>
-            <el-col :span="4">
+            <el-col :span="5">
               <el-form-item label="入党时间">
                 <el-date-picker
                   type="date"
                   placeholder="选择日期"
-                  style="width: 120px"
+                  style="width: 130px"
                   v-model="user.入党时间"
                 ></el-date-picker>
               </el-form-item>
@@ -256,7 +256,7 @@
                 <el-date-picker
                   type="date"
                   placeholder="选择日期"
-                  style="width: 120px"
+                  style="width: 130px"
                   v-model="user.进入本校时间"
                 ></el-date-picker>
               </el-form-item>
